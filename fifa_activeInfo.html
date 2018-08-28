@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=414,user-scalable=no">
+	<title>TG_MarketList</title>
+	<link rel="stylesheet" href="./template/www/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./template/www/css/bootstrap-select.min.css">
+	<link rel="stylesheet" href="./template/www/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="./template/www/css/normalize.css">
+    <link rel="stylesheet" href="./template/www/css/tab_style.css">
+	<!--menu bar 套件-->
+    <link rel="stylesheet" href="./template/www/css/demo.css">
+    <link rel="stylesheet" href="./template/www/css/sidy.css">
+    <link rel="stylesheet" href="./template/www/css/Main_Style.css">
+	
+	<!-- START BLOCK : FIFA_CSS -->
+	<link rel="stylesheet" href="./template/www/css/{cssFileName}">
+	<!-- END BLOCK : FIFA_CSS -->
+</head>
+
+<body>
+	<div class="sidy">
+
+		<div class="sidy__content fifa_main_bg">
+			<div class="head_banner nav-bar navbar-fixed-top">
+				
+				<a href="fifa.php"><i class=" fa fa-angle-left fifa_detail_arrow_left" aria-hidden="true"></i></a>
+				
+				<div class="acc"><img class="top_user" src="./template/www/img/top_user.png" width="11" height="11">{username}</div>
+				<div class="money"><img class="top_coin" src="./template/www/img/top_coin.png" width="11" height="11"><span id="quotaView">{quotaView}</span></div>
+				<input type="hidden" id="memberQuota" name="memberQuota" value="{quota}">
+			</div>
+			<div class="title_background">
+				<div class="title">{activeInfo}</div>
+			</div>
+			
+
+			<div class="icon_bar navbar-fixed-bottom">
+				<div class="icon_bar_row">
+					<div class="icon_bar_cell"><a id="market_a" name="market_a" href="market.php"><div class="icon_bar_marketlist"></div><div class="icon_bar_text">市场列表</div></a></div>
+					<div class="icon_bar_cell"><a id="orderinfo_a" name="orderinfo_a" href="orderinfo.php"><div class="icon_bar_trade"></div><div class="icon_bar_text">交易明细</div></a></div>
+					<div class="icon_bar_cell iconBar_fifa_bg"><a class="active" href="fifa.php"><div class="icon_bar_fifa"></div><div class="icon_bar_text">世足专区</div></a></div>
+					<div class="icon_bar_cell"><a name="history_a" id="history_a" href="history.php"><div class="icon_bar_history"></div><div class="icon_bar_text">历史帐务</div></a></div>
+					<div class="icon_bar_cell"><a name="my_a" id="my_a" href="my.php"><div class="icon_bar_my"></div><div class="icon_bar_text">我　的</div></a></div>
+				</div>
+				<div id="Modal_coverchgall" class="cover"></div>
+			</div>
+			<div class="scroll_top" id="return-to-top">
+				<div class="scroll_top_bg"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+			</div>
+			
+			<section class="activity_section">
+			<span class="fifa_sticky_banner">置顶</span>
+				<h5>活动时间</h5>
+				<p><strong>2018/6/14～2018/7/15</strong></p>
+				<p>四年一度的2018世界杯即将于今夏在俄罗斯 震撼来袭，TG为了回馈广大会员，特推出 <strong>『3-3保本活动』</strong>来邀请会员共襄盛举，让会员更能尽兴参与世界杯足球赛事。</p>
+				
+				<h5>活动规则</h5>
+				<ol>
+					<li>本活动保本金额<strong>最高33,333元</strong>，超过金 额不予保本。</li>
+					<li>本活动无任何限制。</li>
+					<li>本活动保本金额仅针对投资世界杯64场赛事<strong>『3-3波胆』</strong>项目，<strong>如有出现『3-3比分』，在TG平台限定金额内『一律保本』</strong>。</li>
+					<li>如有出现<strong>『3-3比分』</strong>，系统将自动返还投资金额，超过保本金额部分，系统将自动扣除。</li>
+					<li>TG拥有最终解释权，对本活动有权延长、缩短、终止或修改活动内容。</li>
+				</ol>
+			</section>
+			
+		</div>
+	</div>
+
+	<script src="./template/www/js/jquery-3.2.1.min.js"></script>
+	<script src="./template/www/js/bootstrap.min.js"></script>
+	
+	<script src="./template/www/js/modernizr.custom.04022.js"></script>
+	<script src="./template/www/js/sidy.js"></script>
+	<script src="./template/www/js/marketlist{detail}.js"></script>
+	<script src="./template/www/js/fifa.js"></script>
+	
+	<!-- START BLOCK : javascriptRun -->
+	<script>{scriptStr}</script>
+	<!-- END BLOCK : javascriptRun -->
+	
+</body>
+</html>

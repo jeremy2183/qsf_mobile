@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=414, user-scalable=no">
+	<title>TG_MarketList</title>
+	<link rel="stylesheet" href="www/css/bootstrap.min.css">
+	<link rel="stylesheet" href="www/css/bootstrap-select.min.css">
+	<link rel="stylesheet" href="www/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="www/css/normalize.css">
+  <link rel="stylesheet" href="www/css/tab_style.css">
+    
+	<!--menu bar 套件-->
+  <link rel="stylesheet" href="www/css/demo.css">
+	<link rel="stylesheet" href="www/css/sidy.css">
+  <link rel="stylesheet" href="www/css/Main_Style.css">
+	<link rel="stylesheet" href="www/css/trade_detail.css">
+	<link rel="stylesheet" href="www/css/FIFA_marketlist.css">
+	<link rel="stylesheet" href="www/css/account_history.css">
+</head>
+
+<body>
+	<div class="sidy">
+<nav data-position="left" data-size="65%" data-fx="slide_overlay" class="sidy__panel" id="panel-1">
+
+
+	<div class="menu_head_bg">
+		<div class="menu_head_title" id="menu_head_title"></div>
+	</div>
+	<div class="menu_list">
+		<ul>
+			<li onclick="location.href='market.php'">
+				<div class="market_list_icon"></div>
+				<div class="menu_text">市场列表</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='orderinfo.php'">
+				<div class="trade_detail_icon"></div>
+				<div class="menu_text">交易明细</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='history.php'">
+				<div class="history_icon"></div>
+				<div class="menu_text">历史帐务</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="window.open('http://bf.spbo1.com', '_blank')">
+				<div class="nowscore_icon_2018"></div>
+				<div class="menu_text">即时比分</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='gameresult.php'">
+				<div class="game_result_icon"></div>
+				<div class="menu_text">赛事结果</div>
+				<div class="menu_arrow"></div>
+			</li>
+		</ul>
+	</div>
+	<div class="menu_block_group">
+		<div class="menu_block">
+			<div class="new_icon">NEW</div>
+			<div onclick="location.href='deposits.php'" class="menu_block_outline01">
+				<div class="menu_wd_icon"></div>
+				<div class="menu_block_text">充值提领</div>
+			</div>
+		</div>
+		<!--
+            <div class="menu_block">
+                <div onclick="window.open('http://bf.spbo1.com', '_blank')" class="menu_block_outline02">
+                <div class="menu_live_icon"></div>
+                <div class="menu_block_text">即时比分</div>
+                </div>
+            </div>
+            -->
+		<div class="menu_block">
+			<div id="modify111" name="modify111" class="menu_block_outline02">
+				<div class="menu_live_icon"></div>
+				<div class="menu_block_text">会员互转</div>
+			</div>
+		</div>
+
+		<div class="menu_block">
+			<div onclick="location.href='service.php'" class="menu_block_outline03">
+				<div class="menu_service_icon"></div>
+				<div class="menu_block_text">联络客服</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="menu_list">
+		<ul>
+			<li onclick="location.href='statistics.php'">
+				<div class="menu_history_stat_icon"></div>
+				<div class="menu_text">历史统计</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='./products/html/rules.html'">
+				<div class="menu_rules_icon"></div>
+				<div class="menu_text">规则说明</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='./products/html/help.html'">
+				<div class="menu_help_icon"></div>
+				<div class="menu_text">帮助中心</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="window.open('http://f.tg333.net/index.php', '_blank')">
+				<div class="menu_discuss_icon"></div>
+				<div class="menu_text">讨论区</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='announce.php'">
+				<div class="menu_announce_icon"></div>
+				<div class="menu_text">公　告</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='memberlogout.php'">
+				<div class="menu_logout_icon"></div>
+				<div class="menu_text">登　出</div>
+				<div class="menu_arrow"></div>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+<script src="www/js/jquery-3.2.1.min.js"></script>
+<script>
+	//会员互转
+	$("#modify111").on('click', function() {
+		$(".sidy").removeClass('sidy--opened');
+
+		$.ajax({
+			type: 'POST',
+			url: './other/userchg_thr.php',
+			//data: 'IncomeUser=' + username + '&amount=' + amount + '&withdrawpassword=' + passwd ,		
+			error: function(xhr) {
+				alert('error');
+				window.location.reload();
+				return false;
+			},
+			beforeSend: function(response) {
+				$("#Modal_coverchgall").html("<div class='Loading'></div>");
+			},
+			success: function(response) {
+				//			alert( response );
+				$("#Modal_coverchgall").on('keyup', function() {
+					var _this = this;
+					//setTimeout(function(){
+					//_this.scrollIntoViewIfNeeded();
+					//},400);
+				});
+				$("#Modal_coverchgall").html(response);
+			}
+		});
+		$("#Modal_coverchgall").css('display', 'block');
+	});
+
+</script>
+
+		<div class="sidy__content">
+			<div class="head_banner nav-bar navbar-fixed-top">
+				<div data-panel="panel-1" class="sidy--to-open menu_btn">
+					<span></span><br>
+					<span></span><br>
+					<span></span><br>
+				</div>
+				
+				<div class="acc"><img class="top_user" src="www/img/top_user.png" width="11" height="11">PZQ422</div>
+				<div class="money"><img class="top_coin" src="www/img/top_coin.png" width="11" height="11"><span id="quotaView">0.00</span></div>
+				<input type="hidden" id="memberQuota" name="memberQuota" value="0">
+			</div>
+			
+
+			<div class="title_background ">
+				<button class="announcement_btn" onclick="titleannice()">公告<i class="fa fa-caret-right arrow_2" aria-hidden="true"></i></button>
+				<div class="title_market" style="">
+					<marquee id="marqinfo" style="margin-top:3px;font-size:16px;margin-left:22%;width:80%;display:block;" direction="left">
+						  TG平台提醒广大会员，近期出现许多黑网打著反波胆名义，进行资金盘吸金，或利用保证获利口号行欺诈等不法行为，TG平台在此除了严厉斥责不肖黑网，也恳请会员慎选平台，以免资金遭受损失。
+						  7-12 / 08:30	 [ 美甲      ]  OKC能量 v 拉斯维加斯光  因国际资料传递错误该赛事 07-12 / 08:10后所有注单无效
+						  07-11 / 23:59	 [ 友谊赛      ]  洛里昂 v 布雷斯特  因比赛时间不足法定九十分钟，所有注单取消。
+						  
+						  07-10 / 21:00 [ 友谊赛 ] 希姆基 v 斯特罗吉诺  因国际资料传递错误该赛事 0710 / 19:00后所有注单无效。
+						  尊敬的会员，您好：为提供更优质的服务环境，24小时在线客服已全面更新，原在线客服已停止服务，请清除暂存重新登入平台，感谢您对平台的支持
+						  因逢世足赛网站流量暴增，为提升网速品质，故新增线路手机网域m5.tg7777.net,桌机网域w5.tg7777.net,烦请各位尊贵会员善加利用！
+						  尊贵的会员您好，因逢世界杯流量过大，将于世足期间，每日下午九点至隔日凌晨二点，关闭会员互转功能，功能将于隔日凌晨二点后开放，不便之处请见谅！
+						  近日发现有心人士假冒平台客服，主动提供账户要求会员进行充值，再次贴心提醒，平台客服绝不主动提供账户供会员充值，开放充值之账户依照平台显示为准，请会员当心留意，勿轻易相信。
+						  为因应近期爆增的会员人数，也感谢广大会员的支持，TG平台为提供更优质的服务环境，今日全新资料库升级已完成，造成您的不便，敬请见谅！！
+						  
+						  『淘金网翻本大红包』于2018年2月21日中午12：00正式开跑，最高回馈金8888！！详情请洽线上客服中心，感谢您对淘金网的支持！！
+						  
+						  
+						  
+						  
+						  
+						  
+						  
+						  
+						  敬请会员注意：请于每次充值前，先登入查看网页指定的专属帐号后进行充值，请勿自行转至旧有的帐号，如入款至已过期的帐号，本公司将无法查收，恕不负责，感谢您对淘金网的支持！！
+						  
+						  
+						  
+						  
+						  
+						  
+						  
+						  
+				 </marquee>
+					<div style="padding-left:150px;width:80%;display:none;" id="markettitle" name="markettitle">市场列表</div>
+					</div>
+				<div class="mail"><img src="www/img/icon/mail.png" height="18" width="27"/><span onclick="document.location.href='announce.php'" class="message_number"></span></div>
+			</div>
+ 			
+ 			<div class="title_background ">
+				<div class="title">帐务历史</div>
+			</div>
+			
+			<section class="tabs">
+            <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked"/>
+            <label for="tab-1" class="tab-label-1">本周</label>
+
+            <input id="tab-2" type="radio" name="radio-set" class="tab-selector-2"/>
+            <label for="tab-2" class="tab-label-2">上周</label>
+
+            <input id="tab-3" type="radio" name="radio-set" class="tab-selector-3"/>
+            <label for="tab-3" class="tab-label-3">前两周</label>
+
+            <input id="tab-4" type="radio" name="radio-set" class="tab-selector-4"/>
+            <label for="tab-4" class="tab-label-4">近一年</label>
+            <div class="clear-shadow"></div>
+
+            <div style="margin-top:0px;" class="content">
+
+            	
+                <div class="content-1">
+                    <div class="table_head">
+                        <div class="table_head_cell date">日期</div>
+                        <div class="table_head_cell trade_amount">交易金额</div>
+                        <div class="table_head_cell result">总结算</div>
+                    </div>
+                     <div class="history_table">
+                        <div class="history_row" onclick="location.href='history.php?week=day&yy=lastweek&f_date1=2018-09-03'">
+                            <div class="history_cell date ">09/03</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                        </div>
+                        <div class="history_row" onclick="location.href='history.php?week=day&yy=lastweek&f_date1=2018-09-02'">
+                            <div class="history_cell date ">09/02</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                        </div>
+                        <div class="history_row" onclick="location.href='history.php?week=day&yy=lastweek&f_date1=2018-09-01'">
+                            <div class="history_cell date ">09/01</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                        </div>
+                        <div class="history_row" onclick="location.href='history.php?week=day&yy=lastweek&f_date1=2018-08-31'">
+                            <div class="history_cell date ">08/31</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                        </div>
+                        <div class="history_row" onclick="location.href='history.php?week=day&yy=lastweek&f_date1=2018-08-30'">
+                            <div class="history_cell date ">08/30</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                        </div>
+                        <div class="history_row" onclick="location.href='history.php?week=day&yy=lastweek&f_date1=2018-08-29'">
+                            <div class="history_cell date ">08/29</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                        </div>
+                        <div class="history_row" onclick="location.href='history.php?week=day&yy=lastweek&f_date1=2018-08-28'">
+                            <div class="history_cell date ">08/28</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                        </div>
+                    </div>
+                    <div class="total_table">
+                        <div class="total_row">
+                        <div class="total_cell date">合计</div>
+                        <div class="total_cell trade_amount">0</div>
+                        <div class="total_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                    </div>
+                    
+                    </div>
+                </div>
+                
+                <div class="content-2">
+                 
+                 <div class="table_head">
+                        <div class="table_head_cell date">日期</div>
+                        <div class="table_head_cell trade_amount">交易金额</div>
+                        <div class="table_head_cell result">总结算</div>
+                    </div>
+                    <div class="history_table">
+                    
+                        <div class="history_row" onclick="location.href='history.php?week=day&yy=midweek&f_date1=2018-08-27'">
+                            <div class="history_cell date ">08/27</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                        </div>
+                    
+                        <div class="history_row" onclick="location.href='history.php?week=day&yy=midweek&f_date1=2018-08-26'">
+                            <div class="history_cell date ">08/26</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                        </div>
+                    
+                        <div class="history_row" onclick="location.href='history.php?week=day&yy=midweek&f_date1=2018-08-25'">
+                            <div class="history_cell date ">08/25</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                        </div>
+                    
+                        <div class="history_row" onclick="location.href='history.php?week=day&yy=midweek&f_date1=2018-08-24'">
+                            <div class="history_cell date ">08/24</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                        </div>
+                    
+                        <div class="history_row" onclick="location.href='history.php?week=day&yy=midweek&f_date1=2018-08-23'">
+                            <div class="history_cell date ">08/23</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                        </div>
+                    
+                        <div class="history_row" onclick="location.href='history.php?week=day&yy=midweek&f_date1=2018-08-22'">
+                            <div class="history_cell date ">08/22</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                        </div>
+                    
+                        <div class="history_row" onclick="location.href='history.php?week=day&yy=midweek&f_date1=2018-08-21'">
+                            <div class="history_cell date ">08/21</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                        </div>
+                    </div>
+                    <div class="total_table">
+                        <div class="total_row">
+                        <div class="total_cell date">合计</div>
+                        <div class="total_cell trade_amount">0</div>
+                        <div class="total_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                    </div>
+                    
+                    </div>
+
+                </div>
+                <div class="content-3">
+                
+                <div class="table_head">
+                        <div class="table_head_cell date">日期</div>
+                        <div class="table_head_cell trade_amount">交易金额</div>
+                        <div class="table_head_cell result">总结算</div>
+                    </div>
+                    <div class="history_table">
+                        
+                       <div class="history_row" onclick="location.href='history.php?week=day&yy=farweek&f_date1=2018-08-20'">
+                            <div class="history_cell date ">08/20</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                         </div>
+                        
+                       <div class="history_row" onclick="location.href='history.php?week=day&yy=farweek&f_date1=2018-08-19'">
+                            <div class="history_cell date ">08/19</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                         </div>
+                        
+                       <div class="history_row" onclick="location.href='history.php?week=day&yy=farweek&f_date1=2018-08-18'">
+                            <div class="history_cell date ">08/18</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                         </div>
+                        
+                       <div class="history_row" onclick="location.href='history.php?week=day&yy=farweek&f_date1=2018-08-17'">
+                            <div class="history_cell date ">08/17</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                         </div>
+                        
+                       <div class="history_row" onclick="location.href='history.php?week=day&yy=farweek&f_date1=2018-08-16'">
+                            <div class="history_cell date ">08/16</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                         </div>
+                        
+                       <div class="history_row" onclick="location.href='history.php?week=day&yy=farweek&f_date1=2018-08-15'">
+                            <div class="history_cell date ">08/15</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                         </div>
+                        
+                       <div class="history_row" onclick="location.href='history.php?week=day&yy=farweek&f_date1=2018-08-14'">
+                            <div class="history_cell date ">08/14</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                         </div>
+                    </div>
+                    <div class="total_table">
+                        <div class="total_row">
+                        <div class="total_cell date">合计</div>
+                        <div class="total_cell trade_amount">0</div>
+                        <div class="total_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                    </div>
+                    
+                    </div>
+
+                </div>
+                <div class="content-4">
+                    <div class="table_head">
+                        <div class="table_head_cell date">日期</div>
+                        <div class="table_head_cell trade_amount">交易金额</div>
+                        <div class="table_head_cell result">总结算</div>
+                    </div>
+                    <div class="history_table">
+                        <div class="history_row">
+                       <!-- <div class="history_row" onclick="window.location.href='history.php?week=day&yy=years&f_date1=2018-08-01&f_date2=2018-08-31'">-->
+                            <div class="history_cell date ">2018/08</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                        </div>
+                        <div class="history_row">
+                       <!-- <div class="history_row" onclick="window.location.href='history.php?week=day&yy=years&f_date1=2018-07-01&f_date2=2018-07-31'">-->
+                            <div class="history_cell date ">2018/07</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                        </div>
+                        <div class="history_row">
+                       <!-- <div class="history_row" onclick="window.location.href='history.php?week=day&yy=years&f_date1=2018-06-01&f_date2=2018-06-30'">-->
+                            <div class="history_cell date ">2018/06</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                        </div>
+                        <div class="history_row">
+                       <!-- <div class="history_row" onclick="window.location.href='history.php?week=day&yy=years&f_date1=2018-05-01&f_date2=2018-05-31'">-->
+                            <div class="history_cell date ">2018/05</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                        </div>
+                        <div class="history_row">
+                       <!-- <div class="history_row" onclick="window.location.href='history.php?week=day&yy=years&f_date1=2018-04-01&f_date2=2018-04-30'">-->
+                            <div class="history_cell date ">2018/04</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                        </div>
+                        <div class="history_row">
+                       <!-- <div class="history_row" onclick="window.location.href='history.php?week=day&yy=years&f_date1=2018-03-01&f_date2=2018-03-31'">-->
+                            <div class="history_cell date ">2018/03</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                        </div>
+                        <div class="history_row">
+                       <!-- <div class="history_row" onclick="window.location.href='history.php?week=day&yy=years&f_date1=2018-02-01&f_date2=2018-02-28'">-->
+                            <div class="history_cell date ">2018/02</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                        </div>
+                        <div class="history_row">
+                       <!-- <div class="history_row" onclick="window.location.href='history.php?week=day&yy=years&f_date1=2018-01-01&f_date2=2018-01-31'">-->
+                            <div class="history_cell date ">2018/01</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                        </div>
+                        <div class="history_row">
+                       <!-- <div class="history_row" onclick="window.location.href='history.php?week=day&yy=years&f_date1=2017-12-01&f_date2=2017-12-31'">-->
+                            <div class="history_cell date ">2017/12</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                        </div>
+                        <div class="history_row">
+                       <!-- <div class="history_row" onclick="window.location.href='history.php?week=day&yy=years&f_date1=2017-11-01&f_date2=2017-11-30'">-->
+                            <div class="history_cell date ">2017/11</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                        </div>
+                        <div class="history_row">
+                       <!-- <div class="history_row" onclick="window.location.href='history.php?week=day&yy=years&f_date1=2017-10-01&f_date2=2017-10-31'">-->
+                            <div class="history_cell date ">2017/10</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                        </div>
+                        <div class="history_row">
+                       <!-- <div class="history_row" onclick="window.location.href='history.php?week=day&yy=years&f_date1=2017-09-01&f_date2=2017-09-30'">-->
+                            <div class="history_cell date ">2017/09</div>
+                            <div class="history_cell trade_amount">0</div>
+                            <div class="history_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                        </div>
+                    </div>
+                    <div class="total_table">
+                        <div class="total_row">
+                        <div class="total_cell date">合计</div>
+                        <div class="total_cell trade_amount">0</div>
+                        <div class="total_cell result color_green"><div class="moneycoor_green">0.00</div></div>
+                    </div>
+                    
+                    </div>
+                </div>
+            </div>
+			</section>
+			
+
+			
+			<div class="scroll_top" id="return-to-top">
+				<div class="scroll_top_bg"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+			</div>
+
+			
+
+			<div class="icon_bar navbar-fixed-bottom">
+				<div class="icon_bar_row">
+					<div class="icon_bar_cell"><a id="market_a" name="market_a" href="market-review.html"><div class="icon_bar_marketlist"></div><div class="icon_bar_text">市场列表</div></a></div>
+					<div class="icon_bar_cell"><a id="orderinfo_a" name="orderinfo_a" href="orderinfo.php"><div class="icon_bar_trade"></div><div class="icon_bar_text">交易明细</div></a></div>
+					<div class="icon_bar_cell"><a href="indexCenterTpl-review.html"><div class="icon_bar_index"></div><div class="icon_bar_text">首　页</div></a></div>
+					<div class="icon_bar_cell"><a class="active" name="history_a" id="history_a" href="history.php"><div class="icon_bar_history"></div><div class="icon_bar_text">历史帐务</div></a></div>
+					<div class="icon_bar_cell"><a name="my_a" id="my_a" href="my.php"><div class="icon_bar_my"></div><div class="icon_bar_text">我　的</div></a></div>
+				</div>
+				<div id="Modal_coverchgall" class="cover"></div>
+			</div>
+
+		</div>
+	</div>
+
+
+<script type="text/javascript">
+
+function gettoday(a)
+	 {
+	 	document.location.href='history.php?week=day&f_date1='+a+'';
+	 }
+	
+  function checkmenu(a,b)
+   {
+   	document.location.href='history.php?week='+b+'';
+   	//jQuery('.tab-pane').css("display","none");
+   	//jQuery('#'+a+'').css("display","none");
+   	//jQuery('#'+a+'').addClass('active');
+   }
+  
+  function getmenunum(a)
+   {
+  $.cookies.set('myCookie', a);
+   }
+
+$(document).ready(function() {
+
+
+	var b = $.cookies.get('myCookie');
+	 
+	 
+      if(b=='years')
+      {
+     $('#tab-4').attr('checked',true);
+      }
+      if(b=='farweek')
+      {
+     $('#tab-3').attr('checked',true)
+      
+      }
+      if(b=='midweek')
+      {
+   $('#tab-2').attr('checked',true)
+     
+      }
+      if(b=='lastweek')
+      {
+   $('#tab-1').attr('checked',true)
+     
+      }
+ 
+	$.cookies.set('myCookie', null);
+
+	$('.icon_bar_cell > a').removeClass('active');
+  $('.icon_bar_cell > #history_a').addClass('active');
+	});
+
+</script>	
+
+
+<!--	<script src="./template/www/js/jquery-3.2.1.min.js"></script>-->
+<script src="www/js/jquery-3.2.1.min.js"></script>
+<script src="www/js/bootstrap.min.js"></script>
+<script src="www/js/bootstrap-select.min.js"></script>
+<script src="www/js/modernizr.custom.04022.js"></script>
+<script src="www/js/sidy.js"></script>
+<script src="www/js/login.js"></script>
+<script src="www/js/trade_detail.js"></script>
+<script src="www/js/jquery.cookies.2.2.0.js"></script>
+
+</body>
+</html>

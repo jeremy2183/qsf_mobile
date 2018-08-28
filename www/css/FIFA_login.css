@@ -1,0 +1,550 @@
+
+body {
+    font-family: Arial, 微軟正黑體, Tahoma;
+}
+
+.bg_img {
+    background-size: cover;
+    background-image: url("../img/bg-login.jpg");
+    width: 100%;
+    height: 100%
+}
+.fifa_bg_img {
+    background: url("../img/FIFA/newBg.png") no-repeat;
+	background-size: cover;
+	width: 100vw;
+}
+
+.logo {
+    background-image: url("../img/tg_logo(w).png");
+    background-size: cover;
+    width: 95px;
+    height: 110px;
+    vertical-align: middle;
+    margin: 11.5% auto 11% auto;
+}
+.fifa_bg_img .logo {
+	background: url("../img/FIFA/newLogo.png") center no-repeat;
+    background-size: contain;
+	width: 195px;
+    height: 210px;
+    position: relative;
+    margin: -15px auto 10px;
+}
+.fifa_bg_img .logo::after {
+	content: '';
+    position: absolute;
+    bottom: 0;
+    height: 55px;
+    width: 140px;
+    left: 0;
+    right: 0;
+    background: url(../img/FIFA/wclogo2018.png) center no-repeat;
+    background-size: contain;
+    margin: 0 auto;
+}
+
+.login_content {
+    width: 74.5%;
+    margin: auto;
+}
+
+input {
+    border: none;
+    -webkit-appearance: none;
+}
+input:focus{
+    outline:none;
+}
+
+.input_icon {
+    color: #325a86;
+}
+.fifa_bg_img .input_icon {
+	color: rgb(162,126,80);
+	font-size: 16px;
+}
+
+.input_style {
+    background-color: white;
+    border-radius: 3px;
+    height: 48px;
+    margin-bottom: 8px;
+    border-bottom: solid 3px #dadada;
+    padding: 13px 2% 0px 5%;
+}
+
+.input_style_lock {
+    background-color: white;
+    border-radius: 3px;
+    height: 48px;
+    margin-bottom: 8px;
+    border-bottom: solid 3px #dadada;
+    padding: 14px 2% 0px 5%;
+}
+
+.input_font {
+    font-size: 16px;
+    margin-left: 6px;
+    color: #325a86;
+}
+.fifa_bg_img .input_font {
+	color: rgb(122,122,122);
+}
+
+.input_font_lock {
+    font-size: 16px;
+    margin-left: 6px;
+    color: #325a86;
+}
+
+/*on and off switch button*/
+.switch_on_off {
+    margin-top: 15px;
+    display: inline-block;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 65px;
+    height: 30px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    display: none;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 30px;
+    width: 30px;
+
+    background-image: url("../img/switch_btn.png");
+    background-size: cover;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #002957;
+}
+
+input:focus + .slider {
+    -webkit-box-shadow: 0 0 1px #002957;
+    box-shadow: 0 0 1px #002957;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(36px);
+    transform: translateX(36px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 30px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.remember_acc_pwd {
+    /*float:right;*/
+    /*margin-right: 54%;*/
+    display: inline-block;
+    font-size: 15px;
+    color: #002957;
+    vertical-align: top;
+    padding-top: 20px;
+    padding-left: 5px;
+    font-weight: bold;
+
+}
+
+.btn_group {
+    width: 100%;
+    margin-top: 18px;
+}
+
+.register_btn {
+    width: 49.3%;
+    height: 42px;
+    background: #ffffff; /* Old browsers */ /* FF3.6-15 */ /* Chrome10-25,Safari5.1-6 */
+    background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#a6a9b2));
+    background: linear-gradient(to bottom, #ffffff 0%, #a6a9b2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#a6a9b2', GradientType=0); /* IE6-9 */
+    /*border: 1px solid #959f9f;*/
+    border: none;
+    border-radius: 4px;
+    color: #484848;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+.fifa_bg_img .register_btn {
+	background: url(../img/FIFA/signBtn.png) no-repeat;
+}
+.login_btn {
+    width: 49.3%;
+    height: 42px;
+    background: #fdd683; /* Old browsers */ /* FF3.6-15 */ /* Chrome10-25,Safari5.1-6 */
+    background: -webkit-gradient(linear, left top, left bottom, from(#fdd683), to(#896643));
+    background: linear-gradient(to bottom, #fdd683 0%, #896643 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fdd683', endColorstr='#896643', GradientType=0); /* IE6-9 */
+    /*border: 1px solid #897242;*/
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight:bold;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+.fifa_bg_img .login_btn {
+	background: url(../img/FIFA/loginBtn.png) no-repeat;
+}
+
+.service_content {
+    display: inline-block;
+    width: 100%;
+    margin: 45px auto 0px auto;
+    text-align: center;
+}
+
+.service_24hr {
+    display: inline-block;
+    font-size: 14px;
+    color: #002957;
+    margin-right: 8px;
+    vertical-align: top;
+    padding-top: 15px;
+}
+
+.service_24hr_icon {
+    display: inline-block;
+}
+
+.icon_size {
+    font-size: 26px;
+    color: #002957;
+
+}
+
+
+
+.select_lang {
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 20px;
+
+
+}
+
+.font_style {
+    color: #002957;
+    font-weight: bold;
+
+}
+
+.desc {
+    color: #6b6b6b;
+}
+
+.desc a {
+    color: #0092dd;
+}
+
+.dropdown dd, .dropdown dt, .dropdown ul {
+    margin:0px;
+    padding: 0px;
+}
+
+.dropdown dd {
+    position: relative;
+}
+
+.dropdown a, .dropdown a:visited {
+    color: #0d3675;
+    text-decoration: none;
+    outline: none;
+}
+
+.dropdown a:hover {
+    color: #686868;
+}
+
+.dropdown dt a:hover {
+    color: black;
+    border: solid 1px rgba(135, 148, 148, 0.5);
+}
+
+.dropdown dt a {
+    background: white url(../img/arrowup.png) no-repeat scroll right 6% center;
+    display: block;
+    border: solid 1px rgba(135, 148, 148, 0.5);
+    width: 105%;
+    border-radius: 3px;
+    height: 35px;
+
+
+
+
+
+}
+
+.dropdown dt a span {
+    cursor: pointer;
+    display: block;
+    color: #0d3675;
+    font-size: 15px;
+    padding: 5px 10px 0px 10px;
+}
+
+.dropdown dd ul {
+    background: white none repeat scroll 0 0;
+    border: solid 1px rgba(135, 148, 148, 0.5);
+    border-bottom: none;
+    color: #0d3675;
+    display: none;
+    left: 0px;
+    padding: 5px 0px;
+    position: absolute;
+    top: -147px;
+    width: 105%;
+    min-width: 100%;
+    list-style: none;
+}
+
+.dropdown span.value {
+    display: none;
+}
+
+.dropdown dd ul li a {
+    padding: 5px 5px 5px 10px ;
+    display: block;
+}
+
+.dropdown dd ul li a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown img.flag {
+    border: none;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+/*.flagvisibility { display:none;}*/
+
+.fa-user-o:before {
+    font-size: 14px;
+}
+.fa-lock:before {
+    content: "\f023";
+    font-size: 18px;
+}
+
+.cover{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1031; /* Sit on top */
+    padding-top: 40%; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+
+.order_content {
+    position: relative;
+    background-color: #f1f1f0;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #c3c3c3;
+    width: 95%;
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    /*-webkit-animation-name: animatetop;*/
+    /*-webkit-animation-duration: 0.4s;*/
+    /*animation-name: animatetop;*/
+    /*animation-duration: 0.4s;*/
+    min-height: 380px;
+	height: auto;
+    -webkit-animation: animatezoom 0.4s;
+    animation: animatezoom 0.4s;
+    border-radius: 5px 5px 0px 0px;
+
+}
+
+
+
+.order_content2 {
+    position: relative;
+    background-color: #f1f1f0;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #c3c3c3;
+    width: 95%;
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    /*-webkit-animation-name: animatetop;*/
+    /*-webkit-animation-duration: 0.4s;*/
+    /*animation-name: animatetop;*/
+    /*animation-duration: 0.4s;*/
+    height: 505px;
+    -webkit-animation: animatezoom 0.4s;
+    animation: animatezoom 0.4s;
+    border-radius: 5px 5px 0px 0px;
+}
+@-webkit-keyframes animatezoom {
+    from {
+        -webkit-transform: scale(0);
+        transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+}
+
+
+@keyframes animatezoom {
+    from {
+        -webkit-transform: scale(0);
+        transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+}
+.close_x{
+    position: absolute;
+    right: 2%;
+    top:0px;
+    font-size: 20px;
+
+}
+.blue_line{
+    background: #1f5392; /* Old browsers */ /* FF3.6-15 */ /* Chrome10-25,Safari5.1-6 */
+    background: -webkit-gradient(linear, left top, right top, from(#1f5392),color-stop(35%, #458dca),color-stop(65%, #458dca),to(#1f5392));
+    background: linear-gradient(to right, #1f5392 0%,#458dca 35%,#458dca 65%,#1f5392 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1f5392', endColorstr='#1f5392',GradientType=1 ); /* IE6-9 */
+    height: 8px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.qq_title{
+    padding-top: 7px;
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: 1px;
+    padding-bottom: 5px;
+
+}
+.weixin_title{
+    padding-top: 7px;
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: 1px;
+    padding-bottom: 5px;
+
+}
+.QRcode {
+    width: 70%;
+    min-height: 250px;
+	height: auto;
+    background-color: #959f9f;
+    margin: 25px auto;
+}
+.QRcode img {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	height: auto;
+}
+.close_btn{
+    width: 100%;
+    height: 40px;
+    background: #fdfdfd; /* Old browsers */ /* FF3.6-15 */ /* Chrome10-25,Safari5.1-6 */
+    background: -webkit-gradient(linear, left top, left bottom, from(#fdfdfd),to(#d4d4d6));
+    background: linear-gradient(to bottom, #fdfdfd 0%,#d4d4d6 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfdfd', endColorstr='#d4d4d6',GradientType=0 );
+    font-size: 18px;
+    border:solid 1px rgba(142, 142, 142, 0.4);
+    letter-spacing: 2px;
+    color: #325a86;
+    padding-top: 8px;
+}
+
+
+.qq_icon {
+    display: inline-block;
+    width: 32px;
+    height: 40px;
+    background: url("../img/Tencent_QQ.png") no-repeat;
+    background-size: cover;
+    margin-right: 2%;
+}
+.weixin_icon {
+    display: inline-block;
+    width: 50px;
+    height: 45px;
+    background: url("../img/Wechat_icon.png") no-repeat;
+    background-size: cover;
+    margin-right: 2%;
+    padding-top: 5px;
+}
+.online_icon {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: url("../img/call-center-icon.png") no-repeat;
+    background-size: cover;
+    vertical-align: top;
+    margin-right: 1.5%;
+}
+.fifa_bg_img .qq_icon {
+	background: url("../img/FIFA/infoQqIco.png") center no-repeat;
+	background-size: cover;
+	width: 50px;
+	height: 50px;
+	margin: 0 auto;
+}
+
+.fifa_bg_img .weixin_icon {
+	background: url("../img/FIFA/infoWcIco.png") center no-repeat;
+	background-size: cover;
+	width: 50px;
+	height: 50px;
+	margin: 0 auto;
+} 
+.fifa_bg_img .online_icon {
+	background: url("../img/FIFA/info24HIco.png") center no-repeat;
+	background-size: cover;
+	width: 50px;
+	height: 50px;
+	margin: 0 auto;
+}

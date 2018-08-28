@@ -1,0 +1,99 @@
+.moneycoor_red
+{
+color:rgb(228, 11, 11);
+}
+.moneycoor_green
+{
+color:rgb(68, 123, 4);
+}
+
+#bottom_line
+{
+border-right: 1px solid rgba(9, 9, 9, 0.125);
+border-bottom: 3px solid rgba(0, 156, 255, 0.9);
+border-left: 1px solid rgba(9, 9, 9, 0.125);
+border-radius: 0px;
+
+}
+#bottom_line_his
+{
+border-right: 0px solid rgba(9, 9, 9, 0.125);
+border-bottom: 3px solid rgba(0, 156, 255, 0.9);
+}
+#bottom_line_right
+{
+border-left: 1px solid rgba(9, 9, 9, 0.125);
+border-bottom: 3px solid rgba(0, 156, 255, 0.9);
+}
+.nav > li > a:hover
+{
+background-color:#ffffff;
+}
+.nav-tabs>li>a {
+    margin-right: 0px;
+    line-height: 1.42857143;
+    border: 0px solid transparent;
+    border-radius: 0px 4px 0 0;
+    color:#9a9a9a;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+color:#003557;
+}
+.democlass
+{
+border-bottom: 0px solid rgba(0, 156, 255, 0.9);
+}
+
+.orderinfolistgame_four
+{
+position:absolute;
+ float:left;
+ width:40px;
+ height:40px;
+ left: 87%;
+ -webkit-transform: rotate(90deg);
+ -moz-transform: rotate(90deg);
+ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+ display:block;
+ padding-left:10px;
+}
+.orderinfolistgame_four_open
+{
+position:absolute;
+ float:left;
+ width:40px;
+ height:40px;
+ left: 86%;
+ -webkit-transform: rotate(180deg);
+ -moz-transform: rotate(180deg);
+ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+ display:block;
+ padding-top:9px;
+}
+
+.res_orderinfolistgame_four
+{
+position:absolute;
+ float:left;
+ width:40px;
+ height:40px;
+ left: 87%;
+ -webkit-transform: rotate(90deg);
+ -moz-transform: rotate(90deg);
+ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+ display:block;
+ padding-left:10px;
+}
+.res_orderinfolistgame_four_open
+{
+position:absolute;
+ float:left;
+ width:40px;
+ height:40px;
+ left: 86%;
+ -webkit-transform: rotate(180deg);
+ -moz-transform: rotate(180deg);
+ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+ display:block;
+ padding-top:9px;
+}

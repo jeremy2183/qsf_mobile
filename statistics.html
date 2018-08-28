@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="./template/www/css/history_stat.css">
+<script>
+$(document).ready(function() {
+
+ })
+</script>
+ <div class="title_background ">
+   <div class="title">{_HISTORY_GAME_}</div>
+ </div>
+
+<div class="history_content">
+	 <dl id="sample" class="dropdown">
+        <dt><a href="#"><span>{_COUNTRY_GAME_}</span></a></dt>
+        <dd>
+            <ul>
+            <!-- START BLOCK : cpSelect -->
+             <li><a href="statistics.php?cp={cp}"><img style="height:32px;width:32px;" class="flag" src="./img/img{cp}.png" alt="" />{cpName}<span class="value"></span></a></li>
+             <!-- END BLOCK : cpSelect -->
+            </ul>
+        </dd>
+    </dl>
+<!-- START BLOCK : Layout -->   
+<div class="table_content">
+                <div class="table_title">{titleName}</div>
+                <table>
+                    <tr class="table_head">
+                    	<!-- START BLOCK : LayoutRow -->
+                        <td class="td01 head">{rowName}</td>
+                      <!-- END BLOCK : LayoutRow -->
+                    </tr>
+                    <!-- START BLOCK : LayoutList -->
+                    <tr>
+                        <td class="td01">{0}</td>
+                        <td class="td02">{1}</td>
+                        <td class="td03">{2}</td>
+                        <td class="td04">{3}</td>
+                    </tr>
+                    <!-- END BLOCK : LayoutList -->
+                </table>
+</div>
+<!-- END BLOCK : Layout -->
+</div>

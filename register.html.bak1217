@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,">
+    <title>Registered</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="./template/www/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./template/www/css/normalize.css">
+    <link rel="stylesheet" href="./template/www/css/registered.css">
+</head>
+<script>
+function sms_get()
+{
+
+	//alert('TT');
+	  var re = /^[0-9]+(\.)?$/;
+	  var re2 = /(?!^[0-9]{6,}$)(?!^[a-zA-Z]{6,}$)^[0-9a-zA-Z]{6,}$/;
+	  var sre = /^[0-9]+(\.[0-9]{0,0})?$/;
+	  var reg = /^[0-9]*$/;
+	  var ans = '';
+	  var mphone = /^1[34578]\d{9}$/; 
+	  var ss = jQuery('#mobile').val();
+	  var phonenationcode = jQuery('#nationcode').val();
+	  
+	  var user = jQuery('#username').val();
+	  
+	  
+
+	 	if(ss.length < 8)
+	 	{
+	 		alert('{_MOBILE_LESS_TEN}');
+	    //swal({title: "錯誤讯息",text: "手机码号不足10码",confirmButtonText: "确定",closeOnConfirm: true, customClass: 'twitter'});
+	  	return false;
+	 	}
+	 	
+	 	    	  
+	  if(jQuery.trim(ss.replace(/\s+/g,""))!==ss)
+	    {
+	    	alert('{_MOBILE_NOT_EMPTY}');
+	    	//swal({title: "錯誤讯息",text: "手机号码請勿有空格",confirmButtonText: "确定",closeOnConfirm: true, customClass: 'twitter'});
+	    	return false;
+	    }
+	    
+	  if(!reg.test(ss))
+	    {
+	    	alert('{_MOBILE_REAL_INT}');
+	    	//swal({title: "錯誤讯息",text: "手机号码請填數字",confirmButtonText: "确定",closeOnConfirm: true, customClass: 'twitter'});
+	    	return false;
+	    }
+	   
+	    
+	jQuery.ajax({
+			type: 'POST',
+			//URL:'http://sms-get.com/api_send.php',
+			url: './other/resms.php' ,
+			//data: 'phone=' + nationcode[phonenationcode]+ss + '&user=' + user,
+			data: 'phone='+phonenationcode+'-'+ss,
+			error: function(xhr) {
+				//swal({title: "错误讯息",text: "错误讯息','網路忙線中,382", confirmButtonText: "确定",closeOnConfirm: true, customClass: 'twitter'});	    	
+		  //alert('error170');
+			},
+			beforeSend:function(response)
+		  {
+		  
+		  },
+		   
+			success: function(response) {
+				//alert(response);
+				 var sst = jQuery.trim(response);
+	       var code = sst.split(':');
+          
+				  if(code[0]=='T')
+				   {
+		       //swal({title: "成功讯息",text: "验证码已传​​到手机,请等候",confirmButtonText: "确定",closeOnConfirm: true, customClass: 'twitter'});
+	    	   alert('{_MOBILE_SEND_CELLPHONE}');
+	    	   jQuery('#mobilediv').addClass('mobileclass');
+	    	   jQuery('#recheckcode').removeClass('sendbtfinish');
+	    	   jQuery('#sendbtfinish').removeClass('sendbtfinish');
+	    	   jQuery('#MCode').attr("disabled", false);
+	    	   jQuery('#re_sendcode').attr("disabled", false);
+	         jQuery('#sendbt').attr("disabled", false);
+	         jQuery('#mobile').attr("disabled", true);
+	         jQuery('#mobile').addClass('sendbtfinish');
+	         jQuery('#remcode').val(code[1]);
+	         
+				   }
+				  else if (code[0]=='TF')
+				  {
+				  alert(code[1]);
+				 //swal({title: "错误讯息",text: code[1], confirmButtonText: "确定",closeOnConfirm: true, customClass: 'twitter'});
+				 return;
+				  }
+				  else
+				   {
+				 alert(code[1]);
+				  //swal({title: "错误讯息",text: code[1], confirmButtonText: "确定",closeOnConfirm: true, customClass: 'twitter'});					   	
+				   }
+				
+			 }
+		      });
+
+
+
+}
+
+function seccheckuseradd()
+{
+	  var simple_ar = Array();
+  	var c2bet_st = new Object;
+  	var orderinfo_st = new Object;
+  	
+  	var re = /^[0-9]+(\.)?$/;
+	  //var re2 = /(?!^[0-9]{6,}$)(?!^[a-zA-Z]{6,}$)^[0-9a-zA-Z]{6,}$/;
+	  var re2 = /^([a-zA-Z]+\d+|\d+[a-zA-Z]+)[a-zA-Z0-9]*$/;
+	  var sre = /^[0-9]+(\.[0-9]{0,0})?$/;
+	  var reg = /^[0-9]*$/;
+	  var ans = '';
+	  
+	  var username = jQuery("#username").val();
+	  var nickname = jQuery("#nickName").val();
+	  /*帳號密碼*/
+	  var spassword = jQuery("#loginPwd").val();
+	  var repassword = jQuery("#CFloginPwd").val();
+	  /*提款密碼*/
+	  var pickuppassword = jQuery("#receivePwd").val();
+	  var repickuppassword = jQuery("#CFreceivePwd").val();
+	  
+	  var accountnum = jQuery("#bankaccountword").val();
+	  var accountnerbname = jQuery("#accountnerbname").val();
+	  var accountlongnum = jQuery("#accountlongnum").val();
+	  /*匯款戶名*/
+	  var accountchinname = jQuery("#accountName").val();
+	  
+	  var secrityquestion = jQuery("#secrityquestion").val();
+	  var secrityans = jQuery("#pointAnswer").val();
+	  
+	  
+	  var phonenumber = jQuery("#mobile").val();
+	  var checkcode = jQuery("#checkcode").val();
+	  var recheckcode = jQuery("#recheckcode").val();
+	  
+	  var MCode = jQuery("#MCode").val();
+	  var remcode = jQuery("#remcode").val();
+	  var agent_user = jQuery("#agent_user").val();
+	  
+	  if(agent_user)
+	  {
+	  	backinput='2';
+	   }
+	  else
+	  {
+	  	backinput='1';
+	  }
+	  
+	  
+	  if(username=='' || nickname=='')
+	  {
+	  	//swal({title: "错误讯息",text: "请输入帐号与昵称!",confirmButtonText: "确定",customClass: 'twitter'});
+	  	//change_alert('#FF0000','错误讯息','请输入帐号与昵称!','#FFFFFF');
+	  	alert('{_MOBILE_INPUT_ACCOUNT_NICK}');
+	  	return;
+	  }
+
+	  if(spassword < 6)
+	  {
+	  	alert('{_JS_AP_MIN_6}');
+	    return;
+	  }	 
+	     
+	  if(!re2.test(spassword))
+	    {
+	    	//swal({title: "错误讯息", text: "帐号密码请英数混合,至少6个字元!", confirmButtonText: "确定",customClass: 'twitter'});
+	    	alert('{_JS_AP_MIN_6}');
+	    	return;
+	    }
+	  
+	  if(!re2.test(pickuppassword))
+	    {
+	    	//swal({title: "错误讯息", text: "提款密码请英数混合,至少6个字元!", confirmButtonText: "确定",customClass: 'twitter'});
+	    	alert('{_JS_WITHDRAWALS_MIN_6}');
+	    	return;
+	    }
+	    
+	  if(spassword!==repassword)
+	  {
+	  	//swal({title: "错误讯息",text: "确认帐号密码是否正确",confirmButtonText: "确定",customClass: 'twitter'});
+	  	//change_alert('#FF0000','错误讯息','请输入帐号与昵称!','#FFFFFF');
+	  	alert('{_MOBILE_JS_SURE_PASSWD}');
+	  	return;
+	  }
+	  
+	  if(pickuppassword!==repickuppassword)
+	  {
+	  	//swal({title: "错误讯息",text: "确认提款密码密码是否正确",confirmButtonText: "确定",customClass: 'twitter'});
+	  	//change_alert('#FF0000','错误讯息','请输入帐号与昵称!','#FFFFFF');
+	  	alert('{_MOBILE_JS_SURE_PICKUP_PASSWD}');
+	  	return;
+	  }
+	  	  
+	  if(spassword==pickuppassword)
+	  {
+	  	//swal({title: "错误讯息",text: "帐号密码与提款密码不可相同!",confirmButtonText: "确定",customClass: 'twitter'});
+	  	alert('{_JS_AP_CANT_SAME}');
+	  	return;
+	  }
+	  
+	  if( $('#accountName').val().replace(/^(?!\uFE30-\uFFA0)(?!\s)(?!.*?\uFF0E$)(?!.*?\s$)[\u4E00-\u9FA5a-zA-Z\s]/g,"")==$('#accountName').val())
+	    {
+	    		alert('{_JS_ACCOUNT_LANGUAGE}');
+	    	  return false;
+	    }
+	  
+	  /*全型．*/
+	  
+	  if( $('#accountName').val().replace(/[^\u4E00-\u9FA5a-zA-Z\s-\uFF0E-\uFF0E]/g,"")!==$('#accountName').val())
+	    {
+	    		alert('{_JS_ACCOUNT_LANGUAGE}');
+	    	  return false;
+	    }
+	  
+	 /* 
+	  if( $('#accountName').val().replace(/^(?!\uFE30-\uFFA0)(?!.*?\uFF0E$)[\u4E00-\u9FA5]/g,"")==$('#accountName').val())
+	    {
+	    		alert('{_JS_ACCOUNT_LANGUAGE}');
+	    	  return false;
+	    }
+
+	  if( $('#accountName').val().replace(/[^\u4E00-\u9FA5-\uFF0E-\uFF0E]/g,"")!==$('#accountName').val())
+	    {
+	    		alert('{_JS_ACCOUNT_LANGUAGE}');
+	    	  return false;
+	    }
+	 */
+	 
+	  if(accountchinname=='')
+	  {
+	  	//swal({title: "错误讯息",text: "汇款户名是否正确",confirmButtonText: "确定",customClass: 'twitter'});
+	  	alert('{_MOBILE_TRANSFER_SURE}');
+	  	return;
+	  }
+	  
+	  if(secrityquestion=='')
+    {
+    	//swal({title: "错误讯息",text: "请输入安全性问题",confirmButtonText: "确定",customClass: 'twitter'});
+	  	alert('{_MOBILE_INPUT_}{_MOBILE_SECRITY_QUES}');
+	  	return;
+    }
+    if(secrityans=='')
+    {
+    	//swal({title: "错误讯息",text: "请输入安全性答案",confirmButtonText: "确定",customClass: 'twitter'});
+	  	alert('{_MOBILE_INPUT_}{_MOBILE_SECRITY_ANS}');
+	  	return;
+    }	  
+	  
+	  if(MCode!=remcode)
+	    {
+	    alert('{_JS_VERIFICATION_ERROR}');
+	     return false;
+	   }
+	  
+	
+	      //var jimDatass = {day:day,mon:mon,date_year:date_year,road:road,city:city,pri:pri,mail:mail,username:username,checkcode:checkcode,secrityans:secrityans,secrityquestion:secrityquestion,accountchinname:accountchinname,accountlongnum:accountlongnum,accountnerbname:accountnerbname,nickname:nickname,spassword:spassword,pickuppassword:pickuppassword,accountnum:accountnum,phonenumber:phonenumber}
+	      var jimDatass = {backinput:backinput, username:username, checkcode:checkcode, secrityans:secrityans, secrityquestion:secrityquestion, accountchinname:accountchinname, accountlongnum:accountlongnum, accountnerbname:accountnerbname, nickname:nickname, spassword:spassword, pickuppassword:pickuppassword, accountnum:accountnum, phonenumber:phonenumber, agent_user:agent_user}
+	      
+	      simple_ar.push(jimDatass);
+  	    c2bet_st["c2betorder"]=simple_ar; 
+  
+    console.log(jimDatass);
+    //return;
+    jQuery.ajax({
+		type: 'POST',
+		url: './other/adduserbankaccount.php',
+		data: c2bet_st ,		
+		    error: function(xhr)
+		      {
+		      	
+			   //jQuery('#order').html('<font color=#FF0000>网路忙线中，请稍后再试!错误代码:681</font>');
+			    //swal({title: "错误讯息",text: "网路忙线中，请稍后再试！错误代码:teluser274", confirmButtonText: "确定",customClass: 'twitter'});
+			    //alert('網路忙線中，請稍後再試!錯誤代碼:addu141');
+			    return false;
+		      },
+			   beforeSend:function(response)
+					{
+				  //jQuery( "#chgalert_adduser" ).dialog('open');
+	        //jQuery("#bottom_sam_add").css({'color':'#000000','font-size':'1.2em'});
+		      //jQuery("#bottom_sam_add").html('<br><br><img src=../img/add_user/32.gif><br><br>...系统确认中...');
+		      alert('{_WAIT_}');
+					}, 
+	      success:function(response)
+	        {
+	       //alert(response);
+	       //return;
+	       var ss = jQuery.trim(response);
+	       var banksubid = ss.split(':');
+				 var user_add = '';
+				  	      //user_add = user_add+'以下为你的帐密\n';
+				  	      user_add = user_add+'{_USERNAME}:'+username+'\n';
+				  	      user_add = user_add+'{_LOGIN_PASSWD}:'+spassword+'\n';
+				  	      user_add = user_add+'{_WITHDRAWALPASSWD}:'+pickuppassword+'\n';
+				  	       	   
+						  	if(banksubid[0]=='000')
+						  	   { 
+						  alert('{_MOBILE_CREATE_USER_SUCC}'+'\n'+user_add);
+						  location.href='./login.php';              
+		               }
+				  	  else if(banksubid[0]=='000u')
+				  	   {
+				  	   	//jQuery( "#chgalert_adduser" ).dialog('close');
+				  	   	//swal({title: "错误讯息",text: banksubid[1], confirmButtonText: "确定",customClass: 'twitter'});
+				  	   	alert(banksubid[1]);
+				  	   	window.location.reload();
+				  	   	return;
+				  	   }
+					    else
+					     {
+					    alert(banksubid[1]);	
+					     	//swal({title: "错误讯息",text: banksubid[1], confirmButtonText: "确定",customClass: 'twitter'});
+					     return;
+					     }
+			           
+		      }
+    
+	  });
+}
+
+
+</script>
+<style>
+
+.rContentRow {
+    width: 100%;
+    padding: 0px;
+    margin-bottom:0px;
+    font-size: 20px;
+    /*background-color: #1a3049;*/
+}
+.rContentRowtitle
+{
+background: #1c87ce; /* Old browsers */
+    background: -moz-linear-gradient(top, #1c87ce 0%, #0d3676 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #1c87ce 0%, #0d3676 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #1c87ce 0%, #0d3676 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1c87ce', endColorstr='#0d3676', GradientType=0); /* IE6-9 */
+    border-radius: 10px 10px 0px 0px;
+    height: 42px;
+    color: white;
+    text-align: center;
+    padding-top: 11px;
+    font-weight: 100;
+}
+.air_table {
+    display: table;
+}
+.air_td {
+    display: table-cell;
+    padding: 5px 0px;
+    vertical-align: middle;
+    color:#000000;
+  
+}
+.air_tdtop {
+    display: table-cell;
+    padding: 0px 0px;
+    vertical-align: middle;
+    color:#000000;
+}
+.air_left
+{
+font-weight:900;
+width:200px;
+font-size:14px;
+}
+.rContentBox input[type="text"], .rContentBox input[type="password"], .rContentBox select {
+    color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    width: 200px;
+    height: 40px;
+}
+.airlogo
+{
+margin-left:10px;
+}
+
+.airtitlecolor
+{
+background: -webkit-linear-gradient(left, #0a3f7f 0%,#00d2d0 100%);
+    height: 10px;
+    width: 109%;
+    float: left;
+    margin-left: -15px;
+}
+
+.sendbtfinish
+{
+opacity:0.3;background-color:#ffffff;
+}
+.mobileclass
+{
+opacity:0.3;background-color:#ffffff;
+}
+
+</style>
+<body>
+<div class="bg">
+    <div class="bg_padding">
+    <div class="head_group">
+        <div class="logo_position"><div onclick="window.location.href='login.php'" class="logo"></div></div>
+        <div class="join_title">{_ADD_USER_}</div>
+    </div>
+        <div class="color_border"></div>
+    <div class="content_block">
+        <div class="block_title" style="font-weight:bolder;">{_MOBILE_ACCOUNT_PASS}<span>*{_MOBILE_MUST_INPUT}</span></div>
+        <div class="black_line"></div>
+        <p class="note_text">{_MOBILE_RANDOM_ACCOUNT}<span class="text_bold">{_MOBILE_PICKUP_ACCORDEN}。</span></p>
+        <!-- START BLOCK : front_agent --> 
+        <div class="account_name">{_MOBILE_AGENT}&nbsp;{_AGENT_}</div>
+        <div class="acc_pwd_part1">
+            <div class="content_table">
+                <div class="content_row">
+                    <div class="content_cell_title">{_USERNAME}<span>*</span></div>
+                    <div class="content_cell">
+                        {p}
+                    </div>
+                </div>
+         <input type="hidden" id="agent_user" name="agent_user" value="{_AGENT_}">
+         <!-- END BLOCK : front_agent -->
+         <!-- START BLOCK : back_agent -->
+         <div class="account_name"></div>
+        <div class="acc_pwd_part1">
+            <div class="content_table">
+                <div class="content_row">
+                    <div class="content_cell_title">{_USERNAME}<span>*</span></div>
+                     <div class="content_cell">
+                       {back_user}
+                    </div>
+                </div>
+         <input type="hidden" id="username" name="username" value="{back_user}">        
+         <!-- END BLOCK : back_agent -->
+
+                <div class="content_row">
+                    <div class="content_cell_title">{_MOBILE_NICKNAME}<span>*</span></div>
+                    <div class="content_cell"><input type="text" id="nickName" name="nickName" value=""></div>
+                </div>
+                <div class="content_row">
+                    <div class="content_cell_title">{_LOGIN_PASSWD}<span>*</span></div>
+                    <div class="content_cell"><input type="password" id="loginPwd" name="loginPwd" placeholder="{_MOBILE_LESS_MIX_SIX}" value="" {onlyRead}></div>
+                </div>
+                <div class="content_row">
+                    <div class="content_cell_title">{_SURE_PASSWD}<span>*</span></div>
+                    <div class="content_cell"><input type="password" id="CFloginPwd" name="CFloginPwd" value=""></div>
+                </div>
+            </div>
+        </div>
+        <div class="acc_pwd_part2">
+            <div class="content_table">
+                <div class="content_row">
+                    <div class="content_cell_title">{_WITHDRAWALPASSWD}<span>*</span></div>
+                    <div class="content_cell"><input type="password" id="receivePwd" name="receivePwd" placeholder="{_MOBILE_LESS_MIX_SIX}" value=""></div>
+                </div>
+                <div class="content_row">
+                    <div class="content_cell_title align_left">{_MOBILE_SURE_PICKUP}<br>{_LOGIN_PASSWD}<span>*</span></div>
+                    <div class="content_cell"><input type="password" id="CFreceivePwd" name="CFreceivePwd" value=""></div>
+                </div>
+            </div>
+        </div>
+        <div class="block_title">{_MOBILE_BANK_INFO}<span class="text_bold">*{_MOBILE_MUST_INPUT}</span></div>
+        <div class="black_line"></div>
+        <p class="note_text">{_MOBILE_REAL_ACCOUNT_NAME}</p>
+        <p class="note_text">{_MOBILE_REAL_NAME_NO_CHANGE}</p>
+        <div class="border_blue"></div>
+        <div class="bank_acc_pwd">
+
+            <div class="content_table">
+            <div class="content_row">
+                <div class="content_cell_title">{_MOBILE_TRANS_NAME}<span>*</span></div>
+                <div class="content_cell"><input type="text" id="accountName" name="accountName" placeholder="{_MOBILE_INPUT_REAL_NAME}" value=""></div>
+            </div>
+            <div class="content_row">
+                <div class="content_cell_title">{_MOBILE_SECRITY_QUES}<span>*</span></div>
+                <div class="content_cell">
+                   {secp}
+                </div>
+            </div>
+            <div class="content_row">
+                <div class="content_cell_title">{_MOBILE_SECRITY_ANS}<span>*</span></div>
+                <div class="content_cell"><input type="text" name="pointAnswer" id="pointAnswer" value=""></div>
+            </div>
+          </div>
+        </div>
+        <div class="block_title">{_MOBILE_NUM_CHECK}</div>
+        <div class="black_line"></div>
+        <ul class="mobile_note">
+            <li>{_MOBILE_GET_MESS}</li>
+            <li>{_MOBILE_GET_MESS_THREE}</li>
+            <li>{_MOBILE_TEN_MIN}</li>
+        </ul>
+        <div class="border_blue"></div>
+        <div class="mobile_confirm">
+            <div class="content_table">
+                <div class="content_row">
+                    <div class="content_cell_title">{_MOBILE_AREA}<span>*</span></div>
+                    <div class="content_cell">
+                       {nation}  
+                    </div>
+                </div>
+                <div class="content_row">
+                    <div class="content_cell_title">{_MOBILE_CODE_NUM}<span>*</span></div>
+                    <div class="content_cell">
+                    	<input type="text" id="mobile" name="mobile" value="">
+                    </div>
+                </div>
+            </div>
+            <button onclick="sms_get()" class="deliver">{_MOBILE_SEND_CODE}</button>
+        </div>
+        <div id="recheckcode" class="mobile_confirm sendbtfinish">
+        <div class="content_table">
+        <div class="content_row">
+                    <div class="content_cell_title">{_MOBILE_CHECK_CODE}<span>*</span></div>
+                    <div class="content_cell">
+                    	<input type="text" id="MCode" name="MCode" disabled>
+                    </div>
+        </div>
+       </div>     
+        <button id="re_sendcode" disabled style="margin-left:0px;width:100%;margin-top:15px;margin-bottom:15px;background:-webkit-linear-gradient(top, #fefefe 0%,#cdcdcd 100%);border-radius: 6px 6px 6px 6px;height:40px;">
+        {_MOBILE_RE_SEND}
+	      </button>
+	     
+        <div class="completed_btn">
+        <button id="sendbt" onclick="seccheckuseradd()" class="completed">{_MOBILE_FINISH}</button>
+       </div>
+    <input type="hidden" id="remcode" name="remcode">
+       </div>
+    </div>
+        <div class="color_border"></div>
+</div>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="./template/www/js/registered.js"></script>
+</body>
+</html>

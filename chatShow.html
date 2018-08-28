@@ -1,0 +1,86 @@
+	
+	<!--交易量統計圖表-->
+	<link rel="stylesheet" href="./template/www/css/reset.css">
+    <link rel="stylesheet" href="./template/www/css/chart.css">
+<script>
+$(".close_x").on('click', function () {
+	$("#Modal_cover4").css('display', 'none');
+	$("#Modal_cover4").html('');
+}); 
+</script>
+
+<style>
+.battle_record_title{
+	height:37px;
+	padding-top:12px;
+	font-size:16px;
+	font-weight:bold;
+	font-family:Microsoft JhengHei;
+}
+.order_content4{
+	margin-top:-80px;
+	background-color:#fff;
+	height:670px;
+}
+.fa-remove:before, .fa-close:before, .fa-times:before {
+color: #A7A7A7;
+}
+
+.blue_line{
+	height:39px;
+	color:#ffffff;
+	text-align:center;
+	padding:13px 5px;
+	font-size:15px;
+	font-family:Microsoft JhengHei;
+}
+.score{
+	color:#666666;
+}
+.totalNum{
+	text-align:right;
+	padding:2px 16px;
+	font-family:Microsoft JhengHei;
+}
+.close_x{
+	margin-top:10px;
+}
+</style>
+
+
+	<div id="order4" class="order_content4">
+		<div class="battle_record_detail_head">
+			<div class="battle_record_title">[{titleName}] 成交量明细</div>
+			<div class="close_x"><i class="fa fa-times" aria-hidden="true"></i></div>
+			<div class="blue_line">{gameName}</div>
+			<div class="totalNum">总成交量&nbsp;&nbsp;<span>{totalNum}</span></div>
+		</div>
+					 
+		<div class="chart">
+		
+		<div id="chart_bg">
+			<div id="chart_column">
+				<!--直條圖創在這裡-->
+			</div>
+			<div class="chart_base"></div>
+		</div>
+		<div id="chart_bg2">
+			<div id="chart_columnSec">
+				<!--直條圖創在這裡-->
+			</div>
+			<div class="chart_base"></div>
+		</div>
+
+		</div>
+
+		<script>
+			var st = [{chatNum1}];
+			var st2 = [{chatNum2}];
+			var stChartValue = [{chatItem1}]
+			var stChartValueSec = [{chatItem2}]
+			<!-- START BLOCK : closeChat -->
+			$('#chart_bg{closeNum}').css( 'display', 'none' );
+			<!-- END BLOCK : closeChat -->
+		</script>
+		<script src="./template/www/js/chart.js"></script>
+	</div>

@@ -1,0 +1,1725 @@
+				<!-- START BLOCK : FIFA -->
+				<input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked" />
+				<label for="tab-1" class="tab-label-1">世足市场</label>
+
+				<input id="tab-2" type="radio" name="radio-set" class="tab-selector-2" />
+				<label for="tab-2" class="tab-label-2">历年统计</label>
+
+				<input id="tab-3" type="radio" name="radio-set" class="tab-selector-3" />
+				<label for="tab-3" class="tab-label-3">比赛日程</label>
+
+				<input id="tab-4" type="radio" name="radio-set" class="tab-selector-4" />
+				<label for="tab-4" class="tab-label-4">活动专区</label>
+
+
+				<div class="clear-shadow"></div>
+
+				<div class="content">
+					
+					<div class="content-1 fifa_game_list">
+					
+						<!-- START BLOCK : FIFA_noGameList -->
+						<div class="digital">
+							<h1 class="digitalTimeTitle1">WORLD CUP 2018</h1>
+							<h2 class="digitalTimeTitle2">距离世界杯还有</h2>
+							<div class="LiveClockDays"></div>
+							<div class="LiveClock">
+								<span class="timeHour"></span>
+								<span class="timeMin"></span>
+								<span class="timeSec"></span>
+							</div>
+						</div>
+						<!-- END BLOCK : FIFA_noGameList -->
+						
+						<!-- START BLOCK : FIFA_noGameListBLOCK -->
+						<ul>
+							<!-- START BLOCK : FIFA_GameList -->
+							<li onclick="fifaMarkTab('{ga12}','{gameid}','{gametime}','{gamename}','{competitionname}','{status_id}')">
+							<!--<li onclick="marketTab('{gameid}','{ga12}','{gametime}','{competitionname}','{gamename}','{status_id}')">-->
+									<div class="color_border left_gradient"></div>
+									<div class="color_border right_gradient"></div>
+									<div class="fifa_list_content">
+										<div class="fifa_time_n_name">
+											<div class="fifa_time"><span>{gameDate}</span><span>{gameTime}</span></div>
+											<span class="fifa_category">世足</span>
+										</div>
+
+										<div class="fifa_game_team">
+											<div class="fifa_team team-left">{homeTeam}</div>
+											<div class="fifa_vs">VS</div>
+											<div class="fifa_team team-right">{visitingTeam}</div>
+										</div>
+										<div class="game_rounds">
+											<span>{competitionname}</span>
+										</div>
+									</div>
+									<!-- START BLOCK : FIFA_GameGuaranteed -->
+									<div class="guaranteed">保本</div>
+									<!-- END BLOCK : FIFA_GameGuaranteed -->
+							</li>
+							<!-- END BLOCK : FIFA_GameList -->
+						</ul>
+						<!-- END BLOCK : FIFA_noGameListBLOCK -->
+					</div>
+					
+					<!-- 歷年統計 -->
+					<div class="content-2">
+						<div class="fifa_statistics">
+							<div class="fifa_statistics_header">
+								<div class="fifa_statistics_title">
+									<h3>1930-2014世界杯20届</h3>
+									<span>（正确比分统计）836场</span>
+								</div>
+							</div>
+							<div class="fifa_statistics_content">
+								<table class="fifa_statistics_table">
+									<thead>
+										<tr>
+											<th>排名</th>
+											<th>赛果</th>
+											<th>次数</th>
+											<th>百分比</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="first_line">
+											<td>1</td>
+											<td>其他</td>
+											<td>126</td>
+											<td>15.07%</td>
+										</tr>
+										<tr class="sec_line">
+											<td>2</td>
+											<td>1 : 0</td>
+											<td>107</td>
+											<td>12.80%</td>
+										</tr>
+										<tr class="third_line">
+											<td>3</td>
+											<td>2 : 1</td>
+											<td>97</td>
+											<td>11.60%</td>
+										</tr>
+										<tr>
+											<td>4</td>
+											<td>1 : 1</td>
+											<td>80</td>
+											<td>9.57%</td>
+										</tr>
+										<tr>
+											<td>5</td>
+											<td>0 : 0</td>
+											<td>70</td>
+											<td>8.37%</td>
+										</tr>
+										<tr>
+											<td>6</td>
+											<td>2 : 0</td>
+											<td>61</td>
+											<td>7.30%</td>
+										</tr>
+										<tr>
+											<td>7</td>
+											<td>0 : 1</td>
+											<td>51</td>
+											<td>6.10%</td>
+										</tr>
+										<tr>
+											<td>8</td>
+											<td>3 : 1</td>
+											<td>51</td>
+											<td>6.10%</td>
+										</tr>
+										<tr>
+											<td>9</td>
+											<td>3 : 0</td>
+											<td>32</td>
+											<td>3.83%</td>
+										</tr>
+										<tr>
+											<td>10</td>
+											<td>1 : 2</td>
+											<td>30</td>
+											<td>3.59%</td>
+										</tr>
+										<tr>
+											<td>11</td>
+											<td>2 : 2</td>
+											<td>30</td>
+											<td>3.59%</td>
+										</tr>
+										<tr>
+											<td>12</td>
+											<td>0 : 2</td>
+											<td>28</td>
+											<td>3.35%</td>
+										</tr>
+										<tr>
+											<td>13</td>
+											<td>3 : 2</td>
+											<td>28</td>
+											<td>3.35%</td>
+										</tr>
+										<tr>
+											<td>14</td>
+											<td>0 : 3</td>
+											<td>17</td>
+											<td>2.03%</td>
+										</tr>
+										<tr>
+											<td>15</td>
+											<td>1 : 3</td>
+											<td>13</td>
+											<td>1.56%</td>
+										</tr>
+										<tr>
+											<td>16</td>
+											<td>2 : 3</td>
+											<td>11</td>
+											<td>1.32%</td>
+										</tr>
+										<tr>
+											<td>17</td>
+											<td>3 : 3</td>
+											<td>4</td>
+											<td>0.48%</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+					</div>
+					
+					
+					<!-- 比赛日程 -->
+					<div class="content-3" id="schedule_tabs">
+					
+						<ul class="fifa_diary_schedule_tabs nav nav-tabs" id="myTab" >
+							<li class="diary_list active"><a href="#tab_diary" data-toggle="tab"><span></span>比赛日程</a></li>
+							<li class="ranking"><a href="#tab_ranking" data-toggle="tab"><span></span>积分榜</a></li>
+						</ul>
+						
+						<div id="myTabContent" class="tab-content">
+							<div class="fifa_diary_schedule tab-pane fade in active"  id="tab_diary">
+
+								<a href="#"><div class="fifa_diary_schedule_banner">
+									<span class="fifa_important_schedule">焦点</span>
+								</div></a>
+								
+								<div class="sche_lists">
+									
+								<!--<input id="sche_lists_date" type="date" defaultValue="2018-06-14" min="2018-06-14" max="2018-07-15">-->
+								
+									<select id="sche_lists_date">
+										<option value="614">6月14日</option>
+										<option value="615">6月15日</option>
+										<option value="616">6月16日</option>
+										<option value="617">6月17日</option>
+										<option value="618">6月18日</option>
+										<option value="619">6月19日</option>
+										<option value="620">6月20日</option>
+										<option value="621" hidden>6月21日</option>
+										<option value="622" hidden>6月22日</option>
+										<option value="623" hidden>6月23日</option>
+										<option value="624" hidden>6月24日</option>
+										<option value="625" hidden>6月25日</option>
+										<option value="626" hidden>6月26日</option>
+										<option value="627" hidden>6月27日</option>
+										<option value="628" hidden>6月28日</option>
+										<option value="629" hidden>6月29日</option>
+										<option value="630" hidden>6月30日</option>
+										<option value="701" hidden>7月01日</option>
+										<option value="702" hidden>7月02日</option>
+										<option value="703" hidden>7月03日</option>
+										<option value="704" hidden>7月04日</option>
+										<option value="705" hidden>7月05日</option>
+										<option value="706" hidden>7月06日</option>
+										<option value="707" hidden>7月07日</option>
+										<option value="708" hidden>7月08日</option>
+										<option value="709" hidden>7月09日</option>
+										<option value="710" hidden>7月10日</option>
+										<option value="711" hidden>7月11日</option>
+										<option value="712" hidden>7月12日</option>
+										<option value="713" hidden>7月13日</option>
+										<option value="714" hidden>7月14日</option>
+										<option value="715" hidden>7月15日</option>
+									</select>
+									<ul class="sche_list_content active" id="date614">
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_russia"></span> 俄罗斯
+												</div>
+												<div class="sche_vs_time">
+													<p>23:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_saudi_arabia"></span> 沙特阿拉伯
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>A</span>
+												<span>1</span>
+												<span>3</span>
+											</p>
+										</li>
+									</ul>
+									<ul class="sche_list_content" id="date615">
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_egypt"></span> 埃及
+												</div>
+												<div class="sche_vs_time">
+													<p>20:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_uruguay"></span> 乌拉圭
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>A</span>
+												<span>1</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_morocco"></span> 摩洛哥
+												</div>
+												<div class="sche_vs_time">
+													<p>20:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_iran"></span> 伊朗
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>B</span>
+												<span>1</span>
+												<span>3</span>
+											</p>
+										</li>
+									</ul>
+									<ul class="sche_list_content" id="date616">
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_portugal"></span> 葡萄牙
+												</div>
+												<div class="sche_vs_time">
+													<p>02:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_spain"></span> 西班牙
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>B</span>
+												<span>1</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_france"></span> 法国
+												</div>
+												<div class="sche_vs_time">
+													<p>18:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_australia"></span> 澳大利亚
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>C</span>
+												<span>1</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_argentina"></span> 阿根廷
+												</div>
+												<div class="sche_vs_time">
+													<p>21:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_iceland"></span> 冰岛
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>D</span>
+												<span>1</span>
+												<span>3</span>
+											</p>
+										</li>
+									</ul>
+									<ul class="sche_list_content" id="date617">
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_peru"></span> 秘鲁
+												</div>
+												<div class="sche_vs_time">
+													<p>12:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_denmark"></span> 丹麦
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>C</span>
+												<span>1</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_croatia"></span> 克罗地亚
+												</div>
+												<div class="sche_vs_time">
+													<p>03:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_nigeria"></span> 尼日利亚
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>D</span>
+												<span>1</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_costa_rica"></span> 哥斯达黎加
+												</div>
+												<div class="sche_vs_time">
+													<p>20:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_serbia"></span> 塞尔维亚
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>D</span>
+												<span>1</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_germany"></span> 德国
+												</div>
+												<div class="sche_vs_time">
+													<p>23:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_mexico"></span> 墨西哥
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>F</span>
+												<span>1</span>
+												<span>3</span>
+											</p>
+										</li>
+									</ul>
+									<ul class="sche_list_content" id="date618">
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_brazil"></span> 巴西
+												</div>
+												<div class="sche_vs_time">
+													<p>02:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_switzerland"></span> 瑞士
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>E</span>
+												<span>1</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_sweden"></span> 瑞典
+												</div>
+												<div class="sche_vs_time">
+													<p>20:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_korea"></span> 韩国
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>F</span>
+												<span>1</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_belgium"></span> 比利时
+												</div>
+												<div class="sche_vs_time">
+													<p>23:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_panama"></span> 巴拿马
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>G</span>
+												<span>1</span>
+												<span>3</span>
+											</p>
+										</li>
+									</ul>
+									<ul class="sche_list_content" id="date619">
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_tunisia"></span> 突尼斯
+												</div>
+												<div class="sche_vs_time">
+													<p>02:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_england"></span> 英国
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>G</span>
+												<span>1</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_colombia"></span> 哥伦比亚
+												</div>
+												<div class="sche_vs_time">
+													<p>20:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_japan"></span> 日本
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>H</span>
+												<span>1</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_poland"></span> 波兰
+												</div>
+												<div class="sche_vs_time">
+													<p>23:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_senegal"></span> 塞内加尔
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>H</span>
+												<span>1</span>
+												<span>3</span>
+											</p>
+										</li>
+									</ul>
+									<ul class="sche_list_content" id="date620">
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_russia"></span> 俄罗斯
+												</div>
+												<div class="sche_vs_time">
+													<p>02:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_egypt"></span> 埃及
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>A</span>
+												<span>2</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_portugal"></span> 葡萄牙
+												</div>
+												<div class="sche_vs_time">
+													<p>20:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_morocco"></span> 摩洛哥
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>B</span>
+												<span>2</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_uruguay"></span> 乌拉圭
+												</div>
+												<div class="sche_vs_time">
+													<p>23:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_saudi_arabia"></span> 沙特阿拉伯
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>A</span>
+												<span>2</span>
+												<span>3</span>
+											</p>
+										</li>
+									</ul>
+									<ul class="sche_list_content" id="date621">
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_iran"></span> 伊朗
+												</div>
+												<div class="sche_vs_time">
+													<p>02:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_spain"></span> 西班牙
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>B</span>
+												<span>2</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_denmark"></span> 丹麦
+												</div>
+												<div class="sche_vs_time">
+													<p>20:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_australia"></span> 澳大利亚
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>C</span>
+												<span>2</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_france"></span> 法国
+												</div>
+												<div class="sche_vs_time">
+													<p>23:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_peru"></span> 秘鲁
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>C</span>
+												<span>2</span>
+												<span>3</span>
+											</p>
+										</li>
+									</ul>
+									<ul class="sche_list_content" id="date622">
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_argentina"></span> 阿根廷
+												</div>
+												<div class="sche_vs_time">
+													<p>02:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_croatia"></span> 克罗地亚
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>D</span>
+												<span>2</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_brazil"></span> 巴西
+												</div>
+												<div class="sche_vs_time">
+													<p>20:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_costa_rica"></span> 哥斯达黎加
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>E</span>
+												<span>2</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_nigeria"></span> 尼日利亚
+												</div>
+												<div class="sche_vs_time">
+													<p>23:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_iceland"></span> 冰岛
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>D</span>
+												<span>2</span>
+												<span>3</span>
+											</p>
+										</li>
+									</ul>
+									<ul class="sche_list_content" id="date623">
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_serbia"></span> 塞尔维亚
+												</div>
+												<div class="sche_vs_time">
+													<p>02:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_switzerland"></span> 瑞士
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>E</span>
+												<span>2</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_belgium"></span> 比利时
+												</div>
+												<div class="sche_vs_time">
+													<p>20:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_tunisia"></span> 突尼斯
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>G</span>
+												<span>2</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_korea"></span> 韩国
+												</div>
+												<div class="sche_vs_time">
+													<p>23:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_mexico"></span> 墨西哥
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>F</span>
+												<span>2</span>
+												<span>3</span>
+											</p>
+										</li>
+									</ul>
+									<ul class="sche_list_content" id="date624">
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_germany"></span> 德国
+												</div>
+												<div class="sche_vs_time">
+													<p>02:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_sweden"></span> 瑞典
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>F</span>
+												<span>2</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_england"></span> 英国
+												</div>
+												<div class="sche_vs_time">
+													<p>20:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_panama"></span> 巴拿马
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>G</span>
+												<span>2</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_japan"></span> 日本
+												</div>
+												<div class="sche_vs_time">
+													<p>23:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_senegal"></span> 塞内加尔
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>H</span>
+												<span>2</span>
+												<span>3</span>
+											</p>
+										</li>
+									</ul>
+									<ul class="sche_list_content" id="date625">
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_poland"></span> 波兰
+												</div>
+												<div class="sche_vs_time">
+													<p>02:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_colombia"></span> 哥伦比亚
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>H</span>
+												<span>2</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_saudi_arabia"></span> 沙特阿拉伯
+												</div>
+												<div class="sche_vs_time">
+													<p>22:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_egypt"></span> 埃及
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>A</span>
+												<span>3</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_uruguay"></span> 乌拉圭
+												</div>
+												<div class="sche_vs_time">
+													<p>22:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_russia"></span> 俄罗斯
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>A</span>
+												<span>3</span>
+												<span>3</span>
+											</p>
+										</li>
+									</ul>
+									<ul class="sche_list_content" id="date626">
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_iran"></span> 伊朗
+												</div>
+												<div class="sche_vs_time">
+													<p>02:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_portugal"></span> 葡萄牙
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>B</span>
+												<span>3</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_spain"></span> 西班牙
+												</div>
+												<div class="sche_vs_time">
+													<p>02:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_morocco"></span> 摩洛哥
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>B</span>
+												<span>3</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_australia"></span> 澳大利亚
+												</div>
+												<div class="sche_vs_time">
+													<p>22:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_peru"></span> 秘鲁
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>C</span>
+												<span>3</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_denmark"></span> 丹麦
+												</div>
+												<div class="sche_vs_time">
+													<p>22:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_france"></span> 法国
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>C</span>
+												<span>3</span>
+												<span>3</span>
+											</p>
+										</li>
+									</ul>
+									<ul class="sche_list_content" id="date627">
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_nigeria"></span> 尼日利亚
+												</div>
+												<div class="sche_vs_time">
+													<p>02:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_argentina"></span> 阿根廷
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>D</span>
+												<span>3</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_iceland"></span> 冰岛
+												</div>
+												<div class="sche_vs_time">
+													<p>02:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_croatia"></span> 克罗地亚
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>D</span>
+												<span>3</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_korea"></span> 韩国
+												</div>
+												<div class="sche_vs_time">
+													<p>22:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_germany"></span> 德国
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>F</span>
+												<span>3</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_mexico"></span> 墨西哥
+												</div>
+												<div class="sche_vs_time">
+													<p>22:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_sweden"></span> 瑞典
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>F</span>
+												<span>3</span>
+												<span>3</span>
+											</p>
+										</li>
+									</ul>
+									<ul class="sche_list_content" id="date628">
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_switzerland"></span> 瑞士
+												</div>
+												<div class="sche_vs_time">
+													<p>02:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_costa_rica"></span> 哥斯达黎加
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>E</span>
+												<span>3</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_serbia"></span> 塞尔维亚
+												</div>
+												<div class="sche_vs_time">
+													<p>02:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_brazil"></span> 巴西
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>E</span>
+												<span>3</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_senegal"></span> 塞内加尔
+												</div>
+												<div class="sche_vs_time">
+													<p>22:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_colombia"></span> 哥伦比亚
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>H</span>
+												<span>3</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_japan"></span> 日本
+												</div>
+												<div class="sche_vs_time">
+													<p>22:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_poland"></span> 波兰
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>H</span>
+												<span>3</span>
+												<span>3</span>
+											</p>
+										</li>
+									</ul>
+									<ul class="sche_list_content" id="date629">
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_england"></span> 英国
+												</div>
+												<div class="sche_vs_time">
+													<p>02:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_belgium"></span> 比利时
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>G</span>
+												<span>3</span>
+												<span>3</span>
+											</p>
+										</li>
+										<li>
+											<div class="sche_vs">
+												<div class="sche_vs_team">
+													<span class="logo_panama"></span> 巴拿马
+												</div>
+												<div class="sche_vs_time">
+													<p>02:00</p>
+													<p>vs</p>
+												</div>
+												<div class="sche_vs_team">
+													<span class="logo_tunisia"></span> 突尼斯
+												</div>
+											</div>
+											<p class="sche_info">
+												<span>G</span>
+												<span>3</span>
+												<span>3</span>
+											</p>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="fifa_diary_schedule tab-pane fade " id="tab_ranking">
+								<div class="fifa_ranking">
+									<h4>小组赛</h4>
+									<table class="fifa_ranking_table">
+										<caption>A 组</caption>
+										<thead>
+											<tr>
+												<th colspan="2">球队</th>
+												<th>赛</th>
+												<th>胜</th>
+												<th>平</th>
+												<th>负</th>
+												<th>进/失</th>
+												<th>积分</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th>1.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_russia.png" />俄罗斯</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+											<tr>
+												<th>2.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_saudi_arabia.png" />沙特阿拉伯</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+											<tr>
+												<th>3.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_egypt.png" />埃及</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+											<tr>
+												<th>4.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_uruguay.png" />乌拉圭</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+										</tbody>
+									</table>
+									<table class="fifa_ranking_table">
+										<caption>B 组</caption>
+										<thead>
+											<tr>
+												<th colspan="2">球队</th>
+												<th>赛</th>
+												<th>胜</th>
+												<th>平</th>
+												<th>负</th>
+												<th>进/失</th>
+												<th>积分</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th>1.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_portugal.png" />葡萄牙</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+											<tr>
+												<th>2.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_spain.png" />西班牙</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+											<tr>
+												<th>3.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_morocco.png" />摩洛哥</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+											<tr>
+												<th>4.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_iran.png" />伊朗</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+										</tbody>
+									</table>
+									<table class="fifa_ranking_table">
+										<caption>C 组</caption>
+										<thead>
+											<tr>
+												<th colspan="2">球队</th>
+												<th>赛</th>
+												<th>胜</th>
+												<th>平</th>
+												<th>负</th>
+												<th>进/失</th>
+												<th>积分</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th>1.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_france.png" />法国</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+											<tr>
+												<th>2.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_australia.png" />澳大利亚</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+											<tr>
+												<th>3.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_peru.png" />秘鲁</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+											<tr>
+												<th>4.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_denmark.png" />丹麦</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+										</tbody>
+									</table>
+									<table class="fifa_ranking_table">
+										<caption>D 组</caption>
+										<thead>
+											<tr>
+												<th colspan="2">球队</th>
+												<th>赛</th>
+												<th>胜</th>
+												<th>平</th>
+												<th>负</th>
+												<th>进/失</th>
+												<th>积分</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th>1.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_argentina.png" />阿根廷</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+											<tr>
+												<th>2.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_iceland.png" />冰岛</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+											<tr>
+												<th>3.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_croatia.png" />克罗地亚</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+											<tr>
+												<th>4.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_nigeria.png" />尼日利亚</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+										</tbody>
+									</table>
+									<table class="fifa_ranking_table">
+										<caption>E 组</caption>
+										<thead>
+											<tr>
+												<th colspan="2">球队</th>
+												<th>赛</th>
+												<th>胜</th>
+												<th>平</th>
+												<th>负</th>
+												<th>进/失</th>
+												<th>积分</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th>1.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_brazil.png" />巴西</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+											<tr>
+												<th>2.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_switzerland.png" />瑞士</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+											<tr>
+												<th>3.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_costa_rica.png" />哥斯达黎加</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+											<tr>
+												<th>4.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_serbia.png" />塞尔维亚</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+										</tbody>
+									</table>
+									<table class="fifa_ranking_table">
+										<caption>F 组</caption>
+										<thead>
+											<tr>
+												<th colspan="2">球队</th>
+												<th>赛</th>
+												<th>胜</th>
+												<th>平</th>
+												<th>负</th>
+												<th>进/失</th>
+												<th>积分</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th>1.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_germany.png" />德国</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+											<tr>
+												<th>2.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_mexico.png" />墨西哥</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+											<tr>
+												<th>3.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_sweden.png" />瑞典</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+											<tr>
+												<th>4.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_korea.png" />韩国</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+										</tbody>
+									</table>
+									<table class="fifa_ranking_table">
+										<caption>G 组</caption>
+										<thead>
+											<tr>
+												<th colspan="2">球队</th>
+												<th>赛</th>
+												<th>胜</th>
+												<th>平</th>
+												<th>负</th>
+												<th>进/失</th>
+												<th>积分</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th>1.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_belgium.png" />比利时</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+											<tr>
+												<th>2.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_panama.png" />巴拿马</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+											<tr>
+												<th>3.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_tunisia.png" />突尼斯</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+											<tr>
+												<th>4.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_england.png" />英国</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+										</tbody>
+									</table>
+									<table class="fifa_ranking_table">
+										<caption>H 组</caption>
+										<thead>
+											<tr>
+												<th colspan="2">球队</th>
+												<th>赛</th>
+												<th>胜</th>
+												<th>平</th>
+												<th>负</th>
+												<th>进/失</th>
+												<th>积分</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<th>1.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_poland.png" />波兰</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+											<tr>
+												<th>2.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_senegal.png" />塞内加尔</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+											<tr>
+												<th>3.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_colombia.png" />哥伦比亚</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+											<tr>
+												<th>4.</th>
+												<td class="table_teams_name"><img src="./template/www/img/FIFA/country_logo/logo_japan.png" />日本</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0</td>
+												<td>0/0</td>
+												<td>0</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!-- 活动专区 -->
+					<div class="content-4">
+						<div class="fifa_activity">
+							<div class="fifa_activity_banner">
+								<span class="fifa_sticky_banner">置顶</span>
+								<img src="./template/www/img/FIFA/activity_banner01.png" />
+								<div class="fifa_banner_morelink">
+									<span id="LiveClock"></span>
+									<a href="fifa_activeInfo.php">了解详情</a>
+								</div>
+							</div>
+							<div class="fifa_activity_banner">
+								<img src="./template/www/img/FIFA/banner_building.png" />
+							</div>
+						</div>
+					</div>					
+					
+				</div>
+				<!-- END BLOCK : FIFA -->
+				
+				
+				<!-- START BLOCK : FIFA_Market -->
+				<input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked" />
+				<label for="tab-1" class="tab-label-1">波胆</label>
+
+				<input id="tab-2" type="radio" name="radio-set" class="tab-selector-2" />
+				<label for="tab-2" class="tab-label-2">半场波胆</label>
+
+				<input id="tab-3" type="radio" name="radio-set" class="tab-selector-3" />
+				<label for="tab-3" class="tab-label-3">总得分</label>
+
+				<!--<input id="tab-4" type="radio" name="radio-set" class="tab-selector-4" />
+				<label for="tab-4" class="tab-label-4">首入球</label>-->
+
+				<div class="clear-shadow"></div>
+
+				<div class="content">
+					<!-- START BLOCK : MarketTable -->
+					<div class="content-{pNum}">
+						<div class="table fifa_table">
+							<div class="volume_group">
+								<div class="volume">成交量<span>{totaldealmoney}</span><div onclick="chatShow( '{chatTag}', {pNum} )" class="chatShowIcon"></div></div>
+								<div class="update" id="runMarketTime{pNum}" onclick="reLoadMarket()">60</div>
+							</div>
+							<div class="table_head">
+								<div class="table_option">选项</div>
+								<div class="table_rate">获利％</div>
+								<div class="table_trade">可交易量</div>
+							</div>
+							<div class="content_table">
+								<!-- START BLOCK : MarketSelectList -->
+								<div class="content_row" onclick="{orderAction}">
+									<div class="content_cell table_option">
+									<!-- START BLOCK : MarketSelectList_Guaranteed -->
+									<span class="guaranteed_detail"><img src="./template/www/img/FIFA/sIco.png"/></span>
+									<!-- END BLOCK : MarketSelectList_Guaranteed -->
+									{selectItem}</div>
+									<div class="content_cell cell_red table_rate">{profit}</div>
+									<div class="content_cell table_trade table_trade_align">{tradingVolView}</div>
+								</div>
+								<!-- END BLOCK : MarketSelectList -->
+							</div>
+						</div>
+					</div>
+					<!-- END BLOCK : MarketTable -->
+				</div>
+				<div id="Modal_cover4" class="cover"></div>
+				<!-- END BLOCK : FIFA_Market -->
+				
+				<!-- START BLOCK : GameMarketMsg -->
+				<script>
+				alert( '{msg}' );
+				parent.window.document.location.href='{url}';
+				</script>
+				<!-- END BLOCK : GameMarketMsg -->

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{_WA99_}</title>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=414,user-scalable=no">
+    <title>TG_MarketList</title>
+    <link rel="stylesheet" href="./template/www/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="./template/www/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./template/www/css/normalize.css">
+    
+    <link rel="stylesheet" href="./template/www/css/tab_style.css">
+    <!--menu bar 套件-->
+    <link rel="stylesheet" href="./template/www/css/demo.css">
+    <link rel="stylesheet" href="./template/www/css/sidy.css">
+    <link rel="stylesheet" href="./template/www/css/Main_Style.css">
+    <link rel="stylesheet" href="./template/www/css/withdrewal_deposits.css">
+    <link rel="stylesheet" href="./css/ex.css">
+    
+    <link rel="stylesheet" href="../../sandy/layout_002/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../sandy/layout_002/css/normalize.css">
+	<link rel="stylesheet" href="./template/www/css/FIFA_marketlist.css">
+    <!-- 
+    <link rel="stylesheet" href="./template/www/coun/soon.min.css">
+    <link rel="stylesheet" href="./template/www/coun/countdown.css">
+    -->
+    <!--menu bar 套件-->
+    <!--<link rel="stylesheet" href="../../sandy/layout_002/css/demo.css">
+    <link rel="stylesheet" href="../../sandy/layout_002/css/sidy.css">
+    <link rel="stylesheet" href="../../sandy/layout_002/css/Main_Style.css">
+    <link rel="stylesheet" href="../../sandy/layout_002/css/marketlist.css">-->
+    
+<script>
+
+<!-- START BLOCK : mobile_log_check -->
+alert('{log_check}');
+location.href='{_JS_LOCATION}';
+<!-- END BLOCK : mobile_log_check -->
+</script>
+<style>
+#itgweixin img
+{
+  width:300px ! important;
+  height:300px ! important;
+}
+#itgweixin button
+{
+ width:100% ! important;
+ height:50px ! important;
+ text-align:center ! important;
+}
+
+</style>
+</head>
+<body>
+<div class="sidy">
+<!-- INCLUDE BLOCK : header -->
+
+<div class="sidy__content">
+        
+<!-- INCLUDE BLOCK : titleannounce -->        
+       
+                
+        <div class="icon_bar navbar-fixed-bottom">
+         <!-- INCLUDE BLOCK : footer -->
+        </div>
+                
+        
+          <!-- INCLUDE BLOCK : orderinfo -->
+            
+
+
+    </div>
+
+</div>
+
+<div id="Modal_cover_fees" class="cover" style="display:none;">
+            <div id="order1" class="order_content">
+
+                <div class="submit_title">{_TRAM_REMIND_}</div>
+                <div class="submit_bg">
+                    <div class="submit_text">{_REMIND_SO_FAR}</div>
+                    <div class="submit_text"><span>{_FREE_FEE}</span>{_OFFER}</div>
+                    
+                    <div class="soon" id="my-soon-counter"
+                    data-due="in 5 seconds"
+                    data-layout="group overlap label-lowercase label-hidden"
+                    data-format="s"
+                    data-face="slot doctor glow"
+                    data-visual="ring glow-progress width-thin offset-65 length-80">
+                
+                    </div>
+                    
+                    <div class="submit_text font_s">{_CARRY_ON}<span>5%</span>{_ADMIN_FEES}<span id="getmoneyfee"></span>{_POINT}</div>
+                    <div class="submit_text font_s">{_APPLICATION}<span>{_DEDUCTION}。</span></div>
+                    <div class="submit_text blue_bg">{_RECALCULATE}</div>
+                    <div class="submit_btn_group">
+                    <button onclick="javascript:closefeealert()" class="cancel_btn">{_CANCEL}</button>
+                    <button class="submit_confirm " id="next">{_DETERMINE}</button>
+                    </div>
+                    </div>
+
+            </div>
+</div>
+
+<div id="Modal_cover_fees_sec" class="cover" style="display:none;">
+            <div id="order1" class="order_content">
+
+                <div class="submit_title">{_TRAM_REMIND_}</div>
+                <div class="submit_bg">
+                    <div class="submit_text">{_REMIND_SO_FAR}</div>
+                    <div class="submit_text"><span>{_FREE_FEE}</span>{_OFFER}</div>
+                    
+                    <div class="soon" id="my-soon-counter"
+                    data-due="in 5 seconds"
+                    data-layout="group overlap label-lowercase label-hidden"
+                    data-format="s"
+                    data-face="slot doctor glow"
+                    data-visual="ring glow-progress width-thin offset-65 length-80">
+                
+                    </div>
+                    
+                    <!--<div class="submit_text font_s">{_CARRY_ON}<span>5%</span>{_ADMIN_FEES}<span id="getmoneyfee"></span>{_POINT}</div>
+                    <div class="submit_text font_s">{_APPLICATION}<span>{_DEDUCTION}。</span></div>-->
+                    <div class="submit_text blue_bg">{_RECALCULATE}</div>
+                    <div class="submit_btn_group">
+                    <button id="next2" class="submit_confirm2" >{_DETERMINE}</button>
+                    </div>
+                    </div>
+
+            </div>
+</div>
+
+ 
+<!--<script src="./template/www/coun/soon_test.js"></script>
+<script src="./template/www/coun/countdown.js"></script>-->
+
+<script src="./template/www/js/jquery-3.2.1.min.js"></script>
+<script src="./template/www/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script src="./template/www/js/bootstrap-select.min.js"></script>
+<script src="https://use.fontawesome.com/d9858d11e6.js"></script>
+<script src="./template/www/js/modernizr.custom.04022.js"></script>
+<script src="./template/www/js/sidy.js"></script>
+<script src="./template/www/js/login.js"></script>
+<script src="./js/jquery.cookies.2.2.0.js"></script>
+<script src="./template/www/js/withdrewel_deposits.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,223 @@
+<script src="./template/www/js/receive.js"></script>
+<link rel="stylesheet" href="./template/www/css/withdrewal_deposits.css">
+<link rel="stylesheet" href="./css/ex.css">
+<link rel="stylesheet" href="./template/www/css/login.css">
+<link rel="stylesheet" href="./template/app/soon.min.css">
+<link rel="stylesheet" href="./template/app/countdown.css">
+    <!--<script src="./template/www/js/jquery-3.2.1.min.js"></script>-->
+    <!--<script src="./template/app/soon_test.js"></script>-->
+<script src="./template/app/countdown.js"></script>
+<!--<script src="./template/www/js/Charts.js"></script>-->
+
+<style>
+.soon-slot-animate
+{
+width:60px ! important;
+height:60px ! important;
+margin-top:50px ! important;
+}
+.soon-slot-new
+{
+font-size:38px ! important;
+}
+.soon-slot-old
+{
+font-size:38px ! important;
+}
+</style>
+<script>
+var _JS_INFO = '{_JS_INFO}';
+var _JS_PICKUP_NO_EMPTY = '{_JS_PICKUP_NO_EMPTY}';
+var _JS_WITHDRAWALS_GREATER_16_19 = '{_JS_WITHDRAWALS_GREATER_16_19}';
+var _JS_BANK_EMPTY = '{_JS_BANK_EMPTY}';
+var JS_CHINESE = '{JS_CHINESE}';
+var _JS_PASSWD_EMPTY = '{_JS_PASSWD_EMPTY}';
+var _JS_PICKUP_INT = '{_JS_PICKUP_INT}';
+var _JS_WITHDRAWALS_GREATER_100 = '{_JS_WITHDRAWALS_GREATER_100}';
+var _JS_WITHDRAWALS_GREATER_QUOTA = '{_JS_WITHDRAWALS_GREATER_QUOTA}';
+var _JS_LOGOUTED = '{_JS_LOGOUTED}';
+var _ACCOUNT_OTHER_ONLINE = '{_ACCOUNT_OTHER_ONLINE}';
+var _JS_APPLICATION_SUCCESS = '{_JS_APPLICATION_SUCCESS}';
+var _JS_APPLICATION_ERROR = '{_JS_APPLICATION_ERROR}';
+var _PICKUP_THEN_QUOTA = '{_PICKUP_THEN_QUOTA}';
+var _FEETIMES = '{_FEETIMES}';
+var _FEETPERCENT = '{_FEETPERCENT}';
+var _JS_PICKUPNAME_EMPTY = '{_JS_PICKUPNAME_EMPTY}';
+var _JS_THIRD_EMPTY = '{_JS_THIRD_EMPTY}';
+$( document ).ready(function() {
+   jQuery('#tabss-2').attr('checked',true)
+   //$("#myModafee").css('display', 'block');
+	   //$('#myModafee').modal('show');
+	 //$("#confirm1").on('click', function () {
+            //$("#myModa2fee").modal('hide');
+        //});
+   //new Chartss_t("pie1","次").ratePie(1,2,3);
+   //$("#Modal_cover_fees").css('display','block');
+	 //getscript();
+	 jQuery('#tabss-1').on('click', function () {
+   	    jQuery('.content-1').html('<div class="Loading"></div>');
+      });
+   jQuery('#tabss-3').on('click', function () {
+   	    jQuery('.content-3').html('<div class="Loading"></div>');
+      });      
+	 
+
+	});
+
+function getscript()
+{
+	$.getScript("./template/app/soon_test.js")
+   .done(function( script, textStatus ) {
+    //console.log( textStatus );
+  })
+   .fail(function( jqxhr, settings, exception ) {
+   	//console.log( "Triggered ajaxError handler." );
+   
+   });
+}
+</script>
+<!--{_FEETIMES}-->
+<input type="hidden" name="arthur" id="arthur" value="{_FEETIMES}">
+<input type="hidden" name="pickfee" id="pickfee" value="{_FEETIMES}">
+
+<!-- START BLOCK : PublicTitle -->
+<div class="title_background ">
+<div class="title">{_PUBLIC_TITLE_}</div>
+</div>
+
+
+<section class="tabs">
+		
+            <input onclick="location.href='deposits.php'" style="outline:none;" style="width:33%;" type="radio" id="tabss-1" name="radio-set" class="tab-selector-1"/>
+            <label style="width:33%;" for="tab-1" class="tabss-label-1">{_SAVE_MONEY_}</label>
+
+            <input onclick="location.href='receive.php'" style="outline:none;" style="width:33%;left:33%;" type="radio" id="tabss-2" name="radio-set" class="tab-selector-2"/>
+            <label style="left:33%;width:33%;" for="tab-2" class="tabss-label-2">{_PICK_}</label>
+
+            <input onclick="location.href='monrecord.php'" style="outline:none;" style="width:34%;left:66%;" type="radio" id="tabss-3" name="radio-set" class="tab-selector-3"/>
+            <label style="left:66%;width:34%;" for="tab-3" class="tabss-label-3">{_TRADERECORD}</label>
+            <!-- END BLOCK : PublicTitle -->
+            
+            <div class="clear-shadow"></div>
+             
+                          
+            <div class="content" style="margin-top:0px;padding: 0px 0px 0px 0px;">
+                <div class="content-1"></div>  
+                <div class="content-3"></div> 
+                <!-- START BLOCK : savepickup_pickup -->
+                <div class="content-2">
+                                    	
+                    	<input type="hidden" name="balance_money_chk_pick" id="balance_money_chk_pick" value="{_CHAQUOTA_}">                  	
+                        
+                        <div class="color_border"></div>
+                        
+                        <div style="background-color:#f4f8ff;" class="take_bg">
+                        
+                        
+                            <div class="take_please">{_LONG_WORD_121}</div>
+                            <div class="black_line"></div>
+                            
+                            <div class="take_table">
+                                
+                                <!-- START BLOCK : savepickup_pickup_after -->
+                                <div class="take_row">
+                                    <div class="take_cell take_title">{_BANKNAME}<span class="color_red">*</span></div>
+                                    <div class="take_cell take_input">
+                                        <dl id="sample" class="dropdown">                                            
+                                            <select disabled="true" class="selector" name="bankaccountword" id="bankaccountword">
+			                                      {p}
+			                                      </select>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="firstpick" id="firstpick" value="{_FIRSTPICK_}">
+                                <div class="take_row">
+                                    <div class="take_cell take_title">{_BANK_ACCOUNT}<span class="color_red">*</span></div>
+                                    <div class="take_cell take_input"><input type="text" class="input_text"
+                                                                             name="bankaccount_self" id="bankaccount_self" readonly=""></div>
+                                </div>
+                                <div class="take_row">
+                                    <div class="take_cell take_title">{_WITHDRAWAL_ACCOUNT_NAME}<span class="color_red">*</span></div>
+                                    <div class="take_cell take_input"><input type="text" class="input_text" name="bankaccountname" id="bankaccountname" readonly="" value={_ACCOUNTNAME_}>
+                                    </div>
+                                </div>
+                                <div class="take_row">
+                                    <div class="take_cell take_title">{_PICKUP_MONEY}<span class="color_red">*</span></div>
+                                    <div class="take_cell take_input"><input type="text" class="input_text"
+                                                                             id="getmoney" name="getmoney"></div>
+                                </div>
+                                <div class="take_row">
+                                    <div class="take_cell take_title">{_WITHDRAWALPASSWD}<span class="color_red">*</span></div>
+                                    <div class="take_cell take_input"><input type="password" class="input_text"
+                                                                             name="sellpassword" id="sellpassword"></div>
+                                </div>
+                                <!-- END BLOCK : savepickup_pickup_after -->
+                                
+                                <!-- START BLOCK : savepickup_pickup_before -->
+                                <div class="take_row">
+                                    <div class="take_cell take_title">{_BANKNAME}<span class="color_red">*</span></div>
+                                    <div class="take_cell take_input">
+                                        <dl id="sample" class="dropdown">                                            
+                                            <select class="selector" name="bankaccountword" id="bankaccountword" {onchg}>
+			                                      {p}
+			                                      </select>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="firstpick" id="firstpick" value="{_FIRSTPICK_}">
+                                <div class="take_row">
+                                    <div class="take_cell take_title">{_BANK_ACCOUNT}<span class="color_red">*</span></div>
+                                    <div class="take_cell take_input"><input type="text" class="input_text"
+                                                                             name="bankaccount_self" id="bankaccount_self" ></div>
+                                </div>
+                                <div class="take_row">
+                                    <div class="take_cell take_title">{_WITHDRAWAL_ACCOUNT_NAME}<span class="color_red">*</span></div>
+                                    <div class="take_cell take_input"><input type="text" class="input_text" name="bankaccountname" id="bankaccountname" readonly="" value={_ACCOUNTNAME_}>
+                                    </div>
+                                </div>
+                                <div class="take_row">
+                                    <div class="take_cell take_title">{_PICKUP_MONEY}<span class="color_red">*</span></div>
+                                    <div class="take_cell take_input"><input type="text" class="input_text"
+                                                                             id="getmoney" name="getmoney"></div>
+                                </div>
+                                <div class="take_row">
+                                    <div class="take_cell take_title">{_WITHDRAWALPASSWD}<span class="color_red">*</span></div>
+                                    <div class="take_cell take_input"><input type="password" class="input_text"
+                                                                             name="sellpassword" id="sellpassword"></div>
+                                </div>
+                                <!-- END BLOCK : savepickup_pickup_before -->
+                            
+                             
+                            </div>
+                             
+                             
+                            <div id="fee_pickup" class="submit2">                            	  
+                                <button onclick="pickupmoney()">{_SURE_SUBMIT}</button>
+                            </div>
+                         
+                    
+                        </div>
+                                       
+                                                                                              
+                    <div class="notice_bg">
+                       <div class="notice">※&nbsp;{_PRECAUTIONS}&nbsp;※</div>
+                        <div class="notice_group">
+                        <ul class="notice_ul">
+                            <li class="num_style">
+                                {_LONG_WORD_116}
+                            </li>
+                            <li class="num_style">{_LONG_WORD_117}</li>
+                            <li class="num_style">{_LONG_WORD_118}</li>
+                            <div class="color_red">P.S.{_LONG_WORD_119}</div>
+                        </ul>
+                      </div>
+                    </div>
+                  
+                    
+              
+                </div>
+               <!-- END BLOCK : savepickup_pickup --> 
+            </div>
+
+        </section>
+

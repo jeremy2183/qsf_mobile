@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="./template/www/css/service.css">
+<link rel="stylesheet" href="./template/www/css/login.css">
+
+<div class="title_background ">
+   <div class="title">{_CUSTOMER_}</div>
+</div>
+<div class="clear-shadow"></div>
+<!-- START BLOCK : customer -->W
+<div class="content" style="margin-top:100px;">
+            <div class="btn_group" style="padding: 0px 3px">
+                <a href="#" onclick="window.open('https://v88.live800.com/live800/chatClient/chatbox.jsp?companyID=698946&configID=1586&jid=5625358570&s=1')">
+				<!--<a href="#" onclick="_MICHAT.floatClick();return false;">-->
+                <div class="btn">
+                    <div class="online"></div>
+                    <div class="block"><button class="blue" type="button">{_CUSTOMER_}<p>{_THIRD_TALK}</p></button></div>
+                </div>
+              </a>
+                <a id="qq" href="#">
+                <div class="btn">
+                    <div class="qq"></div>
+                    <div class="block"><button class="yellow" type="button">{_THIRD_QQ_CUSTER}<p>{_THIRD_QQ_NUM}/{_qqnumber_}</p></button></div>
+                </div>
+              </a>
+              <a id="weixin" href="#">
+                <div class="btn">
+                    <div class="weixin"></div>
+                    <div class="block"><button class="green" type="button">{_THIRD_WEI_CUSTER}<p>{_THIRD_WEI_NUM}/{_weinumber_}</p></button></div>
+                </div>
+              </a>
+            </div>
+</div>
+
+
+<div id="Modal_cover" class="cover">
+    <div id="order1" class="order_content">
+        <div class="qq_title">{_TAOGIN_CUST_QQ}</div>
+        <div style="top:3px;" class="close_x"><i class="fa fa-times" aria-hidden="true"></i></div>
+        <div class="blue_line"></div>
+        <div class="QRcode">
+        <img src=./serviceQRCode/{_QQ_} width=100% height=100%>	
+        </div>
+        <button class="close_btn">{_CLOSE}</button>
+    </div>
+</div>
+
+<div id="Modal_cover2" class="cover">
+    <div id="order2" class="order_content2">
+        <div class="weixin_title">{_TAOGIN_CUST_WEI}</div>
+        <div style="top:3px;" class="close_x"><i class="fa fa-times" aria-hidden="true"></i></div>
+        <div class="blue_line"></div>
+        <div class="QRcode">
+        <img src=./serviceQRCode/{_WEI_} width=100% height=100%>	
+        </div>
+        <button class="close_btn">{_CLOSE}</button>
+    </div>
+</div>
+<!-- END BLOCK : customer -->
+<script src="./template/www/js/login.js"></script>

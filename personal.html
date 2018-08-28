@@ -1,0 +1,285 @@
+<script>
+/* 密碼修改-執行 */
+	function changePwd(pwdType)
+	{
+		//var pwdType = $('#pType').val();
+		if( pwdType != 'passwd' &&  pwdType != 'pickup' )
+		{
+			alert('{_WRONG_USE_}');
+			document.location.href='logout.php'; 
+			return;
+		}
+		var simple_ar = Array();
+		var c2bet_st = new Object;
+		var orderinfo_st = new Object;
+
+		var re2 = /^([a-zA-Z]+\d+|\d+[a-zA-Z]+)[a-zA-Z0-9]*$/;
+		
+		if(pwdType=='pickup')
+		{
+			var oldaccount = $("#poldaccount").val();
+		  var newaccount = $("#pnewaccount").val();
+		  var renewaccount = $("#prenewaccount").val();
+		}
+   
+    if(pwdType=='passwd')
+		{
+			var oldaccount = $("#oldaccount").val();
+		  var newaccount = $("#newaccount").val();
+		  var renewaccount = $("#renewaccount").val();
+		}
+		
+		if(oldaccount=="" || newaccount=="" || renewaccount=="")
+		{
+			alert('{_JS_INFO}');
+			return;
+		}
+		else if(newaccount!=renewaccount)
+		{
+			alert('{NEW_SURE_NOT_MATCH}');
+			return;
+		}
+		else if(jQuery.trim(oldaccount.replace(/\s+/g,""))!==oldaccount)
+		{
+			alert('{_OLDPASSWD_EMPTY}');
+			return;
+		}
+		else if(jQuery.trim(newaccount.replace(/\s+/g,""))!==newaccount)
+		{
+			alert('{_NEWPASSWD_EMPTY}');
+			return;
+		}
+		else if(!re2.test(newaccount))
+		{
+			alert('{_NEWPASSWD_MIX}'); 　
+			return;
+		}
+		else if(newaccount.length < 6)
+		{
+			alert('{_NEWPASSWD_THENSIX}'); 　
+			return;
+		}
+		else if(oldaccount.length < 6)
+		{
+			alert('{_SURE_PASSWD_LENGTH}'); 　
+			return;
+		}
+
+		var jimDatass = { chgmun: pwdType, oldaccount: oldaccount, newaccount: newaccount };
+			   
+		simple_ar.push(jimDatass);
+		orderinfo_st = simple_ar;
+		c2bet_st["editPwd"]=orderinfo_st;	
+     //console.log(jimDatass);
+     //return;
+		jQuery.ajax({
+			type: 'POST',
+			url: 'ActionEditPwd.php',
+			data: c2bet_st ,		
+			error: function(xhr)
+			{
+				alert('{_BREAK_CHECK_INFO}');
+				return false;
+			},
+			beforeSend:function(response)
+			{
+				//Loading();
+			}, 
+			success: function(response)
+			{        
+				response = jQuery.trim(response);
+        //alert(response);
+				//closeLoading();
+				if(response=='S')
+				{
+					alert('{_EDIT_SUCCESS}');
+					document.location.href='memberlogout.php';   
+				}
+				else
+				{
+					alert('{_EDIT_FAIL}');
+				}    
+			}
+
+		 }); 
+	}
+
+/* 快捷金額設定-執行 */
+	function changeCommon(pwdType)
+	{
+		//var pwdType = $('#pType').val();
+		if( pwdType != 'common' )
+		{
+			alert('{_WRONG_USE_}');
+			return;
+		}
+		var simple_ar = Array();
+		var c2bet_st = new Object;
+		var orderinfo_st = new Object;
+
+		var re = /^[0-9]*$/;
+		var common1 = jQuery("#common1").val();
+		var common2 = jQuery("#common2").val();
+		var common3 = jQuery("#common3").val();
+
+		if( isNaN(common1) || isNaN(common2) || isNaN(common3) )
+		{
+			alert('{_PLEASEINPUTNUM_}'); 　
+			return;
+		}
+
+		if( common1 ) c2bet_st["common1"] = common1;
+		if( common2 ) c2bet_st["common2"] = common2;
+		if( common3 ) c2bet_st["common3"] = common3;
+
+		jQuery.ajax({
+			type: 'POST',
+			url: 'ActionEditCommon.php',
+			data: c2bet_st,		
+			error: function(xhr)
+			{
+				alert('{_BREAK_CHECK_INFO}');
+				return false;
+			},
+			beforeSend:function(response)
+			{
+				//Loading();
+			}, 
+			success: function(response)
+			{
+				
+				response = jQuery.trim(response);
+				location.reload();
+				return;
+			}
+		 }); 
+	}
+	
+$('.icon_bar_cell > a').removeClass('active');
+  $('.icon_bar_cell > #my_a').addClass('active');
+</script>
+<div class="sidy">
+
+     <div class="sidy__content">
+ 
+<!-- START BLOCK : UserInfo -->         
+        <div class="title_background ">
+            <div class="title">{_PUBLIC_TITLE_S}</div>
+        </div>       
+        <div class="account_bg">{_USER_NAME_}</div>
+    
+  
+        <div class="info_table">
+            <div class="info_row">
+                <div class="info_cell_title">{_THIS_QUATY}</div>
+                <div class="info_cell">{quota}</div>
+            </div>
+            
+            <div class="info_row">
+                <div class="info_cell_title"><span style="letter-spacing:16px;">{_LOGIN_PASSWD}</span><button id="modify1">{_UPDATE}</button></div>
+                <div class="info_cell">{passwdhidden}</div>
+            </div>
+            <div class="info_row">
+                <div class="info_cell_title">{_PICKUP_PASSWD}<button id="modify2">{_UPDATE}</button></div>
+                <div class="info_cell">{withdrawpasswordhidden}</div>
+            </div>
+            <div class="info_row">
+                <div class="info_cell_title">{_CELLPHONE}</div>
+                <div class="info_cell">{mobile_sec}</div>
+            </div>
+            <div class="info_row">
+                <div class="info_cell_title">{_QQACCOUNT}</div>
+                <div class="info_cell">{qq}</div>
+            </div>
+            <div class="info_row">
+                <div class="info_cell_title">{_WECHATACCOUNT}</div>
+                <div class="info_cell">{wechat}</div>
+            </div>
+            <div class="info_row">
+                <div class="info_cell_title">{_QUICK_SETP}<button id="setting">{_SETUP}</button></div>
+                <div class="info_cell">{commonStr}</div>
+            </div>
+        </div>
+
+        <div id="Modal_cover" class="cover">
+            <div id="order1" class="order_content">
+                <div class="modal_title">{_LOGIN_PASSWD_EDIT}</div>
+                <i class="fa fa-times x" aria-hidden="true"></i>
+                
+                <div class="my_info_table">
+                    <div class="my_info_row">
+                        <div class="my_info_cell_title">{_JS_OLD_PASS}<span>*</span></div>
+                        <div class="my_info_cell"><input type="password" id="oldaccount" name="oldaccount"></div>
+                    </div>
+                    <div class="my_info_row">
+                        <div class="my_info_cell_title">{_JS_NEW_PASS}<span>*</span></div>
+                        <div class="my_info_cell"><input type="password" id="newaccount" name="newaccount"> </div>
+                    </div>
+                    <div class="my_info_row">
+                        <div class="my_info_cell_title">{_SURE_PASSWD}<span>*</span></div>
+                        <div class="my_info_cell"><input type="password" id="renewaccount" name="renewaccount"></div>
+                    </div>
+                </div>
+                <div class="btn_group">
+                <button id="confirm1" onClick="changePwd('passwd')">{_JS_SURE}</button>
+                <button id="cancel1">{_CANCEL}</button>
+            </div>
+            </div>
+        </div>
+
+        <div id="Modal_cover2" class="cover">
+            <div id="order2" class="order_content2">
+                <div class="modal_title">{_PICKUP_PASSWD_EDIT}</div>
+                <i class="fa fa-times x" aria-hidden="true"></i>
+                
+                <div class="my_info_table">
+                    <div class="my_info_row">
+                        <div class="my_info_cell_title">{_JS_OLD_PASS}<span>*</span></div>
+                        <div class="my_info_cell"><input type="password" id="poldaccount" name="poldaccount"></div>
+                    </div>
+                    <div class="my_info_row">
+                        <div class="my_info_cell_title">{_JS_NEW_PASS}<span>*</span></div>
+                        <div class="my_info_cell"><input type="password" id="pnewaccount" name="pnewaccount"> </div>
+                    </div>
+                    <div class="my_info_row">
+                        <div class="my_info_cell_title">{_SURE_PASSWD}<span>*</span></div>
+                        <div class="my_info_cell"><input type="password" id="prenewaccount" name="prenewaccount"></div>
+                    </div>
+                </div>
+                <div class="btn_group">
+                <button id="confirm2" onClick="changePwd('pickup')">{_JS_SURE}</button>
+                <button id="cancel2">{_CANCEL}</button>
+            </div>
+            </div>
+        </div>
+
+        <div id="Modal_cover3" class="cover">
+            <div id="order3" class="order_content3">
+                <div class="modal_title">{_QUICK_SETP}</div>
+                <i class="fa fa-times x" aria-hidden="true"></i>
+                
+                <div class="my_info_table">
+                    <div class="my_info_row">
+                        <div class="my_info_cell_title">{_FIRST_SETUP}</div>
+                        <div class="my_info_cell"><input maxlength="7" type="number" id="common1" name="common1" value="{common0}"></div>
+                    </div>
+                    <div class="my_info_row">
+                        <div class="my_info_cell_title">{_SECAND_SETUP}</div>
+                        <div class="my_info_cell"><input maxlength="7" type="number" id="common2" name="common2" value="{common1}"> </div>
+                    </div>
+                    <div class="my_info_row">
+                        <div class="my_info_cell_title">{_THIRD_SETUP}</div>
+                        <div class="my_info_cell"><input maxlength="7" type="number" id="common3" name="common3" value="{common2}"></div>
+                    </div>
+                </div>
+                <div class="btn_group">
+                <button id="confirm3" onClick="changeCommon('common')">{_JS_SURE}</button>
+                <button id="cancel3">{_CANCEL}</button>
+                </div>
+        </div>
+
+       </div>
+<!-- END BLOCK : UserInfo -->
+</div>
+</div>
+

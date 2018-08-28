@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{_WA99_}</title>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=414,user-scalable=no">
+    <title>TG_MarketList</title>
+	
+    <link rel="stylesheet" href="./template/www/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./template/www/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="./template/www/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="./template/www/css/normalize.css">
+    <link rel="stylesheet" href="./template/www/css/tab_style.css">
+    
+    <!--<link rel="stylesheet" href="../../sandy/layout_002/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../sandy/layout_002/css/normalize.css">
+    <link rel="stylesheet" href="../../sandy/layout_002/css/tab_style.css">-->
+    
+    <!--menu bar 套件-->
+    <link rel="stylesheet" href="./template/www/css/demo.css">
+    <link rel="stylesheet" href="./template/www/css/sidy.css">
+    <link rel="stylesheet" href="./template/www/css/Main_Style.css">
+    <link rel="stylesheet" href="./template/www/css/marketlist_detail.css">
+	<link rel="stylesheet" href="./template/www/css/FIFA_marketlist.css">
+    <link rel="stylesheet" href="./css/ex.css">
+    
+    <!--menu bar 套件-->
+    <!--<link rel="stylesheet" href="../../sandy/layout_002/css/demo.css">
+    <link rel="stylesheet" href="../../sandy/layout_002/css/sidy.css">
+    <link rel="stylesheet" href="../../sandy/layout_002/css/Main_Style.css">
+    <link rel="stylesheet" href="../../sandy/layout_002/css/marketlist_detail.css">-->
+	<!--<script type="text/javascript" src="./template/www/js/tgservice.js?1807281956"></script>-->
+
+<script>
+<!-- START BLOCK : mobile_log_check -->
+alert('{log_check}');
+location.href='{_JS_LOCATION}';
+<!-- END BLOCK : mobile_log_check -->
+function getorder()
+{
+	jQuery('#markerorder_1').hide();
+	jQuery('#markerorder_2').show();
+	
+	//jQuery('#index_order_wa99').dialog('open');
+  //jQuery('#myModal .modal-dialog #markerorder_1').html('ARTHUR'); 
+  //jQuery('#myModal').modal('show');
+  //jQuery('#myModal').modal('hide');
+  //BootstrapDialog.alert('I want banana!');
+}
+
+function closeorderdiv()
+	{
+		//jQuery( "#myModal" ).dialog("close");
+		//jQuery("#order_wa99", window.parent.document).dialog("close");
+		//window.location.reload();
+		jQuery('#markerorder_1').show();
+	  jQuery('#markerorder_2').hide();
+	  jQuery('#markerorder_3').hide();
+	}
+	
+function finishorderdiv()
+{
+	jQuery('#markerorder_1').hide();
+	  jQuery('#markerorder_2').hide();
+	   jQuery('#markerorder_3').show();
+}
+
+function closeorderdiv_finish()
+{
+	window.location.reload();
+}
+
+function titleannice()
+{
+	var ss = $('#marqinfo').css("display");
+	if(ss=='none')
+	 {
+	 	$('#marqinfo').attr('style','margin-top:3px;font-size:16px;margin-left:22%;width:80%;display:block');
+	 	$('#markettitle').attr('style','display:none');
+	 }
+	else
+	 {
+	 	$('#marqinfo').attr('style','display:none');
+	 	$('#markettitle').attr('style','display:block;padding-left:150px;width:80%;');
+	 }
+	//$('#markettitle').toggle();
+	
+}
+</script>
+
+</head>
+<body>
+<div class="sidy">
+<!-- INCLUDE BLOCK : header -->
+
+<div class="sidy__content">
+        
+<!-- INCLUDE BLOCK : titleannounce -->        
+       
+ 
+                    
+        <div class="icon_bar navbar-fixed-bottom">
+         <!-- INCLUDE BLOCK : footer -->
+        </div>
+        
+       <div class="scroll_top" id="scroll_top">
+           <div class="scroll_top_bg"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+       </div>
+       
+        <div class="scroll_bottom">
+            <div class="scroll_bottom_bg"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+        </div>
+       
+            
+            <!-- INCLUDE BLOCK : ordercontent -->
+            
+
+    </div>
+
+</div>
+
+  
+<script src="./template/www/js/jquery-3.2.1.min.js"></script>
+<script src="./template/www/js/bootstrap.min.js"></script>
+<script src="./template/www/js/bootstrap-select.min.js"></script>
+
+<script src="./template/www/js/modernizr.custom.04022.js"></script>
+<script src="./template/www/js/sidy.js"></script>
+<script src="./template/www/js/login.js"></script>
+<script src="./template/www/js/marketlist_detail.js"></script>
+<script src="./template/www/js/chart.js"></script>
+</body>
+</html>

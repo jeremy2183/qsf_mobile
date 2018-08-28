@@ -1,0 +1,34 @@
+
+	<link rel="stylesheet" href="./template/www/css/reset.css">
+    <link rel="stylesheet" href="./template/www/css/chart.css">
+	
+	<div id="chart" class="chart">
+		<div class="chart_model_title">交易量明细<div class="close_x"><i class="fa fa-times" aria-hidden="true"></i></div></div>
+		<div class="chart_title">
+			<span class="chart_alliance">{competitionname}</span>
+			<span class="team_and_vs">{gameName}</span>
+		</div>
+		<p class="chart_total_num">{totalNum}</p>
+		<div class="chart_content">
+			<div id="score"></div>
+			<div id="chart_bg">
+				<div id="chart_column">
+					<!--直條圖創在這裡-->
+				</div>
+			</div>
+		</div>
+	
+
+	
+		<script>
+			$(".close_x").on('click', function () {
+				$("#Modal_cover4").css('display', 'none');
+				$("#Modal_cover4").html('');
+			}); 
+
+			var st = [{chatNum}]; //直
+			var stChartValue = [{chatItem}] //項目
+			chart_main();
+		</script>
+		
+	</div>

@@ -1,0 +1,273 @@
+<link rel="stylesheet" href="./template/www/css/account_history.css">
+<link rel="stylesheet" href="./css/public.css">
+<script>
+
+function gettoday(a)
+	 {
+	 	document.location.href='history.php?week=day&f_date1='+a+'';
+	 }
+	
+  function checkmenu(a,b)
+   {
+   	document.location.href='history.php?week='+b+'';
+   	//jQuery('.tab-pane').css("display","none");
+   	//jQuery('#'+a+'').css("display","none");
+   	//jQuery('#'+a+'').addClass('active');
+   }
+  
+  function getmenunum(a)
+   {
+  $.cookies.set('myCookie', a);
+   }
+
+$(document).ready(function() {
+
+
+	var b = $.cookies.get('myCookie');
+	 
+	 
+      if(b=='years')
+      {
+     $('#tab-4').attr('checked',true);
+      }
+      if(b=='farweek')
+      {
+     $('#tab-3').attr('checked',true)
+      
+      }
+      if(b=='midweek')
+      {
+   $('#tab-2').attr('checked',true)
+     
+      }
+      if(b=='lastweek')
+      {
+   $('#tab-1').attr('checked',true)
+     
+      }
+ 
+	$.cookies.set('myCookie', null);
+
+	$('.icon_bar_cell > a').removeClass('active');
+  $('.icon_bar_cell > #history_a').addClass('active');
+	});
+
+</script>
+
+<div class="title_background ">
+
+<div class="title">{ACCOUNT_HISTORY}</div>
+
+</div>
+<!-- START BLOCK : orderinfo_title -->
+<link rel="stylesheet" href="./template/www/css/account_history_detail.css">
+<div class="trade_head">
+            <div class="color_border_bottom"></div>
+            <div class=" arrow_left" onclick="javascript:window.history.go(-1);getmenunum('{menunum}');"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
+            <div class=" date">{years}{month}</div>
+            <div class="block line"></div>
+ <!-- START BLOCK : orderinfototal -->          
+            <div class="block trade_num">
+                <div class="trade_amount_title">{_TRADE_ACCOUNT}</div>
+                <div class="trade_amount_num">{_TOTAL_FOR}</div>
+            </div>
+
+            <div class="block trade_rate">
+                <div class="total_rate_title">{_INVESTMENT_SETTLEMENT}</div>
+                <div class="total_rate_num" style="color:{_COLOR_}">{_TOTAL_THR}</div>
+            </div>
+  <!-- END BLOCK : orderinfototal -->       
+ </div>
+<div class="content">
+<!-- START BLOCK : orderinfo -->
+            <div class="game_list v1">
+                <div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>{_betHisTime}</span></div>
+                    <div class="game_name">{_COMPETITION}
+                    <div style="text-align:right;width:40px;display:inline-block;">{_ESTIMATED_PROFIT_HISTORY_TOTAL}:</div>
+                    <div style="width:50px;display:inline-block;">{_GAME_NUM_TOTAL}</div>	
+                    	
+                    </div>
+                    <div class="number">{_GAME_NUM}</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>{_EVENT}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="trade_detail">
+             <!-- START BLOCK : orderinfo_detail_info -->             
+              <div class="whole_table_block">
+                <div class="table_padding">
+                <table>
+                    <tr>
+                        <th>{_BETID}<div class="dash"></div></th>
+                        <td colspan="3">{betId}</td>
+                    </tr>
+                    <tr>
+                        <th>{_TRADE_TIME}<div class="dash"></div></th>
+                        <td colspan="3">{_betContent}</td>
+                    </tr>
+                    <tr>
+                        <th>{_MARKET_ORDER}<div class="dash"></div></th>
+                        <td colspan="3">{_MARKET} {selection} ＠<span class="color_red">{_PROFIT_}%</span></td>
+                    </tr>
+                </table>
+                </div>
+                <table>
+                    <tr class="money_total">
+                        <th class="padding_left">{_AMOUNT}</th>
+                        <td class="align_right color_blue">{_DEALMO}<div class="dash"></div></td>
+                        <th class="">{_ESTIMATED_PROFIT_HISTORY}</th>
+                        <td class="align_right color_green padding_right">{_DELMO_P}</td>
+                    </tr>
+                </table>
+              </div>
+            <!-- END BLOCK : orderinfo_detail_info -->
+            </div>
+<!-- END BLOCK : orderinfo -->
+</div>
+
+<!-- END BLOCK : orderinfo_title -->
+
+<section class="tabs">
+<!-- START BLOCK : historylist_titlename_menu -->
+            <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked"/>
+            <label for="tab-1" class="tab-label-1">{_THIS_WEEK_}</label>
+
+            <input id="tab-2" type="radio" name="radio-set" class="tab-selector-2"/>
+            <label for="tab-2" class="tab-label-2">{_LAST_WEEK_}</label>
+
+            <input id="tab-3" type="radio" name="radio-set" class="tab-selector-3"/>
+            <label for="tab-3" class="tab-label-3">{_BEFORE_WEEK_AFTER_}</label>
+
+            <input id="tab-4" type="radio" name="radio-set" class="tab-selector-4"/>
+            <label for="tab-4" class="tab-label-4">{_LAST_YEAR_}</label>
+<!-- END BLOCK : historylist_titlename_menu -->
+            <div class="clear-shadow"></div>
+
+            <div style="margin-top:0px;" class="content">
+
+<!-- START BLOCK : historylist_titlename -->
+            	
+                <div class="content-1">
+                    <div class="table_head">
+                        <div class="table_head_cell date">{_ACCOUNT_DATE}</div>
+                        <div class="table_head_cell trade_amount">{_TRADE_ACCOUNT}</div>
+                        <div class="table_head_cell result">{_INVESTMENT_SETTLEMENT}</div>
+                    </div>
+                     <div class="history_table">
+                        <!-- START BLOCK : historylist_this_week -->
+                        <div class="history_row" onclick="location.href='history.php?week=day&yy=lastweek&f_date1={acc_time}'">
+                            <div class="history_cell date ">{month}{days}</div>
+                            <div class="history_cell trade_amount">{dealmoney}</div>
+                            <div class="history_cell result color_green">{after}</div>
+                        </div>
+                        <!-- END BLOCK : historylist_this_week -->
+                    </div>
+                    <div class="total_table">
+                    	<!-- START BLOCK : historylist_this_week_after -->
+                        <div class="total_row">
+                        <div class="total_cell date">{_HISTORY_COUNT}</div>
+                        <div class="total_cell trade_amount">{totalmomey}</div>
+                        <div class="total_cell result color_green">{totalquant}</div>
+                      <!-- END BLOCK : historylist_this_week_after -->
+                    </div>
+                    
+                    </div>
+                </div>
+                
+                <div class="content-2">
+                 
+                 <div class="table_head">
+                        <div class="table_head_cell date">{_ACCOUNT_DATE}</div>
+                        <div class="table_head_cell trade_amount">{_TRADE_ACCOUNT}</div>
+                        <div class="table_head_cell result">{_INVESTMENT_SETTLEMENT}</div>
+                    </div>
+                    <div class="history_table">
+                        <!-- START BLOCK : historylist_last_week -->
+                    
+                        <div class="history_row" onclick="location.href='history.php?week=day&yy=midweek&f_date1={acc_time}'">
+                            <div class="history_cell date ">{month}{days}</div>
+                            <div class="history_cell trade_amount">{dealmoney}</div>
+                            <div class="history_cell result color_green">{after}</div>
+                        </div>
+                        <!-- END BLOCK : historylist_last_week -->
+                    </div>
+                    <div class="total_table">
+                    	<!-- START BLOCK : historylist_last_week_after -->
+                        <div class="total_row">
+                        <div class="total_cell date">{_HISTORY_COUNT}</div>
+                        <div class="total_cell trade_amount">{totalmomey_1}</div>
+                        <div class="total_cell result color_green">{totalquant_1}</div>
+                      <!-- END BLOCK : historylist_last_week_after -->
+                    </div>
+                    
+                    </div>
+
+                </div>
+                <div class="content-3">
+                
+                <div class="table_head">
+                        <div class="table_head_cell date">{_ACCOUNT_DATE}</div>
+                        <div class="table_head_cell trade_amount">{_TRADE_ACCOUNT}</div>
+                        <div class="table_head_cell result">{_INVESTMENT_SETTLEMENT}</div>
+                    </div>
+                    <div class="history_table">
+                        <!-- START BLOCK : historylist_before_last_week -->
+                        
+                       <div class="history_row" onclick="location.href='history.php?week=day&yy=farweek&f_date1={acc_time}'">
+                            <div class="history_cell date ">{month}{days}</div>
+                            <div class="history_cell trade_amount">{dealmoney}</div>
+                            <div class="history_cell result color_green">{after}</div>
+                         </div>
+                        <!-- END BLOCK : historylist_before_last_week -->
+                    </div>
+                    <div class="total_table">
+                    	<!-- START BLOCK : historylist_before_week_after -->
+                        <div class="total_row">
+                        <div class="total_cell date">{_HISTORY_COUNT}</div>
+                        <div class="total_cell trade_amount">{totalmomey_2}</div>
+                        <div class="total_cell result color_green">{totalquant_2}</div>
+                      <!-- END BLOCK : historylist_before_week_after -->
+                    </div>
+                    
+                    </div>
+
+                </div>
+                <div class="content-4">
+                    <div class="table_head">
+                        <div class="table_head_cell date">{_ACCOUNT_DATE}</div>
+                        <div class="table_head_cell trade_amount">{_TRADE_ACCOUNT}</div>
+                        <div class="table_head_cell result">{_INVESTMENT_SETTLEMENT}</div>
+                    </div>
+                    <div class="history_table">
+                        <!-- START BLOCK : historylist_last_year -->
+                        <div class="history_row">
+                       <!-- <div class="history_row" onclick="window.location.href='history.php?week=day&yy=years&f_date1={date1s}&f_date2={date2s}'">-->
+                            <div class="history_cell date ">{month}{days}</div>
+                            <div class="history_cell trade_amount">{dealmoney}</div>
+                            <div class="history_cell result color_green">{after}</div>
+                        </div>
+                        <!-- END BLOCK : historylist_last_year -->
+                    </div>
+                    <div class="total_table">
+                    	<!-- START BLOCK : historylist_last_year_after -->
+                        <div class="total_row">
+                        <div class="total_cell date">{_HISTORY_COUNT}</div>
+                        <div class="total_cell trade_amount">{totalmomey_3}</div>
+                        <div class="total_cell result color_green">{totalquant_3}</div>
+                      <!-- END BLOCK : historylist_last_year_after -->
+                    </div>
+                    
+                    </div>
+                </div>
+<!-- END BLOCK : historylist_titlename -->
+            </div>
+</section>
+
+<script>
+
+</script>

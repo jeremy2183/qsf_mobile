@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="./css/res_order_his.css">
+<div id="indextitle" class="panel panel-default" style="border-top:0px solid #ddd;border-radius:0px;">
+交易明細
+</div>
+<div class="container" style="padding-left:0px;padding-right:0px;margin-top:0px;margin-left:0px;margin-right:0px;">
+
+<div class="view">
+<ul style="background-color:#ffffff;letter-spacing:2px;margin:0px;" class="nav nav-tabs">
+    <li style="text-align:center;width:50%;"><a onclick="highlightLink_usercenter(this);location.href='orderinfo.php'">{_TRANSACTION_DETAILS}</a></li>
+    <li id="bottom_line_right" style="width:50%;text-align:center;"><a onclick="highlightLink_usercenter(this);location.href='res_orders.php'">{_RES_ORDER}</a></li>
+</ul>
+</div>
+
+<div class="view">
+<ul style="background-color:#ffffff;letter-spacing:2px;margin:10px;" class="nav nav-tabs">
+    <li style="text-align:center;width:50%;"><a onclick="highlightLink_usercenter(this);location.href='res_orders.php'">未完成</a></li>
+    <li id="bottom_line_right" style="width:50%;text-align:center;"><a onclick="highlightLink_usercenter(this);location.href='res_orders_his.php'">預約歷史</a></li>
+</ul>
+</div>
+	<!-- START BLOCK : OrderList -->
+	  <div id="home" style="background-color:#FFFFFF;border-bottom: 2px solid rgba(9, 9, 9, 0.125);" class="tab-pane fade in active" style="margin:0px;">
+				 <div id="opens{i}" onClick="ReverseDisplay_his('{i}')">
+							<div style="height:50px;font-size:12px;padding:5px;border-radius:0px">				  
+							<div id="res_orderinfolistgame_one">#{betId}</div>
+							<div id="res_orderinfolistgame_two">{openDate}</div>
+							<div id="res_orderinfolistgame_five">{competition}</div>
+							<div id="res_orderinfolistgame_three">{event}</div>
+							<div id="res_orderinfolistgame_six">{createtime}</div>
+							<div id="res_orderinfolistgame_seven">{succ}</div>
+							<div id="res_orderinfolistgame_four{i}" class="res_orderinfolistgame_four">▲</div>
+						</div>
+			   </div>
+			   
+				<div id="open{i}" style="display:none" class="Orders">
+				  <div class="panel-body" contenteditable="true" style="padding:0px;">
+				    <table style="width:100%;">
+				    	<tr><td id="his_td_left">市场</td><td id="his_td_right">{marketsel}</td></tr>
+				    	<tr><td id="his_td_left">金额</td><td id="his_td_right">{dealmoney}</td></tr>
+				    	<tr><td id="his_td_left">获利範圍</td><td id="his_td_right">{minprofit} ~ {maxprofit}</td></tr>
+				    	<tr><td id="his_td_left_bottom">获利金額</td><td id="his_td_right_bottom">{expected}</td></tr>
+				    	<!-- START BLOCK : OrderList_detail -->
+				    	<tr>
+				    		<td colspan=2 style="height:30px;padding-left:10px;">{timestamp}{reason}</td>
+				    		</tr>
+				      <!-- END BLOCK : OrderList_detail -->
+				    </table>
+				  </div>
+				</div>
+		
+		</div>
+	<!-- END BLOCK : OrderList -->
+	

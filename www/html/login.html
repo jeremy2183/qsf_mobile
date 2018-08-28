@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=414,user-scalable=no">
+    <title>TG_Login</title>
+    <link rel="stylesheet" href="./template/www/css/bootstrap-select.min.css">
+    
+    <link rel="stylesheet" href="./template/www/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="./template/www/css/normalize.css">
+    <link rel="stylesheet" href="./template/www/css/login.css">
+    
+    <script src="./template/www/js/login_thr.js"></script>
+    <!--<script src="./template/www/js/stop_f12.js"></script>-->
+</head>
+<script>
+	var _ABOUT_SAME_INFO = '{_ABOUT_SAME_INFO}';
+	var _JS_PASS_ERROR_LESS_6 = '{_JS_PASS_ERROR_LESS_6}';
+	var _JS_ERROR_FIVE = '{_JS_ERROR_FIVE}';
+	var _JS_ACCOUNT_LOCK = '{_JS_ACCOUNT_LOCK}';
+	var _JS_MANY_LOGIN = '{_JS_MANY_LOGIN}';
+	var _JS_SPEC_LOGIN_EVER_LOCK = '{_JS_SPEC_LOGIN_EVER_LOCK}';
+	var _JS_SPEC_LOGIN = '{_JS_SPEC_LOGIN}';
+	var _NOT_OPEN = '{_NOT_OPEN}';
+	var _JS_NONE_ACCOUNT = '{_JS_NONE_ACCOUNT}';
+
+</script>
+<body class="bg_img">
+
+
+<div class="modal fade" id="myModa2" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div id="con1" class="order_content2">
+        <div id="con2" class="modal-header">
+          <div style="top:15px;" class="close_x" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></div>
+          <h4 class="modal-title">{_SYSTEM_HINT}</h4>
+        </div>
+        <div class="blue_line"></div>
+        <div class="modal-body" style="height:270px;">
+          <p>{_JS_ERROR_MESSAGE_}</p>
+        </div>
+       
+        <button onclick="closewebnum()" class="close_btn" data-dismiss="modal">{_I_KNOW_THAT}</button>
+      </div>
+      
+    </div>
+</div>
+
+<div id="Modal_cover" class="cover">
+    <div id="order1" class="order_content">
+        <div class="qq_title">{_TAOGIN_QQ_SHACK}</div>
+        <div class="close_x"><i class="fa fa-times" aria-hidden="true"></i></div>
+        <div class="blue_line"></div>
+        <div class="QRcode">
+        <img src=./serviceQRCode/{_QQ_} width=100% height=100%>	
+        </div>
+        <button class="close_btn">{_CLOSE}</button>
+    </div>
+</div>
+
+<div id="Modal_cover2" class="cover">
+    <div id="order2" class="order_content2">
+        <div class="weixin_title">{_TAOGIN_WEI_SHACK}</div>
+        <div class="close_x"><i class="fa fa-times" aria-hidden="true"></i></div>
+        <div class="blue_line"></div>
+        <div class="QRcode">
+        <img src=./serviceQRCode/{_WEI_}>	
+        </div>
+        <button class="close_btn">{_CLOSE}</button>
+    </div>
+</div>
+
+<div class="logo"></div>
+<div class="login_content">
+<div class="login_info">
+<div class="input_style"><i class="fa fa-user-o input_icon"></i><input class="input_font" type="text" id="account" name="account"  placeholder={_USERNAME} value="{_MEMUSERNAME}"></div>
+<div class="input_style_lock"><i class="fa fa-lock input_icon"></i><input class="input_font_lock" type="password" id="pwd" name="pwd"  placeholder={_LOGIN_PASSWD}></div>
+</div>
+
+<div class="switch_on_off">
+<label class="switch">
+<input type="checkbox" name="checbox_input">
+<span class="slider round"></span>
+</label>
+</div>
+ <div class="remember_acc_pwd">{_MEMBER_ACCOUNT}</div>
+<div class="btn_group">
+    <button class="register_btn" onclick="register('{_AGENT_USERNAME_}')">{_SIGN_UP_NOW}</button>
+    <button class="login_btn" onclick="checkuserform()">{_LOGIN}</button>
+</div>
+
+</div>
+
+<div class="service_content">
+    <div class="service_24hr">{_CUSTERMER24}</div>
+    <a href="https://v88.live800.com/live800/chatClient/chatbox.jsp?companyID=698946&configID=1586&jid=5625358570&s=1" target="_blank">
+       <div class="online_icon"></div>
+    </a>
+    <a id="qq" href="#">
+        <div class="qq_icon"></div>
+    </a>
+    <a id="weixin" href="#">
+        <div class="weixin_icon"></div>
+    </a>
+    
+</div>
+
+<div class="select_lang">
+	 <dl id="sample" class="dropdown">
+        <dt><a href="#"><span><img class="flag" src="./template/www/img/China-flag.png" alt=""/>简体中文</span></a></dt>
+        <dd>
+            <!--<ul>
+                <li><a href="login.php?langs=ch"><img class="flag" src="./template/www/img/China-flag.png" alt="" />簡体中文<span class="value">BR</span></a></li>
+                <li><a href="login.php?langs=tw"><img class="flag" src="./template/www/img/Hong-kong-flag.png" alt="" />繁體中文<span class="value">FR</span></a></li>
+                <li><a href="login.php?langs=en"><img class="flag" src="./template/www/img/United-kingdom-flag.png" alt="" />English<span class="value">DE</span></a></li>
+            
+            </ul>-->
+        </dd>
+    </dl>
+   
+</div>
+
+
+<div style="margin-left:5px;margin-right:5px;top:10%;" class="modal fade" id="myModal" role="dialog">
+</div>
+
+<script src="./template/www/js/jquery-3.2.1.min.js"></script>
+<script src="./template/www/js/bootstrap.min.js"></script>
+<script src="./template/www/js/bootstrap-select.min.js"></script>
+
+<script src="./template/www/js/modernizr.custom.04022.js"></script>
+<script src="./template/js/jquery.cookies.2.2.0.js"></script>
+<script src="./template/www/js/sidy.js"></script>
+<script src="./template/www/js/login.js"></script>
+<script>
+$(function() {
+
+  $('.switch').change(function(){
+    $(this).toggleClass('checked');
+    
+    var ss = $('input[name="checbox_input"]:checked').val();
+    //alert(ss);
+    if(ss=='on')
+     {
+   $('input[name="checbox_input"]').attr('checked',true);
+   $.cookies.set('menber', '1');    	
+     }
+    else
+    {
+  $('input[name="checbox_input"]').attr('checked',false);
+  document.cookie = 'user' + '=';
+  $.cookies.set('menber', null);	
+    }
+
+  });
+   
+ if('{_JS_ERROR_CODE_}'=='900')
+	{
+
+  var ss = $.cookies.get('closeweb');
+ 
+   	   if(ss=='y')
+   	    {
+   	return;   
+   	    }
+   	   else
+   	   	{
+  $('#myModa2').modal('show');
+	return; 	  
+   	   	}
+	
+	}
+	
+ if('{langs}')
+ {
+
+ $.cookies.set('langs', null);
+ $.cookies.set('langs', '{langs}');	
+ }
+
+var cck = $.cookies.get('menber');
+ if(cck==1)
+  {
+ $('input[name="checbox_input"]').attr('checked',true); 	
+  }
+});
+
+function checkcookie()
+	{
+		var cck = $.cookies.get('menber');
+		var account = $(':input[id=account]').val().trim();
+		
+		if(cck)
+		{
+			var expires = new Date();  
+			expires.setTime(expires.getTime() + 31536000000); //1 year  
+			document.cookie = 'user' + '=' + escape(account) + ';expires=' + expires.toUTCString();
+		}
+		else
+		{
+			document.cookie = 'user' + '='; 
+		}
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,1216 @@
+<link rel="stylesheet" href="./css/history.css">
+<link rel="stylesheet" href="./css/usercenter.css">
+<link rel="stylesheet" href="./css/marketorder.css">
+<script>
+	/*修改個人資訊*/
+	function chguserinfo(a,b)
+	 {
+	 	   if(a=='qq')
+	 	    {
+	 	    jQuery('#qq_before').hide();
+	 	    jQuery('#qq_before_button').hide();
+	 	    jQuery('#qq_after').show();
+	 	    jQuery('#qq_after_button').show();
+	 	     
+	 	    }
+	 	   if(a=='wechat')
+	 	    {
+	 	    jQuery('#wechat_before').hide();
+	 	    jQuery('#wechat_before_button').hide();
+	 	    jQuery('#wechat_after').show();
+	 	    jQuery('#wechat_after_button').show();
+	 	     
+	 	    }
+	 	   if(a=='email')
+	 	    {
+	 	    jQuery('#mail_before').hide();
+	 	    jQuery('#mail_before_button').hide();
+	 	    jQuery('#mail_after').show();
+	 	    jQuery('#mail_after_button').show();
+	 	     
+	 	    }
+	 }
+	
+	/*修改個人資訊*/
+	function chgusersendback(a)
+	 {
+
+	 	var nickname;
+	 	  
+	 	  if(a=='qq')
+	 	   {
+	 	   	  nickname = a;
+	 	   	  var qq = jQuery('#qq_after_qq').val();
+	 	   }
+	 	  else if(a=='wechat')
+	 	   {
+	 	   	  nickname = a;
+	 	   	  var qq = jQuery('#wechat_after_wechat').val();
+	 	   }
+	 	  else if(a=='email')
+	 	   {
+	 	   	  nickname = a;
+	 	   	  var qq = jQuery('#mail_after_mail').val();
+	 	   }
+	 	 
+	 	   else
+	 	   	{
+	 	   	}
+	 	   	
+	 	  jQuery.ajax({
+		    type: 'POST',
+		    url: './other/betsize.php',
+		    data: 'nicks='+nickname+'&info='+qq,		
+		    error: function(xhr)
+		      {
+			   //jQuery('#order').html('<font color=#FF0000>网路忙线中，请稍后再试!错误代码:681</font>');
+			    //change_alert('#FF0000','Wrong','網路忙線中','#FFFFFF');
+			    //alert('網路忙線中，請稍後再試!錯誤代碼:150');
+			    return false;
+		      },
+			   beforeSend:function(response)
+					{   
+					}, 
+	      success: function(response)
+	        {
+	        	   var ss = jQuery.trim(response);
+	        	    var qArray = ss.split("/");
+			          if(qArray[1]=='passwd')
+			           {
+			      swal({title: '{_JS_EDIT_SUCCESS}', text: '{_JS_EDIT_SUCCESS}'+'{_LOGOUT}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'},
+			           function(){
+                 window.close();
+                 window.opener.document.location.href='./controler/memberlogout.php';
+	               });
+			           }
+			          else if(qArray[1]=='pickup')
+			           {
+			      swal({title: '{_JS_EDIT_SUCCESS}', text: '{_JS_EDIT_SUCCESS}'+'{_LOGOUT}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'},
+			           function(){
+                 window.close();
+                 window.opener.document.location.href='./controler/memberlogout.php';
+	               });
+			      
+			           }
+			          else if(qArray[0]=='F')
+			           {
+			     swal({title: '{_ERRER_MESSAGE}', text: qArray[1], confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});			     
+			          	
+			           }
+			          else
+			           {
+			     swal({title: '{_JS_EDIT_SUCCESS}', text: '{_JS_EDIT_SUCCESS}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});
+			          document.location.reload();        	
+			           }
+		      }
+    
+	  	 }); 
+	 }
+	
+	/*修改個人資訊密碼*/
+	function editpasswd(a)
+	 {
+	 	  if(a=='loginpass')
+	 	   {
+	 	   	var nickname = a;
+	 	   	var qq = 'loginpass';
+	 	   }
+	 	  if(a=='pickuppass')
+	 	   {
+	 	   	var nickname = a;
+	 	   	var qq = 'pickuppass';
+	 	   }
+	 	  
+	 	  jQuery.ajax({
+		    type: 'POST',
+		    url: './chgpasswd.php',
+		    data: 'nicks='+nickname+'&info='+qq,		
+		    error: function(xhr)
+		      {
+			   //jQuery('#order').html('<font color=#FF0000>网路忙线中，请稍后再试!错误代码:681</font>');
+			    //change_alert('#FF0000','Wrong','網路忙線中','#FFFFFF');
+			    //alert('網路忙線中，請稍後再試!錯誤代碼:150');
+			    return false;
+		      },
+			   beforeSend:function(response)
+					{   
+					}, 
+	      success: function(response)
+	        {
+	        	jQuery('#list_order_wa99').dialog('open');
+	        	jQuery('#list_order_wa99').html(response);
+		      }
+    
+	  	 });
+	 }
+  
+  /*銀行轉帳*/
+  function savepickup_finish(a)
+   {
+   	var simple_ar = Array();
+  	var c2bet_st = new Object;
+  	var orderinfo_st = new Object;
+  	
+   	var savemember_bank = jQuery("#savemember_bank").text();
+    var savemember_acount = jQuery("#savemember_acount").text();
+    var savemember_bankchild = jQuery("#savemember_bankchild").text();
+    var savemember_num = jQuery("#savemember_num").text();
+    var line_money = jQuery("#savemember_menoy").text();
+    var bankfid = jQuery('#bankfid').text();
+    
+    
+    var jimDatass = {types:'1', chbank:savemember_bank, num:a, line_money:line_money, a1:savemember_bank, a2:savemember_acount, a3:savemember_bankchild, a4:bankfid}  
+        
+        simple_ar.push(jimDatass);
+  	    orderinfo_st = simple_ar;
+  	    c2bet_st["c2betorder"]=orderinfo_st;
+  	    
+			jQuery.ajax({
+				type: 'POST',
+				url: './other/savepickupmod.php',
+				data: c2bet_st ,		
+				    error: function(xhr)
+				      {
+					   //jQuery('#order').html('<font color=#FF0000>网路忙线中，请稍后再试!错误代码:681</font>');
+					    //alert('網路忙線中，請稍後再試!錯誤代碼:save255');
+					    return false;
+				      },
+					   beforeSend:function(response)
+							{
+					  //swal({title: "讯息", text: "....请稍后...", showConfirmButton: false, customClass: 'twitter'});		   
+							alert('{JS_WAIT_}');
+							}, 
+			      success:function(response)
+			        {
+		
+			       var ss = jQuery.trim(response);
+		          
+		              if(ss)
+						  	   {
+						  	   alert('{_JS_APPLICATION_SUCCESS}');
+						  	   document.location.href='./usercenter.php?uc=Details';
+						  	   	return;
+						  	   }
+							    else
+							     {						     	
+							     alert('{_JS_APPLICATION_ERROR}');
+							     document.location.href='./memberlogout.php';
+							     return;
+							     } 
+
+                        
+	                     
+	
+				      }
+		    
+			 });
+      
+   
+   }
+  
+  function savemember_alipay_first()
+{
+
+	jQuery('#savemember1_up').show();
+	jQuery('#savemember1_up_alipay').hide();
+}
+
+  /*支付寶*/
+  function savemember_alipay()
+		{
+			 
+			  //var sre = /^[0-9]+(\.[0-9]{0,0})?$/;
+			  var sre = /^[0-9]+(\.[0-9]{1,2})?$/;//小數點2位
+			  var reg = /^[0-9]*$/;
+			  
+			  var simple_ar = Array();
+		  	var c2bet_st = new Object;
+		  	var orderinfo_st = new Object;
+		  	
+			  var paipayaccount = jQuery("#paipayaccount").val();
+			  var paipayname = jQuery("#paipayname").val();
+			  var paipaymoney = jQuery("#paipaymoney").val();
+			  var checkphone2 = jQuery("#checkphone2").val();
+			  
+			  var alipay = jQuery("#bankm").val();
+			  var zz = alipay.split(':');
+			  
+			  //if(paipayaccount=='' || paipayname=='' || paipaymoney=='')
+			  if(paipayaccount=='' || paipaymoney=='')
+			  {
+			  	return false;
+			  }
+			   else if(paipaymoney < 100 || paipaymoney > 50000)
+			   {
+			   	swal({title: '{_ERRER_MESSAGE}', text: '{_JS_SAVE_LESS_100}'+'{_JS_SAVE_OVER_5000}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});
+			   	return;
+			   }
+		    else if(!reg.test(paipaymoney))
+			    {
+			    swal({title: '{_ERRER_MESSAGE}', text: '{_JS_SAVE_INT}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'}); 
+			  return;
+			    }
+			  //else if(paipayaccount.length > 16)
+			    //{
+			  //swal({title: '{_ERRER_MESSAGE}', text: '{_JS_PAY_OVER_16}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});
+			  
+			  //return;
+			    //} 
+			  
+			  else
+			  	{
+			  	}
+			
+			//var jimDatass = {types: '1', num:'5', a4:paipayaccount, line_money:paipaymoney, info:zz[0]}
+			var jimDatass = {types: '1', num:'5', a4:paipayaccount, line_money:paipaymoney, info:zz[0], a3:zz[2]}
+			simple_ar.push(jimDatass);
+		  c2bet_st["c2betorder"]=simple_ar;
+		   //console.log(jimDatass);
+		   //return;
+		   jQuery.ajax({
+				    type: 'POST',
+				    url: './other/savepickupmod.php',
+				    data: c2bet_st ,		
+				    error: function(xhr)
+				      {
+					   //jQuery('#order').html('<font color=#FF0000>网路忙线中，请稍后再试!错误代码:681</font>');
+					    //alert('網路忙線中，請稍後再試!錯誤代碼:save255');
+					    //return false;
+				      },
+					   beforeSend:function(response)
+							{
+			        alert('{JS_WAIT_}');
+							}, 
+			      success:function(response)
+			        {
+		           var ss = jQuery.trim(response);
+			           if(ss)
+			           {
+			          //jQuery('#alimoney').html(paipaymoney);
+			          //jQuery('#savemember1_up').hide();
+			          //jQuery('#savemember1_up_alipay').show();
+			          alert('{_JS_APPLICATION_SUCCESS}');
+			          location.href='./usercenter.php?uc=Details';
+			          //alert('Y');
+			           }
+			           else
+			           {
+			          alert('{_JS_APPLICATION_ERROR}'); 
+			           }
+			           
+				      }
+		    
+			      });
+		 
+		}
+		
+	/*提領送出*/ 
+  	function pickupmoney()
+		{
+      
+			var simple_ar = Array();
+  	  var c2bet_st = new Object;
+  	  var orderinfo_st = new Object;
+  	  var re = /^[0-9]+(\.)?$/;
+	    var re2 = /(?!^[0-9]{6,}$)(?!^[a-zA-Z]{6,}$)^[0-9a-zA-Z]{6,}$/;
+	   //var sre = /^[0-9]+(\.[0-9]{0,0})?$/;
+	   //var sre = /^[0-9]+(\.[0-9]{1,2})?$/;//小數點2位
+	    var sre = /^[0-9]*$/;
+	    var ans = '';
+	    
+			/*银行帐号*/
+	      var bankaccount = jQuery("#bankaccount_self").val();
+	    /*提款户名*/
+	      var bankaccountname = jQuery("#bankaccountname").val();
+	    /*银行名称*/
+	      var bankaccountword = jQuery("#bankaccountword").val();
+	      var bankaccountword_sp = bankaccountword.split(':');
+	    /*提領金額*/  
+	      var getmoney = jQuery("#getmoney").val();
+	    /*提領密碼*/  
+	      var sellpassword = jQuery("#sellpassword").val();
+        var balance_money_chk_pick = jQuery("#balance_money_chk_pick").val();
+        
+        if(bankaccount=='' || bankaccountname=='' || bankaccountword=='' || getmoney=='' || sellpassword=='')
+	           {
+	           	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_INFO}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});
+	           	alert('{_JS_INFO}');
+	           	return;
+	           }
+	    
+	    else if(jQuery.trim(getmoney.replace(/\s+/g,""))!==getmoney)
+	    {
+	    	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_PICKUP_NO_EMPTY}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});
+	    	alert('{_JS_PICKUP_NO_EMPTY}');
+	    	return;
+	    }
+	    else if(bankaccount.length > 19 || bankaccount.length < 16)
+	    	{
+	    		//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_WITHDRAWALS_GREATER_16_19}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});	    	
+	    	  alert('{_JS_WITHDRAWALS_GREATER_16_19}');
+	    	  return;
+	    	}
+	    else if(jQuery.trim(bankaccountword_sp[2].replace(/\s+/g,""))!==bankaccountword_sp[2])
+	    {
+	    	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_BANK_EMPTY}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});	    	
+	    	alert('{_JS_BANK_EMPTY}');
+	    	return;
+	    }
+	    else if(jQuery.trim(bankaccountname.replace(/\s+/g,""))!==bankaccountname)
+	    {
+	    	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_PICKUPNAME_EMPTY}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});	    	
+	    	alert('{_JS_PICKUPNAME_EMPTY}');
+	    	return;
+	    }
+	    else if(bankaccountname.replace(/[^\u4E00-\u9FA5]/g,"")!==bankaccountname)
+	    	{
+	    		//swal({title: '{_ERRER_MESSAGE}', text: '{JS_CHINESE}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});    	
+	    	  alert('{JS_CHINESE}');
+	    	  return;
+	    	}
+	    else if(jQuery.trim(sellpassword.replace(/\s+/g,""))!==sellpassword)
+	    {
+	    	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_PASSWD_EMPTY}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});	    	
+	    	alert('{_JS_PASSWD_EMPTY}');
+	    	return;
+	    }
+	    else if(!sre.test(getmoney))
+	    {
+	    	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_PICKUP_INT}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});	    	
+	      alert('{_JS_PICKUP_INT}');
+	    	return;
+	    }
+	    else if(getmoney < 100)
+	    {
+	    	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_WITHDRAWALS_GREATER_100}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});
+	      alert('{_JS_WITHDRAWALS_GREATER_100}');
+	    	return;
+	    }
+	    
+	    else if(parseFloat(getmoney) > parseFloat(balance_money_chk_pick))
+	    {
+	    	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_WITHDRAWALS_GREATER_QUOTA}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});         	
+	    	alert('{_JS_WITHDRAWALS_GREATER_QUOTA}');
+	    	return;
+	    }
+	    
+	    else
+	    {
+	    	//alert('Y');
+	    	//return;
+	    }
+        var jimDatass = {num:'7', types:'2', getmoney:getmoney, sellpassword:sellpassword, bankaccount: bankaccount, bankaccountname: bankaccountname, bankaccountword: bankaccountword_sp[2]}	  		
+	    	simple_ar.push(jimDatass);
+  	    orderinfo_st = simple_ar;
+  	    c2bet_st["c2betorder"]=orderinfo_st;
+  	    
+  	    console.log(jimDatass);
+  	    //return;
+  	    jQuery.ajax({
+					type: 'POST',
+					url: './other/savepickupmod.php',
+					data: c2bet_st ,		
+					error: function(xhr) {
+						//jQuery('#order').html('<font color=#FF0000>网路忙线中，请稍后再试!错误代码:992</font>');
+						//alert('網路忙線中，請稍後再試!錯誤代碼:simp137');
+						return false;
+					},					
+					beforeSend:function(response)
+					{
+				  },
+					success: function(response) {
+ 
+					    var ss = jQuery.trim(response);
+              alert(ss);
+			        if(ss=='empty')
+							    {
+							   alert('{_JS_LOGOUTED}');
+							   document.location.href='./memberlogout.php';
+										  	   	return;
+							    }
+							   else if(ss=='NO_LOGIN')
+							    {
+							    
+								alert('{_ACCOUNT_OTHER_ONLINE}');
+								document.location.href='./memberlogout.php';
+									return;
+							    }
+						  	 else if(ss)
+						  	   {
+						  	   	alert('{_JS_APPLICATION_SUCCESS}');
+						  	   	document.location.href='./usercenter.php?uc=Details';
+						  	   	return;
+						  	   }
+							   else
+							     {
+                    alert('{_JS_APPLICATION_ERROR}');
+							     document.location.href='./memberlogout.php';
+							     return;
+							     }
+					}
+				 });
+		}
+		
+  /*銀行選擇*/
+   function bankinfo_sub(a)
+    {
+    	//alert(a);
+    	var na = a.split(":");
+    	jQuery('#banksub').html(na[2]);
+    }
+  /*存款選擇*/
+  function savemember1()
+		{
+			
+			  var reg = /^[0-9]*$/;
+			  var sre = /^[0-9]+(\.[0-9]{1,2})?$/;//小數點2位
+			  
+			  var bankaccountword = jQuery("#bankm").val();
+			  var zz = bankaccountword.split(':');
+			  var line_money = jQuery("#line_money").val();
+			  
+			  			  
+			  if(bankaccountword=='' || line_money=='')
+			  {		  	
+			  	return;
+			  }
+			  
+			   else if(line_money < 100)
+			   {
+			   	//swal({title: "{_ERRER_MESSAGE}", text: "{_JS_SAVE_LESS_100}", confirmButtonText: "{_JS_SURE}",customClass: 'twitter'}); 
+			   	alert("{_JS_SAVE_LESS_100}");
+			   	return;
+			   }
+		    
+		    else if(!reg.test(line_money))
+			    {
+			  //swal({title: "{_ERRER_MESSAGE}", text: "{_JS_SAVE_INT}", confirmButtonText: "{_JS_SURE}", customClass: 'twitter'}); 
+			  alert("{_JS_SAVE_INT}");
+			  return;
+			    }
+			  
+			  else
+			  	{
+			  		
+			  	}
+			
+		  jQuery('#savemember_bank').html(zz[3]);
+		  jQuery('#savemember_bankchild').html(zz[4]);
+		  jQuery('#savemember_acount').html(zz[2]);
+		  jQuery('#savemember_num').html(zz[1]);
+		  jQuery('#savemember_urlss').html(zz[5]+':'+zz[6]);
+		  jQuery('#bankfid').html(zz[0]);
+		  jQuery('#savemember_menoy').html(line_money);
+		  jQuery('#usercenter_saveup_first').hide();
+		  jQuery('#usercenter_saveup_sec').show();
+		  
+		}
+	
+function Chooseself(a)
+{
+	var aa = a.split(':');
+  //alert(aa[0]);
+  jQuery(":input[id=bankaccount_self]").val();
+	jQuery(':input[id=bankaccount_self]').val(aa[0])
+	//jQuery( "#bankaccount_self" ).val(aa[0]);
+	jQuery( "#bankaccountname" ).val(aa[1]);
+	//jQuery( "#bankaccountid" ).val(aa[2]);
+	jQuery( ":input[id=bankaccount_self]" ).attr('disabled',true);
+}
+
+/* 快捷金額設定-執行 */
+	function changeCommon()
+	{
+		var pwdType = $('#pType').val();
+		if( pwdType != 'common' )
+		{
+			alert('{_WRONG_USE_}');
+			return;
+		}
+		var simple_ar = Array();
+		var c2bet_st = new Object;
+		var orderinfo_st = new Object;
+
+		var re = /^[0-9]*$/;
+		var common1 = jQuery("#common1").val();
+		var common2 = jQuery("#common2").val();
+		var common3 = jQuery("#common3").val();
+
+		if( isNaN(common1) || isNaN(common2) || isNaN(common3) )
+		{
+			alert('{_PLEASEINPUTNUM_}'); 　
+			return;
+		}
+
+		if( common1 ) c2bet_st["common1"] = common1;
+		if( common2 ) c2bet_st["common2"] = common2;
+		if( common3 ) c2bet_st["common3"] = common3;
+
+		jQuery.ajax({
+			type: 'POST',
+			url: 'ActionEditCommon.php',
+			data: c2bet_st,		
+			error: function(xhr)
+			{
+				alert('{_BREAK_CHECK_INFO}');
+				return false;
+			},
+			beforeSend:function(response)
+			{
+				//Loading();
+			}, 
+			success: function(response)
+			{
+				//alert(response);
+				response = jQuery.trim(response);
+				location.reload();
+				return;
+			}
+		 }); 
+	}
+	
+	/* 密碼修改-執行 */
+	function changePwd()
+	{
+		var pwdType = $('#pType').val();
+		if( pwdType != 'passwd' &&  pwdType != 'pickup' )
+		{
+			alert('{_WRONG_USE_}');
+			document.location.href='logout.php'; 
+			return;
+		}
+		var simple_ar = Array();
+		var c2bet_st = new Object;
+		var orderinfo_st = new Object;
+
+		var re2 = /^([a-zA-Z]+\d+|\d+[a-zA-Z]+)[a-zA-Z0-9]*$/;
+		
+		var oldaccount	 = jQuery("#oldaccount").val();
+		var newaccount	 = jQuery("#newaccount").val();
+		var renewaccount = jQuery("#renewaccount").val();
+
+		if( oldaccount=="" || newaccount=="" || renewaccount=="" )
+		{
+			alert('{_JS_INFO}');
+			return;
+		}
+		else if(newaccount!=renewaccount)
+		{
+			alert('新密码与确认密码不符合！');
+			return;
+		}
+		else if(jQuery.trim(oldaccount.replace(/\s+/g,""))!==oldaccount)
+		{
+			alert('旧密码請勿有空格');
+			return;
+		}
+		else if(jQuery.trim(newaccount.replace(/\s+/g,""))!==newaccount)
+		{
+			alert('新密码請勿有空格');
+			return;
+		}
+		else if(!re2.test(newaccount))
+		{
+			alert('新密码請英數混合'); 　
+			return;
+		}
+		else if(newaccount.length < 6)
+		{
+			alert('新密码請大於6個字'); 　
+			return;
+		}
+		else if(oldaccount.length < 6)
+		{
+			alert('请确认旧密码位数'); 　
+			return;
+		}
+
+		var jimDatass = { chgmun: pwdType, oldaccount: oldaccount, newaccount: newaccount };
+			   
+		simple_ar.push(jimDatass);
+		orderinfo_st = simple_ar;
+		c2bet_st["editPwd"]=orderinfo_st;	
+     console.log(jimDatass);
+     //return;
+		jQuery.ajax({
+			type: 'POST',
+			url: 'ActionEditPwd.php',
+			data: c2bet_st ,		
+			error: function(xhr)
+			{
+				alert('{_BREAK_CHECK_INFO}');
+				return false;
+			},
+			beforeSend:function(response)
+			{
+				//Loading();
+			}, 
+			success: function(response)
+			{        
+				response = jQuery.trim(response);
+
+				//closeLoading();
+				if(response=='S')
+				{
+					alert('修改成功，请重新登入');
+					document.location.href='memberlogout.php';   
+				}
+				else
+				{
+					alert( '修改失败，请重新确认['+response+']' );
+				}    
+			}
+
+		 }); 
+	}
+</script>
+<script>
+function backbath()
+{
+	//alert('T');
+	window.history.go(-1);
+}
+</script>
+<script>
+    
+	function ReverseDisplay(d) {
+		if(document.getElementById('open'+d).style.display == "none")
+		{
+		jQuery('#orderinfolistgame_four'+d+'').removeClass("orderinfolistgame_four").addClass("orderinfolistgame_four_open");	
+		}
+		else
+		{
+		jQuery('#orderinfolistgame_four'+d+'').removeClass("orderinfolistgame_four_open").addClass("orderinfolistgame_four");
+	
+		}
+		jQuery('#open'+d+'').toggle();
+		}
+	
+	function gettoday(a)
+	 {
+	 	document.location.href='history.php?week=day&f_date1='+a+'';
+	 }
+	
+   function checkmenu(a)
+   {
+   	  if(a=='save')
+   	  {
+   	  document.location.href='usercenter.php';	
+   	  }
+   	  else
+   	  {
+   	  document.location.href='usercenter.php?uc=Receive';
+   	  }
+   	//document.location.href='history.php?cy=1';
+   	//jQuery('.tab-pane').css("display","none");
+   	//jQuery('#'+a+'').css("display","block");
+   	//jQuery('#'+a+'').addClass('in active');
+   }
+/* 呼叫會員修改密碼popup */
+	function editPwd(Index)
+	{
+		var SelectName = { "passwd":"登入密码更新", "pickup":"提领密码更新", "common":"快捷金额设定" };
+		jQuery('#pType').val(Index);
+		jQuery('#SelectTitle').html( SelectName[Index] );
+		jQuery('.RobotCtrlPopup').css('height', '852px');
+		jQuery('.RobotCtrlPopup').css('left'  , (($(window).width()-1000)/2)+'px');
+		jQuery('.RobotCtrlPopup').css('top'	 , (($(window).height()-852)/2-200)+'px');
+		jQuery('#RobotCtrlPopup').css('display'	, 'block');
+		if( Index=='passwd' || Index=='pickup' )
+		{
+			jQuery('#pwdEdit').css('display', 'block');
+			jQuery('#commonEdit').css('display', 'none');
+		}
+		if( Index=='common' )
+		{
+			jQuery('#pwdEdit').css('display', 'none');
+			jQuery('#commonEdit').css('display', 'block');
+		}
+		jQuery('#myModal').modal('show');
+	}
+	function goback()
+	{
+		alert('T');
+		window.history.back();
+	}
+</script>
+<!-- START BLOCK : PublicTitle -->
+<div id="indextitle" class="panel panel-default" style="border-top:0px solid #ddd;border-radius:0px;">
+{_PUBLIC_TITLE_}
+</div>
+<!-- END BLOCK : PublicTitle -->
+<!-- START BLOCK : PublicTitle_userinfo -->
+<div class="account_banner">
+	{_USER_NAME_}
+</div>
+<!-- START BLOCK : PublicTitle_userinfo -->
+
+
+<div class="container" style="width:100%;padding-left:0px;padding-right:0px;margin-top:0px;margin-left:0px;margin-right:0px;">
+	<div class="tab-content">
+<!-- START BLOCK : default -->
+<ul style="letter-spacing:2px;margin:0px;" class="nav nav-tabs">
+    <li id="bottom_line1" style="background-color:#ffffff;text-align:center;width:50%;"><a onclick="checkmenu('save');">{_SAVE_MONEY_}</a></li>
+    <li id="bottom_line2" style="background-color:#ffffff;width:50%;text-align:center;"><a onclick="checkmenu('pickup');">{_PICK_}</a></li>
+ </ol> 
+	<div style="font-weight:bolder;margin-top:33px;margin-bottom:8px;text-align:center;color:#ff0000;font-size:80%;">{_PRECAUTIONS}</div>
+	<div style="margin:15px, 15px, 15px, 5px;">
+	<ol style="list-style-image:none;padding-right: 22px;">
+	<li style="margin-bottom:5px;color:#000; font-size:5%;letter-spacing:1px;line-height: 16px;">{_LONG_WORD_112}</li>
+	<li style="margin-bottom:5px;color:#000; font-size:5%;letter-spacing:1px;line-height: 16px;">{_LONG_WORD_113}</li>
+	<div style="margin-bottom:5px;font-size:5%;letter-spacing:1px;line-height: 16px;">{_LONG_WORD_114}</div>
+</ol>
+	<p><p><p>
+	</div>
+	
+	<div class="view">
+		<div class="" style="padding-bottom: 5px;padding-top: 20px;">
+		<div class="" style="padding-left:10px;padding-bottom: 5px;padding-top: 20px;">
+        {_SAVE_MONEY_METH}
+      </div>
+		<div class="panel panel-default" style="margin-bottom:100px;">
+      <div class="panel-body" style="font-weight:bold;height:100px;padding:0px;">
+        <table width="100%" height="100%">
+        	<tr>
+        		<td onclick="location.href='usercenter.php?uc=alipay'" width="30%" style="height:100%;text-align:center;border-bottom:1px solid #b9c9d6;border-right:1px solid #b9c9d6;"><img src="./icon/savepick/1.png" width="40px" height="40px"><div style="margin-top:10px;">{_ALIPAY_}</div></td>
+        		<td onclick="location.href='usercenter.php?uc=Deposit&wa=1'" width="30%" style="height:100%;text-align:center;border-right:1px solid #b9c9d6;border-bottom:1px solid #b9c9d6;padding-top:5px;"><img src="./icon/savepick/2.png" width="50px" height="35px"><div style="padding-top:10px;">{_INTERBANK_}</div></td>
+        		<td onclick="location.href='usercenter.php?uc=Deposit&wa=4'" width="30%" style="height:100%;text-align:center;border-right:1px solid #b9c9d6;border-bottom:1px solid #b9c9d6;"><img src="./icon/savepick/3.png" width="40px" height="40px"><div style="margin-top:10px;">{_CABINETPAY_}</div></td>
+        	</tr>
+        </table>
+      </div>
+      <div class="panel-body" style="font-weight:bold;height:100px;padding:0px;">
+        <table width="100%" height="100%">
+        	<tr>
+        		<td width="30%" style="height:100%;text-align:center;border-right:1px solid #b9c9d6;border-bottom:1px solid #b9c9d6;"><img src="./icon/savepick/4.png" width="40px" height="40px"><div style="margin-top:10px;">{_WEPAY_}</div></td>
+        		<td width="30%" style="height:100%;text-align:center;border-right:1px solid #b9c9d6;border-bottom:1px solid #b9c9d6;"><img src="./icon/savepick/5.png" width="40px" height="40px"><div style="margin-top:10px;">{_CHIPAY_}</div></td>
+        		<td width="30%" style="height:100%;text-align:center;border-right:1px solid #b9c9d6;border-bottom:1px solid #b9c9d6;"><div style="margin-top:10px;"></div></td>
+        	</tr>
+        </table>
+      </div>
+      
+    </div>
+	</div>
+	<!-- END BLOCK : default -->
+	
+	<!-- START BLOCK : payCodeMsg -->
+	{payCodeMsg}
+	<!-- END BLOCK : payCodeMsg -->
+	
+<!-- START BLOCK : usercenter_saveup_outside -->
+<ul style="background-color:#ffffff;letter-spacing:2px;margin:0px;" class="nav nav-tabs">
+    <li id="bottom_line1" style="text-align:center;width:50%;"><a onclick="checkmenu('save');">{_SAVE_MONEY_}</a></li>
+    <li id="bottom_line2" style="width:50%;text-align:center;"><a onclick="checkmenu('pickup');">{_PICK_}</a></li>
+ </ul> 
+<div class="usercenter" style="height:600px;margin:5px;background-color:#FFFFFF;">
+	<div class="savepick" style="height:40px;">
+		<div style="position:absolute;padding-top:5px;color:#ffffff;text-align:left;width:50px;padding:10px;"><img src=./icon/arrow.png width="20px" height="20px"></div>
+		<div onclick="javascript:window.history.go(-1);" style="width:100%;position:absolute;float:left;padding-top:10px;color:#ffffff;text-align:center;">{_INTERBANK_}</div>
+	</div>
+	  <div style="margin-top:5px;height:400px;">
+	  	
+	  	<div class="usercenter_list_bottom" style="margin-top:0px;">
+	    
+		  <div id="usercenter_saveup_first" style="display:block;">	  
+		  <div style="border-bottom-width:50px;text-align:left;padding-top:5px;padding-left:5px;font-size:18px;">
+		  		<div style="font-weight:bold;margin-left:5px;border-bottom: 1px solid rgba(0, 0, 0, 0.5);width:96%;">
+		  	{_CHOOSE_BANK}
+		       </div>
+		   </div>
+			 	<div style="text-align:left;padding-top:5px;padding-left:0px;font-size:18px;height:220px;width:100%;">
+			    <div style="width:95%;height:100px;position:absolute;text-align:left;padding-top:0px;padding-left:10px;font-size:12px;">
+			   
+			 	  <table style="width:100%;">
+			    	<tr style="width:100%;height:30px;"><td style="padding-left:0px;">{_CHOOSE_BANK}</td>
+			    		  <td colspan=3 style="text-align:right;">
+			    		  <select style="width:90%;height:30px;" class=selectclass onchange="bankinfo_sub(this.value)" name="bankm" id="bankm">
+					      <option selected="selected" value="">....{_CHOOSE_BANK}...</option>
+								<!-- START BLOCK : usercenter_saveup -->
+								<option value={id}:{faccount}:{fbranch}:{fbank}:{fname}:{url}>{fbank}</option>
+								<!-- END BLOCK : usercenter_saveup -->
+								</select>
+			    		  </td>
+			    	</tr>
+			    	<tr style="width:100%;height:35px;"><td style="padding-left:0px;">{_BANK_BRANCHES}</td>
+			    		  <td colspan=3 style="text-align:left;"><div style="padding-left:30px;padding-top:10px;width:90%;height:30px;" id="banksub"></div></td>
+			      </tr>
+			    	<tr style="width:100%;height:35px;"><td style="padding-left:0px;">{_SAVE_MONEY}</td>
+			    		  <td colspan=3 style="text-align:right;"><input style="width:90%;height:30px;" class=inputclass type="text" id="line_money"></td>
+			      </tr>
+			      <tr style="width:100%;height:35px;">
+			      	<td colspan=4 style="padding-top:20px;">
+			      		<input type="button" style="width:100%;height:40px;" class="usercenter_button" value='{_SURE_SUBMIT}' onclick="savemember1('{num}')">
+			      	</td>
+			      </tr>
+			    </table>
+			    </div>
+			    
+			    <div style="margin-top:160px;height:100px;width:100%;left:50%;text-align:left;padding-top:5px;padding-left:0px;font-size:12px;">
+				    <div style="font-size:16px;font-weight:bold;padding:10px;height:30px;text-align:center;color:#ff0000;">{_PRECAUTIONS}</div>
+				 	  <ol style="margin-left:-10px;margin-right:5px;list-style-image:none;">
+				 	  <li style="padding:5px;height:35px;color:#ff0000;">{_LONG_WORD_116}</li>
+				 	  <li style="padding:5px;height:30px;">{_LONG_WORD_117}</li>
+				 	  <li style="padding:5px;height:30px;">{_LONG_WORD_118}</li>
+				 	  <li style="padding:5px;height:30px;color:#ff0000;">{_LONG_WORD_119}</li>
+
+					  </ol>
+			    </div>
+			    </div>
+		  	  </div>
+		  	  
+		  	  <div id="usercenter_saveup_sec" style="display:none;">
+		  	   <div style="border-bottom-width:50px;border-bottom: 1px solid rgba(0, 0, 0, 0.5);text-align:left;padding-top:5px;padding-left:5px;font-size:18px;">{_UNDER_BANK}</div>
+		  	   <div style="text-align:left;padding-top:5px;padding-left:0px;font-size:12px;height:200px;width:100%;">
+					 <div style="width:100%;height:100px;position:absolute;text-align:left;padding-top:0px;padding-left:5px;font-size:12px;">
+					 <table style="width:100%;">
+			    	<tr style="height:35px;"><td style="padding-left:10px;">{_BANK}</td>
+			    		  <td colspan=2><div id="savemember_bank"></div></td>
+			    		  <td></td>
+			    	</tr>
+			    	<tr style="height:35px;"><td style="padding-left:10px;">{_NAME_}</td>
+			    		  <td colspan=2><div id="savemember_bankchild"></div></td>
+			    		  <td></td>
+			    	</tr>
+			    	<tr style="height:35px;"><td style="padding-left:10px;">{_BRANCHES}</td>
+			    		  <td colspan=2><div id="savemember_acount"></div></td>
+			    		  <td></td>
+			    	</tr>
+			    	<tr style="height:35px;"><td style="padding-left:10px;">{_ACCOUNT}</td>
+			    		  <td colspan=2><div id="savemember_num"></div></td>
+			    		  <td></td>
+			    	</tr>
+			    	<tr style="height:35px;"><td style="padding-left:10px;">{_SAVE_MONEY}</td>
+			    		  <td colspan=2><div id="savemember_menoy"></div></td>
+			    		  <td></td>
+			    	</tr>
+			    	<tr style="height:35px;">
+			    		<td colspan=4 style="height:50px;padding-top:5px;">
+			    	  <input style="width:97%;height:35px;" type="button" class=usercenter_button value="{_FINISH_STRICT_SEND}" onclick="savepickup_finish('{num}')">
+			    	  <td>
+			    	<tr>
+			    	<tr style="height:35px;width:100%;"><td colspan=4 style="height:35px;color:#ff0000;">{_LONG_WORD_116_11}</td></tr>
+			    				    	
+					 </table>
+					 
+					 <div id="savemember_urlss" style="display:none"></div>
+					 <div id="bankfid" style="display:none"></div>
+	         </div>
+	          
+	          <div style="margin-top:270px;margin-left:10px;padding-right:20px;height:100px;width:100%;left:50%;text-align:left;padding-top:5px;padding-left:0px;font-size:12px;">
+				    <div style="height:20px;text-align:center;color:#ff0000;">{_PRECAUTIONS}</div>
+				 	  <div style="height:40px;color:#ff0000;">1.{_LONG_WORD_116_1}</div>
+				 	  <div style="height:40px;">2.{_LONG_WORD_117_1}</div>
+				 	  <div style="height:40px;color:#ff0000;">{_LONG_WORD_118_1}</div>
+			      </div>
+	          </div>
+	         
+	         
+	        </div>
+	  	</div>
+	  	
+	  	<div class="usercenter_list_bottom">
+	  		<div style="position:absolute;text-align:left;padding-top:15px;padding-left:15px;"></div>
+	  		<div style="position:absolute;padding-top:15px;left:160px;"></div>
+	  	</div>
+	  	
+	  </div>	
+</div>
+<!-- END BLOCK : usercenter_saveup_outside -->
+
+<!-- START BLOCK : usercenter_saveup_Alipay_empty -->
+<ul style="background-color:#ffffff;letter-spacing:2px;margin:0px;" class="nav nav-tabs">
+    <li id="bottom_line1" style="text-align:center;width:50%;"><a onclick="checkmenu('save');">{_SAVE_MONEY_}</a></li>
+    <li id="bottom_line2" style="width:50%;text-align:center;"><a onclick="checkmenu('pickup');">{_PICK_}</a></li>
+ </ul>
+<div class="usercenter" style="margin:5px;background-color:#FFFFFF;">
+<div class="savepick" style="height:40px;">
+	<div style="position:absolute;padding-top:5px;color:#ffffff;text-align:left;width:50px;padding:10px;"><img src=./icon/arrow.png width="20px" height="20px"></div>
+		<div onclick="javascript:window.history.go(-1);" style="width:100%;position:absolute;float:left;padding-top:10px;color:#ffffff;text-align:center;">{_ALIPAY_}</div>
+	</div>
+<div style="text-align:center;width:100%;height:500px;padding-top:50px;">
+[{_STOP_SERVICE_}]
+</div>
+</div>
+<!-- END BLOCK : usercenter_saveup_Alipay_empty -->
+
+<!-- START BLOCK : usercenter_saveup_Alipay -->
+<ul style="background-color:#ffffff;letter-spacing:2px;margin:0px;" class="nav nav-tabs">
+    <li id="bottom_line1" style="text-align:center;width:50%;"><a onclick="checkmenu('save');">{_SAVE_MONEY_}</a></li>
+    <li id="bottom_line2" style="width:50%;text-align:center;"><a onclick="checkmenu('pickup');">{_PICK_}</a></li>
+ </ul> 
+<div class="usercenter" style="margin:5px;background-color:#FFFFFF;">
+	<div class="savepick" style="height:40px;">
+	<div style="position:absolute;padding-top:5px;color:#ffffff;text-align:left;width:50px;padding:10px;"><img src=./icon/arrow.png width="20px" height="20px"></div>
+		<div onclick="javascript:window.history.go(-1);" style="width:100%;position:absolute;float:left;padding-top:10px;color:#ffffff;text-align:center;">{_ALIPAY_}</div>
+	</div>
+	  <div style="margin-top:10px;height:400px;">
+	  	  	
+	  	<div class="usercenter_list">
+	  		   <!--
+	  		   <div style="margin-bottom:10px;font-weight:bold;position:absolute;text-align:left;padding-top:15px;padding-left:0px;font-size:18px;">{_SAVE_} / {_ALIPAY_}</div>
+	  	     -->
+	  	</div>
+	  	
+	  	<div class="usercenter_list_bottom" style="margin-top:15px;">
+		   
+		  <!--
+		  <div style="border-bottom-width:50px;border-bottom: 1px solid rgba(0, 0, 0, 0.5);text-align:left;padding-top:5px;padding-left:5px;font-size:18px;">{_ALIPAY_PAY_ACOUNT}</div>
+		  -->
+		    <div id="usercenter_saveup_first">
+			 	<div style="width:95%;text-align:left;padding-top:5px;padding-left:0px;font-size:18px;height:0px;width:100%;">
+			   
+			   <div id="savemember1_up" style="display:none;">		    
+			    
+			    <div style="width:95%;text-align:left;padding-top:0px;padding-left:10px;font-size:12px;">
+			    <table style="width:100%;">
+			    	<div style="height:40px;">{_STEP_TWO_SAVE_}</div>
+			    	<tr style="width:100%;height:45px;"><td style="padding-left:0px;">{_ALIPAY_ACCOUNT}</td>
+			    		  <td colspan=3><input style="height:30px;width:100%;" class="inputclass" type="text" id="paipayaccount" value=""></td>
+			      </tr>
+			      <tr style="width:100%;height:45px;"><td style="padding-left:0px;">{_MONEY_}</td>
+			    		  <td colspan=3><input style="height:30px;width:100%;" class="inputclass" type="text" id="paipaymoney" value=""></td>
+			      </tr>
+			      <tr style="width:100%;height:20px;width:100%;">
+			      	<td colspan=4 style="padding-top:10px;">
+			      	  <input style="height:40px;width:100%;" type="button" class=usercenter_button_ali value="{_SURE_SUBMIT}" onclick="savemember_alipay()">
+			      	</td>
+			      </tr>
+			      <input type="hidden" id="bankm" name="bankm" value="{id}:{faccount}:{fname}">
+			    </table>
+			    </div>		    
+			    <div style="margin-top:10px;height:100px;width:100%;left:50%;text-align:left;padding-top:5px;padding-left:10px;font-size:12px;">
+				    <div style="padding:5px;height:20px;text-align:center;color:#ff0000;">{_PRECAUTIONS}</div>
+				 	  <div style="width:100%;padding:5px;height:40px;color:#ff0000;">1.{_LONG_WORD_116_11}</div>
+				 	  <div style="padding:5px;height:30px;">2.{_MIN_SAVE_MONEY}</div>
+
+			    </div>
+			    
+			    </div>
+			    </div>
+			    
+			    <div id="savemember1_up_alipay" style="background-color:#FFFFFF;display:block;">
+		           <table style="width:100%;background-color:#FFFFFF;">
+		           <tr><td style="text-align:center;height:40px;" class=setup_left colspan=2>{_STEP_ONE_TRANS}</td></tr>
+		          <tr><td style="text-align:center;padding-left:10px;color:#000000;height:35px;" colspan=2>
+		          {_PLASE_DIRECT_}「&nbsp;<span style="color:#97CBFF;">{faccount}</span>&nbsp;」&nbsp;<span style="color:#97CBFF;">{fname}&nbsp;</span>{_ACCOUNT_TRANSFER_}
+		          </tr>
+		          
+		      <tr>
+		      <tr>
+		      <td style="text-align:center;background-color:#ffffff;" colspan=2>
+		      <!-- START BLOCK : DepositStepInputAmountQRCode -->
+		        <div style="width:100%;text-align:center;"><img src="../../wa99_thr/serviceQRCode/{imgQRCode}" width="320" /></div>
+		      <!-- END BLOCK : DepositStepInputAmountQRCode -->
+		      </td>
+		      </tr>
+		      <tr style="width:100%;height:20px;width:100%;">
+			      	<td colspan="4" style="padding-top:10px;">
+			      	 <div style="width:100%;color:#000;text-align:center;padding:0px 0px;">
+			      	 ※{QRCODE_THREE_SEC}※<br>
+			      	 {QRCODE_IMAGE_TRANSFER}
+			      	 </div>
+			      	</td>
+			      </tr>
+		      <tr style="width:100%;height:20px;width:100%;">
+			      	<td colspan="4" style="padding-top:10px;">
+			      	 <div style="width:100%;color:#000;text-align:center;padding:0px 0px;">{_ALIPAY_TRAN_FINISH}<br>{_BUTTON_BOTTOM_}「<span style="color:#00AA00">{_TRANSATION_ED}</span>」{_STEP_NEXT_}</div>
+			      	</td>
+			      </tr>
+		      <tr style="width:100%;height:20px;width:100%;">
+			      	<td colspan="4" style="padding-left:10px;padding-top:10px;">
+			      	  <input style="height:40px;width:98%;" type="button" class="usercenter_button_ali" value="{_TRANSATION_ED}" onclick="savemember_alipay_first()">
+			      	</td>
+			    </tr>
+          <tr>
+          <td>
+          	<div style="margin-top:10px;height:220px;width:100%;left:50%;text-align:left;padding-top:5px;padding-left:10px;font-size:12px;">
+				    <div style="padding:5px;height:20px;text-align:center;color:#ff0000;">{_PRECAUTIONS}</div>
+				 	  <div style="width:100%;padding:5px;height:40px;color:#ff0000;">1.{_LONG_WORD_116_11}</div>
+				 	  <div style="padding:5px;height:30px;">2.{_MIN_SAVE_MONEY}</div>
+            <div style="padding:5px;height:30px;color:#ff0000;">{_MONEY_LAUNDERING_TERMINATED}</div>
+			    </div>
+          </td>
+          </tr>
+            
+            </table>
+           </div>
+			    		  
+		  	</div>
+	  	</div>
+	  	
+	  	
+	        </div>	
+</div>
+	
+<!-- END BLOCK : usercenter_saveup_Alipay -->
+
+<!-- START BLOCK : savepickup_pickup -->
+<ul style="background-color:#ffffff;letter-spacing:2px;margin:0px;" class="nav nav-tabs">
+    <li id="bottom_line1" style="text-align:center;width:50%;"><a onclick="checkmenu('save');">{_SAVE_MONEY_}</a></li>
+    <li id="bottom_line2" style="width:50%;text-align:center;"><a onclick="checkmenu('pickup');">{_PICK_}</a></li>
+ </ul> 
+<div class="usercenter" style="margin:0px;">
+	  <div style="margin-top:5px;height:600px;">
+	  	
+	  	<div class="usercenter_list_bottom" style="margin-top:0px;">
+			 <div style="text-align:left;padding-top:5px;padding-left:0px;font-size:18px;height:200px;width:100%;">
+			 	<div style="margin:10px;margin-top:0px;height:100px;width:95%;text-align:left;padding-top:0px;padding-left:0px;font-size:12px;">
+			 	<div style="height:25px;font-size:10px;text-align:center;color:#ff0000;font-weight:bold;">{_PRECAUTIONS}</div>
+			 	<ol style="margin-left:-15px;margin-right:5px;list-style-image:none;">
+			 	<li style="height:40px;">{_LONG_WORD_116}</li>
+			 	<li style="height:40px;">{_LONG_WORD_117}</li>
+			 	<li style="height:40px;">{_LONG_WORD_118}</li>
+			 	<div style="height:40px;color:#ff0000;">{_LONG_WORD_119}</div>
+			 	<ol>
+			 	</div>
+			 	</div>
+			 	<div class="savepick" style="margin:0px;height:5px;width:100%;">
+		    </div>
+			  <div style="background-color:#FFFFFF;border-bottom-width:50px;border-bottom: 0px solid rgba(0, 0, 0, 0.5);text-align:left;padding-top:0px;padding-left:10px;font-weight:bold;font-size:18px;">
+			  	<div style="margin-left:10px;border-bottom: 1px solid rgba(0, 0, 0, 0.5);width:93%;font-size:14px;padding-left:10px;padding-top:6px;padding-bottom:4px;">
+			  	{_LONG_WORD_121}
+			    </div>
+			  </div>
+			 	<div style="background-color:#FFFFFF;text-align:left;padding-top:10px;padding-left:0px;font-size:12px;height:300px;width:100%;">
+			    <table style="margin:5px;width:80%;">
+			    	<tr style="height:35px;"><td style="color:#9a9a9a;font-weight:bold;width:60px;padding-left:15px;">{_BANK_ACCOUNT}<span style="padding-left:5px;color:#ff0000">*</span></td><td colspan=3><input class="inputclass" style="width:100%;height:30px;" name="bankaccount_self" type="text" id="bankaccount_self"></td></tr>
+			    	<tr style="height:35px;"><td style="color:#9a9a9a;padding-left:15px;">{_BANKNAME}<span style="padding-left:5px;color:#ff0000">*</span></td>
+						<td colspan=3>
+			      {p}
+					  </td></tr>
+			    	<tr style="height:35px;"><td style="color:#9a9a9a;font-weight:bold;width:80px;padding-left:15px;">{_WITHDRAWAL_ACCOUNT_NAME}<span style="padding-left:5px;color:#ff0000">*</span></td>
+			    		                       <td style="padding-left:0px;"><input class="inputclass" style="width:100%;height:30px; font-size:16px;" name="bankaccountname" type="text" id="bankaccountname" readonly="" value={_ACCOUNTNAME_}></td>
+			    	</tr>
+				    <tr style="height:35px;"><td style="color:#9a9a9a;font-weight:bold;width:80px;padding-left:15px;">{_PICKUP_MONEY}<span style="padding-left:5px;color:#ff0000">*</span></td>
+			    		                         <td style="padding-left:0px;"><input style="width:100%;height:30px;" name="getmoney" type="text" id="getmoney" value="300"></td>
+			      </tr>
+			    	<tr style="height:35px;"><td style="color:#9a9a9a;font-weight:bold;padding-left:15px;">{_WITHDRAWALPASSWD}<span style="padding-left:5px;color:#ff0000">*</span></td><td colspan=3><input class="inputclass" style="width:100%;height:30px;" type="password" name="sellpassword" id="sellpassword"></td></tr>
+			    <tr>
+			    	<td colspan=4 style="width:100%;text-align:center;">
+	         <div style="padding-top:25px;padding-left:10px;"><input style="font-weight:bold;color:#9a9a9a;font-size:16px;height:40px;width:100%;" class="usercenter_button_ali" type="button" value="{_SURE_SUBMIT}" onclick="pickupmoney()"></div>		    		
+			    	</td>
+			    </tr>
+			    </table>
+			    
+			  </div>
+			  
+	  	</div>
+	  	
+	  	<div class="usercenter_list_bottom">
+	  		<div style="position:absolute;text-align:left;padding-top:15px;padding-left:15px;"></div>
+	  		<div style="position:absolute;padding-top:15px;left:160px;"></div>
+	  	</div>
+	  	
+	  </div>	
+</div>
+<!-- END BLOCK : savepickup_pickup -->
+  <!-- START BLOCK : DetailsTools -->
+  <div style="padding:5px;text-align:center;background-color:#ffffff;height:30px;">
+  {NO_DATA}
+  </div>
+  <!-- END BLOCK : DetailsTools -->
+  
+	<!-- START BLOCK : Details -->
+	<div class="UserInfo" style="margin-bottom:0px;" id="Details{id}">
+	<div id="home2" class="tab-pane fade in active">
+       <div class="panel-body" contenteditable="false" style="margin-bottom:0px;padding:0px;">
+				    <table style="background-color:#ffffff;width:100%;color:#000000;border-bottom: 2px solid rgba(9, 9, 9, 0.125);">
+      	     <tr style="height:20px;">
+	      	   	  <td colspan=2 style="color:#6c6c6c;padding:5px;text-align:left;">{_TRADE_DATE}&nbsp;:&nbsp;{requestTime}&nbsp;&nbsp;<span style="color:{statusColor}">{FStep}</span></td>
+	      	   </tr>
+      	     
+	      	   <tr style="height:20px;">
+	      	   	  <td colspan=2 style="width:100%;color:#6c6c6c;text-align:right;padding-right:10px;">{_LEFT_OVER_MONEY}&nbsp;:&nbsp;{mergeTotal}</td>
+	      	   </tr>
+	      	   <tr style="height:20px;">
+	      	   	  <td style="width:18%;padding:5px;text-align:left;"><span style="color:#003690;">{saveBy}</span></td>
+	      	   	  <td style="width:auto;padding:5px;text-align:left;"><span style="font-size:16px;color:{moneyColor}">{moneyword}&nbsp;{requestAmount}</span></td>
+	      	   </tr>
+             </table>
+        </div>
+    </div>
+	<!--
+	<table style="width:97%;margin:5px;">
+	<tr><td class="UserRowTitle">{_TRADE_DATE}</td><td class="UserRowTitle_right">{requestTime}</td></tr>
+	<tr><td class="UserRowTitle">{_TRADE_CLASS}</td><td class="UserRowTitle_right" style="color:{Color}">{FAction}</td></tr>
+	<tr><td class="UserRowTitle">{_TRADE_MATH}</td><td class="UserRowTitle_right">{saveBy}</td></tr>
+	<tr><td class="UserRowTitle">{_TRADE_STATUS}</td><td class="UserRowTitle_right">{FStep}</td></tr>
+	<tr><td class="UserRowTitle">{_TRADE_MONEY}</td><td class="UserRowTitle_right">{requestAmount}</td></tr>
+	<tr><td class="UserRowTitle" style="background-color:#5384d7;color:#fff;">手续费</td><td class="TableRowIntro" style="background-color:#f2f2f2;color:#cc0000;">{Fee}</td></tr>
+	<tr><td class="UserRowTitle">{_LEFT_OVER_MONEY}</td><td class="UserRowTitle_right">{mergeTotal}</td></tr>
+	</table>-->
+	</div>
+	<!-- END BLOCK : Details -->
+	   
+<!-- START BLOCK : UserInfo -->
+	<div class="IndexAir"></div>
+	<div class="UserInfo" style="margin:0px;width:100%;height:75%;">
+	<table style="width:100%;">
+	<!--<tr><td class="UserRowTitle" style="background-color:#5384d7;color:#fff;">会员名称</td><td class="TableRowIntro" style="background-color:#f2f2f2;">{usernickname}</td></tr>-->
+	<tr><td class="UserRowTitle">{_THIS_QUATY}</td><td style="color:#00C600;" class="UserRowTitle_right_text">{quota}</td></tr>
+	<tr><td class="UserRowTitle">{_THIS_RISK}</td><td class="UserRowTitle_right_text">{thisrisk}</td></tr>
+	<tr><td class="UserRowTitle">{_LOGIN_PASSWD}</td><td class="UserRowTitle_right"><div class="btn_Base"><button rel="modal:open" type="submit" class="usercenter_button btn btn-default" onClick="editPwd('passwd')">{_EDIT}</button></div><div style="font-size:14px;padding-right:10px;float:right;margin-top:-25px;">{passwdhidden}</div></td></tr>
+	<tr><td class="UserRowTitle">{_PICKUP_PASSWD}</td><td class="UserRowTitle_right"><div class="btn_Base"><button rel="modal:open" type="submit" class="usercenter_button btn btn-default" onClick="editPwd('pickup')">{_EDIT}</button></div><div style="font-size:14px;padding-right:10px;float:right;margin-top:-25px;">{withdrawpasswordhidden}</div></td></tr>
+	<tr><td class="UserRowTitle">{_CELLPHONE}</td><td class="UserRowTitle_right_text">{mobile}</td></tr>
+	<tr><td class="UserRowTitle">{_QQACCOUNT}</td><td class="UserRowTitle_right_text">{qq}</td></tr>
+	<tr><td class="UserRowTitle">{_WECHATACCOUNT}</td><td class="UserRowTitle_right_text">{wechat}</td></tr>
+	<tr><td class="UserRowTitle">{_QUICK_SETP}</td><td class="UserRowTitle_right"><div class="btn_Base"><button rel="modal:open" type="submit" class="usercenter_button btn btn-default" onClick="editPwd('common')">{_SETUP}</button></div><div style="font-size:14px;padding-right:10px;float:right;margin-top:-25px;">{commonStr}</div></td></tr>
+	</table>
+	</div>
+
+  <div style="top:10%;height:250px;" class="modal fade" id="myModal" role="dialog">
+	<div id="RobotCtrlPopup" class="RobotCtrlPopup" style="background-color:#f6f0f7;margin:5px;border-radius:5px;s">
+		
+		<div class="modal-header" style="height:50px;padding:0px;border-bottom: 1px solid rgba(9, 9, 9, 1);">
+          <button type="button" class="close" data-dismiss="modal" style="color:#222222;cursor:pointer;height:40px;width:30px;">
+          <img style="padding-right:10px;margin-top:15px;margin-right:12px;height:25px;" src="./icon/btn_close.svg">
+          </button>
+          <div id="SelectTitle" style="font-weight:bold;color:#222222;font-size:18px;text-align:center;padding-top:15px;padding-left:10%;"></div>
+    </div>
+		<div class="RobotPopupArea">
+
+		<div id="pwdEdit"style="display:none;" class="modal-dialog">
+			<div class="pwdTable">
+			<table style="width:100%;">
+			<tr><td class="TextRight">{_JS_OLD_PASS}<span style="padding-left:10px;color:#ff0000;">*</span></td><td><input class="inputStyle" size='18' type="password" id="oldaccount" name="oldaccount"></td></tr>
+			<tr><td class="TextRight">{_JS_NEW_PASS}<span style="padding-left:10px;color:#ff0000;">*</span></td><td><input class="inputStyle" size='18' type="password" id="newaccount" name="newaccount" value=""></td></tr>
+			<tr><td class="TextRight">{_SURE_PASSWD}<span style="padding-left:10px;color:#ff0000;">*</span></td><td><input class="inputStyle" size='18' type="password" id="renewaccount" name="renewaccount" value=""></td></tr>
+			</table>
+			</div>
+			<div class="btn_confirm" style="float:left;width:50%;padding-left:0px;padding-top:10px;">
+				<input id="marketmsetp" class="btn btn-default btn_1" style="height:30px;width:97%;color:#c30d23;" type="button" value="{_JS_SURE}" onClick="changePwd()">
+			</div>
+			<div class="btn_cancel" style="float:right;width:50%;padding-top:10px;">
+				<input id="marketmsetp" class="btn btn-default btn_1" data-dismiss="modal" style="height:30px;width:97%;color:#8E8E8E;" type="button" value="{_CANCEL}">
+			</div>
+		</div>
+		
+		<div id="commonEdit" style="display:none;" class="modal-dialog">
+			<div class="pwdTable">
+			<table style="width:100%;">
+			<tr><td class="TextRight">{_FIRST_SETUP}</td><td><input class="inputStyle_setup" size='18' type="text" id="common1" name="common1" value="{common0}" onkeyup="return ValidateNumber(this,value)"></td></tr>
+			<tr><td class="TextRight">{_SECAND_SETUP}</td><td><input class="inputStyle_setup" size='18' type="text" id="common2" name="common2" value="{common1}" onkeyup="return ValidateNumber(this,value)"></td></tr>
+			<tr><td class="TextRight">{_THIRD_SETUP}</td><td><input class="inputStyle_setup" size='18' type="text" id="common3" name="common3" value="{common2}" onkeyup="return ValidateNumber(this,value)"></td></tr>
+			</table>
+			</div>
+			<div class="btn_confirm" style="float:left;width:50%;padding-left:0px;padding-top:10px;">
+				<input id="marketmsetp" class="btn btn-default" style="height:40px;width:97%;color:#ff0000;" type="button" value="{_JS_SURE}" onClick="changeCommon()">
+			</div>
+			<div class="btn_cancel" style="float:right;width:50%;padding-top:10px;">
+				<input id="marketmsetp" class="btn btn-default" data-dismiss="modal" style="height:40px;width:97%;color:#8E8E8E;" type="button" value="{_CANCEL}">
+			</div>
+			
+		</div>
+		
+		<div class="clear">&nbsp;</div> 
+		</div>
+	</div>
+	<input type="hidden" id="pType" name="pType">
+  </div>
+<!-- END BLOCK : UserInfo -->
+
+
+	</div>
+	
+  </div>
+  
+</div>

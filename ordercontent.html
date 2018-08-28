@@ -1,0 +1,400 @@
+<script>
+var time_s_sec = 60;
+var chkstop_open;
+   /*注單order*/
+	function moveorder(a,b,c,d,f,g,h,i,j,k,l,m,n,o,p,q,bp)
+	{
+	 
+	 //alert(a+'::'+b+'::'+c+'::'+d+'::'+f);
+	 //jQuery('#order1').html("<div class='Loading'></div>");
+   //jQuery('#order1').modal('show');
+    
+		/*
+		a selectname
+		b time
+		c gameid
+		d markettype
+		f gamename
+		g marketid
+		h marketname
+		i Rate
+		j Bet
+		k selectrateL1
+		l betfairori
+		m gc12
+		n selectid
+		o sel
+		p marketpercentage
+		q competitionname
+		*/
+		
+	  var simple_ar = Array();
+  	var c2bet_st = new Object;
+  	var orderinfo_st = new Object;
+  	 	
+  	var jimDatass = {selectname: a, time: b, gameid: c, markettype: d, gamename: f, marketname: h, Rate: i, Bet: j, BetType: 'L', MarketId: g, SelectionId: n, betfairori: l, percent: p, chk: 'order', category: q, selectrateL1: k, sel:o, gc12:m, pawben:bp}
+  	simple_ar.push(jimDatass);
+  	orderinfo_st = simple_ar;
+  	c2bet_st["c2betorder"]=orderinfo_st;
+  	
+  	//console.log(jimDatass);
+  	//return;
+  	jQuery.ajax({
+		type: 'POST',
+		url: './order.php' ,
+		data: c2bet_st ,		
+		error: function(xhr) {
+			//parent.window.frames.jQuery('#movemore_ss').html('<font color=#FF0000>网路忙线中，请稍后再试!错误代码:681</font>');
+			//alert('網路忙線中，請稍後再試!36');
+			return false;
+		},
+			
+		
+		beforeSend:function(response)
+		{
+		jQuery('#Modal_cover').attr('style','display:block');
+		jQuery('#Modal_cover').html("<div class='Loading'></div>");
+		}, 
+		
+		 
+		success: function(response) {
+		  
+			jQuery('#Modal_cover').html(response); 
+
+		 }
+    
+	  	});
+	 
+	 
+	}
+	
+	function getdealmoneytotal(a,b)
+	{
+		jQuery('#getdealmoneytotal').html(a);
+		jQuery('#countdownreloadtext').val(b);
+	}
+	
+	/*倒數60秒*/
+	function checktime5_5(a,bb,c,d,f,pb)
+	{
+		time_s_sec = time_s_sec - 1;
+		if(time_s_sec < 0)
+		{
+			countdownreload(a,bb,c,d,f,pb);
+			clearInterval(chkstop_open);
+			window.clearInterval(chkstop_open);
+		}
+		
+
+		if(time_s_sec < 10)
+		{
+			jQuery('.update').html('0'+time_s_sec+'');
+		}
+		else
+		{
+			jQuery('.update').html(time_s_sec);
+		}
+		chkstop_open=setTimeout("checktime5_5('"+a+"','"+bb+"','"+c+"','"+d+"','"+f+"','"+pb+"')", 1000);
+	}
+  
+  /*更新按鈕*/
+  function countdownreload(a,b,c,d,f,pb)
+  {
+  	time_s_sec = 60;
+  	var re = jQuery('#countdownreloadtext').val();
+  	jQuery.ajax({
+		type: 'GET',
+		url: './reloadmarket.php?gameid='+a+'&gc12='+b+'&name='+c+'&time='+d+'&opmenu='+re+'&competitionname='+f+'&status_id='+pb,
+		//url: './reloadmarket.php?gameid='+a+'&gc12='+b+'&opmenu='+re,
+		//data: c2bet_st ,		
+		error: function(xhr) {
+			return false;
+		},
+			
+		
+		beforeSend:function(response)
+		{
+		}, 
+		 
+		success: function(response) {		 	
+		 jQuery('.content').html(response);
+		 }
+    
+	  	});
+	  
+  }
+  
+  /*對戰紀錄*/
+  function pkrecord(a,b)
+  {
+  	//alert(a);
+    //jQuery('#Modal_cover4').attr('style','display:block');
+		//jQuery('#Modal_cover4').html("<div class='Loading'></div>");
+   
+    var simple_ar = Array();
+  	var c2bet_st = new Object;
+  	var orderinfo_st = new Object;
+  	
+    var jimDatass = {names: a, time: b}
+  	simple_ar.push(jimDatass);
+  	orderinfo_st = simple_ar;
+  	c2bet_st["pk"]=orderinfo_st;
+    
+    console.log(jimDatass);
+  	jQuery.ajax({
+		  type: 'POST',
+		  url: './pkRecords.php' ,
+		  data: c2bet_st ,		
+		error: function(xhr) {
+			return false;
+		},
+				
+		beforeSend:function(response)
+		{
+		//jQuery('#Modal_cover4').attr('style','display:block');
+		jQuery('#Modal_cover4').html("<div class='Loading'></div>");
+		}, 
+		 
+		 success: function(response) {		 	
+		jQuery('#Modal_cover4').html(response); 
+		 }
+    
+	  	});
+	  
+  }
+  
+	/*交易量統計圖表*/
+	/*function chatShow( tag, num,competitionname )
+	{
+		if( tag == 0 ) alert( '尚无成交量' );
+		var chatData = new Object;
+		chatData["chatTag"] = tag;
+		chatData["chatItem"] = num;
+		chatData["competitionname"] = competitionname;
+		jQuery.ajax({
+			type: 'POST',
+			url: './chatShow.php' ,
+			data: chatData ,		
+			error: function(xhr) {
+				return false;
+			},
+			beforeSend:function(response)
+			{
+				jQuery('#Modal_cover4').attr('style','display:block');
+				jQuery('#Modal_cover4').html("<div class='Loading'></div>");
+			}, 
+			success: function(response) {		 	
+				jQuery('#Modal_cover4').html(response); 
+			}
+		});
+	}
+
+*/
+	/*交易量統計圖表 by nillie*/
+	function chatShow( tag,chartid,competitionname,gameid,marketid,totaldealmoney)
+	{
+		//alert(marketid+'+'+gameid);
+		if( tag == 0 ) alert( '尚无成交量' );
+		var chatData = new Object;
+		chatData["eventid"] = gameid;
+		chatData["marketid"] = marketid;
+		chatData["chartid"] = chartid;
+		chatData["competitionname"] = competitionname;
+		chatData["chatTag"] = tag;
+		chatData['totaldealmoney']=totaldealmoney;
+		jQuery.ajax({
+			type: 'POST',
+			url: './chatShow.php' ,
+			data: chatData ,		
+			error: function(xhr) {
+				return false;
+				//alert('error');
+			},
+			beforeSend:function(response)
+			{
+				//alert('beforeSend');
+				jQuery('#Modal_cover4').attr('style','display:block');
+				jQuery('#Modal_cover4').html("<div class='Loading'></div>");
+			}, 
+			success: function(response) 
+			{		 	
+				//alert(response);
+				jQuery('#Modal_cover4').html(response); 
+			}
+		});
+	}
+	
+	
+
+$('.icon_bar_cell > a').removeClass('active');
+$('.icon_bar_cell > #market_a').addClass('active');
+
+$(function () {
+	      $(".tab-selector-1").on('click', function () {
+            $(".content-1").css('display', 'block');
+            $(".content-2").css('display', 'none');
+            $(".content-3").css('display', 'none');
+        });
+        $(".tab-selector-2").on('click', function () {
+            $(".content-1").css('display', 'none');
+            $(".content-2").css('display', 'block');
+            $(".content-3").css('display', 'none');
+        });
+        $(".tab-selector-3").on('click', function () {
+            $(".content-1").css('display', 'none');
+            $(".content-2").css('display', 'none');
+            $(".content-3").css('display', 'block');
+        });
+});
+</script>
+<div class="game_detail">
+	<!-- START BLOCK : guaranteedNomoTitle -->
+	<div class="guaranteedNomo">保本</div>
+	<!-- END BLOCK : guaranteedNomoTitle -->
+	<div class="color_border"></div>
+	<div class="time"><span>{time_reload}</span></div>
+	<div class="game_name">{competitionname_reload}</div>
+	<i class=" fa fa-angle-left arrow_left" aria-hidden="true" onclick="javascript:history.go(-1);"></i>
+	<button class="battle_record" id="battle" onclick="pkrecord('{name_pk}','{time_pk}')" style="margin-right:16px">{_BATTLE}</button>
+	<div class="game_team"><span>{name_reload}</span>
+	</div>
+</div>
+
+
+<section class="tabs">
+
+            <input style="width:33%;left:0%;" id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked"/>
+            <label style="width:33%;left:0%;" for="tab-1" class="tab-label-1">{ALL_SCORE}</label>
+
+            <input style="width:33%;left:33%;" id="tab-2" type="radio" name="radio-set" class="tab-selector-2"/>
+            <label style="width:33%;left:33%;" for="tab-2" class="tab-label-2">{HALF_SCORE}</label>
+
+            <input style="width:34%;left:66%;"id="tab-3" type="radio" name="radio-set" class="tab-selector-3"/>
+            <label style="width:34%;left:66%;" for="tab-3" class="tab-label-3">{TOTAL_SCORE}</label>
+            <!--
+            <input id="tab-4" class="tab-selector-4"/>
+            <label for="tab-4" class="tab-label-4"></label>
+            -->
+            <div class="clear-shadow"></div>
+
+            <div class="content">
+                
+                <div class="content-1">
+                    <div class="table">
+                        <div class="volume_group">
+                            <div class="volume">{dealcount}<span>{totaldealmoney_ss1}</span><div onclick="chatShow( '{chatTag}', 1 ,'{competitionname}','{gameid}','{marketid1}','{totaldealmoney_ss1}')" class="chatShowIcon"></div></div>
+                             
+                            <!--<div class="update" onclick="countdownreload('{gameid_reload}','{gc12_reload}','{name_reload_url}','{time_reload_ori_url}','{competitionname_reload}','{status_id}')"></div>-->
+							<div class="update"></div>
+                        </div>
+                        <div class="table_head">
+                            <div class="table_option">{option_ss}</div>
+                            <div class="table_rate">{profit_ss}</div>
+                            <div class="table_trade">{trading}</div>
+                        </div>
+                        <div class="content_table">
+                            
+ 	                          <!-- START BLOCK : gamelist_one -->
+ 	                          <!-- START BLOCK : gamelist_one_have -->
+                            <div class="content_row" onclick="moveorder('{selectname}','{time}','{gameid}','{markettype}','{gamename}','{marketid}','{marketname}','{Rate}','{Bet}','{selectrateL1}','{betfairori}','{gc12}','{selectid}','{sel}','{marketpercentage}','{competitionname}','{pawben}')">
+                            <!-- END BLOCK : gamelist_one_have -->
+                            <!-- START BLOCK : gamelist_one_have_empty -->
+                            <div class="content_rowss">
+                            <!-- END BLOCK : gamelist_one_have_empty -->	    
+                                <div class="content_cell table_option">
+								<!-- START BLOCK : gamelist_one_guaranteed -->
+								<span class="guaranteed_detailNomo"></span>
+								<!-- END BLOCK : gamelist_one_guaranteed -->
+								{selectname}</div>
+                                <div class="content_cell cell_red table_rate">{profitL1}</div>
+                                <div class="content_cell table_trade table_trade_align">{selectmoneyL1}</div>
+                            </div>
+                            
+                           <!-- END BLOCK : gamelist_one -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-2">
+                    <div class="table">
+                        <div class="volume_group">
+                            <div class="volume">{dealcount}<span>{totaldealmoney_ss2}</span><div onclick="chatShow( '{chatTag}', 2 ,'{competitionname}','{gameid}','{marketid2}','{totaldealmoney_ss2}')" class="chatShowIcon"></div></div>
+                             
+                            <!--<div class="update" onclick="countdownreload('{gameid_reload}','{gc12_reload}','{name_reload_url}','{time_reload_ori_url}','{competitionname_reload}')"></div>-->
+							<div class="update"></div>
+                        </div>
+                        <div class="table_head">
+                            <div class="table_option">{option_ss}</div>
+                            <div class="table_rate">{profit_ss}</div>
+                            <div class="table_trade">{trading}</div>
+                        </div>
+                           <div class="content_table">
+                            
+ 	                          <!-- START BLOCK : gamelist_two -->
+ 	                          <!-- START BLOCK : gamelist_two_have -->
+                            <div class="content_row" onclick="moveorder('{selectname}','{time}','{gameid}','{markettype}','{gamename}','{marketid}','{marketname}','{Rate}','{Bet}','{selectrateL1}','{betfairori}','{gc12}','{selectid}','{sel}','{marketpercentage}','{competitionname}')">
+                            <!-- END BLOCK : gamelist_two_have -->
+                            <!-- START BLOCK : gamelist_two_have_empty -->
+                            <div class="content_rowss">
+                            <!-- END BLOCK : gamelist_two_have_empty -->
+                                <div class="content_cell table_option">
+								<!-- START BLOCK : gamelist_two_guaranteed -->
+								<span class="guaranteed_detailNomo"></span>
+								<!-- END BLOCK : gamelist_two_guaranteed -->
+								{selectname}</div>
+                                <div class="content_cell cell_red table_rate">{profitL1}</div>
+                                <div class="content_cell table_trade table_trade_align">{selectmoneyL1}</div>
+                            </div>
+                            
+                           <!-- END BLOCK : gamelist_two -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="content-3">
+                    <div class="table">
+                        <div class="volume_group">
+                            <div class="volume">{dealcount}<span>{totaldealmoney_ss3}</span><div onclick="chatShow( '{chatTag}', 3 ,'{competitionname}','{gameid}','{marketid3}','{totaldealmoney_ss3}')" class="chatShowIcon"></div></div>
+                             
+                            <!--<div class="update" onclick="countdownreload('{gameid_reload}','{gc12_reload}','{name_reload_url}','{time_reload_ori_url}','{competitionname_reload}')"></div>-->
+							<div class="update"></div>
+                        </div>
+                        <div class="table_head">
+                            <div class="table_option">{option_ss}</div>
+                            <div class="table_rate">{profit_ss}</div>
+                            <div class="table_trade">{trading}</div>
+                        </div>
+                           <div class="content_table">
+                            
+ 	                          <!-- START BLOCK : gamelist_three -->
+ 	                          <!-- START BLOCK : gamelist_three_have -->
+                            <div class="content_row" onclick="moveorder('{selectname}','{time}','{gameid}','{markettype}','{gamename}','{marketid}','{marketname}','{Rate}','{Bet}','{selectrateL1}','{betfairori}','{gc12}','{selectid}','{sel}','{marketpercentage}','{competitionname}')">
+                            <!-- END BLOCK : gamelist_three_have -->
+                            <!-- START BLOCK : gamelist_three_have_empty -->
+                            <div class="content_rowss">
+                            <!-- END BLOCK : gamelist_three_have_empty -->
+                                <div class="content_cell table_option">
+								<!-- START BLOCK : gamelist_three_guaranteed -->
+								<span class="guaranteed_detailNomo"></span>
+								<!-- END BLOCK : gamelist_three_guaranteed -->
+								{selectname}</div>
+                                <div class="content_cell cell_red table_rate">{profitL1}</div>
+                                <div class="content_cell table_trade table_trade_align">{selectmoneyL1}</div>
+                            </div>
+                            
+                           <!-- END BLOCK : gamelist_three -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+</section>
+
+<div id="Modal_cover" class="cover">
+</div>
+
+<div id="Modal_cover4" class="cover">
+</div>
+<script>
+window.clearInterval(chkstop_open);
+checktime5_5('{gameid_reload}','{gc12_reload}','{name_reload_url}','{time_reload_ori_url}','{competitionname_reload}');
+</script>

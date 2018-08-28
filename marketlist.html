@@ -1,0 +1,171 @@
+
+<!-- START BLOCK : marketgamelist_total_top --> 
+            
+            <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked"/>           
+            <label for="tab-1" class="tab-label-1">{_ALL_ALL}<span>{all_leauge}</span></label>
+                        
+            <input id="tab-2" type="radio" name="radio-set" class="tab-selector-2"/>
+            <label for="tab-2" class="tab-label-2">{_ALL_TODAY}<span>{today_leauge}</span></label>
+            
+            <input id="tab-3" type="radio" name="radio-set" class="tab-selector-3"/>
+            <label for="tab-3" class="tab-label-3">{_ALL_TOMORROW}<span>{tomorrow_leauge}</span></label>
+
+            <input id="tab-4" type="radio" name="radio-set" class="tab-selector-4"/>
+            <label for="tab-4" class="tab-label-4"><i class="fa fa-shield shield" aria-hidden="true"></i>{_ALL_LEAGUE}</label>
+             
+<!-- END BLOCK : marketgamelist_total_top -->
+           
+
+            <div class="clear-shadow"></div>
+              
+            <div class="content">
+                
+                <div class="content-1">
+                    <!-- START BLOCK : marketgamelist_allgame_empty_all -->
+                    <ul class="no_content">
+                     {NO_DATA}
+                    </ul>
+                    <!-- END BLOCK : marketgamelist_allgame_empty_all -->
+                    	<ul class="game_list">
+                    <!-- START BLOCK : marketgamelist_sec_all -->
+                        <li onclick="listmrketorder('{ga12}','{gameid}','{time}','{gamename}','{competitionname}','{status_id}')">
+							<!-- START BLOCK : marketgamelist_sec_all_guaranteed -->
+							<div class="guaranteedNomo">保本</div>
+							<!-- END BLOCK : marketgamelist_sec_all_guaranteed -->
+                            <div class="color_border"></div>
+                            <div class="time"><span>{time_st}</span></div>
+                            <div class="game_name">{competitionname}</div>
+                            <div class="arrow">
+                            <i class="fa fa-caret-right" aria-hidden="true"></i>
+                            </div>
+                            <div class="game_team">
+                            	<div class="game_team_row">
+                                    <div class="game_team_cell cell01">{cell01}</div>
+                                    <div class="game_team_cell cell02">{cell02}</div>
+                                    <div class="game_team_cell cell03">{cell03}</div>
+                                </div>
+                            </div>
+							
+                        </li>
+                    <!-- END BLOCK : marketgamelist_sec_all -->
+                    </ul>
+                </div>
+                
+                <div class="content-2">
+                  <!-- START BLOCK : marketgamelist_allgame_empty_today -->
+                    <ul class="no_content">
+                     {NO_DATA}
+                    </ul>
+                    <!-- END BLOCK : marketgamelist_allgame_empty_today -->
+                    <ul class="game_list">
+                    <!-- START BLOCK : marketgamelist_sec_today -->
+                        <li onclick="listmrketorder('{ga12}','{gameid}','{time}','{gamename}','{competitionname}','{status_id}')">
+							<!-- START BLOCK : marketgamelist_sec_today_guaranteed -->
+							<div class="guaranteedNomo">保本</div>
+							<!-- END BLOCK : marketgamelist_sec_today_guaranteed -->
+                            <div class="color_border"></div>
+                            <div class="time"><span>{time_st}</span></div>
+                            <div class="game_name">{competitionname}</div>
+                            <div class="arrow">
+                            <i class="fa fa-caret-right" aria-hidden="true"></i>
+                            </div>
+                            <div class="game_team">
+                            	<div class="game_team_row">
+                                    <div class="game_team_cell cell01">{cell01}</div>
+                                    <div class="game_team_cell cell02">{cell02}</div>
+                                    <div class="game_team_cell cell03">{cell03}</div>
+                                </div>
+                            </div>
+                         </li>
+                    <!-- END BLOCK : marketgamelist_sec_today -->
+                      </ul>
+                </div>
+                
+                <div class="content-3">
+                  <!-- START BLOCK : marketgamelist_allgame_empty_tomorrow -->
+                    <ul class="no_content">
+                     {NO_DATA}
+                    </ul>
+                    <!-- END BLOCK : marketgamelist_allgame_empty_tomorrow -->
+                    <ul class="game_list">
+                    <!-- START BLOCK : marketgamelist_sec_tomorrow -->
+                        <li onclick="listmrketorder('{ga12}','{gameid}','{time}','{gamename}','{competitionname}','{status_id}')">
+							<!-- START BLOCK : marketgamelist_sec_tomorrow_guaranteed -->
+							<div class="guaranteedNomo">保本</div>
+							<!-- END BLOCK : marketgamelist_sec_tomorrow_guaranteed -->
+                            <div class="color_border"></div>
+                            <div class="time"><span>{time_st}</span></div>
+                            <div class="game_name">{competitionname}</div>
+                            <div class="arrow">
+                            <i class="fa fa-caret-right" aria-hidden="true"></i>
+                            </div>
+                            <div class="game_team">
+                            	<div class="game_team_row">
+                                    <div class="game_team_cell cell01">{cell01}</div>
+                                    <div class="game_team_cell cell02">{cell02}</div>
+                                    <div class="game_team_cell cell03">{cell03}</div>
+                                </div>
+                            </div>
+                         </li>
+                    <!-- END BLOCK : marketgamelist_sec_tomorrow -->
+                    </ul>
+                </div>
+                
+                
+                <div class="content-4">
+                <!-- START BLOCK : marketgamelist_allgame_empty_league -->
+                    <ul class="no_content">
+                     {NO_DATA}
+                    </ul>
+                    <!-- END BLOCK : marketgamelist_allgame_empty_league -->
+                   <div id="div_id" class="choose_alliance">
+                   	<!-- START BLOCK : marketgamelist_thr_league -->
+                   	<div id="{num}">{gamename}({amount})<i class="fa fa-check" aria-hidden="true"></i></div>
+                   	<!-- END BLOCK : marketgamelist_thr_league -->
+                    
+                   </div>
+                   <div class="check_group">
+                       <div class="color_border"></div>
+                       <div class="check_content">
+                       <div class="check">
+                           <div id="all_check" name="all_check" class="box" onclick="allcheck()"><i class="fa fa-check" aria-hidden="true"></i></div>
+                           <div class="all">{_ALL_CHECK_}</div>
+                       </div>
+                       <div class="check">
+                           <div id="un_check" name="un_check" class="box" onclick="cleancheck()"><i class="fa fa-check" aria-hidden="true"></i></div>
+                           <div class="clean">{_ALL_CLEAN_}</div>
+                       </div>
+                           <button class="confirm_btn" onclick="surecheck()">{_JS_SURE}</button>
+                      </div>
+                   </div>
+                </div>
+            
+            
+            </div>
+
+<script>
+function listmrketorder(a,b,c,d,g,h)
+{
+ document.location.href='marketorder.php?gc12='+a+'&gameid='+b+'&time='+c+'&name='+d+'&competitionname='+g+'&status_id='+h+'';
+}
+function marketchoose(a)
+{
+document.location.href='market.php?marketid='+a+'';
+}
+//$( document ).ready(function() {
+	   //$("div.content-1").scroll(function(){
+//$("#contentmarket").css({'position':'relative','z-Index':'400',"height":"200px","width":"100%","background":"#FFFFFF","opacity":"0.1","filter":"Alpha(Opacity=0.1, Style=0)"});
+//$(".tabs > div.content-1").animate({scrollTop: 500}, 1000);
+ //alert($(".game_list").height());
+//$(".tabs label.tab-label-1").css( "z-index", "0" );
+//$(".tabs div.content-1").animate({top: '-250px'});
+    // var window_scrollTop = $(window).scrollTop();
+        //console.log(window_scrollTop);
+   // });
+//$('.tabs div.content-1').animate({scrollTop: offset().top - 100}, 1000);
+//$(".tabs div.content-1").scrollTop(offset().top - 125);
+//});
+
+$('.icon_bar_cell > a').removeClass('active');
+$('.icon_bar_cell > #market_a').addClass('active');
+</script>

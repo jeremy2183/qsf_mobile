@@ -1,0 +1,95 @@
+<link rel="stylesheet" href="./template/www/css/g_companyInfo.css">
+
+<script>
+$(document).ready(function() {
+$('.icon_bar_cell > a').removeClass('active');
+$('.icon_bar_cell > #my_a').addClass('active');
+ })
+ 
+ function opencontact()
+ {
+  location.href='./products/html/contact/index.php';
+ }
+
+</script>
+ <div class="title_background ">
+   <div class="title">{_ABOUT_TAOGIN}</div>
+ </div>
+
+<div class="modal fade" id="myModa2" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div id="con1" class="order_content2">
+        <div id="con2" class="modal-header">
+          <div style="top:15px;" class="close_x" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></div>
+          <h4 class="modal-title">{_SYSTEM_HINT}</h4>
+        </div>
+        <div class="blue_line"></div>
+        <div class="modal-body" style="height:270px;">
+          <p>{_JS_ERROR_MESSAGE_}</p>
+        </div>
+       
+        <button onclick="closewebnum()" class="close_btn" data-dismiss="modal">{_I_KNOW_THAT}</button>
+      </div>
+      
+    </div>
+</div>
+
+<section class="tabs">
+
+            <input style="width:50%;" id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked"/>
+            <label style="width:50%;" for="tab-1" class="tab-label-1">公司简介</label>
+
+            <input style="width:50%;left:50%;" id="tab-2" type="radio" name="radio-set" class="tab-selector-2"/>
+            <label style="width:50%;left:50%;" for="tab-2" class="tab-label-2">人才招募</label>
+
+            <div class="clear-shadow"></div>
+            <div style="margin-top:80px;" class="content" id="content">
+			          
+                <div class="content-1">
+					<div style="top:45px;width:97.5%" class="color_border_bottom"></div>
+                    <ul style="margin-top:8px;" class="company">
+                        <li>
+							<div class="companyBanner"><img src="./img/g_companyInfoBanner.png" width="100%"></div>
+							<div class="cpiTitle"><img src="./img/icon_companyInfo.png" width="20px" class="cpiTitleIcon"><span class="cpiTitleText">了解淘金网</span><span class="cpiTitleTexts">About TAOGIN</span></div>
+                            <div class="infoText">淘金网是目前亚洲区首创的运动投资型公司，不同于一般市场上的运动投资基金，都是交给专业经理人去掌控您的损利，而是由会员本身去操作您的获利。<p><br><p>本公司主要经营项目以足球为主，与英国知名的合法交易所公司合作，经过多年的研发，概念革命性地颠覆了传统运动市场，集合了机率及统计学概论，让足球项目不单单只是博弈，也可以是一种投资工具，进行比股票与基金更稳健的操作模式。<p><br><p></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-2">
+					<div style="top:45px;width:97.5%" class="color_border_bottom"></div>
+                    <ul style="margin-top:8px;" class="company">
+                        <li>
+							<div class="companyBanner"><img src="./img/g_companyInfo2.png" width="100%"></div>
+							<div class="cpiTitle"><img src="./img/icon_companyInfo.png" width="20px" class="cpiTitleIcon"><span class="cpiTitleText">PHP 后端程式工程师</span></div>
+							<div class="cpiTitleSub"><span class="cpiTitleSubText">2年以上工作经历，学历不拘</span></div>
+                            <div class="infoTextBox">●&nbsp;负责PHP-MySQL网站后端的分析、设计以及程式撰写<br>●&nbsp;调校整体软体与资料库间的效能<br>●&nbsp;依照工作需要，对 Linux (CentOS) 进行操作<br>●&nbsp;具备简单 HTML/CSS/Javascript 的排版能力<br>●&nbsp;配合专案进行软体之测试与修改<br>●&nbsp;协助处理公司MIS工作</div>
+							
+							<div class="cpiTitle"><img src="./img/icon_companyInfo.png" width="20px" class="cpiTitleIcon"><span class="cpiTitleText">网页/美术 资深设计师</span></div>
+							<div class="cpiTitleSub"><span class="cpiTitleSubText">5年以上工作经历，专科以上学历</span></div>
+                            <div class="infoTextBox">●&nbsp;客户网站版型提案、设计<br>●&nbsp;网站营运时的活动页面制作<br>●&nbsp;网站页面动画处理<br>●&nbsp;公司网站更新<br>●&nbsp;拍摄商品并编辑图文，并进行提案</div>
+							
+							<div class="cpiTitle"><img src="./img/icon_companyInfo.png" width="20px" class="cpiTitleIcon"><span class="cpiTitleText">UX/UI 前端工程师</span></div>
+							<div class="cpiTitleSub"><span class="cpiTitleSubText">2年以上工作经历，学历不拘</span></div>
+                            <div class="infoTextBox">●&nbsp;负责PHP-MySQL网站前端画面制作、排版、程式开发<br>●&nbsp;处理将 psd/jpeg 转成 html-css 的格式<br>●&nbsp;配合美编人员进行UI的研发工作，制作UI模型或成品<br>●&nbsp;配合专案进行软体之测试与修改<br>●&nbsp;协助处理公司MIS工作</div>
+							
+							<div class="cpiTitle"><img src="./img/icon_companyInfo.png" width="20px" class="cpiTitleIcon"><span class="cpiTitleText">PHP 资深软体工程师</span></div>
+							<div class="cpiTitleSub"><span class="cpiTitleSubText">6年以上工作经历，学历不拘</span></div>
+                            <div class="infoTextBox">●&nbsp;负责基于 PHP-MySQL 网站系统开发<br>●&nbsp;进行软体之测试与修改<br>●&nbsp;大量帐务处理、帐务资料储存、保全机制的建立<p><br><p></div>
+							
+
+							<div class="cpiTitle"><img src="./img/icon_companyInfo.png" width="20px" class="cpiTitleIcon"><span class="cpiTitleText">秘书 [行销企画]</span></div>
+							<div class="cpiTitleSub"><span class="cpiTitleSubText">2年以上工作经历，学历不拘</span></div>
+                            <div class="infoTextBox">●&nbsp;随时记录业务主管对于市场及业务推行之方向、想法与规划<br>●&nbsp;依据方向或想法，产生网站内容、文字、设计想法<br>●&nbsp;对客户简报网站内容、商品、市场规划<br>●&nbsp;开发连络加值服务厂商<br>●&nbsp;产品及专案之规划，策划及执行适当之广告及媒体行销方案<br>●&nbsp;网站内容招募、提案与执行</div>
+
+
+							<div class="cpiTitle"><img src="./img/icon_companyInfo.png" width="20px" class="cpiTitleIcon"><span class="cpiTitleText">APP 工程师</span></div>
+							<div class="cpiTitleSub"><span class="cpiTitleSubText">2年以上工作经历，学历不拘</span></div>
+                            <div class="infoTextBox">●&nbsp;制作手机应用程式<br>●&nbsp;主要制作项目为「网站辅助 APP 开发」<br>●&nbsp;协助编写对应API (by PHP or Python with MySQL)<p><br><p></div>
+							<!--<div onclick="opencontact()" class="cpiContactButton"><img src="./img/icon_mail.png" width="20px" class="cpiTitleIcon">&nbsp;联系我们</div>-->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    </section>

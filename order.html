@@ -1,0 +1,322 @@
+<script src="./template/www/js/order.js"></script>
+<!--<script src="./template/www/js/stop_f12.js"></script>-->
+<script>
+<!-- START BLOCK : mobile_log_check -->
+alert('{log_check}');
+location.href='{_JS_LOCATION}';
+<!-- END BLOCK : mobile_log_check -->
+
+var GREATER_QUOTA = '{GREATER_QUOTA}';
+var MONEY_GREATER100 = '{MONEY_GREATER100}';
+var ODDS_EMPTY = '{ODDS_EMPTY}';
+var MONEY_LESS_POINT_2 = '{MONEY_LESS_POINT_2}';
+var _WRONG_USE_ = '{_WRONG_USE_}';
+var _PLEASEINPUTNUM_ = '{_PLEASEINPUTNUM_}';
+var _BREAK_CHECK_INFO = '{_BREAK_CHECK_INFO}';
+var EDIT_SUCCESS = '{EDIT_SUCCESS}';
+var EDIT_SUCCESS = '{EDIT_SUCCESS}';
+var DETERMINE = '{DETERMINE}';
+var EDIT_FAILES = '{EDIT_FAILES}';
+var EDIT_FAILES = '{EDIT_FAILES}';
+var DETERMINE = '{DETERMINE}';
+var MONEY_LESS_POINT_2 = '{MONEY_LESS_POINT_2}';
+var MONEY_GREATER100 = '{MONEY_GREATER100}';
+
+$('#common1').on('focus',function(){
+	var _this = this;
+	setTimeout(function(){
+		_this.scrollIntoViewIfNeeded();
+	},200);
+  });
+
+$('#common2').on('focus',function(){
+	var _this = this;
+	setTimeout(function(){
+		_this.scrollIntoViewIfNeeded();
+	},200);
+  });
+
+$('#common3').on('focus',function(){
+	var _this = this;
+	setTimeout(function(){
+		_this.scrollIntoViewIfNeeded();
+	},200);
+  });
+  
+$("#setting").on('click', function () {
+            $("#Modal_cover3").css('display', 'block');
+        });
+$("#cancel3").on('click', function () {
+            $("#Modal_cover3").css('display', 'none');
+        })
+$("#confirm3").on('click', function () {
+            $("#Modal_cover3").css('display', 'none');
+        })
+$(".fa").on('click', function () {
+            $("#Modal_cover3").css('display', 'none');
+        })
+</script>
+
+<style>
+.fa-times:before {
+    position: absolute;
+    top: 8px;
+    right: 4%;
+    font-size: 22px;
+}
+
+.order_content3 {
+    position: relative;
+    background-color: #f1f1f0;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #c3c3c3;
+    width: 95%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    /* -webkit-animation-name: animatetop; */
+    /* -webkit-animation-duration: 0.4s; */
+    /* animation-name: animatetop; */
+    /* animation-duration: 0.4s; */
+    height: auto;
+    animation: animatezoom 0.4s;
+    border-radius: 5px;
+ }
+ .modal_title{
+   text-align: center;
+    font-size: 20px;
+    padding: 10px 0px;
+    letter-spacing: 2px;
+    background: #0d3675; /* Old browsers */
+    background: -moz-linear-gradient(left, #0d3675 0%, #00ecd5 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #0d3675 0%,#00ecd5 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #0d3675 0%,#00ecd5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d3675', endColorstr='#00ecd5',GradientType=1 ); /* IE6-9 */
+    /*background-color:#0d3675;*/
+    color: white;
+}
+.black_line{
+    width: 100%;
+    height: 0px;
+    background-color: black;
+    margin-bottom: 0px;
+}
+.my_info_table{
+    display: table;
+    width: 100%;
+}
+.my_info_row{
+    display: table-row;
+}
+.my_info_cell_title{
+    display: table-cell;
+    width: 25%;
+    padding-left: 20px;
+    letter-spacing: 1px;
+}
+.my_info_cell{
+    display: table-cell;
+    width:70%;
+    font-weight: bold;
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
+.my_info_cell input{
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid rgba(135, 148, 148, 0.5);
+    height: 35px;
+    margin-left: 10px;
+}
+.my_info_cell_title span{
+    color: red;
+    margin-left: 5px;
+
+}
+.fa-times:before {
+    position: absolute;
+    top: 8px;
+    right: 4%;
+    font-size: 22px;
+    color: white;
+}
+#confirm3{
+    width: 48%;
+    height: 36px;
+    border: 1px solid rgba(135, 148, 148, 0.5);
+    background: #fefefe; /* Old browsers */
+    background: -moz-linear-gradient(top, #fefefe 0%, #d1d1d1 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #fefefe 0%,#d1d1d1 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #fefefe 0%,#d1d1d1 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#d1d1d1',GradientType=0 ); /* IE6-9 */
+    color: red;
+    letter-spacing: 2px;
+    font-size: 16px;
+}
+#cancel3{
+    width: 48%;
+    height: 36px;
+    border: 1px solid rgba(135, 148, 148, 0.5);
+    background: #fefefe; /* Old browsers */
+    background: -moz-linear-gradient(top, #fefefe 0%, #d1d1d1 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #fefefe 0%,#d1d1d1 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #fefefe 0%,#d1d1d1 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#d1d1d1',GradientType=0 ); /* IE6-9 */
+    letter-spacing: 2px;
+    font-size: 16px;
+}
+</style>
+
+<div id="order1" class="order_content">
+<div class="trade_msg">{ORDER_MESSAGE}</div>
+                <div class="against">{AGAINSTORDER}<span class="blink">{AGAINSTORDER_1}</span><span class="text_italic">{marketname}{selectname}</span></div>
+                <div class="white_bg">
+                    <div class="modal_content_title_table1">
+                        <div class="modal_content_title_row1">
+                            <div class="modal_content_title_cell date">{timess}&nbsp;&nbsp;[{category}]</div>
+                            <div class="modal_content_title_cell football">{marketname}</div>
+                        </div>
+                        <div class="modal_content_title_row1">
+                            <div class="modal_content_title_cell team_name">
+                            	{gamename}</div>
+                            <div class="modal_content_title_cell score">{selectname}</div>
+
+                    </div>
+                    </div>
+                    <div class="modal_content_title_table2">
+                        <div class="modal_content_title_row2">
+                            <div class="modal_content_title_cell2">{_TRADE_ACCOUNT}</div>
+                            <div class="modal_content_title_cell2 rate">{PROFIT}</div>
+                            <div class="modal_content_title_cell2">{ESTIMATED_PROFIT}</div>
+                        </div>
+                    </div>
+                    <div class="modal_content_title_table3">
+                        <div class="modal_content_title_row2">
+                            <div class="modal_content_title_cell3 trade_amount">
+                            <input class="input" style="text-align:center;" type="text" name="Bet" id="Bet" maxlength="10" size="12" onkeyup="checkorder(this.value)" value="">
+                            </div>
+                            <div class="modal_content_title_cell3 x">x</div>
+                            <div class="modal_content_title_cell3 rate_num">{Rate_st}%</div>
+                            <div class="modal_content_title_cell3 equal">=</div>
+                            <div class="modal_content_title_cell3 total"><span id="orderrisk_st"></span></div>
+                        </div>
+                    </div>
+                    <div class="fee">※{PROCESSING_FEE}：{percentss}%</div>
+                    <div class="btn_group">
+                        <button class="money_btn" onclick="checkorder_add('{betsize1}')">{betsize1}</button>
+                        <button class="money_btn" onclick="checkorder_add('{betsize2}')">{betsize2}</button>
+                        <button class="money_btn" onclick="checkorder_add('{betsize3}')">{betsize3}</button>
+                        <button class="all" onclick="checkorder_add('{quota}','all')">{ALL}</button>
+                    </div>
+                </div>
+
+                <div class="white_bg2">
+                    <div id="setting" class="setting"><i class="fa fa-cog" aria-hidden="true"></i></div>
+                    <div class="overage">{_GREATER_QUOTA_}：{quota_point}</div>
+                </div>
+
+                <button class="confirm" id="confirm1" onclick="getorder()">{DETERMINEDEAL}</button>
+                <button class="cancel" id="cancel1"onclick="closeorderdiv()">{_CANCEL_DEAL}</button>
+</div>
+
+
+<div id="order2" class="order_content2" style="display:none;">
+                <div class="trade_msg">{ORDER_MESSAGE}</div>
+                <div class="against">{AGAINSTORDER}<span class="blink">{AGAINSTORDER_1}</span><span class="text_italic">{marketname}{selectname}</span></div>
+                <div class="white_bg">
+                    <div class="modal_content_title_table1">
+                        <div class="modal_content_title_row1">
+                            <div class="modal_content_title_cell date">{timess}&nbsp;&nbsp;{category}</div>
+                            <div class="modal_content_title_cell football">{marketname}</div>
+                        </div>
+                        <div class="modal_content_title_row1">
+                            <div class="modal_content_title_cell team_name">
+                            	{gamename}</div>
+                            <div class="modal_content_title_cell score">{selectname}</div>
+
+                    </div>
+                    </div>
+                    <div class="modal_content_title_table2">
+                        <div class="modal_content_title_row2">
+                            <div class="modal_content_title_cell2 window2">{_TRADE_ACCOUNT}</div>
+                            <div class="modal_content_title_cell2 window2 rate">{PROFIT}</div>
+                            <div class="modal_content_title_cell2 window2">{ESTIMATED_PROFIT}</div>
+                        </div>
+                    </div>
+                    <div class="modal_content_title_table3">
+                        <div class="modal_content_title_row2">
+                            <div class="modal_content_title_cell3 trade_amount"><span id="Bet_st"></span></div>
+                            <div class="modal_content_title_cell3 x">x</div>
+                            <div class="modal_content_title_cell3 rate_num">{Rate_st}%</div>
+                            <div class="modal_content_title_cell3 equal">=</div>
+                            <div class="modal_content_title_cell3 total"><span id="orderrisk"></span></div>
+                        </div>
+                    </div>
+                    <div class="fee">※{PROCESSING_FEE}：{percentss}%</div>
+                    <div class="notice">{_ORDER_MIDD_INFO_}<span class="confirm_trade">{_ORDER_MIDD_INFO__1}</span>{_ORDER_MIDD_INFO__2}</div>
+                </div>
+
+                <div class="window2_white_bg2">
+
+                    <div class="overage">{_GREATER_QUOTA_}：{quota_point}</div>
+                </div>
+
+                <button class="confirm" id="btnTest">{DETERMINE}</button>
+                <button class="cancel" id="cancel2" onclick="closeorderdiv()">{CANCEL}</button>
+</div> 
+
+
+ <div id="Modal_cover3" class="cover">
+            <div id="order3" class="order_content3">
+                <div class="modal_title">{_QUICK_SETP}</div>
+                <i class="fa fa-times x" aria-hidden="true" style="height:0px;"></i>
+                <div class="black_line"></div>
+                <div class="my_info_table">
+                    <div class="my_info_row">
+                        <div class="my_info_cell_title">{_FIRST_SETUP}</div>
+                        <div class="my_info_cell"><input maxlength="7" type="number" class="form-control" id="common1" name="common1" value="{betsize1}"></div>
+                    </div>
+                    <div class="my_info_row">
+                        <div class="my_info_cell_title">{_SECAND_SETUP}</div>
+                        <div class="my_info_cell"><input maxlength="7" type="number" class="form-control" id="common2" name="common2" value="{betsize2}"> </div>
+                    </div>
+                    <div class="my_info_row">
+                        <div class="my_info_cell_title">{_THIRD_SETUP}</div>
+                        <div class="my_info_cell"><input maxlength="7" type="number" class="form-control" id="common3" name="common3" value="{betsize3}"></div>
+                        <input type="hidden" id="quotas" name="quotas" value="{quota}">
+                    </div>
+                </div>
+                <div class="btn_group_order">
+                <button id="confirm3" onClick="changeCommon('common')">{_JS_SURE}</button>
+                <button id="cancel3">{_CANCEL}</button>
+                </div>
+        </div>
+
+ </div>           
+ 	    	        
+	</div>
+
+      
+	    
+<input type="hidden" name="MarketId" id="MarketId" value="{MarketId}">
+<input type="hidden" name="gameid" id="gameid" value="{gameid}">
+<input type="hidden" name="SelectionId" id="SelectionId" value="{SelectionId}">
+<input type="hidden" name="BetType" id="BetType" value="{BetType}">
+<input type="hidden" name="handicap" id="handicap" value="">
+<input type="hidden" name="gamename" id="gamename" value="{gamename_order_back}">
+<input type="hidden" name="marketname_st" id="marketname_st" value="{marketname}">
+<input type="hidden" name="Rate" id="Rate" value="{Rate}">
+<input type="hidden" name="percent" id="percent" value="{percent}">
+<input type="hidden" name="betfairori" id="betfairori" value="{betfairori}">
+<input type="hidden" name="markettype" id="markettype" value="{markettype}">
+<input type="hidden" name="time" id="time" value="{time}">
+<input type="hidden" name="selectname" id="selectname" value="{selectname}">
+<input type="hidden" name="inplay" id="inplay" value="0">
+<input type="hidden" name="selectrateL1" id="selectrateL1" value="{selectrateL1}">
+<input type="hidden" name="gc12" id="gc12" value="{gc12}">
+<input type="hidden" name="category" id="category" value="{category}">
+<input type="hidden" name="sel" id="sel" value="{sel}">
+<input type="hidden" name="balance_money" id="balance_money" value="{quota}">
+<input type="hidden" name="betsize1" id="betsize1" value="{betsize1}">
+<input type="hidden" name="betsize1" id="betsize2" value="{betsize2}">
+<input type="hidden" name="betsize1" id="betsize3" value="{betsize3}">
+

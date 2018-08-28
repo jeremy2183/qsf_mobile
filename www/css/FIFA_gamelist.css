@@ -1,0 +1,1074 @@
+/* gamelist */
+@charset "utf8";
+.fifa_main_bg {
+	background: url(../img/FIFA/bg.png) no-repeat;
+	background-position: 50% 80%;
+	background-size: cover;
+	height: 100%;
+}
+
+.fifa_main_bg .title_background {
+	background: url(../img/FIFA/barBg.png) center center no-repeat;
+	background-size: cover;
+}
+
+.fifa_main_bg .title_background .title {
+	color: rgb(117, 78, 38);
+	font-weight: 700;
+}
+
+.fifa_tabs input:checked + label {
+	border-bottom: 0;
+}
+
+.fifa_tabs input:checked + label::after {
+	content: "";
+	height: 4px;
+	width: 100%;
+	background: -webkit-gradient(linear, left top, right top, from(rgb(167, 123, 81)), color-stop(50%, rgb(255, 216, 132)), to(rgb(167, 123, 81)));
+	background: linear-gradient(to right, rgb(167, 123, 81) 0%, rgb(255, 216, 132) 50%, rgb(167, 123, 81) 100%);
+	position: absolute;
+	bottom: 0px;
+	right: 0;
+	left: 0;
+}
+
+.fifa_tabs .content-3 {
+    padding: 105px 0px 65px 0px;
+    height: auto;
+}
+
+.fifa_tabs label {
+	line-height: 38px;
+}
+
+.fifa_game_list {
+	position: absolute;
+	top: 45px;
+	left: 0;
+	width: 100%;
+	padding: 0 5px 65px 5px;
+	z-index: 1;
+	-webkit-transition: opacity linear 0.1s;
+	transition: opacity linear 0.1s;
+	background-color: transparent;
+}
+
+.fifa_game_list ul {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-box-pack: start;
+	-ms-flex-pack: start;
+	justify-content: flex-start;
+	-webkit-box-align: stretch;
+	-ms-flex-align: stretch;
+	align-items: stretch;
+}
+
+.fifa_game_list ul li {
+	background: #fff;
+	margin-bottom: 5px;
+	display: inline-block;
+	position: relative;
+	height: 85px;
+	letter-spacing: 1px;
+}
+
+.fifa_game_list ul li .color_border {
+	width: 3px;
+	height: 100%;
+	display: block;
+	position: absolute;
+}
+
+.fifa_game_list ul li .left_gradient {
+	left: 0;
+	background: -webkit-gradient(linear, left bottom, left top, from(rgb(31, 189, 255)), to(rgb(0, 105, 178)));
+	background: linear-gradient(to top, rgb(31, 189, 255) 0%, rgb(0, 105, 178) 100%);
+}
+
+.fifa_game_list ul li .right_gradient {
+	left: 5px;
+	background: -webkit-gradient(linear, left bottom, left top, from(rgb(219, 144, 145)), color-stop(50%, rgb(178, 55, 58)), to(rgb(183, 0, 0)));
+	background: linear-gradient(to top, rgb(219, 144, 145) 0%, rgb(178, 55, 58) 50%, rgb(183, 0, 0) 100%);
+}
+
+
+.fifa_list_content {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	-webkit-box-align: stretch;
+	-ms-flex-align: stretch;
+	align-items: stretch;
+	padding: 5px 20px;
+}
+
+.fifa_time_n_name {
+	position: relative;
+	text-align: center;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+
+.fifa_time {
+	display: inline-block;
+	width: 120px;
+	position: absolute;
+	top: 3px;
+	left: 0;
+	color: rgb(120, 120, 120);
+	text-align: left;
+}
+
+.fifa_time span {
+	padding-right: 10px;
+}
+
+.fifa_category {
+	font-size: 16px;
+	color: rgb(120, 120, 120);
+	font-weight: 300;
+}
+
+.fifa_game_team {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: row;
+	flex-direction: row;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	-webkit-box-align: stretch;
+	-ms-flex-align: stretch;
+	align-items: stretch;
+	margin: 8px 0;
+}
+
+.fifa_vs {
+	-webkit-box-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	text-align: center;
+	color: rgb(120, 120, 120);
+	font-weight: 600;
+	font-size: 13px;
+	letter-spacing: 1px;
+}
+
+.fifa_team {
+	-webkit-box-flex: 4;
+	-ms-flex: 4;
+	flex: 4;
+	font-size: 15px;
+	font-weight: 800;
+	color: rgb(0, 43, 81);
+}
+
+.team-left {
+	text-align: right;
+}
+
+.team-right {
+	text-align: left;
+}
+
+.game_rounds {
+	color: rgb(120, 120, 120);
+	font-size: 13px;
+}
+
+.guaranteed {
+	color: #fff;
+	background: url(../img/FIFA/holdIco.png) center center no-repeat;
+	background-size: cover;
+	position: absolute;
+	z-index: 1;
+	top: 2px;
+	right: 0px;
+	width: 35px;
+	height: 45px;
+	line-height: 32px;
+	font-size: 12px;
+	text-align: center;
+	font-weight: 600;
+}
+
+.fifa_list_arrow {
+	position: absolute;
+	right: 10px;
+	top: 25px;
+	font-size: 22px;
+	font-weight: bold;
+	color: #004e97;
+}
+
+
+/* bottom_menu (marketlist) */
+
+.icon_bar_cell {
+	position: relative;
+	top: 0px;
+}
+
+.iconBar_fifa_bg::after {
+	content: "";
+	position: absolute;
+	top: -10px;
+	left: 0;
+	right: 0;
+	background: url(../img/FIFA/e_selected_mubg_top.png) no-repeat;
+	background-position: top center;
+	background-size: contain;
+	height: 10px;
+	z-index: 1;
+}
+
+
+.iconBar_fifa_bg a,
+.iconBar_fifa_bg a.active {
+	background: url(../img/FIFA/e_selected_mubg_bottom.png) no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 100%;
+	z-index: -2;
+	border-color:  rgb(170, 135, 84);
+}
+
+.icon_bar_fifa {
+	display: block;
+	width: 30px;
+	height: 30px;
+	position: relative;
+	top: -2px;
+	left: -1px;
+	background: url(../img/FIFA/fifaWorldIcoOn.png) no-repeat;
+	background-size: cover;
+	background-position: center;
+	margin: -2px auto -8px;
+	z-index: 2;
+}
+
+.fifa_main_bg .icon_bar_marketlist {
+	background: url(../img/01-2.png) no-repeat;
+	display: block;
+	background-size: cover;
+	width: 20px;
+	height: 20px;
+	position: relative;
+	top: 8px;
+	margin: 0px auto;
+}
+
+.fifa_statistics_header {
+	background: url(../img/FIFA/clipBg.png) center center no-repeat;
+	background-size: contain;
+	width: 100%;
+	height: 60px;
+	position: relative;
+}
+.fifa_statistics_header::after {
+	content: "";
+	position: absolute;
+	top: 45px;
+	left: 0;
+	right: 0;
+	height: 60px;
+	background: -webkit-gradient(linear, left bottom, left top, from(rgb(147, 0, 0)), to(rgb(245, 88, 89)));
+	background: linear-gradient(to top, rgb(147, 0, 0) 0%, rgb(245, 88, 89) 100%);
+	z-index: -1;
+}
+.fifa_statistics_title {
+	background: url(../img/FIFA/bigTitleBg.png) center center no-repeat;
+	background-size: contain;
+	margin: 0 auto;
+    text-align: center;
+    height: 60px;
+}
+.fifa_statistics_title h3 {
+	color: rgb(160,14,15);
+	letter-spacing: 1px;
+	font-size: 13px;
+    font-weight: 700;
+    margin: 0px auto;
+	line-height: 12px;
+    padding: 12px 0 2px;
+}
+.fifa_statistics_title span {
+	background: rgb(160,14,15);
+    border-radius: 50px;
+    padding: 1px 4px 2px 2px;
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.fifa_statistics_content {
+	
+}
+
+.fifa_statistics_table {
+	text-align: center;
+	width: 100%;
+}
+.fifa_statistics_table thead tr {
+	color: #fff;
+	font-size: 12px;
+	height: 40px;
+    vertical-align: bottom;
+}
+.fifa_statistics_table thead tr th {
+	padding-bottom: 5px;
+	text-align: center;
+}
+.fifa_statistics_table tbody tr {
+	color: rgb(34,34,34);
+	background: #fff;
+}
+.fifa_statistics_table tbody tr:nth-child(odd) {
+	background: rgb(253,238,239);
+}
+.fifa_statistics_table tbody tr td {
+	border: 1px solid rgb(139,142,147);
+	padding: 10px 0;
+}
+.fifa_statistics_table tbody .first_line {
+	color: rgb(255,0,0);
+}
+.fifa_statistics_table tbody .sec_line {
+	color: rgb(0,159,255);
+}
+.fifa_statistics_table tbody .third_line {
+	color: rgb(0,192,41);
+}
+
+
+
+#schedule_tabs .fifa_diary_schedule_tabs {
+	background: #fff;
+	height: 60px;
+    width: 100%;
+    position: fixed;
+    top: 125px;
+    z-index: 3;
+    margin: 0 auto;
+    padding-top: 10px;
+	-webkit-box-shadow: 0 -2px 2px 3px rgba(0,0,0,0.21);
+	box-shadow: 0 -2px 2px 3px rgba(0,0,0,0.21);
+}
+#schedule_tabs .fifa_diary_schedule_tabs li {
+	display: inline-block;
+	width: 50%;
+	margin: 0px -1px;
+	text-align: center;
+	height: 100%;
+	font-size: 17px;
+    font-weight: 600;
+	cursor: pointer;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+#schedule_tabs .fifa_diary_schedule_tabs li a {
+	color: rgb(192,192,192);
+	text-decoration: none;
+	margin: 0;
+    border: 0;
+    padding: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+#schedule_tabs .fifa_diary_schedule_tabs li.active a {
+	color: rgb(117,78,38);
+	border: 0;
+}
+#schedule_tabs .fifa_diary_schedule_tabs li a span {
+	padding: 10px;
+	margin: 0 auto 2px;
+	display: block;
+}
+
+#schedule_tabs .fifa_diary_schedule_tabs .diary_list a span {
+	background: url(../img/FIFA/undateIco@2x.png) center center no-repeat;
+	background-size: contain;
+}
+#schedule_tabs .fifa_diary_schedule_tabs .diary_list.active a span {
+	background: url(../img/FIFA/dateIco@2x.png) center center no-repeat;
+	background-size: contain;
+}
+
+#schedule_tabs .fifa_diary_schedule_tabs .ranking a span {
+	background: url(../img/FIFA/unscoreIco@2x.png) center center no-repeat;
+	background-size: contain;
+}
+#schedule_tabs .fifa_diary_schedule_tabs .ranking.active a span {
+	background: url(../img/FIFA/scoreIco@2x.png) center center no-repeat;
+	background-size: contain;
+}
+.fifa_diary_schedule {
+	width: 100%;
+}
+
+.fifa_diary_schedule_banner{
+	position: relative;
+	background: #fff;
+	background-size: contain;
+    border-top: 7px solid #fff;
+    border-right: 5px solid #fff;
+    border-left: 8px solid #fff;
+    border-bottom: 5px solid #fff;
+    padding: 0px;
+    margin: 5px auto;
+    width: 95%;
+    height: 160px;
+	-webkit-box-shadow: 0 0 5px 1px rgba(0,0,0,0.2);
+	box-shadow: 0 0 5px 1px rgba(0,0,0,0.2);
+}
+.fifa_diary_schedule_banner img {
+	width: 100%;
+}
+.fifa_important_schedule {
+	background: url(../img/FIFA/ontopIco.png) top center no-repeat;
+    background-size: contain;
+    width: 65px;
+    height: 33px;
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    color: #fff;
+	letter-spacing: 2px;
+    text-align: center;
+    font-size: 15px;
+    padding-left: 2px;
+    line-height: 16px;
+	z-index: 3;
+}
+
+
+.sche_lists  {
+	width: 95%;
+	margin: auto;
+}
+#sche_lists_date {
+	position: relative;
+    width: 100%;
+    padding: 6px 10px;
+    color: rgb(140,101,45);
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid rgb(140,101,45);
+	letter-spacing: 1px;
+	margin-bottom: 5px;
+}
+#sche_lists_date::after {
+	content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: -webkit-gradient(linear, right top, left top, from(rgb(219, 144, 145)), color-stop(50%, rgb(178, 55, 58)), to(rgb(183, 0, 0)));
+    background: linear-gradient(to left, rgb(219, 144, 145) 0%, rgb(178, 55, 58) 50%, rgb(183, 0, 0) 100%);
+}
+
+.sche_lists .sche_list_content {
+	list-style: none;
+	position: relative;
+	display: none;
+}
+.sche_lists .sche_list_content.active {
+	display: block;
+}
+.sche_lists .sche_list_content::before {
+	content: "";
+    position: absolute;
+    top: -6px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: -webkit-gradient(linear, right top, left top, from(rgb(219, 144, 145)), color-stop(50%, rgb(178, 55, 58)), to(rgb(183, 0, 0)));
+    background: linear-gradient(to left, rgb(219, 144, 145) 0%, rgb(178, 55, 58) 50%, rgb(183, 0, 0) 100%);
+}
+.sche_lists .sche_list_content::after {
+	content: "";
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: -webkit-gradient(linear, right top, left top, from(rgb(31, 189, 255)), to(rgb(0, 105, 178)));
+    background: linear-gradient(to left, rgb(31, 189, 255) 0%, rgb(0, 105, 178) 100%);
+}
+.sche_lists .sche_list_content li {
+	background: rgba(255, 255, 255, 0.8);
+	height: 115px;
+	width: 100%;
+	margin-bottom: 5px;
+	-webkit-box-shadow: 0 0px 8px 1px rgba(0,0,0,0.21);
+	box-shadow: 0 0px 8px 1px rgba(0,0,0,0.21);
+	text-align: center;
+	padding: 10px 5px;
+}
+.sche_vs {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: row;
+	flex-direction: row;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+	color: rgb(34,34,34);
+	font-size: 14px;
+	margin: 10px auto;
+}
+.sche_vs_team {
+	font-size: 15px;
+	margin: 0 auto;
+	-webkit-box-flex: 1;
+	-ms-flex: 1;
+	flex: 1
+}
+
+.sche_vs_team span {
+	display: block;
+	width: 35px;
+	height: 35px;
+    margin: 0 auto 5px;
+    background: #ddd;
+}
+	/* 01-ä¿„ç???*/
+	span.logo_russia {
+		background: url(../img/FIFA/country_logo/logo_russia.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 02-æ²™ç‰¹?¿æ?ä¼?*/
+	span.logo_saudi_arabia {
+		background: url(../img/FIFA/country_logo/logo_saudi_arabia.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 03-?ƒå? */
+	span.logo_egypt {
+		background: url(../img/FIFA/country_logo/logo_egypt.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 04-?æ???*/
+	span.logo_uruguay {
+		background: url(../img/FIFA/country_logo/logo_uruguay.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 05-?©æ???*/
+	span.logo_morocco {
+		background: url(../img/FIFA/country_logo/logo_morocco.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 06-ä¼Šæ? */
+	span.logo_iran {
+		background: url(../img/FIFA/country_logo/logo_iran.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 07-?¡è???*/
+	span.logo_portugal {
+		background: url(../img/FIFA/country_logo/logo_portugal.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 08-è¥¿ç­??*/
+	span.logo_spain {
+		background: url(../img/FIFA/country_logo/logo_spain.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 09-æ³•å›½ */
+	span.logo_france {
+		background: url(../img/FIFA/country_logo/logo_france.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 10-æ¾³å¤§?©ä? */
+	span.logo_australia {
+		background: url(../img/FIFA/country_logo/logo_australia.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 11-?¿æ ¹å»?*/
+	span.logo_argentina {
+		background: url(../img/FIFA/country_logo/logo_argentina.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 12-?°å? */
+	span.logo_iceland {
+		background: url(../img/FIFA/country_logo/logo_iceland.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 13-ç§˜é­¯ */
+	span.logo_peru {
+		background: url(../img/FIFA/country_logo/logo_peru.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 14-ä¸¹éº¦ */
+	span.logo_denmark {
+		background: url(../img/FIFA/country_logo/logo_denmark.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 15-?‹ç??°ä? */
+	span.logo_croatia {
+		background: url(../img/FIFA/country_logo/logo_croatia.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 16-å°¼æ—¥?©ä? */
+	span.logo_nigeria {
+		background: url(../img/FIFA/country_logo/logo_nigeria.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 17-?¥æ–¯è¾¾é???*/
+	span.logo_costa_rica {
+		background: url(../img/FIFA/country_logo/logo_costa_rica.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 18-å¡žå?ç»´ä? */
+	span.logo_serbia {
+		background: url(../img/FIFA/country_logo/logo_serbia.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 19-å¾·å›½ */
+	span.logo_germany {
+		background: url(../img/FIFA/country_logo/logo_germany.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 20-å¢¨è¥¿??*/
+	span.logo_mexico {
+		background: url(../img/FIFA/country_logo/logo_mexico.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 21-å·´è¥¿ */
+	span.logo_brazil {
+		background: url(../img/FIFA/country_logo/logo_brazil.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 22-?žå£« */
+	span.logo_switzerland {
+		background: url(../img/FIFA/country_logo/logo_switzerland.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 23-?žå…¸ */
+	span.logo_sweden {
+		background: url(../img/FIFA/country_logo/logo_sweden.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 24-?©å›½ */
+	span.logo_korea {
+		background: url(../img/FIFA/country_logo/logo_korea.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 25-æ¯”åˆ©??*/
+	span.logo_belgium {
+		background: url(../img/FIFA/country_logo/logo_belgium.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 26-å·´æ‹¿é©?*/
+	span.logo_panama {
+		background: url(../img/FIFA/country_logo/logo_panama.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 27-çªå°¼ */
+	span.logo_tunisia {
+		background: url(../img/FIFA/country_logo/logo_tunisia.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 28-?±å›½ */
+	span.logo_england {
+		background: url(../img/FIFA/country_logo/logo_england.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 29-?¥ä¼¦æ¯”ä? */
+	span.logo_colombia {
+		background: url(../img/FIFA/country_logo/logo_colombia.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 30-?¥æœ¬ */
+	span.logo_japan {
+		background: url(../img/FIFA/country_logo/logo_japan.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 31-æ³¢å…° */
+	span.logo_poland {
+		background: url(../img/FIFA/country_logo/logo_poland.png) center center no-repeat;
+		background-size: contain;
+	}
+	/* 32-å¡žå?? å? */
+	span.logo_senegal {
+		background: url(../img/FIFA/country_logo/logo_senegal.png) center center no-repeat;
+		background-size: contain;
+	}
+
+.sche_vs_time {
+	letter-spacing:  1px;
+	margin: 0 auto;
+	-ms-flex-item-align: center;
+	align-self: center;
+	-webkit-box-flex: 1;
+	-ms-flex: 1;
+	flex: 1
+}
+.sche_vs_time p:last-child,
+.sche_info {
+	color: rgb(120,120,120);
+	letter-spacing: 2px;
+}
+.sche_info span:nth-child(1)::before {
+	content: "小组赛 ·";
+}
+.sche_info span:nth-child(1)::after {
+	content: "组 · ";
+}
+.sche_info span:nth-child(2)::before {
+	content: "比赛第";
+}
+.sche_info span:nth-child(2)::after {
+	content: "轮， ";
+}
+.sche_info span:nth-child(3)::before {
+	content: "共";
+}
+.sche_info span:nth-child(3)::after {
+	content: "场 ";
+}
+
+
+
+.fifa_ranking {
+	width: 95%;
+	margin: 0 auto;
+}
+.fifa_ranking > h4 {
+    margin: 10px auto 0;
+	padding: 7px 8px;
+    color: #fff;
+    background: rgb(154,130,89);
+    font-size: 15px;
+    font-weight: 300;
+}
+.fifa_ranking_table {
+	background: #fff;
+	width: 100%;
+	margin-bottom: 12px;
+	-webkit-box-shadow: 0 1px 1px 0px rgba(0,49,65,0.4);
+	box-shadow: 0 1px 1px 0px rgba(0,49,65,0.4);
+}
+.fifa_ranking_table caption {
+	background: #fff;
+	color: rgb(28,104,147);
+	letter-spacing: 8px;
+	padding-left: 10px;
+}
+.fifa_ranking_table tr {
+	height: 40px;
+	border-bottom: 1px solid #ddd;
+}
+.fifa_ranking_table th,
+.fifa_ranking_table td {
+	text-align: center;
+	height: 40px;
+}
+.fifa_ranking_table thead {
+	background: rgb(193,169,122);
+    color: #fff;
+}
+.fifa_ranking_table thead th {
+	padding: 7px 0px;
+	text-align: center;
+	font-size: 13px;
+}
+.fifa_ranking_table thead th:first-child {
+	padding-left: 40px;
+	text-align: left;
+}
+.fifa_ranking_table tbody {
+	color: rgb(0,131,174);
+	font-size: 13px;
+}
+.fifa_ranking_table tbody th {
+	width: 10%;
+}
+.fifa_ranking_table tbody tr td {
+	padding: 3px;
+	letter-spacing: 1px;
+	width: 8%;
+}
+.fifa_ranking_table .table_teams_name {
+	width: 33%;
+	letter-spacing: 5px;
+	text-align: left;
+	vertical-align: middle;
+}
+.fifa_ranking_table .table_teams_name img {
+	width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+
+.fifa_activity {
+	width: 100%;
+}
+.fifa_activity_banner{
+	background: #ddd;
+    border: 10px solid #fff;
+    padding: 0px;
+    margin: 5px auto;
+    width: 95%;
+    position: relative;
+    height: 165px;
+	-webkit-box-shadow: 0 0 5px 1px rgba(0,0,0,0.2);
+	box-shadow: 0 0 5px 1px rgba(0,0,0,0.2);
+}
+.fifa_activity_banner img {
+	margin: 0 auto;
+	width: 100%;
+	height: 100%;
+}
+.fifa_sticky_banner {
+	background: url(../img/FIFA/ontopIco.png) top center no-repeat;
+	background-size: contain;
+	width: 80px;
+    height: 45px;
+    position: absolute;
+    top: -3px;
+    right: 0px;;
+	color: #fff;
+	letter-spacing: 5px;
+    text-align: center;
+    font-size: 15px;
+    padding-left: 10px;
+	
+}
+.fifa_banner_morelink {
+	position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background: rgba(0, 0, 0, 0.5);
+    height: 40px;
+    color: #fff;
+    padding: 10px;
+    text-shadow: 0px 0px 3px #000;
+}
+.fifa_banner_morelink span {
+	color: rgb(246,226,177);
+	font-size: 16px;
+	font-weight: 700;
+}
+.fifa_banner_morelink span::before {
+	content: "活动截止倒数";
+	padding-right: 15px;
+	color: #fff;
+	font-weight: 300;
+	font-size: 13px;
+}
+.fifa_banner_morelink span::after {
+	content: "天";
+	padding-left: 5px;
+	color: #fff;
+	font-weight: 300;
+	font-size: 13px;
+}
+.fifa_banner_morelink a {
+	height: 30px;
+	width: auto;
+	background: -webkit-gradient(linear, left bottom, left top, from(rgb(77, 77, 76)), color-stop(50%, rgb(166, 166, 166)), color-stop(51%, rgb(197,197, 197)), to(rgb(252, 252, 252)));
+	background: linear-gradient(to top, rgb(77, 77, 76) 0%, rgb(166, 166, 166) 50%, rgb(197,197, 197) 51%, rgb(252, 252, 252) 100%);
+	color: #fff;
+	font-size: 16px;
+	text-align: center;
+	font-weight: 900;
+    padding: 5px 10px;
+	position: absolute;
+    word-break: keep-all;
+    right: 10px;
+    top: 5px;
+}
+
+.activity_section {
+	background: rgb(0,91,148) url(../img/FIFA/bannerBg.png) top center no-repeat;
+	background-size: contain;
+	position: relative;
+	margin: 95px auto 70px;
+    padding: 160px 30px 25px;
+    width: 95%;
+	color: #fff;
+	font-size: 15px;
+}
+.activity_section h5 {
+	position: relative;
+	padding-left: 20px;
+	margin-top: 35px;
+}
+.activity_section h5::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 20px;
+	background: url(../img/FIFA/itemball.png) center center no-repeat;
+	background-size: contain;
+}
+.activity_section li {
+	padding: 5px 0;
+}
+.activity_section strong {
+	color: rgb(252, 255, 0);
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+
+.fa.fifa_detail_arrow_left {
+	position: relative;
+	left: 20px;
+    top: 15px;
+	font-size: 22px;
+	font-weight: bold;
+	color: #fff;
+	margin-right: 10px;
+}
+
+.digital {
+	text-align: center;
+	margin: 0 auto;
+}
+.digitalTimeTitle1 {
+	font-size: 24px;
+	color: rgb(136,98,27);
+	font-weight: 700;
+	margin-bottom: 0;
+}
+.digitalTimeTitle2 {
+	font-size: 26px;
+    letter-spacing: 5px;
+    color: rgb(136,98,27);
+    font-weight: 700;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+.LiveClockDays {
+	width: 250px;
+	height: 250px;
+	background: url(../img/FIFA/circle.png) center no-repeat;
+	background-size: contain;
+	margin: 20px auto 0;
+	color: #fff;
+	font-size: 76px;
+	font-weight: 900;
+	vertical-align: middle;
+	text-shadow: 1px 1px 1px #000;
+	line-height: 3em;
+	position: relative;
+}
+.LiveClockDays::after {
+	content: 'å¤?;
+	position: absolute;
+	bottom: -35px;
+	left: 0;
+	right: 0;
+	text-align: center;
+	color: #fff;
+	font-size: 26px;
+	text-shadow: none;
+}
+.LiveClock {
+	margin-top: 30px;
+}
+.LiveClock .timeHour,
+.LiveClock .timeMin,
+.LiveClock .timeSec {
+	margin: 0 1px;
+	position: relative;
+}
+.LiveClock .timeHour::before,
+.LiveClock .timeMin::before,
+.LiveClock .timeSec::before {
+	content: '';
+	position: absolute;
+	top: -40px;
+	left: 0;
+	right: 0;
+	color: rgb(85,85,85);
+	font-size: 12px;
+	font-weight: 700;
+}
+
+.LiveClock .timeHour::before {
+	content: '??;
+}
+
+.LiveClock .timeMin::before{
+	content: '??;
+}
+
+.LiveClock .timeSec::before {
+	content: 'ç§?;
+}
+
+
+
+.LiveClock .timeHour span,
+.LiveClock .timeMin span,
+.LiveClock .timeSec span {
+	display: inline-block;
+	width: 40px;
+	height: 50px;
+	background: url(../img/FIFA/timeBg.png) center no-repeat;
+	background-size: contain;
+	font-size: 32px;
+    font-weight: 900;
+	color: rgb(85,85,85);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

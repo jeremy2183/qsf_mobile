@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=414, user-scalable=no">
+	<title>TG_MarketList</title>
+	<link rel="stylesheet" href="./template/www/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="./template/www/css/bootstrap-select.min.css">
+	<link rel="stylesheet" href="./template/www/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="./template/www/css/normalize.css">
+    <link rel="stylesheet" href="./template/www/css/tab_style.css">
+	<!--menu bar 套件-->
+    <link rel="stylesheet" href="./template/www/css/demo.css">
+    <link rel="stylesheet" href="./template/www/css/Main_Style.css">
+	<link rel="stylesheet" href="./template/www/css/index.css">
+	<link rel="stylesheet" href="./template/www/css/side.css">
+</head>
+
+<body>
+	<div class="sidy">
+		<!-- INCLUDE BLOCK : header -->
+
+		<div class="sidy__content">
+			<div class="head_banner nav-bar navbar-fixed-top">
+				<!-- START BLOCK : headerMenuIcon -->
+				<div data-panel="panel-1" class="sidy--to-open menu_btn">
+					<span></span><br>
+					<span></span><br>
+					<span></span><br>
+				</div>
+				<!-- END BLOCK : headerMenuIcon -->
+				<!-- START BLOCK : headerBackIcon -->
+				<a href="fifa.php"><i class=" fa fa-angle-left fifa_detail_arrow_left" aria-hidden="true"></i></a>
+				<!-- END BLOCK : headerBackIcon -->
+				
+				<div class="acc"><img class="top_user" src="./template/www/img/top_user.png" width="11" height="11">{username}</div>
+				<div class="money"><img class="top_coin" src="./template/www/img/top_coin.png" width="11" height="11"><span id="quotaView">{quotaView}</span></div>
+				<input type="hidden" id="memberQuota" name="memberQuota" value="{quota}">
+			</div>
+			<div class="title_background ">
+				<button class="announcement_btn" onclick="titleannice()">{_ANNOUNCEMENT}<i class="fa fa-caret-right arrow_2" aria-hidden="true"></i></button>
+				<div class="title_market" style="">
+					<marquee id="marqinfo" style="margin-top:3px;font-size:16px;margin-left:22%;width:80%;display:block;" direction="left">
+					<!-- START BLOCK : marquee_st -->
+						  {noticcontents}
+						  <!-- END BLOCK : marquee_st -->
+				 </marquee>
+					<div style="padding-left:150px;width:80%;display:none;" id="markettitle" name="markettitle">{_MARKETLIST}</div>
+					</div>
+				<div class="mail"><img src="./template/www/img/icon/mail.png" height="18" width="27"/><span onclick="document.location.href='announce.php'" class="message_number">{_ANNOUNCEMENT_COUNT_}</span></div>
+			</div>
+
+			<div class="icon_bar navbar-fixed-bottom">
+				<div class="icon_bar_row">
+					<div class="icon_bar_cell"><a id="market_a" name="market_a" href="market.php"><div class="icon_bar_marketlist"></div><div class="icon_bar_text">市场列表</div></a></div>
+					<div class="icon_bar_cell"><a id="orderinfo_a" name="orderinfo_a" href="orderinfo.php"><div class="icon_bar_trade"></div><div class="icon_bar_text">交易明细</div></a></div>
+					<div class="icon_bar_cell"><a class="active" href="indexCenter.php"><div class="icon_bar_index"></div><div class="icon_bar_text">首　页</div></a></div>
+					<div class="icon_bar_cell"><a name="history_a" id="history_a" href="history.php"><div class="icon_bar_history"></div><div class="icon_bar_text">历史帐务</div></a></div>
+					<div class="icon_bar_cell"><a name="my_a" id="my_a" href="my.php"><div class="icon_bar_my"></div><div class="icon_bar_text">我　的</div></a></div>
+				</div>
+				<div id="Modal_coverchgall" class="cover"></div>
+			</div>
+			
+			<div class="scroll_top" id="return-to-top">
+				<div class="scroll_top_bg"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+			</div>
+
+			<section class="indexTabsNcarousel">
+				<div class="carousel slide" id="carousel-example-generic" data-ride="carousel">
+					<ol class="carousel-indicators">
+						<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+						<!--<li data-target="#carousel-example-generic" data-slide-to="1"></li>-->
+					</ol>
+					<div class="carousel-inner" role="listbox">
+						<div class="item active">
+							<a href="activeInfo.php">
+								<img class="indexImgs" src="./template/www/img/Races/hold_bn.png" alt="First slide">
+								<div class="carousel-caption">
+									<h3 class="">淘金网33333保本活动-07/16开跑！</h3>
+								</div>
+							</a>
+						</div>
+						<!--
+						<div class="item">
+							<a href="#">
+							<img class="indexImgs" src="https://fakeimg.pl/400x160/" alt="Second slide">
+							<div class="carousel-caption">
+									<h3 class="">淘金网世界杯1/4决赛MVP:莫德里奇</h3>
+								</div>
+							</a>
+						</div>-->
+					</div>
+				</div>
+
+				<ul class="indexNav nav nav-tabs" id="myTab">
+					<li class=" active"><a href="#popuPaces" data-toggle="tab">热门赛事</a></li>
+					<li class=""><a href="#hotNews" data-toggle="tab">今日头条</a></li>
+				</ul>
+
+				<div id="myTabContent" class="tab-content">
+					<div class="tab-pane fade in active" id="popuPaces">
+					
+						<div class="popuRaces_list">
+							<a href="marketorder.php?gc12={ga120}&gameid={eventId0}&time={game_open_time0}&name={host_team0}%20v%20{guest_team0}&competitionname={competition0}&status_id=">
+								<div class="topChart">
+									<span id="topOneScore"></span>
+									<svg class="indexSvg" width="140" height="140" viewBox="0 0 140 180">
+										<linearGradient id="OnelinearBG" x1="0" y1="0" x2="1" y2="1">
+										   <stop offset="0%" stop-color="#ffe9e9"></stop>
+										   <stop offset="100%" stop-color="#fdd3d3"></stop>
+										</linearGradient>
+										<circle stroke="url(#OnelinearBG)" stroke-width="17" stroke-linecap="round" fill="none" cx="70" cy="90" r="63" />
+
+										 <linearGradient id="OnelinearColors" x1="1" y1="0" x2="0" y2="1">
+										   <stop offset="0%" stop-color="#fc7574"></stop>
+										   <stop offset="100%" stop-color="#ff0000"></stop>
+										</linearGradient>
+										<circle id="one_value" stroke="url(#OnelinearColors)" stroke-width="14" stroke-dasharray="396" stroke-dashoffset="396" stroke-linecap="round" fill="none" cx="70" cy="90" r="63" />
+
+										<linearGradient id="Onestart" x1="1" y1="0" x2="0" y2="1">
+										   <stop offset="0%" stop-color="#ffd0d2"></stop>
+										   <stop offset="100%" stop-color="#d70000"></stop>
+										</linearGradient>
+										<circle fill="url(#Onestart)" cx="70" cy="27" r="7" />
+
+										<circle id="oneEnd" stroke="#e10100" stroke-width="14" stroke-dasharray="1,396" stroke-dashoffset="396" stroke-linecap="round" fill="none" cx="70" cy="90" r="63" />
+
+									</svg>
+								</div><!--
+							 --><div class="chartInfo">
+									<div class="volume">{sum_bet_dealmoney_per_selectionV0}</div>
+									<div class="dateNname">
+										<span>{game_open_timeV0}</span>
+										<span>{competition0}</span>
+									</div>
+									<div class="index_BattleTeams">
+										<span>{host_team0}(主)</span>
+										<span>vs</span>
+										<span>{guest_team0}</span>
+									</div>
+									<div class="score">
+										<span>{marketname0}</span>
+										<span>{selection0}</span>
+										<span class="Odds"></span>
+										<!--<span class="indexGuaranteed"></span>-->
+									</div>
+								</div>
+							</a>
+						</div>
+						
+						
+						<div class="popuRaces_list">
+							<a href="marketorder.php?gc12={ga121}&gameid={eventId1}&time={game_open_time1}&name={host_team1}%20v%20{guest_team1}&competitionname={competition1}&status_id=">
+								<div class="topChart">
+									<span id="topTwoScore"></span>
+									<svg class="indexSvg" width="140" height="140" viewBox="0 0 140 180">
+										<linearGradient id="TwolinearBG" x1="0" y1="0" x2="1" y2="1">
+										   <stop offset="0%" stop-color="#fff"></stop>
+										   <stop offset="100%" stop-color="#b4d6e3"></stop>
+										</linearGradient>
+										<circle stroke="url(#TwolinearBG)" stroke-width="17" stroke-linecap="round" fill="none" cx="70" cy="90" r="63" />
+
+										<linearGradient id="TwolinearColors" x1="1" y1="0" x2="0" y2="1">
+										   <stop offset="0%" stop-color="#1c87ce"></stop>
+										   <stop offset="100%" stop-color="#00173b"></stop>
+										</linearGradient>
+										<circle id="two_value" stroke="url(#TwolinearColors)" stroke-width="14" stroke-dasharray="396" stroke-dashoffset="396" stroke-linecap="round" fill="none" cx="70" cy="90" r="63" />
+
+										<linearGradient id="Twostart" x1="1" y1="0" x2="0" y2="1">
+										   <stop offset="0%" stop-color="#f3f9ff"></stop>
+										   <stop offset="100%" stop-color="#00a2e3"></stop>
+										</linearGradient>
+										<circle fill="url(#Twostart)" cx="71" cy="27" r="7" />
+
+										<circle id="twoEnd" stroke="#0d4a7f" stroke-width="14" stroke-dasharray="1,396" stroke-dashoffset="396" stroke-linecap="round" fill="none" cx="70" cy="90" r="63" />
+									</svg>
+								</div><!--
+							 --><div class="chartInfo">
+									<div class="volume">{sum_bet_dealmoney_per_selectionV1}</div>
+									<div class="dateNname">
+										<span>{game_open_timeV1}</span>
+										<span>{competition1}</span>
+									</div>
+									<div class="index_BattleTeams">
+										<span>{host_team1}(主)</span>
+										<span>vs</span>
+										<span>{guest_team1}</span>
+									</div>
+									<div class="score">
+										<span>{marketname1}</span>
+										<span>{selection1}</span>
+										<span class="Odds"></span>
+										<!--<span class="indexGuaranteed"></span>-->
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="popuRaces_list">
+							<a href="marketorder.php?gc12={ga122}&gameid={eventId2}&time={game_open_time2}&name={host_team2}%20v%20{guest_team2}&competitionname={competition2}&status_id=">
+								<div class="topChart">
+									<span id="topThreeScore"></span>
+									<svg class="indexSvg" width="140" height="140" viewBox="0 0 140 180">
+										<linearGradient id="ThreelinearBG" x1="0" y1="0" x2="1" y2="1">
+										   <stop offset="0%" stop-color="#fff"></stop>
+										   <stop offset="100%" stop-color="#a8ffc3"></stop>
+										</linearGradient>
+										<circle stroke="url(#ThreelinearBG)" stroke-width="17" stroke-linecap="round" fill="none" cx="70" cy="90" r="63" />
+
+										<linearGradient id="ThreelinearColors" x1="1" y1="0" x2="0" y2="1">
+										   <stop offset="0%" stop-color="#00ff5a"></stop>
+										   <stop offset="100%" stop-color="#176c00"></stop>
+										</linearGradient>
+										<circle id="three_value" stroke="url(#ThreelinearColors)" stroke-width="14" stroke-dasharray="396" stroke-dashoffset="396" stroke-linecap="round" fill="none" cx="70" cy="90" r="63" />
+
+										<linearGradient id="Threestart" x1="1" y1="0" x2="0" y2="1">
+										   <stop offset="0%" stop-color="#f3f9ff"></stop>
+										   <stop offset="100%" stop-color="#10991c"></stop>
+										</linearGradient>
+										<circle fill="url(#Threestart)" cx="71" cy="27" r="7" />
+
+										<circle id="threeEnd" stroke="#05760d" stroke-width="14" stroke-dasharray="1,396" stroke-dashoffset="396" stroke-linecap="round" fill="none" cx="70" cy="90" r="63" />
+									</svg>
+								</div><!--
+							 --><div class="chartInfo">
+									<div class="volume">{sum_bet_dealmoney_per_selectionV2}</div>
+									<div class="dateNname">
+										<span>{game_open_timeV2}</span>
+										<span>{competition2}</span>
+									</div>
+									<div class="index_BattleTeams">
+										<span>{host_team2}(主)</span>
+										<span>vs</span>
+										<span>{guest_team2}</span>
+									</div>
+									<div class="score">
+										<span>{marketname2}</span>
+										<span>{selection2}</span>
+										<span class="Odds"></span>
+										<!--<span class="indexGuaranteed"></span>-->
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="popuRaces_list">
+							<a href="marketorder.php?gc12={ga123}&gameid={eventId3}&time={game_open_time3}&name={host_team3}%20v%20{guest_team3}&competitionname={competition3}&status_id=">
+								<div class="topChart">
+									<span id="topFourScore"></span>
+									<svg class="indexSvg" width="140" height="140" viewBox="0 0 140 180">
+										<linearGradient id="FourlinearBG" x1="0" y1="0" x2="1" y2="1">
+										   <stop offset="0%" stop-color="#fffee2"></stop>
+										   <stop offset="100%" stop-color="#fff6b8"></stop>
+										</linearGradient>
+										<circle stroke="url(#FourlinearBG)" stroke-width="17" stroke-linecap="round" fill="none" cx="70" cy="90" r="63" />
+
+										<linearGradient id="FourlinearColors" x1="1" y1="0" x2="0" y2="1">
+										   <stop offset="0%" stop-color="#fff045"></stop>
+										   <stop offset="100%" stop-color="#ffa200"></stop>
+										</linearGradient>
+										<circle id="four_value" stroke="url(#FourlinearColors)" stroke-width="14" stroke-dasharray="396" stroke-dashoffset="396" stroke-linecap="round" fill="none" cx="70" cy="90" r="63" />
+
+										<linearGradient id="Fourstart" x1="1" y1="0" x2="0" y2="1">
+										   <stop offset="0%" stop-color="#f3f9ff"></stop>
+										   <stop offset="100%" stop-color="#f4b200"></stop>
+										</linearGradient>
+										<circle fill="url(#Fourstart)" cx="71" cy="27" r="7" />
+
+										<circle id="fourEnd" stroke="#c48c00" stroke-width="14" stroke-dasharray="1,396" stroke-dashoffset="396" stroke-linecap="round" fill="none" cx="70" cy="90" r="63" />
+									</svg>
+								</div><!--
+							 --><div class="chartInfo">
+									<div class="volume">{sum_bet_dealmoney_per_selectionV2}</div>
+									<div class="dateNname">
+										<span>{game_open_timeV3}</span>
+										<span>{competition3}</span>
+									</div>
+									<div class="index_BattleTeams">
+										<span>{host_team3}(主)</span>
+										<span>vs</span>
+										<span>{guest_team3}</span>
+									</div>
+									<div class="score">
+										<span>{marketname3}</span>
+										<span>{selection3}</span>
+										<span class="Odds"></span>
+										<!--<span class="indexGuaranteed"></span>-->
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+
+
+					<!--News-->
+					<div class="tab-pane fade " id="hotNews">
+						<!-- START BLOCK : newsLists -->
+						<div class="news_list"><a href="newsInfo.php?indexNum={indexNum}">
+							<img src="{img_src}" width="100%"><!--
+							--><div class="news_title">
+								<h3>{title}</h3>
+								<div class="news_dates">
+									<!--<span class="new_news"></span>-->
+									<span class="new_times">{time}</span>
+									<!--<span class="pv">25,752</span>-->
+								</div>
+							</div></a>
+						</div>
+						<!-- END BLOCK : newsLists -->
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+
+<!--	<script src="./template/www/js/jquery-3.2.1.min.js"></script>-->
+	<script src="./template/www/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="./template/www/js/side.js"></script>
+	
+	<!-- START BLOCK : javascriptRun -->
+	<script>{scriptStr}</script>
+	<!-- END BLOCK : javascriptRun -->
+	<script type="text/javascript">
+		
+		//總成交量
+		var tradingVolume = [ {sum_bet_dealmoney_per_selection0} , {sum_bet_dealmoney_per_selection1} , {sum_bet_dealmoney_per_selection2} , {sum_bet_dealmoney_per_selection3}];
+		//可成交量
+		var surplusVolume = [ {current_all_can_deal_money0} , {current_all_can_deal_money1} , {current_all_can_deal_money2} , {current_all_can_deal_money3} ];
+		
+	</script>
+	<script src="./template/www/js/index.js"></script>
+
+</body>
+</html>

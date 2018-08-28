@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=414, user-scalable=no">
+	<title>TG_MarketList</title>
+	<link rel="stylesheet" href="./template/www/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./template/www/css/bootstrap-select.min.css">
+	<!--<link rel="stylesheet" href="./template/www/css/fontawesome-all.min.css">-->
+    <link rel="stylesheet" href="./template/www/css/normalize.css">
+    <link rel="stylesheet" href="./template/www/css/tab_style.css">
+	<!--menu bar 套件-->
+    <link rel="stylesheet" href="./template/www/css/demo.css">
+    <link rel="stylesheet" href="./template/www/css/Main_Style.css">
+	<link rel="stylesheet" href="./template/www/css/index.css">
+	<link rel="stylesheet" href="./template/www/css/side.css">
+</head>
+
+<body>
+	<div class="sidy">
+		<!-- INCLUDE BLOCK : header -->
+
+		<div class="sidy__content">
+			<div class="head_banner nav-bar navbar-fixed-top">
+				<!-- START BLOCK : headerMenuIcon -->
+				<div data-panel="panel-1" class="sidy--to-open menu_btn">
+					<span></span><br>
+					<span></span><br>
+					<span></span><br>
+				</div>
+				<!-- END BLOCK : headerMenuIcon -->
+				<!-- START BLOCK : headerBackIcon -->
+				<a href="javascript:history.go(-1);" class="backTOindex"><img src="./template/www/img/Races/arrow_top.png"/></a>
+				<!-- END BLOCK : headerBackIcon -->
+				
+				<div class="acc"><img class="top_user" src="./template/www/img/top_user.png" width="11" height="11">{username}</div>
+				<div class="money"><img class="top_coin" src="./template/www/img/top_coin.png" width="11" height="11"><span id="quotaView">{quotaView}</span></div>
+				<input type="hidden" id="memberQuota" name="memberQuota" value="{quota}">
+			</div>
+			<div class="title_background ">
+				<div class="title">{titleName}</div>
+			</div>
+
+			<div class="icon_bar navbar-fixed-bottom">
+				<div class="icon_bar_row">
+					<div class="icon_bar_cell"><a id="market_a" name="market_a" href="market.php"><div class="icon_bar_marketlist"></div><div class="icon_bar_text">市场列表</div></a></div>
+					<div class="icon_bar_cell"><a id="orderinfo_a" name="orderinfo_a" href="orderinfo.php"><div class="icon_bar_trade"></div><div class="icon_bar_text">交易明细</div></a></div>
+					<div class="icon_bar_cell"><a class="active" href="indexCenter.php"><div class="icon_bar_index"></div><div class="icon_bar_text">首　页</div></a></div>
+					<div class="icon_bar_cell"><a name="history_a" id="history_a" href="history.php"><div class="icon_bar_history"></div><div class="icon_bar_text">历史帐务</div></a></div>
+					<div class="icon_bar_cell"><a name="my_a" id="my_a" href="my.php"><div class="icon_bar_my"></div><div class="icon_bar_text">我　的</div></a></div>
+				</div>
+				<div id="Modal_coverchgall" class="cover"></div>
+			</div>
+			<div class="scroll_top" id="return-to-top">
+				<div class="scroll_top_bg"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+			</div>
+			
+			<!-- INCLUDE BLOCK : content -->
+			
+		</div>
+	</div>
+
+	<script src="./template/www/js/jquery-3.2.1.min.js"></script>
+	<script src="./template/www/js/bootstrap.min.js"></script>
+	<script src="./template/www/js/side.js"></script>
+	
+	<!-- START BLOCK : javascriptRun -->
+	<script>{scriptStr}</script>
+	<!-- END BLOCK : javascriptRun -->
+	
+	<script src="./template/www/js/index.js"></script>
+	
+</body>
+</html>

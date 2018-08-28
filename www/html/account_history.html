@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <title>TG_AccountHistory</title>
+    <link rel="stylesheet" href="./template/www/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./template/www/css/bootstrap-select.min.css">
+   <link rel="stylesheet" href="./template/www/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/tab_style.css">
+    <!--menu bar 套件-->
+    <link rel="stylesheet" href="../css/demo.css">
+    <link rel="stylesheet" href="../css/sidy.css">
+    <link rel="stylesheet" href="../css/Main_Style.css">
+    <link rel="stylesheet" href="../css/account_history.css">
+</head>
+<body>
+<div class="sidy">
+
+    <nav data-position="left" data-size="65%" data-fx="slide_overlay" class="sidy__panel sidy_background" id="panel-1">
+        <div class="tg_logo_menu"><img src="../img/sidemenu_icon/logo.png" width="87" height="87"> </div>
+        <div class="menu_table">
+            <div class="menu_table_row">
+                <div class="menu_table_cell"><a href="#"><div class="marketlist_icon"></div><div class="text">市場列表</div></a></div>
+                <div class="menu_table_cell"><a href="#"><div class="trade_icon"></div><div class="text">交易明細</div></a></div>
+                <div class="menu_table_cell"><a href="#"><div class="history_icon"></div><div class="text">帳務歷史</div></a></div>
+            </div>
+            <div class="menu_table_row">
+                <div class="menu_table_cell"><a href="#"><div class="game_icon"></div><div class="text">賽事結果</div></a></div>
+                <div class="menu_table_cell"><a href="#"><div class="announcement_icon"></div><div class="text">公　告</div></a></div>
+                <div class="menu_table_cell"><a href="#"><div class="index_icon"></div><div class="text">淘金廣場</div></a></div>
+            </div>
+        </div>
+        <div class="menu_table">
+            <div class="menu_table_row">
+                <div class="menu_table_cell"><a href="#"><div class="historygame_icon"></div><div class="text">歷史比賽</div></a></div>
+                <div class="menu_table_cell"><a href="#"><div class="rules_icon"></div><div class="text">規則說明</div></a></div>
+                <div class="menu_table_cell"><a href="#"><div class="discus_icon"></div><div class="text">討論區</div></a></div>
+            </div>
+            <div class="menu_table_row">
+                <div class="menu_table_cell"><a href="#"><div class="help_icon"></div><div class="text">幫助中心</div></a></div>
+                <div class="menu_table_cell"><a href="#"><div class="service_icon"></div><div class="text">聯絡客服</div></a></div>
+                <div class="menu_table_cell"></div>
+            </div>
+        </div>
+
+    </nav>
+
+
+    <div class="sidy__content">
+        <div class="head_banner nav-bar navbar-fixed-top">
+            <div data-panel="panel-1" class="sidy--to-open menu_btn">
+                <span></span><br>
+                <span></span><br>
+                <span></span><br>
+            </div>
+            <div class="acc"><img class="top_user" src="../img/top_user.png" width="11" height="11">PA0009</div>
+            <div class="money"><img class="top_coin" src="../img/top_coin.png" width="11" height="11">12345678.00</div>
+        </div>
+        <div class="title_background ">
+
+            <div class="title">帳務歷史</div>
+
+        </div>
+        <div class="icon_bar navbar-fixed-bottom">
+            <div class="icon_bar_row">
+                <div class="icon_bar_cell"><a href="#"><div class="icon_bar_marketlist"></div><div class="icon_bar_text">市場列表</div></a></div>
+                <div class="icon_bar_cell"><a href="#"><div class="icon_bar_trade"></div><div class="icon_bar_text">交易明細</div></a></div>
+                <div class="icon_bar_cell"><a href="#"><div class="icon_bar_index"></div><div class="icon_bar_text">淘金廣場</div></a></div>
+                <div class="icon_bar_cell"><a href="#"><div class="icon_bar_history"></div><div class="icon_bar_text">帳務歷史</div></a></div>
+                <div class="icon_bar_cell"><a href="#"><div class="icon_bar_my"></div><div class="icon_bar_text">我　的</div></a></div>
+            </div>
+        </div>
+
+
+        <section class="tabs">
+
+            <input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked"/>
+            <label for="tab-1" class="tab-label-1">本周</label>
+
+            <input id="tab-2" type="radio" name="radio-set" class="tab-selector-2"/>
+            <label for="tab-2" class="tab-label-2">上周</label>
+
+            <input id="tab-3" type="radio" name="radio-set" class="tab-selector-3"/>
+            <label for="tab-3" class="tab-label-3">前兩周</label>
+
+            <input id="tab-4" type="radio" name="radio-set" class="tab-selector-4"/>
+            <label for="tab-4" class="tab-label-4">近一年</label>
+
+            <div class="clear-shadow"></div>
+
+            <div class="content">
+                <div class="content-1">
+                    <div class="table_head">
+                        <div class="table_head_cell date">日期</div>
+                        <div class="table_head_cell trade_amount">交易金額</div>
+                        <div class="table_head_cell result">投資結果</div>
+                    </div>
+                    <div class="history_table">
+                        <div class="history_row">
+                            <div class="history_cell date ">03/13</div>
+                            <div class="history_cell trade_amount">2,500,000,01</div>
+                            <div class="history_cell result color_green">21,134,145</div>
+                        </div>
+                        <div class="history_row">
+                            <div class="history_cell date ">03/13</div>
+                            <div class="history_cell trade_amount">2,500,000,01</div>
+                            <div class="history_cell result color_green">21,134,145</div>
+                        </div>
+                        <div class="history_row">
+                            <div class="history_cell date ">03/13</div>
+                            <div class="history_cell trade_amount">2,500,000,01</div>
+                            <div class="history_cell result color_green">21,134,145</div>
+                        </div>
+                        <div class="history_row">
+                            <div class="history_cell date ">03/13</div>
+                            <div class="history_cell trade_amount">2,500,000,01</div>
+                            <div class="history_cell result color_green">21,134,145</div>
+                        </div>
+                        <div class="history_row">
+                            <div class="history_cell date ">03/13</div>
+                            <div class="history_cell trade_amount">2,500,000,01</div>
+                            <div class="history_cell result color_red">-531</div>
+                        </div>
+                        <div class="history_row">
+                            <div class="history_cell date ">03/13</div>
+                            <div class="history_cell trade_amount">2,500,000,01</div>
+                            <div class="history_cell result color_green">21,134,145</div>
+                        </div>
+                        <div class="history_row">
+                            <div class="history_cell date ">03/13</div>
+                            <div class="history_cell trade_amount">2,500,000,01</div>
+                            <div class="history_cell result color_green">21,134,145</div>
+                        </div>
+                </div>
+                    <div class="total_table">
+                        <div class="total_row">
+                        <div class="total_cell date">總計</div>
+                        <div class="total_cell trade_amount">6,000,000,001.14</div>
+                        <div class="total_cell result color_green">123,147,884,556.00</div>
+                    </div>
+                    </div>
+                </div>
+                <div class="content-2">
+
+
+                </div>
+                <div class="content-3">
+
+
+                </div>
+                <div class="content-4">
+
+
+                </div>
+
+            </div>
+        </section>
+
+
+    </div>
+
+</div>
+
+<script src="./template/www/js/jquery-3.2.1.min.js"></script>
+<script src="./template/www/js/bootstrap.min.js"></script>
+<script src="./template/www/js/bootstrap-select.min.js"></script>
+
+<script src="../js/modernizr.custom.04022.js"></script>
+<script src="../js/sidy.js"></script>
+<script src="../js/login.js"></script>
+
+</body>
+</html>

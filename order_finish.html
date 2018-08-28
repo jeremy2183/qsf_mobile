@@ -1,0 +1,170 @@
+<!--下注成功-->
+<!-- START BLOCK : orderfinish -->
+<div id="order3" class="order_content3">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                    <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"></circle>
+                    <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "></polyline>
+                </svg>
+                <div class="text_success">{errormessage}</div>
+                <div class="trade_line"></div>
+                <div class="trade_success_table">
+                    <div class="trade_success_row">
+                        <div class="trade_success_cell th_blue">{betids}</div>
+                        <div class="trade_success_cell">#{betid}</div>
+                    </div>
+                    
+                    <div class="trade_success_row">
+                        <div class="trade_success_cell th_blue">{_OPEN_TIME}</div>
+                        <div class="trade_success_cell">{time}</div>
+                    </div>
+                    
+                    <div class="trade_success_row">
+                        <div class="trade_success_cell th_blue">{league}</div>
+                        <div class="trade_success_cell">{competitionname}</div>
+                    </div>
+                    <div class="trade_success_row">
+                        <div class="trade_success_cell th_blue">{ordergame}</div>
+                        <div class="trade_success_cell">{gamename_back}</div>
+                    </div>
+                    <div class="trade_success_row">
+                        <div class="trade_success_cell th_blue">{option}</div>
+                        <div class="trade_success_cell">{gamemarket}&nbsp;-&nbsp;{gameselect}</div>
+                    </div>
+                    <div class="trade_success_row">
+                        <div class="trade_success_cell th_blue">{amount}</div>
+                        <div class="trade_success_cell">{now_dealmoney}</div>
+                    </div>
+                    <div class="trade_success_row">
+                        <div class="trade_success_cell th_blue space">{profit_order}%</div>
+                        <div class="trade_success_cell cell_red">{now_rate}</div>
+                    </div>
+                    <div class="trade_success_row">
+                        <div class="trade_success_cell th_blue">{estimated_profit}</div>
+                        <div class="trade_success_cell cell_green">{be_rate}</div>
+                    </div>
+                </div>
+                <button class="confirm" id="confirm3" onclick="document.location.reload()">{class_st}</button>
+                <button class="cancel" onclick="javascript:document.location.href='./orderinfo.php'">{_MOBILE_GOING_ORDERINFO}</button>
+  </div>
+<!--
+<div class="boxCont">
+	    	<div class="x">X</div>
+	        <div class="tit line">{errormessage}</div>
+	        <ul class="boxTable">
+	        	<li>
+	        		<span>{betids}</span><span>#{betid}</span>
+	        	</li>
+	        	<li>
+	        		<span>{league}</span><span>{competitionname}</span>
+	        	</li>
+	        	<li>
+	        		<span>{ordergame}</span><span>{gamename_back}</span>
+	        	</li>
+	        	<li>
+	        		<span>{option}</span><span>{gamemarket}&nbsp;-&nbsp;{gameselect}</span>
+	        	</li>
+	        	<li>
+	        		<span>{amount}</span><span>{now_dealmoney}</span>
+	        	</li>
+	        	<li>
+	        		<span>{profit_order}</span><span>{now_rate}</span>
+	        	</li>	
+	        	<li>
+	        		<span>{estimated_profit}</span><span>{be_rate}</span>
+	        	</li>	        	        		        	
+	        </ul>
+
+	        <div class="scBtn">
+	        	<a href="javascript:;" onclick="document.location.reload()" class="submit">{class_st}</a>
+	        	<a href="javascript:;" onclick="javascript:document.location.href='./orderinfo.php'" class="cancel">{_MOBILE_GOING_ORDERINFO}</a>
+	        </div>
+</div>
+-->
+<!-- END BLOCK : orderfinish -->
+<!-- START BLOCK : re_order -->
+<div id="order3" class="order_content3">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                    <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"></circle>
+                    <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "></polyline>
+                </svg>
+                <div class="text_success">{errormessage}</div>
+                <div class="trade_line"></div>
+                <div class="trade_success_table">
+                    <div class="trade_success_row">
+                        <div class="trade_success_cell th_blue">{betids}</div>
+                        <div class="trade_success_cell">#{betid}</div>
+                    </div>
+                    <div class="trade_success_row">
+                        <div class="trade_success_cell th_blue">{league}</div>
+                        <div class="trade_success_cell">{competitionname}</div>
+                    </div>
+                    <div class="trade_success_row">
+                        <div class="trade_success_cell th_blue">{ordergame}</div>
+                        <div class="trade_success_cell">{gamename_back}</div>
+                    </div>
+                    <div class="trade_success_row">
+                        <div class="trade_success_cell th_blue">{option}</div>
+                        <div class="trade_success_cell">{gamemarket}&nbsp;-&nbsp;{gameselect}</div>
+                    </div>
+                    <div class="trade_success_row">
+                        <div class="trade_success_cell th_blue">{amount}</div>
+                        <div class="trade_success_cell">{now_dealmoney}</div>
+                    </div>
+                    <div class="trade_success_row">
+                        <div class="trade_success_cell th_blue space">{profit_order}</div>
+                        <div class="trade_success_cell cell_red">{now_rate}</div>
+                    </div>
+                    <div class="trade_success_row">
+                        <div class="trade_success_cell th_blue">{estimated_profit}</div>
+                        <div class="trade_success_cell cell_green">{be_rate}</div>
+                    </div>
+                </div>
+                <button class="confirm" id="confirm3" onclick="document.location.reload()">{class_st}</button>
+                <button class="cancel" onclick="javascript:document.location.href='./orderinfo.php'">{_MOBILE_GOING_ORDERINFO}</button>
+  </div>
+  
+<!-- END BLOCK : re_order -->
+<!--其他-->
+<!-- START BLOCK : orderother -->
+<div id="order3" class="order_content3">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                <circle class="path circle" fill="none" stroke="#D06079" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"></circle>
+                <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3"></line>
+                <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2"></line>
+                </svg>
+                <div class="text_success">{errormessage}</div>
+                <div class="trade_line"></div>
+                <div class="trade_success_table">
+                    <div class="trade_success_row">
+                        <div class="trade_success_cell th_blue">{betids}</div>
+                        <div class="trade_success_cell">#{betid}</div>
+                    </div>
+                    <div class="trade_success_row">
+                        <div class="trade_success_cell th_blue">{league}</div>
+                        <div class="trade_success_cell">{competitionname}</div>
+                    </div>
+                    <div class="trade_success_row">
+                        <div class="trade_success_cell th_blue">{ordergame}</div>
+                        <div class="trade_success_cell">{gamename_back}</div>
+                    </div>
+                    <div class="trade_success_row">
+                        <div class="trade_success_cell th_blue">{option}</div>
+                        <div class="trade_success_cell">{gamemarket}&nbsp;-&nbsp;{gameselect}</div>
+                    </div>
+                    <div class="trade_success_row">
+                        <div class="trade_success_cell th_blue">{amount}</div>
+                        <div class="trade_success_cell">{now_dealmoney}</div>
+                    </div>
+                    <div class="trade_success_row">
+                        <div class="trade_success_cell th_blue space">{profit_order}%</div>
+                        <div class="trade_success_cell cell_red">{now_rate}</div>
+                    </div>
+                    <div class="trade_success_row">
+                        <div class="trade_success_cell th_blue">{estimated_profit}</div>
+                        <div class="trade_success_cell cell_green">{be_rate}</div>
+                    </div>
+                </div>
+                <button class="confirm" id="confirm3" onclick="document.location.reload()">{class_st}</button>
+                <button class="cancel" onclick="javascript:document.location.href='./orderinfo.php'">{_MOBILE_GOING_ORDERINFO}</button>
+  </div>
+<!-- END BLOCK : orderother -->

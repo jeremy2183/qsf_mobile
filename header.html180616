@@ -1,0 +1,132 @@
+<nav data-position="left" data-size="65%" data-fx="slide_overlay" class="sidy__panel sidy_background" id="panel-1">
+<script>
+	//会员互转
+	$("#modify111").on('click', function () {
+		$(".sidy__container").removeClass('sidy--opened');
+		$(".sidy__panel").css('transform', 'translate3d(-100%, 0px, 0px)');
+		$(".sidy__panel").css('visibility', 'visible');
+		$("#Modal_coverchgall").css('display', 'block');
+
+		$.ajax({
+			type: 'POST',
+			url: './other/userchg_thr.php' ,
+			//data: 'IncomeUser=' + username + '&amount=' + amount + '&withdrawpassword=' + passwd ,		
+			error: function(xhr) {
+				alert('error');
+				window.location.reload();
+				return false;
+			},
+			beforeSend:function(response)
+			{
+				$("#Modal_coverchgall").html("<div class='Loading'></div>");
+			}, 
+			success: function(response) {			
+				$("#Modal_coverchgall").on('keyup',function(){
+					var _this = this;
+					//setTimeout(function(){
+					//_this.scrollIntoViewIfNeeded();
+					//},400);
+				});
+				$("#Modal_coverchgall").html(response);
+			}
+		});
+	});
+</script>
+<div class="menu_head_bg">
+         <div class="menu_head_title" id="menu_head_title"></div>
+     </div>
+     <div class="menu_list">
+         <ul>
+             <li onclick="location.href='market.php'">
+                 <div class="market_list_icon"></div>
+                 <div class="menu_text">{_MARKETLIST}</div>
+                <div class="menu_arrow"></div>
+             </li>
+             <li onclick="location.href='orderinfo.php'">
+                 <div class="trade_detail_icon"></div>
+                 <div class="menu_text">{_TRANSACTION_DETAILS}</div>
+                 <div class="menu_arrow"></div>
+             </li>
+             <li onclick="location.href='history.php'">
+                 <div class="history_icon"></div>
+                 <div class="menu_text">{_HISTORICAL_ACCOUNTS}</div>
+                 <div class="menu_arrow"></div>
+             </li>
+             <li onclick="window.open('http://bf.spbo1.com', '_blank')">
+                 <div class="nowscore_icon_2018"></div>
+                 <div class="menu_text">{_NOW_SCORE_}</div>
+                 <div class="menu_arrow"></div>
+             </li>
+             <li onclick="location.href='gameresult.php'">
+                 <div class="game_result_icon"></div>
+                 <div class="menu_text">{_EVENT_RESULTS}</div>
+                 <div class="menu_arrow"></div>
+             </li>
+         </ul>
+     </div>
+        <div class="menu_block_group">
+            <div class="menu_block">
+            	  <div class="new_icon">NEW</div>
+                <div onclick="location.href='deposits.php'" class="menu_block_outline01">
+                <div class="menu_wd_icon"></div>
+                <div class="menu_block_text">{_SAVE_MONEY_}{_PICK_}</div>
+                </div>
+            </div>
+            <!--
+            <div class="menu_block">
+                <div onclick="window.open('http://bf.spbo1.com', '_blank')" class="menu_block_outline02">
+                <div class="menu_live_icon"></div>
+                <div class="menu_block_text">{_NOW_SCORE_}</div>
+                </div>
+            </div>
+            -->
+            <div class="menu_block">
+                <div id="modify111" name="modify111" class="menu_block_outline02">
+                <div class="menu_live_icon"></div>
+                <div class="menu_block_text">会员互转</div>
+                </div>
+            </div>
+            
+            <div class="menu_block">
+                <div onclick="location.href='service.php'" class="menu_block_outline03">
+                    <div class="menu_service_icon"></div>
+                    <div class="menu_block_text">{_CUSTOMER_}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu_list">
+            <ul>
+                <li onclick="location.href='statistics.php'">
+                    <div class="menu_history_stat_icon"></div>
+                    <div class="menu_text">{_HISTORY_GAME_}</div>
+                    <div class="menu_arrow"></div>
+                </li>
+                <li onclick="location.href='./products/html/rules.html'">
+                    <div class="menu_rules_icon"></div>
+                    <div class="menu_text">{_RULE_SS}</div>
+                    <div class="menu_arrow"></div>
+                </li>
+                <li onclick="location.href='./products/html/help.html'">
+                    <div class="menu_help_icon"></div>
+                    <div class="menu_text">{_HELP_CENTER_}</div>
+                    <div class="menu_arrow"></div>
+                </li>
+                <li onclick="window.open('http://f.tg333.net/index.php', '_blank')">
+                    <div class="menu_discuss_icon"></div>
+                    <div class="menu_text">{_DISC_}</div>
+                    <div class="menu_arrow"></div>
+                </li>
+                <li onclick="location.href='announce.php'">
+                    <div class="menu_announce_icon"></div>
+                    <div class="menu_text">{_WEB_ANNOUNCE_}</div>
+                    <div class="menu_arrow"></div>
+                </li>
+                <li onclick="location.href='memberlogout.php'">
+                    <div class="menu_logout_icon"></div>
+                    <div class="menu_text">{_LOGOUT}</div>
+                    <div class="menu_arrow"></div>
+                </li>
+            </ul>
+        </div>        
+</nav>

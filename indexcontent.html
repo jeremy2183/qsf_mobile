@@ -1,0 +1,94 @@
+<style>
+.titletext
+{
+font-weight:bold;
+font-size:18px;
+font-family:Arial;
+}
+.titletext_1
+{
+font-weight:bold;
+font-size:14px;
+font-family:Arial;
+}
+.titletext_2
+{
+font-weight:bold;
+font-size:18px;
+font-family:Arial;
+}
+</style>
+<div style="height:500px;" id="home" class="tab-pane fade in active">
+<table style="width:100%;height:400px;">
+	<tr style="border-bottom:1px solid rgba(9, 9, 9, 0.125);">
+		<td style="width:25%;padding:10px;"><canvas id="pie1" width="80px" height="80px"></canvas></td>
+		<td style="width:75%;">
+			  <table style="width:100%;height:auto">
+			  	<tr><td colspan=2 style="float:right;padding-right:10px;">成交量:3000</td></tr>
+			  	<tr><td colspan=2 style="float:left;padding-left:10px;">02-10 15:30 西甲</td></tr>
+			  	<tr><td colspan=2 style="float:left;padding-left:10px;">西班牙人 vs 皇家</td></tr>
+			  	<tr><td id="famousorder" colspan=2 style="float:left;padding-left:10px;">波膽0-0 @ <span id="famousorder_persent">21.56%</span></td></tr>
+			  	<tr>
+			  		  <td style="padding:5px;width:50%;float:left;padding-left:10px;">
+			  		  	<button style="background: -webkit-linear-gradient(top, #fefefe 0%,#cdcdcd 100%);width:95%;" type="button" class="btn btn-default" contenteditable="true">進入市場</button>
+			  		  </td>
+			  	    <td style="padding:5px;width:50%;float:left;padding-left:10px;">
+			  	    	<button style="background: -webkit-linear-gradient(top, #fefefe 0%,#cdcdcd 100%);width:95%;" type="button" class="btn btn-default" contenteditable="true">下單</button>
+			  	    	</td>
+			  	</tr>
+	      </table>		
+			</td>
+	</tr>
+	<tr style="border-bottom:1px solid rgba(9, 9, 9, 0.125);">
+		<td style="width:25%;padding:10px;"><canvas id="pie2" width="80px" height="80px"></canvas></td>
+		<td style="width:75%;">
+			  <table style="width:100%;height:auto">
+			  	<tr><td colspan=2 style="float:right;padding-right:10px;">成交量:3000</td></tr>
+			  	<tr><td colspan=2 style="float:left;padding-left:10px;">02-10 15:30 西甲</td></tr>
+			  	<tr><td colspan=2 style="float:left;padding-left:10px;">西班牙人 vs 皇家</td></tr>
+			  	<tr><td id="famousorder" colspan=2 style="float:left;padding-left:10px;">波膽0-0 @ <span id="famousorder_persent">21.56%</span></td></tr>
+			  	<tr>
+			  		  <td style="padding:5px;width:50%;float:left;padding-left:10px;">
+			  		  	<button style="background: -webkit-linear-gradient(top, #fefefe 0%,#cdcdcd 100%);width:95%;" type="button" class="btn btn-default" contenteditable="true">進入市場</button>
+			  		  </td>
+			  	    <td style="padding:5px;width:50%;float:left;padding-left:10px;">
+			  	    	<button style="background: -webkit-linear-gradient(top, #fefefe 0%,#cdcdcd 100%);width:95%;" type="button" class="btn btn-default" contenteditable="true">下單</button>
+			  	    	</td>
+			  	</tr>
+	      </table>		
+			</td>
+	</tr>
+	<tr style="border-bottom:1px solid rgba(9, 9, 9, 0.125);">
+		<td style="width:25%;padding:10px;"><canvas id="pie3" width="80px" height="80px"></canvas></td>
+		<td style="width:75%;">
+			  <table style="width:100%;height:auto">
+			  	<tr><td colspan=2 style="float:right;padding-right:10px;">成交量:3000</td></tr>
+			  	<tr><td colspan=2 style="float:left;padding-left:10px;">02-10 15:30 西甲</td></tr>
+			  	<tr><td colspan=2 style="float:left;padding-left:10px;">西班牙人 vs 皇家</td></tr>
+			  	<tr><td id="famousorder" colspan=2 style="float:left;padding-left:10px;">波膽0-0 @ <span id="famousorder_persent">21.56%</span></td></tr>
+			  	<tr>
+			  		  <td style="padding:5px;width:50%;float:left;padding-left:10px;">
+			  		  	<button style="background: -webkit-linear-gradient(top, #fefefe 0%,#cdcdcd 100%);width:95%;" type="button" class="btn btn-default" contenteditable="true">進入市場</button>
+			  		  </td>
+			  	    <td style="padding:5px;width:50%;float:left;padding-left:10px;">
+			  	    	<button style="background: -webkit-linear-gradient(top, #fefefe 0%,#cdcdcd 100%);width:95%;" type="button" class="btn btn-default" contenteditable="true">下單</button>
+			  	    	</td>
+			  	</tr>
+	      </table>		
+			</td>
+	</tr>
+</table>
+</div>
+
+    <div id="menu1" class="tab-pane fade">
+    <div style="margin:10px;text-align:center">{NO_DATA}</div>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+    <div style="margin:10px;text-align:center">{NO_DATA}</div>
+    </div>
+<script src="../psec/js/Charts.js"></script>
+<script type="text/javascript">
+	new Chart("pie1","{profitrate_}").ratePie(45);
+	new Charts("pie2","{profitrate_}").ratePie(15);
+	new Chartss("pie3","{profitrate_}").ratePie(65);
+</script>

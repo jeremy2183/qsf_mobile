@@ -1,0 +1,74 @@
+<link rel="stylesheet" href="./template/www/css/my.css">
+<div class="title_background ">
+<div class="title">{_MY_}</div>
+</div>
+ <div class="content" style="margin-top:0px;padding: 0px 0px 0px 0px;">
+       <div class="head_bg">
+        <div class="my_profile">
+            <div class="arrow_left" onclick="javascript:window.history.go(-1);"><i class=" fa fa-angle-left" aria-hidden="true"></i></div>
+            <div class="head"><img src="./template/www/img/icon/user.png" height="67" width="67"/></div>
+            <div class="acc_name">{_username_sec}</div>
+            <button class="logout" onclick="location.href='memberlogout.php'">{_LOGOUT}</button>
+            <div class="color_border_bottom"></div>
+        </div>
+        </div>
+        <div class="my_detail">
+
+            <div class="line"></div>
+            <div class="line2"></div>
+            <div class="detail_bg">
+                <div class=""></div>
+            <div class="block">
+                <div class="block_title">{_EXISTING_TRADE_AMOUNT}</div>
+                <div class="block_num">{thisrisk}</div>
+            </div>
+            <div class="block">
+                <div class="block_title">{_GREATER_QUOTA_}</div>
+                <div class="block_num">{quota}</div>
+            </div>
+            <div class="block">
+                <div class="block_title">{_NOW_TRADE_COUNT}</div>
+                <div class="block_num">{_QUOTAS_}</div>
+            </div>
+            
+           </div>
+        </div>
+            <div class="service_padding">
+          <div class="service_title">{_TAOGIN_SERVER}</div>
+            <div>
+            <div class="service_block" onclick="location.href='deposits.php'">
+                <div><img src="./template/www/img/icon/wallet.png" height="22" width="22"/></div>
+                <div class="service_text">{_SAVE_WITHDRAWAL}</div>
+            </div>
+            <div class="service_block" onclick="location.href='monrecord.php'">
+                <div><img src="./template/www/img/icon/account-1.png" height="22" width="22"/></div>
+                <div class="service_text">{_TRADERECORD}</div>
+            </div>
+            <div class="service_block" onclick="location.href='personal.php'">
+                <div><img src="./template/www/img/icon/menu-icon.png" height="22" width="22"/></div>
+                <div class="service_text">{_PERSONALINFO}</div>
+            </div>
+           </div>
+            <div class="service_title">{_COOPERATION_SERVER}</div>
+            <div>
+                <div class="service_block" onclick="location.href='./products/html/contact/index.php'">
+                    <div><img src="./template/www/img/icon/coo.png" height="25" width="25"/></div>
+                    <div class="service_text">{_WITH_COOPRATION}</div>
+                </div>
+                <div class="service_block" onclick="location.href='companyinfo.php'">
+                    <div><img src="./template/www/img/icon/about.png" height="25" width="25"/></div>
+                    <div class="service_text">{_ABOUT_TAOGIN}</div>
+                </div>
+					<div class="service_block" onclick="window.open('https://v88.live800.com/live800/chatClient/chatbox.jsp?companyID=698946&configID=1586&jid=5625358570&s=1')">
+					<!--<div class="service_block" onclick="_MICHAT.floatClick();return false;">-->
+                    <div><img src="./template/www/img/icon/24h.png" height="25" width="25"/></div>
+                    <div class="service_text">{_CUSTERMER24}</div>
+                </div>
+            </div>
+            </div>
+
+  </div>
+<script>
+$('.icon_bar_cell > a').removeClass('active');
+  $('.icon_bar_cell > #my_a').addClass('active');
+</script>

@@ -1,0 +1,206 @@
+<link rel="stylesheet" href="./template/www/css/accounce.css">
+<script>
+function openannounce(b)
+{
+	checkselfannounce(b);
+}
+
+function checkselfannounce(a)
+{
+	//alert(a);
+	jQuery.ajax({
+			type: 'GET',
+			url: './other/announce.php?pk='+a+'',
+			//data: 'handicap=' + a7 + '&inplay=' + a6 + '&selectname=' + a5,
+			error: function(xhr) {
+				//alert('網路忙線中，請稍後再試!r64');
+			},
+			beforeSend:function(response)
+		  {
+		  	
+		  },
+			success: function(response) {
+				//alert(response);
+					if(response.trim()=='')
+					 {
+					jQuery('#announce_self_count').removeClass('announce_self_count');
+					jQuery('#announce_self_count').html('');
+					 }
+			 }
+		});
+}
+
+function announce(a)
+{
+
+$('.content-1').attr('style','display:none');
+//$('#note2content').attr('style','display:none');
+//$('.content-1').attr('style','display:block');
+$('#note2content_info'+a+'').attr('style','display:block');
+}
+
+function announcess(a)
+{
+
+$('.content-1').attr('style','display:none');
+//$('#note2content').attr('style','display:none');
+//$('.content-1').attr('style','display:block');
+$("div[name*='note2content_info']").attr('style','display:none');
+
+$('.content-2').attr('style','display:none');
+//$('#note2content').attr('style','display:none');
+//$('.content-1').attr('style','display:block');
+$('#note3content_info'+a+'').attr('style','display:block');
+}
+
+function announce_down(a)
+{
+ var b = a -1;
+$('#note2content_info'+b+'').attr('style','display:none');
+$('#note2content_info'+a+'').attr('style','display:block');
+}
+
+function announce_up(a)
+{
+	if(a == 0) return false;
+ var b = a - 1;
+$('#note2content_info'+b+'').attr('style','display:block');
+$('#note2content_info'+a+'').attr('style','display:none');
+}
+
+function announcep_down(a,c)
+{
+ if(c > a) return false;
+ var b = a -1;
+$('#note3content_info'+b+'').attr('style','display:none');
+$('#note3content_info'+a+'').attr('style','display:block');
+}
+
+function announcep_up(a)
+{
+	if(a == 0) return false;
+ var b = a - 1;
+$('#note3content_info'+b+'').attr('style','display:block');
+$('#note3content_info'+a+'').attr('style','display:none');
+}
+
+function note2_top()
+{
+ $("div[name*='note2content_info']").attr('style','display:none');
+ $("div[name*='note3content_info']").attr('style','display:none');
+ 
+ $('.content-1').attr('style','display:block');
+ $('.content-2').attr('style','display:none');
+ $('.note2content').attr('style','display:block');	
+}
+
+function note4_top()
+{
+	//$("div[name*='note3content_info']").attr('style','display:none');
+  //$('.content-1').attr('style','display:none');
+  //$('.note2content').attr('style','display:none');
+  $("div[name*='note2content_info']").attr('style','display:none');
+  $("div[name*='note3content_info']").attr('style','display:none');
+  $('.content-2').attr('style','display:block');
+  $('.note3content').attr('style','display:block');
+}
+
+
+</script> 
+<!-- START BLOCK : note_menu -->         
+        <div class="title_background ">
+            <div class="title">{_WEBACCOUNCE}</div>
+        </div>       
+
+<section class="tabs">
+	          
+            <input onclick="note4_top()" style="left:0%;width:50%;height:40px;" id="tab-2" type="radio" name="radio-set" class="tab-selector-2" checked="checked"/>
+            <label style="left:0%;width:50%;height:40px;" for="tab-2" class="tab-label-2">{_PERSONALMESSAGE}</label>
+            
+            <input onclick="note2_top()" style="left:50%;width:50%;height:40px;" id="tab-1" type="radio" name="radio-set" class="tab-selector-1"/>
+            <label style="left:50%;width:50%;height:40px;" for="tab-1" class="tab-label-1">{_WEBACCOUNCE}</label>
+            
+<!-- END BLOCK : note_menu -->
+
+
+            <div class="clear-shadow"></div>
+            <div class="content">
+
+                
+                <div class="content-1" style="display:none;">  
+                <!-- START BLOCK : note_2 -->                
+                <div id="note2content" name="note2content" style="display:block;">
+                     <div class="message_bg" onclick="announce('{nu}')">
+                        <div class="green_spot"></div>
+                        <div class="date">{noticdate_ss}</div>
+                        <div class="message_content">{_WEBACCOUNCE}：<span>{notictitle}</span></div>
+                    </div>
+                </div>                                        
+                <!-- END BLOCK : note_2 -->       
+                </div>
+               <div style="height:40px;width:100%;"></div>
+               <!-- START BLOCK : note_4 -->
+               <div id="note2content_info{nu}" name="note2content_info{nu}" style="display:none;">
+                
+                <div class="message_content_head">
+                        <div class="head_arrow" onclick="note2_top()"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+                        <div class="head_content">
+                            <div>{noticdate_ss}</div>
+                            <div>{notictitle}</div>
+                        </div>
+                </div>
+
+                <div class="message_detail">
+                    	<p>
+                    		{noticcontents}
+                      </p>
+                        <div class="message_btn">
+                            <button onclick="announce_up('{nu}')">{_WEBACCOUNCE_P}</button>
+                            <button onclick="announce_down('{nus}')">{_WEBACCOUNCE_N}</button>
+                        </div>
+                </div>
+                
+                </div>
+                <!-- END BLOCK : note_4 -->
+                
+              
+                <div class="content-2" style="display:block;">
+                 <!-- START BLOCK : note_3 -->
+                 <div id="note3content" name="note3content" style="display:block;">
+                    <div class="message_bg" onclick="announcess('{nus}');openannounce('{pkey}')">
+                        <div class="green_spot"></div>
+                        <div class="date">{noticdate_ss}</div>
+                        <div class="message_content">{_WEBACCOUNCE}：<span>{notictitle}</span></div>
+                    </div>
+                 </div>
+                 <!-- END BLOCK : note_3 -->
+                 
+                </div>
+                
+                <!-- START BLOCK : note_6 -->                
+               <div id="note3content_info{nus}" name="note3content_info{nus}" style="display:none;">
+                <div class="message_content_head">
+                        <div class="head_arrow" onclick="note4_top()"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+                        <div class="head_content">
+                            <div>{noticdate_ss}</div>
+                            <div>{notictitle}</div>
+                        </div>
+                </div>
+
+                <div class="message_detail">
+                    	<p>
+                    		{noticcontents_de}
+                      </p>
+                        <div class="message_btn">
+                            <button onclick="announcep_up('{nus}')">{_WEBACCOUNCE_P}</button>
+                            <button onclick="announcep_down('{nuss}','{endnus}')">{_WEBACCOUNCE_N}</button>
+                        </div>
+                </div>
+                
+                </div>
+                <!-- END BLOCK : note_6 -->
+                
+                
+            </div>
+            
+</section>

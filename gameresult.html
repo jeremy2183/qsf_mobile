@@ -1,0 +1,106 @@
+<link rel="stylesheet" href="./template/www/css/game_result.css">
+<!--<script src="./template/www/js/game_result.js"></script>-->
+<script>
+
+	function gettoday(a)
+	 {
+	 	document.location.href='history.php?week=day&f_date1='+a+'';
+	 }
+	
+  function checkmenu(a,b)
+   {
+   	document.location.href='history.php?week='+b+'';
+   	//jQuery('.tab-pane').css("display","none");
+   	//jQuery('#'+a+'').css("display","none");
+   	//jQuery('#'+a+'').addClass('active');
+   }
+
+jQuery(function() {
+	var b = getUrlParameter('week');
+      if(b=='4')
+      {
+     jQuery('#menu4').addClass('active');
+      }
+      if(b=='3')
+      {
+     jQuery('#menu3').addClass('active');
+      }
+      if(b=='2')
+      {
+     jQuery('#menu2').addClass('active');
+      }
+      if(b=='1')
+      {
+     jQuery('#menu1').addClass('active');
+      }
+      
+	});
+
+function gameresult_front(a)
+{
+	location.href='gameresult.php?checkdata='+a+'';
+}
+</script>
+
+   <div class="title_background ">
+   <div class="title">{_EVENT_RESULTS}</div>
+   </div>
+  
+        
+<div class="content">
+ <!-- START BLOCK : gameresult_title -->	
+  <select class="selector" style="font-size:16px;padding-left:35%;" name=checkdata class=checkdata onchange=javascript:gameresult_front(this.value)>
+  <option>{_SELECT_}</option>
+  <!-- START BLOCK : gameresult_title_default -->
+  <option value="{ymd_st}"{sel}>{monday}{_WEEK_}{days}</option>
+  <!-- END BLOCK : gameresult_title_default -->
+  <select>
+<!-- END BLOCK : gameresult_title -->
+
+<!-- START BLOCK : gameresult_none -->
+<div class="game_list v1">
+ <div style="padding-top:20px;text-align:center">{NO_DATA}</div>
+ </div>
+ <!-- END BLOCK : gameresult_none -->
+          
+ <!-- START BLOCK : gameresult -->           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>{openDates}</span></div>
+                    <div class="game_name">{competition}</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span><span>{home}{_MAIN}vs {away}</span>
+                    </div>
+              </div>               
+               
+            </div>
+           
+            <div class="trade_detail">
+  <!-- START BLOCK : orderinfo_detail_info -->             
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">{_CORRECT_SCORE}<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">{correctScore}</div>
+                       <div class="trade_cell_title trade_border_bottom">{_HALF_SCORE}<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">{halfTimeScore}</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">{_TOTAL_SCORE}<div class="dash"></div></div>
+                       <div class="trade_cell">{_correctScore_}</div>
+                       <div class="trade_cell_title">{_FIRST_TIME}<div class="dash"></div></div>
+                       <div class="trade_cell">{timeName}</div>
+                   </div>
+
+               </div>
+                
+              </div>
+  <!-- END BLOCK : orderinfo_detail_info -->           
+            </div>
+ 
+           
+<!-- END BLOCK : gameresult -->
+</div>

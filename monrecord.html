@@ -1,0 +1,87 @@
+<link rel="stylesheet" href="./template/www/css/withdrewal_deposits.css">
+<script>
+jQuery(function() { 
+   jQuery('#tabss-3').attr('checked',true)
+   jQuery('#tabss-2').on('click', function () {
+   	    jQuery('.content-2').html('<div class="Loading"></div>');
+      });
+   jQuery('#tabss-1').on('click', function () {
+   	    jQuery('.content-1').html('<div class="Loading"></div>');
+      });
+	});
+
+function gameresult_front(a)
+{
+	document.location.href='monrecord.php?kind='+a+'';
+}
+</script>
+<style>
+.no_content {
+    font-size: 20px;
+    width: 100%;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #0d3675;
+    margin-top: 200px;
+}
+</style>
+<!-- START BLOCK : PublicTitle -->
+<div class="title_background ">
+<div class="title">{_PUBLIC_TITLE_}</div>
+</div>
+
+<section class="tabs">
+            <input onclick="location.href='deposits.php'" style="outline:none;" style="width:33%;" type="radio" id="tabss-1" name="radio-set" class="tab-selector-1"/>
+            <label style="width:33%;" for="tab-1" class="tabss-label-1">{_SAVE_MONEY_}</label>
+
+            <input onclick="location.href='receive.php'" style="outline:none;" style="width:33%;left:33%;" type="radio" id="tabss-2" name="radio-set" class="tab-selector-2"/>
+            <label style="left:33%;width:33%;" for="tab-2" class="tabss-label-2">{_PICK_}</label>
+
+            <input onclick="location.href='monrecord.php'" style="outline:none;" style="width:34%;left:66%;" type="radio" id="tabss-3" name="radio-set" class="tab-selector-3"/>
+            <label style="left:66%;width:34%;" for="tab-3" class="tabss-label-3">{_TRADERECORD}</label>
+            <div class="clear-shadow"></div>
+
+            <div class="content" style="margin-top:0px;padding: 0px 0px 0px 0px;">
+              <div class="content-1"></div>  
+              <div class="content-2"></div>  
+              <div class="content-3">
+              	<select style="margin-bottom:5px;" class="selector" name=checkdata class=checkdata onchange=javascript:gameresult_front(this.value)>
+                <option value="">{_ALL_TRAN_RECORD}</option>
+                <option value="1" {Sel}>　　{_SAVE_MONEY_}</option>
+                <option value="2" {Selss}>　　{_PICK_}</option>
+              </select>
+                    
+                    <!--<div class="btn_group">
+                        <button>本周</button>
+                        <button>上周</button>
+                        <button>本月</button>
+                        <button>全部</button>
+                    </div>-->
+<!-- END BLOCK : PublicTitle -->
+                    <div>
+                   <!-- START BLOCK : DetailsTools -->
+                    	<ul class="no_content">
+                     {NO_DATA}
+                      </ul>
+                   <!-- END BLOCK : DetailsTools -->
+                   <!-- START BLOCK : Details -->        	
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">{_TRADE_DATE}</div>
+                                <div class="line_block time">{requestTimes}</div>
+                                <div class="line_block state">{FStep}</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path">{saveBy}{userchg}</div>
+                                <div class="line_block how_much color_red"><span style="color:{moneyColor}">{moneyword}&nbsp;{requestAmount}</span></div>
+                            </div>
+                            <div class="record_overage">{mergeTotal}</div>
+                        </div>
+                   <!-- END BLOCK : Details -->      
+                    </div>
+
+                </div>
+            </div>
+
+        </section>

@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>wa99</title>
+  <meta charset="utf-8">
+  <!--<meta name="viewport" content="width=1080, user-scalable=no">-->
+  <meta name="viewport" content="width=width=device-width,height=device-height, initial-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="./template/www/css/bootstrap.min.css">
+  	<link rel="stylesheet" href="./css/footer.css">
+  	<link rel="stylesheet" href="./css/loginstyle.css">
+  	<link rel="stylesheet" href="./css/loginbtn.css">
+  	<link rel="stylesheet" href="./css/switch.css">
+	<script src="./template/www/js/jquery-3.2.1.min.js"></script>
+	<script src="./template/www/js/bootstrap-select.min.js"></script>
+	<script src="../psec/js/jquery.cookies.2.2.0.js"></script>
+<script>
+
+function checkuserform() 
+	{
+   	var account = jQuery(':input[id=account]').val().trim();
+	  var pwd = jQuery(':input[id=pwd]').val().trim();
+	  
+	    if(account=='' || pwd=='')
+	     {
+	     	//swal({title: "错误讯息",text: "请输入相关资讯",confirmButtonText: "确定",closeOnConfirm: true, customClass: 'twitter'});     	
+	     	alert('{_ABOUT_SAME_INFO}');
+	     	return false;
+	     }
+	    
+	    
+      jQuery.ajax({
+			type: 'POST',
+			url: './other/login.php',
+			data: 'account=' + account + '&pwd=' + pwd,
+			error: function(xhr) {
+				//alert('網路忙線中，請稍後再試!login18');
+			},
+			beforeSend:function(response)
+		  {
+		 
+		  },
+		   
+			success: function(response) {
+				qumoney = response.trim();
+				//alert(qumoney);
+				money_qui = qumoney.split(':');
+				response = money_qui[0];
+				
+				if(response=="13")
+				 {
+		alert(money_qui[2]);
+		return false;
+				 }
+				if(response=="0")
+				 {
+		 alert('{_JS_PASS_ERROR_LESS_6}');
+		return false;
+				 }
+				if(response=="4")
+				 {
+		alert('{_JS_ERROR_FIVE}');
+		return false;
+				 }
+				if(response=="5")
+				 {
+		 alert('{_JS_ACCOUNT_LOCK}');
+		return false;
+				 }
+			if(response=="104")
+				 {
+		alert('{_JS_MANY_LOGIN}');
+		return false;
+		     }
+		  if(response=="105")
+				 {
+		alert('{_JS_SPEC_LOGIN_EVER_LOCK}');
+		return false;
+		     }
+		   if(response=="6")
+				 {
+		alert('{_JS_SPEC_LOGIN}');
+		return false;
+		     }   
+				 if(response=="3")
+				 {
+		  alert('{_JS_SPEC_LOGIN}');	
+		  return false;
+				 }
+				if(response=="1")
+				{
+				location.href='market.php';
+				return;
+				}
+			  else
+			  {
+			  }
+			
+			 }
+		   });
+		  
+		  
+  }
+
+/*0826_add_arthur*/
+  function callwebstop()
+  {
+ 
+  	
+  	jQuery.ajax({		
+			type: 'POST',
+			url: './404/900/oops.php',
+			//data: 'cID='+cID+'&cName='+cName,		
+			error: function(xhr) {
+				alert('網路忙線中，請稍後再試!錯誤代碼:B623');
+				return false;
+			},
+			beforeSend:function(response)
+			{
+				//Loading();
+			}, 
+			success: function(response) {
+        
+        $('#myModal').modal('show');
+				$('#myModal').html( response );
+			} 
+		});
+
+  }
+  
+  function closewebnum()
+   {
+   	$.cookies.set('closeweb', 'y');
+   }
+  
+  function register(a)
+  {
+  	if(a=='')
+  	{
+  	   alert('{_NOT_OPEN}');
+    }
+   else
+   	{
+      location.href='register.php?agent='+a+''; 		
+   	}
+  }
+</script>
+<style>
+	body
+	{
+	width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+    position: relative;
+    font-size: 100%;
+    line-height: 100%;
+    font-weight: normal;
+    font-family: 'Arial','微軟正黑體';
+	}
+	#wrapper{
+	height:750px;
+	width:100%;
+	margin:0px;
+	position: absolute;
+	background:-webkit-linear-gradient(25deg, rgba(227,235,237,1) 56%,rgba(227,235,237,1) 56%,rgba(239,244,245,1) 56%,rgba(235,241,242,1) 88%,rgba(227,235,237,1) 88%) repeat;
+	background-size: 100% 100%;
+	line-height: 100%;
+	}	
+	#header
+	{
+	/*background:-webkit-linear-gradient(top, #fefefe 0%,#cdcdcd 100%);*/
+	background-color:#ffffff;
+  box-shadow:0px 0 0 #92b4cf,0px 0 0 #fff;
+	border: 0px solid rgba(9, 9, 9, 0.125);
+	height:50px;
+	}
+	#famousorder
+	{
+	font-weight:bold;
+	font-size:16px;
+	color:#003690;
+	}
+	#famousorder_persent
+	{
+	font-weight:bold;
+	font-size:16px;
+	color:#ff0000;
+	}
+	#indextitle
+	{
+	color:#003690;
+	font-family:微軟正黑體;
+	font-weight:bold;
+	font-size:20px;
+	letter-spacing:2px;
+	text-align:center;
+	text-shadow: rgba(255,255,255,1)  0px 2px 1px ;
+	background:-webkit-linear-gradient(top, #fefefe 0%,#cdcdcd 100%);
+	margin-bottom:0px;
+	}
+	.nav-tabs > .active
+	{
+	color:#003690;
+	letter-spacing:2px;
+	font-weight:bold;
+	border-bottom: 3px solid rgba(0, 156, 255, 0.9);
+	border-bottom-width:thick;
+	width:90%;
+	}
+	#footer
+	{
+	height:70px;
+	/*background-color:#92b4cf;*/
+	position: fixed;
+	width:100%;
+	bottom: 0px;
+	}
+	#warp
+	{
+	 min-height:100%;
+	 height:auto;
+	 margin: 0 auto -60px;
+	 padding: 0 0 60px;
+	}
+	#menu_bg2{
+	background:-webkit-linear-gradient(top, #fefefe 0%,#cdcdcd 100%);
+  box-shadow:1px 0 0 #92b4cf,2px 0 0 #fff;
+	border: 1px solid rgba(9, 9, 9, 0.125);
+	}
+	
+/*Menu Style*/
+#sMenu{
+	top:50px;
+	position:absolute;
+	width:200px;
+	background:-webkit-linear-gradient(top, #fefefe 0%,#cdcdcd 100%);
+  box-shadow:1px 0 0 #92b4cf,2px 0 0 #fff;
+	border: 0px solid rgba(9, 9, 9, 0.125);
+	left:-600px;
+	z-index:9900;
+}
+.Menu{
+	color: #fff;
+	height:200px;
+	margin:1px 0px;
+	border-bottom: 1px solid #fff;
+}
+.MenuIcon{
+	width:150px;
+	height:150px;
+	float:left;
+	margin:25px 25px 0px 90px;
+}
+.MenuTag{
+	float:left;
+	font-weight: 900;
+	font-size: 56px;
+	margin:65px 0px 0px 0px;
+}
+/*Menu Style END*/
+.line{
+	width:100%;
+	height:30px;
+	}
+
+HR{
+margin:0px 50px 0px 0px;
+position:relative;
+top:0px;
+background-color: #697785; 
+height: 1px; 
+border: 0;
+
+	}
+	
+h1{
+	color:#1c5386;
+	font-family:微軟正黑體;
+	font-size:110%;
+	margin-top: 10px;
+	}
+
+input[type=checkbox] {
+	visibility: hidden;
+}
+
+/* SLIDE THREE */
+.slideThree {
+	width: 80px;
+	height: 26px;
+	background: #ffffff;
+	margin-left: 20px auto;
+  margin-top: 20px auto;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 0px;
+	position: relative;
+
+	-webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+	-moz-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+	box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+}
+
+.slideThree:after {
+	content: 'OFF';
+	font: 12px/26px Arial, sans-serif;
+	color: #000;
+	position: absolute;
+	right: 10px;
+	z-index: 0;
+	font-weight: bold;
+	text-shadow: 1px 1px 0px rgba(255,255,255,.15);
+}
+
+.slideThree:before {
+	content: 'ON';
+	font: 12px/26px Arial, sans-serif;
+	color: #00bf00;
+	position: absolute;
+	left: 10px;
+	z-index: 0;
+	font-weight: bold;
+}
+
+.slideThree label {
+	display: block;
+	width: 34px;
+	height: 20px;
+
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 0px;
+
+	-webkit-transition: all .4s ease;
+	-moz-transition: all .4s ease;
+	-o-transition: all .4s ease;
+	-ms-transition: all .4s ease;
+	transition: all .4s ease;
+	cursor: pointer;
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	z-index: 1;
+	background:#C4C4C4;
+}
+
+.slideThree input[type=checkbox]:checked + label {
+	left: 43px;
+}
+.logo
+{
+background: url("./img/taogin_logo.png") no-repeat;
+position: absolute;
+background-size: 22%;
+background-position: center;
+height:120px;
+width:100%;
+}
+.showMsg{
+	color:#000;
+	width:1000px;
+	/*height:1050px;*/
+	/*background-color:#244b8c;*/
+	position: absolute;
+	z-index: 9999;
+	top:50px;
+}
+input[type=checkbox]
+{
+visibility: visible !important;
+}
+input:-webkit-autofill {
+-webkit-box-shadow: 0 0 0px 1000px white inset !important;
+ }
+#con1
+{
+border: 1px solid #00D3FF;
+border-radius: 15px;
+background: -webkit-radial-gradient(center, ellipse cover, #e5e4dc 0%,#8b9bac 100%);
+height:300px;    
+}
+#con2
+{
+background-color:#4794c5;
+background-size: 1000px 70px;
+margin: 0px;
+height: 45px;
+border-radius: 15px 15px 0px 0px;
+border-bottom: 1px solid #FFFFFF;
+text-align: left;
+}
+</style>
+<style>
+html, body, div, span, applet, object, iframe, 
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, 
+a, abbr, acronym, address, big, cite, code, 
+del, dfn, em, font, img, ins, kbd, q, s, samp, 
+small, strike, strong, sub, sup, tt, var, 
+b, u, i, center, 
+dl, dt, dd, ol, ul, li, 
+fieldset, form, label, legend, 
+table, caption, tbody, tfoot, thead, tr, th, td { 
+    margin: 0; 
+    padding: 0; 
+    border: 0; 
+    outline: 0; 
+    font-size: 100%; 
+    vertical-align: baseline; 
+    background: transparent; 
+} 
+body { 
+    /*line-height: 1;*/
+} 
+ol, ul { 
+    list-style: none; 
+} 
+blockquote, q { 
+    quotes: none; 
+} 
+blockquote:before, blockquote:after, 
+q:before, q:after { 
+    content: ''; 
+    content: none; 
+} 
+
+/* remember to define focus styles! */ 
+:focus { 
+    outline: 0; 
+} 
+
+/* remember to highlight inserts somehow! */ 
+ins { 
+    text-decoration: none; 
+} 
+del { 
+    text-decoration: line-through; 
+} 
+
+/* tables still need 'cellspacing="0"' in the markup */ 
+table { 
+    border-collapse: collapse; 
+    border-spacing: 0; 
+}
+</style>
+</head>
+<body>
+<!-- Modal -->
+  <div class="modal fade" id="myModa2" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div id="con1" class="modal-content">
+        <div id="con2" class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">系統提示</h4>
+        </div>
+        <div class="modal-body">
+          <p>{_JS_ERROR_MESSAGE_}</p>
+        </div>
+        <div class="modal-footer" style="text-align:center;padding:50px;">
+          <button onclick="closewebnum()" style="padding:3px;" type="button" class="btn btn-default" data-dismiss="modal">我知道</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+<div id="wrapper">
+
+<div class="airtitlecolor_login"></div>
+<div id="sMenu" style="height:500px;"></div>
+
+<div class="container" style="width:100%;padding-left:0px;padding-right:0px;margin-top:0px;margin-left:0px;margin-right:0px;">
+<div style="font-weight:bold;color:#316793;font-size:18px;height:100px;text-align:center;margin:20px 0px 20px 0px;">
+<div class="logo"></div>
+</div>
+<div style="width:100%;padding-top:10px;padding-right:10px;padding-left:20px;">
+<div class="dropdown">
+      <select name="one" class="dropdown-select">
+        <option value="">{_SWITCH_ROUTES}</option>
+        <option value="1">厦门广东</option>
+        <option value="2">上海北京</option>
+        <option value="3">南海成都</option>
+      </select>
+  </div>
+</div>
+
+  <div class="form-group" style="margin:15px 15px 0px 15px;">
+    <div class="form-control" style="background-color:#ffffff;height:40px;width:97%;margin-left:5px;">
+    <img src="./icon/user-2-icon.png" style="height:25px;width:25px;">
+    <div style="height:30px;margin-left:30px;margin-top:-30px;"><input style="border: 0px solid;" id="account" placeholder="请输入帐号"></div>
+    </div>
+  </div>
+  <div class="form-group" style="margin:0px 15px 0px 15px;">
+  	<div class="form-control" style="background-color:#ffffff;height:40px;width:97%;margin-left:5px;">
+    <img src="./icon/lock-icon.png" style="height:25px;width:25px;">
+    <div style="height:30px;margin-left:30px;margin-top:-30px;"><input type="password" style="border: 0px solid;" id="pwd" placeholder="请输入密码"></div>
+    
+    </div>
+  </div>
+  <div class="form-group">
+    <div style="margin-top:10px;margin-left:15px;">
+    	<table width="100%"><tbody><tr>
+    		<td style="width:5%;padding-left:5px;">
+	      <!--
+	      <div class="slideThree">	
+		    <input type="checkbox" value="None" id="slideThree" name="check">
+		    <label for="slideThree"></label>
+	      </div>
+	      -->
+	      <div class="sw">
+    <label style="max-width:200%;" class="switch" checked">
+         <input type="checkbox" class="checbox_input" name="checbox_input">
+    </label>      
+        </div>
+        <div style="margin:7px;">
+        	<span style="margin:18px;">{_MEMBER_ACCOUNT}</span>
+        </div>
+        
+	    </tr></tbody></table>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-10" style="width:100%;">
+      <table style="width:100%;float:left;padding:25px;"><tbody><tr>
+      <td style="padding-left:5px;">
+      <button style="font-size:16px;width:100%;" type="submit" class="btn btn-default" onclick="register('{_AGENT_USERNAME_}')">{_SIGN_UP_NOW}</button>
+     </td>
+     <td style="width:5px;"></td>
+     <td style="padding-right:5px;">
+      <button style="font-size:16px;width:100%;" type="submit" class="btn2" onclick="checkuserform()">{_LOGIN}</button>
+    </td></tr></tbody></table>
+    </div>
+  </div>
+
+</div>
+
+<div class="line">
+
+<div style="margin-top:30px;width:100%;">
+	</div>
+	<div class="cs24">
+  <span></span><span>{_CUSTERMER24}</span><span></span>
+  </div>
+<!--	
+	<table style="height:40px;width:100%;">
+		<tbody><tr>
+			<td style="text-align:right;padding-left:10%;"><hr size="30" width="80%"></td>
+		  <td style="width:auto;text-align:center;"><h1>24小时线上客服</h1></td>
+		  <td style="text-align:left;padding-right:10%;"><hr size="30" width="80%"></td>
+    </tr>	
+</tbody></table>
+-->
+<table style="width:100%;">
+		<tbody><tr>
+			<td style="text-align:right;"><a href=service.php?num=1><img src="./icon/1.png" style="width:70px;height:70px;"></a></td>
+			<td style="text-align:center;"><a href=service.php?num=2><img src="./icon/2.png" style="width:70px;height:70px;"></a></td>
+			<td style="text-align:left;"><a href="https://v88.live800.com/live800/chatClient/chatbox.jsp?companyID=698946&configID=1586&jid=5625358570&s=1" target=_blank><img src="./icon/3.png" style="width:70px;height:70px;"></td>
+		</tr>
+	</tbody>
+</table>
+<div style="margin-top:50px;width:100%;">
+	<div style="text-align:center;">{_ONLINE}{people}</div>
+</div>
+</div>
+
+<div style="position:absolute;bottom:0px;" class="airtitlecolor_login"></div>
+
+</div>
+
+</div>
+ 
+<div style="margin-left:5px;margin-right:5px;top:10%;" class="modal fade" id="myModal" role="dialog">
+</div>
+</body>
+</html>
+<script>
+
+$(function() {
+
+  $('.switch').change(function(){
+    $(this).toggleClass('checked');
+    //input[type="checkbox"].toggleClass('checked');
+    //var ss = $('input[name="checbox_input"]').attr('checked',true);
+    var ss = $('input[name="checbox_input"]:checked').val();
+    if(ss=='on')
+     {
+ $('input[name="checbox_input"]').attr('checked',true);    	
+     }
+    else
+    {
+  $('input[name="checbox_input"]').attr('checked',false);  	
+    }
+
+  });
+   
+ if('{_JS_ERROR_CODE_}'=='900')
+	{
+   	var ss = $.cookies.get('closeweb');
+   	   if(ss=='y')
+   	    {
+   	return;   
+   	    }
+   	   else
+   	   	{
+  $('#myModa2').modal('show');
+	return; 	  
+   	   	}
+	
+	}
+});
+
+</script>

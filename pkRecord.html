@@ -1,0 +1,76 @@
+<script>
+$(".close_x").on('click', function () {
+$("#Modal_cover4").css('display', 'none');
+}); 
+</script>
+
+<style>
+.fa-times:before {
+    position: absolute;
+    top: 3px;
+    right: 4%;
+    font-size: 22px;
+}
+.tr_top td
+{
+width:30%;
+ height:30px;
+ text-align:center;
+ border-bottom: 1px solid rgba(0, 156, 255, 0.9);
+ border-right: 1px solid rgba(0, 156, 255, 0.9);
+}
+
+.tr_content td
+{
+ height:40px;
+ text-align:center;
+ border-bottom: 1px solid rgba(0, 156, 255, 0.9);
+}
+
+.modal-header .close {
+    margin-top: 5px;
+}
+.fa-remove:before, .fa-close:before, .fa-times:before {
+color: #A7A7A7;
+}
+</style>
+
+
+<div id="order4" class="order_content4">
+	              <div class="battle_record_detail_head">
+                <div class="battle_record_title">{_FIGHTRECORD_}</div>
+                <div class="close_x"><i class="fa fa-times" aria-hidden="true"></i></div>
+                <div class="blue_line"></div>
+                 </div>
+                <div class="table_padding" style="height:350px;">
+                    
+                    <table class="battle_record_table">
+                        <tr class="battle_record_head">
+                            <td>{_HOME_}</td>
+                            <td>{ALL_SCORE}</td>
+                            <td>{_AWAY_}</td>
+                            <td>{HALF_SCORE_RECORD}</td>
+                        </tr>
+           
+           <!-- START BLOCK : itemList -->
+                        <tr>
+                        <td colspan="4" class="battle_record_name">{competition}{openDate}</td>
+                        </tr>
+                        <tr>
+                            <td class="battle_record_cell1">{home}</td>
+                            <td class="battle_record_cell2">{correctScore}</td>
+                            <td class="battle_record_cell3">{away}</td>
+                            <td class="battle_record_cell4">{halfTimeScore}</td>
+                        </tr>                        
+           <!-- END BLOCK : itemList --> 
+           <!-- START BLOCK : itemListempty -->             
+                        <tr>
+                            <td colspan="4" class="battle_record_name">--- {empty} ---</td>
+                        </tr>
+           <!-- END BLOCK : itemListempty -->
+                    </table>
+
+                </div>
+
+</div>
+

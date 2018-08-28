@@ -1,0 +1,994 @@
+<script>
+function Chooseself(a)
+{
+	var aa = a.split(':');
+  //alert(aa[0]);
+  jQuery(":input[id=bankaccount_self]").val();
+	jQuery(':input[id=bankaccount_self]').val(aa[0])
+	//jQuery( "#bankaccount_self" ).val(aa[0]);
+	jQuery( "#bankaccountname" ).val(aa[1]);
+	//jQuery( "#bankaccountid" ).val(aa[2]);
+	jQuery( ":input[id=bankaccount_self]" ).attr('disabled',true);
+}
+
+/*提領送出*/ 
+ function pickupmoney()
+		{
+      
+			var simple_ar = Array();
+  	  var c2bet_st = new Object;
+  	  var orderinfo_st = new Object;
+  	  var re = /^[0-9]+(\.)?$/;
+	    var re2 = /(?!^[0-9]{6,}$)(?!^[a-zA-Z]{6,}$)^[0-9a-zA-Z]{6,}$/;
+	   //var sre = /^[0-9]+(\.[0-9]{0,0})?$/;
+	   //var sre = /^[0-9]+(\.[0-9]{1,2})?$/;//小數點2位
+	    var sre = /^[0-9]*$/;
+	    var ans = '';
+	    
+			/*银行帐号*/
+	      var bankaccount = jQuery("#bankaccount_self").val();
+	    /*提款户名*/
+	      var bankaccountname = jQuery("#bankaccountname").val();
+	    /*银行名称*/
+	      var bankaccountword = jQuery("#bankaccountword").val();
+	      var bankaccountword_sp = bankaccountword.split(':');
+	    /*提領金額*/  
+	      var getmoney = jQuery("#getmoney").val();
+	    /*提領密碼*/  
+	      var sellpassword = jQuery("#sellpassword").val();
+        var balance_money_chk_pick = jQuery("#balance_money_chk_pick").val();
+        
+        if(bankaccount=='' || bankaccountname=='' || bankaccountword=='' || getmoney=='' || sellpassword=='')
+	           {
+	           	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_INFO}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});
+	           	alert('{_JS_INFO}');
+	           	return;
+	           }
+	    
+	    else if(jQuery.trim(getmoney.replace(/\s+/g,""))!==getmoney)
+	    {
+	    	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_PICKUP_NO_EMPTY}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});
+	    	alert('{_JS_PICKUP_NO_EMPTY}');
+	    	return;
+	    }
+	    else if(bankaccount.length > 19 || bankaccount.length < 16)
+	    	{
+	    		//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_WITHDRAWALS_GREATER_16_19}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});	    	
+	    	  alert('{_JS_WITHDRAWALS_GREATER_16_19}');
+	    	  return;
+	    	}
+	    else if(jQuery.trim(bankaccountword_sp[2].replace(/\s+/g,""))!==bankaccountword_sp[2])
+	    {
+	    	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_BANK_EMPTY}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});	    	
+	    	alert('{_JS_BANK_EMPTY}');
+	    	return;
+	    }
+	    else if(jQuery.trim(bankaccountname.replace(/\s+/g,""))!==bankaccountname)
+	    {
+	    	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_PICKUPNAME_EMPTY}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});	    	
+	    	alert('{_JS_PICKUPNAME_EMPTY}');
+	    	return;
+	    }
+	    else if(bankaccountname.replace(/[^\u4E00-\u9FA5]/g,"")!==bankaccountname)
+	    	{
+	    		//swal({title: '{_ERRER_MESSAGE}', text: '{JS_CHINESE}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});    	
+	    	  alert('{JS_CHINESE}');
+	    	  return;
+	    	}
+	    else if(jQuery.trim(sellpassword.replace(/\s+/g,""))!==sellpassword)
+	    {
+	    	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_PASSWD_EMPTY}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});	    	
+	    	alert('{_JS_PASSWD_EMPTY}');
+	    	return;
+	    }
+	    else if(!sre.test(getmoney))
+	    {
+	    	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_PICKUP_INT}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});	    	
+	      alert('{_JS_PICKUP_INT}');
+	    	return;
+	    }
+	    else if(getmoney < 100)
+	    {
+	    	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_WITHDRAWALS_GREATER_100}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});
+	      alert('{_JS_WITHDRAWALS_GREATER_100}');
+	    	return;
+	    }
+	    
+	    else if(parseFloat(getmoney) > parseFloat(balance_money_chk_pick))
+	    {
+	    	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_WITHDRAWALS_GREATER_QUOTA}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});         	
+	    	alert('{_JS_WITHDRAWALS_GREATER_QUOTA}');
+	    	return;
+	    }
+	    
+	    else
+	    {
+	    	//alert('Y');
+	    	//return;
+	    }
+        var jimDatass = {num:'7', types:'2', getmoney:getmoney, sellpassword:sellpassword, bankaccount: bankaccount, bankaccountname: bankaccountname, bankaccountword: bankaccountword_sp[2]}	  		
+	    	simple_ar.push(jimDatass);
+  	    orderinfo_st = simple_ar;
+  	    c2bet_st["c2betorder"]=orderinfo_st;
+  	    
+  	    console.log(jimDatass);
+  	    //return;
+  	    jQuery.ajax({
+					type: 'POST',
+					url: './other/savepickupmod.php',
+					data: c2bet_st ,		
+					error: function(xhr) {
+						//jQuery('#order').html('<font color=#FF0000>网路忙线中，请稍后再试!错误代码:992</font>');
+						//alert('網路忙線中，請稍後再試!錯誤代碼:simp137');
+						return false;
+					},					
+					beforeSend:function(response)
+					{
+				  },
+					success: function(response) {
+ 
+					    var ss = jQuery.trim(response);
+              //alert(ss);
+			        if(ss=='empty')
+							    {
+							   alert('{_JS_LOGOUTED}');
+							   document.location.href='./memberlogout.php';
+										  	   	return;
+							    }
+							   else if(ss=='NO_LOGIN')
+							    {
+							    
+								alert('{_ACCOUNT_OTHER_ONLINE}');
+								document.location.href='./memberlogout.php';
+									return;
+							    }
+						  	 else if(ss)
+						  	   {
+						  	   	alert('{_JS_APPLICATION_SUCCESS}');
+						  	   	document.location.href='./usercenter.php?uc=Details';
+						  	   	return;
+						  	   }
+							   else
+							     {
+                    alert('{_JS_APPLICATION_ERROR}');
+							     document.location.href='./memberlogout.php';
+							     return;
+							     }
+					}
+				 });
+		}
+
+
+function DSQRCodeNext()
+	{
+		$('#DSInput').css( 'display', 'block' );
+		$('#DSQRCode').css( 'display', 'none' );
+	}
+
+/*支付寶*/
+  function savemember_alipay()
+		{
+			 
+			  //var sre = /^[0-9]+(\.[0-9]{0,0})?$/;
+			  var sre = /^[0-9]+(\.[0-9]{1,2})?$/;//小數點2位
+			  var reg = /^[0-9]*$/;
+			  
+			  var simple_ar = Array();
+		  	var c2bet_st = new Object;
+		  	var orderinfo_st = new Object;
+		  	
+			  var paipayaccount = jQuery("#paipayaccount").val();
+			  var paipayname = jQuery("#paipayname").val();
+			  var paipaymoney = jQuery("#paipaymoney").val();
+			  var checkphone2 = jQuery("#checkphone2").val();
+			  
+			  var alipay = jQuery("#bankm").val();
+			  var zz = alipay.split(':');
+			  var strang = /[*!?#\$%\^&\*+]+/g;
+			  var strang_big = /[＊！？＃\$％\^＆\*＋]+/g;
+			  //if(paipayaccount=='' || paipayname=='' || paipaymoney=='')
+			  if(paipayaccount=='' || paipaymoney=='')
+			  {
+			  	return false;
+			  }
+			
+			else if(jQuery.trim(paipayaccount.replace(/\s+/g,""))!==paipayaccount)
+	    {
+	    	 alert('{_JS_THIRD_EMPTY}');
+             return false;
+	    }
+			else if(strang.test(paipayaccount))
+          {
+            alert('{_JS_THIRD_EMPTY}');
+             return false;
+      
+          }
+      else if(strang_big.test(paipayaccount))
+          {
+            alert('{_JS_THIRD_EMPTY}');
+             return false;
+      
+          }
+      /*
+			else if(jQuery.trim(paipayaccount.replace(/[^A-z0-9]/g,""))!==paipayaccount)
+	    {
+	    	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_PICKUP_NO_EMPTY}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});
+	    	alert('{_JS_THIRD_EMPTY}');
+	    	return;
+	    }
+	    */
+			   else if(paipaymoney < 100)
+			   {
+			   	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_SAVE_LESS_100}'+'{_JS_SAVE_OVER_5000}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});
+			   	alert('{_JS_SAVE_LESS_100}');
+			   	return;
+			   }
+			   else if(paipaymoney > 50000)
+			   {
+			   	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_SAVE_LESS_100}'+'{_JS_SAVE_OVER_5000}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});
+			   	alert('{_JS_SAVE_OVER_50000}');
+			   	return;
+			   }
+		    else if(!reg.test(paipaymoney))
+			    {
+			    //swal({title: '{_ERRER_MESSAGE}', text: '{_JS_SAVE_INT}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'}); 
+			    alert('{_JS_SAVE_INT}');
+			  return;
+			    }
+			  //else if(paipayaccount.length > 16)
+			    //{
+			  //swal({title: '{_ERRER_MESSAGE}', text: '{_JS_PAY_OVER_16}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});
+			  
+			  //return;
+			    //} 
+			  
+			  else
+			  	{
+			  	}
+			
+			//var jimDatass = {types: '1', num:'5', a4:paipayaccount, line_money:paipaymoney, info:zz[0]}
+			var jimDatass = {types: '1', num:'5', a4:paipayaccount, line_money:paipaymoney, info:zz[0], a3:zz[2]}
+			simple_ar.push(jimDatass);
+		  c2bet_st["c2betorder"]=simple_ar;
+		   //console.log(jimDatass);
+		   //return;
+		   jQuery.ajax({
+				    type: 'POST',
+				    url: './other/savepickupmod.php',
+				    data: c2bet_st ,		
+				    error: function(xhr)
+				      {
+					   //jQuery('#order').html('<font color=#FF0000>网路忙线中，请稍后再试!错误代码:681</font>');
+					    //alert('網路忙線中，請稍後再試!錯誤代碼:save255');
+					    //return false;
+				      },
+					   beforeSend:function(response)
+							{
+			        alert('{JS_WAIT_}');
+							}, 
+			      success:function(response)
+			        {
+			        	//alert(response);
+		           var ss = jQuery.trim(response);
+			           if(ss)
+			           {
+			          //jQuery('#alimoney').html(paipaymoney);
+			          //jQuery('#savemember1_up').hide();
+			          //jQuery('#savemember1_up_alipay').show();
+			          alert('{_JS_APPLICATION_SUCCESS}');
+			          location.href='./monrecord.php';
+			          //alert('Y');
+			           }
+			           else
+			           {
+			          alert('{_JS_APPLICATION_ERROR}'); 
+			           }
+			           
+				      }
+		    
+			      });
+		 
+		}
+
+
+function itgweixin()
+	{
+		
+		var amount = jQuery('#amount').val();
+    var uname = jQuery('#uname').val();    
+    var sre = /^[0-9]*$/;		
+		var sst = uname.split(":");
+		
+		if(sst[4]=='16' || sst[4]=='15' || sst[4]=='17')
+		{
+			   if( amount > 3000 )
+					{
+						alert('{_HEIGHTST_AMOUNT}'+3000);
+	    	return;
+					}
+		}
+		
+		if(sst[4]=='10' || sst[4]=='11' || sst[4]=='12')
+		{
+			   if( amount > 5000 )
+					{
+						alert('{_HEIGHTST_AMOUNT}'+5000);
+	    	return;
+					}
+		}
+		
+		if(sst[4]=='7' || sst[4]=='8')
+		{
+			   if( amount > 5000 )
+					{
+						alert('{_HEIGHTST_AMOUNT}'+5000);
+	    	return;
+					}
+		}
+		
+		if(sst[4]=='25')
+		{
+			   if( amount > 10000 )
+					{
+						alert('{_HEIGHTST_AMOUNT}'+10000);
+	    	return;
+					}
+		}
+		
+		if(sst[4]=='37')
+		{
+			   if( amount > 300 )
+					{
+						alert('{_HEIGHTST_AMOUNT}'+300);
+	    	return;
+					}
+		}
+		
+		if(!sre.test($('#amount').val()))
+		{
+			alert('{_INPUT_ACCOUNT_INT}');
+			return false;
+		}
+		
+		if( isNaN( amount ) )
+		{
+			alert('{_INPUT_ACCOUNT}');
+			$('#amount').val( '' );
+			$('#amount').focus();
+			return false;
+		}
+    
+		if( amount < 100 )
+		{
+			alert('{_LOWEST_AMOUNT}'+100);
+			$('#amount').focus();
+			return false;
+		}
+		
+    jQuery.ajax({
+			type: 'POST',
+			//url: 'http://weixin.saorun.top/paysys/intelligent_scan/scan_pay.php',
+			url: './intelli.php',
+			data: 'order_amount='+amount+'&service_type='+uname+'&c=m',
+			error: function(xhr)
+			{
+				alert('{_CONNECTION_FAIL_}');
+				document.location.href='deposits.php';
+			},
+			beforeSend:function(response)
+			{
+				jQuery('#itgweixin').html('<div style="margin-top:10px;text-align:center;color:#000000;">'+'{JS_WAIT_}'+'</div>');
+			},
+			success: function(response)
+			{
+				//alert(response);
+		    jQuery('#itgweixin').html(response);
+		    jQuery('#linkthird').attr('href','./monrecord.php');
+		    jQuery('#itgweixin a').attr("href", "./monrecord.php");
+		    jQuery('#itgweixin button').css({'background':'#234d87'});
+		  
+			}
+		});
+		
+		
+	}
+	
+
+
+/*存款選擇*/
+  function savemember1()
+		{
+			
+			  var reg = /^[0-9]*$/;
+			  var sre = /^[0-9]+(\.[0-9]{1,2})?$/;//小數點2位
+			  
+			  var bankaccountword = jQuery("#bankm").val();
+			  var zz = bankaccountword.split(':');
+			  var line_money = jQuery("#line_money").val();
+			  
+			  			  
+			  if(bankaccountword=='' || line_money=='')
+			  {		  	
+			  	return;
+			  }
+			  
+			   else if(line_money < 100)
+			   {
+			   	//swal({title: "{_ERRER_MESSAGE}", text: "{_JS_SAVE_LESS_100}", confirmButtonText: "{_JS_SURE}",customClass: 'twitter'}); 
+			   	alert("{_JS_SAVE_LESS_100}");
+			   	return;
+			   }
+		    
+		    else if(!reg.test(line_money))
+			    {
+			  //swal({title: "{_ERRER_MESSAGE}", text: "{_JS_SAVE_INT}", confirmButtonText: "{_JS_SURE}", customClass: 'twitter'}); 
+			  alert("{_JS_SAVE_INT}");
+			  return;
+			    }
+			  
+			  else
+			  	{
+			  		
+			  	}
+			
+		  jQuery('#savemember_bank').html(zz[3]);
+		  jQuery('#savemember_bankchild').html(zz[4]);
+		  jQuery('#savemember_acount').html(zz[2]);
+		  jQuery('#savemember_num').html(zz[1]);
+		  jQuery('#savemember_urlss').html(zz[5]+':'+zz[6]);
+		  jQuery('#bankfid').html(zz[0]);
+		  jQuery('#savemember_menoy').html(line_money);
+		  jQuery('#usercenter_saveup_first').hide();
+		  jQuery('#usercenter_saveup_sec').show();
+		  
+		}
+
+/*銀行轉帳*/
+  
+  function savepickup_finish(a)
+   {
+   	var simple_ar = Array();
+  	var c2bet_st = new Object;
+  	var orderinfo_st = new Object;
+  	
+   	var savemember_bank = jQuery("#savemember_bank").text();
+    var savemember_acount = jQuery("#savemember_acount").text();
+    var savemember_bankchild = jQuery("#savemember_bankchild").text();
+    var savemember_num = jQuery("#savemember_num").text();
+    var line_money = jQuery("#savemember_menoy").text();
+    var bankfid = jQuery('#bankfid').text();
+    
+    
+    var jimDatass = {types:'1', chbank:savemember_bank, num:a, line_money:line_money, a1:savemember_bank, a2:savemember_acount, a3:savemember_bankchild, a4:bankfid}  
+        
+        simple_ar.push(jimDatass);
+  	    orderinfo_st = simple_ar;
+  	    c2bet_st["c2betorder"]=orderinfo_st;
+  	  //console.log(c2bet_st);
+  	  //return;
+			jQuery.ajax({
+				type: 'POST',
+				url: './other/savepickupmod.php',
+				data: c2bet_st ,		
+				    error: function(xhr)
+				      {
+					   //jQuery('#order').html('<font color=#FF0000>网路忙线中，请稍后再试!错误代码:681</font>');
+					    //alert('網路忙線中，請稍後再試!錯誤代碼:save255');
+					    return false;
+				      },
+					   beforeSend:function(response)
+							{
+					  //swal({title: "讯息", text: "....请稍后...", showConfirmButton: false, customClass: 'twitter'});		   
+							//alert('{JS_WAIT_}');
+							}, 
+			      success:function(response)
+			        {
+		          
+		          
+			       var ss = jQuery.trim(response);
+		          
+		          //alert(response);
+		              if(response=='greater')
+						  	 	 {
+						    alert("{_JS_SAVE_LESS_100}");
+						    document.location.href='./deposits.php';
+						    return;	 	 	
+						  	 	 }
+		              if(response)
+						  	   {
+						  	   alert('{_JS_APPLICATION_SUCCESS}');
+						  	   document.location.href='./monrecord.php';
+						  	   	return;
+						  	   }
+							    else
+							     {						     	
+							     alert('{_JS_APPLICATION_ERROR}');
+							     document.location.href='./memberlogout.php';
+							     return;
+							     } 
+
+                        
+	                     
+	
+				      }
+		    
+			 });
+      
+   
+   }
+   
+ /*銀行選擇*/
+   function bankinfo_sub(a)
+    {
+    	var na = a.split(":");
+    	jQuery('#banksub').val(na[2]);
+    }
+     
+$( document ).ready(function() { 
+   jQuery('#tabss-1').attr('checked',true)
+   
+   jQuery('#tabss-2').on('click', function () {
+   	    jQuery('.content-2').html('<div class="Loading"></div>');
+      });
+   jQuery('#tabss-3').on('click', function () {
+   	    jQuery('.content-3').html('<div class="Loading"></div>');
+      }); 
+   
+	});
+</script>
+<!-- START BLOCK : PublicTitle -->
+<div class="title_background ">
+<div class="title">{_PUBLIC_TITLE_}</div>
+</div>
+
+<section class="tabs">
+            <input onclick="location.href='deposits.php'" style="outline:none;" style="width:33%;" type="radio" id="tabss-1" name="radio-set" class="tab-selector-1"/>
+            <label style="width:33%;" for="tab-1" class="tabss-label-1">{_SAVE_MONEY_}</label>
+
+            <input onclick="location.href='receive.php'" style="outline:none;" style="width:33%;left:33%;" type="radio" id="tabss-2" name="radio-set" class="tab-selector-2"/>
+            <label style="left:33%;width:33%;" for="tab-2" class="tab-label-2">{_PICK_}</label>
+
+            <input onclick="location.href='monrecord.php'" style="outline:none;" style="width:34%;left:66%;" type="radio" id="tabss-3" name="radio-set" class="tab-selector-3"/>
+            <label style="left:66%;width:34%;" for="tab-3" class="tab-label-3">{_TRADERECORD}</label>
+<!-- END BLOCK : PublicTitle -->
+            
+            <div class="clear-shadow"></div>
+            <div class="content" style="margin-top:0px;padding: 0px 0px 0px 0px;">
+            	
+            	<div class="content-2"></div>  
+              <div class="content-3"></div> 
+            	
+            	<!-- START BLOCK : nonekind -->
+                <div class="content-1">
+                    <div class="page_padding">
+                        <div class="deposits_title">{_SAVE_MONEY_METH}</div>
+                        <div class="block_group">
+                            <div class="block" onclick="location.href='deposits.php?kind=1'">
+                                <div class="p01"><img src="./template/www/img/1.png" height="45" width="45"/></div>
+                                <div>{_ALIPAY_}</div>
+                            </div>
+                            <div class="block" onclick="location.href='deposits.php?kind=4'">
+                                <div class="p02"><img src="./template/www/img/2.png" height="37" width="57"/></div>
+                                <div>{_INTERBANK_}</div>
+                            </div>
+                            <div class="block" onclick="location.href='deposits.php?kind=4&temporary=1'">
+                                <div class="p03"><img src="./template/www/img/3.png" height="40" width="45"/></div>
+                                <div>{_CABINETPAY_}</div>
+                            </div>
+
+                            <div class="block" onclick="location.href='deposits.php?kind=2'">
+                                <div class="p04"><img src="./template/www/img/4.png" height="40" width="45"/></div>
+                                <div class="">{_WEPAY_}</div>
+                            </div>
+                            <div class="block" onclick="location.href='deposits.php?kind=3'">
+                                <div class="p05"><img src="./template/www/img/5.png" height="45" width="45"/></div>
+                                <div class="">{_QQ_}</div>
+                            </div>
+                            <div class="block">
+                            </div>
+                        </div>
+                        <div>
+                       <div class="notice">※&nbsp;{_PRECAUTIONS}&nbsp;※</div>
+                        <div class="notice_group">
+                            <ul class="notice_ul">
+                                <li class="num_style">
+                                    {_LONG_WORD_112}
+                                </li>
+                                <li class="num_style">{_LONG_WORD_113}</li>
+                                <div class="color_red">P.S.{_LONG_WORD_114}</div>
+                            </ul>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+              <!-- END BLOCK : nonekind -->
+              
+              <!--支付寶(公司)-->
+              <!-- START BLOCK : deposits_one -->
+                <div class="content-1">
+                	<div class="head_bg">
+                        <div class="arrow_left" onclick="javascript:window.history.go(-1);"><i class=" fa fa-angle-left font" aria-hidden="true"></i></div>
+                        <div class="pay_title">{_ALIPAY_}</div>
+                  </div>
+                  
+                  <div id="DSQRCode">
+                    <div class="pay_block" style="padding: 10px 6px 15px 6px;">
+                  <div class="pay_please">{_ALIPAY_PAY_ACOUNT}</div>
+                  <div class="black_line"></div>
+                  <div class="pay_row">
+                                <div class="pay_cell_title">{_JS_PAY_ACCOUNT}</div>
+                                <div class="pay_cell_input">{faccount}</div>
+                  </div>
+                  <div class="pay_row">
+                                <div class="pay_cell_title">{_NAME}</div>
+                                <div class="pay_cell_input name_padding">{fname}</div>
+                  </div>
+                  <div class="QRcode">
+                  <img src="./serviceQRCode/{imgQRCode}" width="350" />
+                  </div>
+                  <div class="success" onclick="DSQRCodeNext()">
+                        <button>{_NEXT_STEP_}</button>
+                  </div>
+                    </div>
+                  </div>
+                  
+                  <div id="DSInput" style="display:none;">
+                  <input type="hidden" id="bankm" name="bankm" value="{id}:{faccount}:{fname}">
+                   <div class="white_bg_table">
+                        <div class="pay_table ">
+                            <div class="pay_row">
+                                <div class="pay_cell_title">{_ALIPAY_PAY_ACOUNT}</div>
+                                <div class="pay_cell_input"><input type="text" class="input_text" id="paipayaccount" name="paipayaccount"></div>
+                            </div>
+                            <div class="pay_row">
+                                <div class="pay_cell_title letter_space">{_MONEY_}</div>
+                                <div class="pay_cell_input"><input type="text" class="input_text" id="paipaymoney" name="paipaymoney"></div>
+                            </div>
+                        </div>
+                         <div class="submit"  onclick="savemember_alipay()">
+                        <button>{_PAYFINISH_}</button>
+                         </div>
+                        
+                    </div>
+                  </div>
+                  
+                  <div class="notice_bg">
+                  <div class="notice">※&nbsp;{_PRECAUTIONS}&nbsp;※</div>  
+                  	<div class="notice_group">
+                  <ul class="notice_ul">
+                                <li class="num_style">
+                                    {_LONG_WORD_116_11}
+                                </li>
+                                <li class="num_style">{_MIN_SAVE_MONEY}</li>
+                                <div class="color_red">P.S.{_LONG_WORD_114}</div>
+                            </ul>
+                     </div>
+                   </div>
+                  </div>
+                </div>
+              <!-- END BLOCK : deposits_one -->
+               
+               <!--微信(公司)-->
+                <!-- START BLOCK : deposits_two -->
+                <div class="content-1">
+                	<div class="head_bg">
+                        <div class="arrow_left" onclick="javascript:window.history.go(-1);"><i class=" fa fa-angle-left font" aria-hidden="true"></i></div>
+                        <div class="pay_title">{_WEPAY_}</div>
+                  </div>
+                  
+                  <div id="DSQRCode">
+                    <div class="pay_block">
+                  <div class="pay_please">{_WECHATACCOUNTPAY_}</div>
+                  <div class="black_line"></div>
+                  <div class="pay_row">
+                                <div class="pay_cell_title">{_WECHATACCOUNT}</div>
+                                <div class="pay_cell_input">{faccount}</div>
+                  </div>
+                  <div class="pay_row">
+                                <div class="pay_cell_title">{_NAME}</div>
+                                <div class="pay_cell_input name_padding">{fname}</div>
+                  </div>
+                  <div class="QRcode">
+                  <img src="./serviceQRCode/{imgQRCode}" width="350" />
+                  </div>
+                  <div class="success" onclick="DSQRCodeNext()">
+                        <button>{_NEXT_STEP_}</button>
+                  </div>
+                    </div>
+                  </div>
+                  
+                  <div id="DSInput" style="display:none;">
+                  <input type="hidden" id="bankm" name="bankm" value="{id}:{faccount}:{fname}">
+                   <div class="white_bg_table">
+                        <div class="pay_table ">
+                            <div class="pay_row">
+                                <div class="pay_cell_title">{_WECHATACCOUNT}</div>
+                                <div class="pay_cell_input"><input type="text" class="input_text" id="paipayaccount" name="paipayaccount"></div>
+                            </div>
+                            <div class="pay_row">
+                                <div class="pay_cell_title letter_space">{_PAYACCOUNT_}</div>
+                                <div class="pay_cell_input"><input type="text" class="input_text" id="paipaymoney" name="paipaymoney"></div>
+                            </div>
+                        </div>
+                         <div class="submit"  onclick="savemember_alipay()">
+                        <button>{_SURE_SUBMIT}</button>
+                         </div>
+                        
+                   </div>
+                  </div>
+                  
+                </div>
+              <!-- END BLOCK : deposits_two -->
+              
+              <!--支付寶(第三方)-->
+              <!-- START BLOCK : deposits_one_third -->
+                <div class="content-1">
+                	<div class="head_bg">
+                        <div class="arrow_left" onclick="javascript:window.history.go(-1);"><i class=" fa fa-angle-left font" aria-hidden="true"></i></div>
+                        <div class="pay_title">{_ALIPAY_}</div>
+                  </div>
+                  
+                  <div class="pay_block">
+                  <div id="itgweixin" style="display:block;">
+                  <input type="hidden" id="uname" name="uname" value="{username}:{userid}:{payname}:{paychname}:{ptype}">
+                   <div class="pay_block" style="padding: 0px 0px 0px 0px;">
+                   <div style="background-color:#f4f8ff;" class="white_bg_table">
+                                            
+                            <div class="pay_row">
+                                <div class="pay_cell_title letter_space">{_MONEY_}</div>
+                                <div class="pay_cell_input"><input type="text" class="input_text" id="amount" name="amount"></div>
+                            </div>
+                        </div>
+                         <div class="submit"  onclick="itgweixin()">
+                          <button style="width:100% ! important;">{_NEXT_STEP_}</button>
+                         </div>
+                        
+                   </div>
+                  </div>
+                </div>
+                  <div class="notice">※&nbsp;{_PRECAUTIONS}&nbsp;※</div>  
+                  <div class="notice_bg">
+                  	<div class="notice_group">
+                  <ul class="notice_ul">
+                                <li class="num_style">
+                                    {_LONG_WORD_116_11}
+                                </li>
+                                <li class="num_style">{_MIN_SAVE_MONEY}</li>
+                                <div class="color_red">P.S.{_LONG_WORD_114}</div>
+                            </ul>
+                          </div>
+                   </div>
+
+              <!-- END BLOCK : deposits_one_third -->
+              
+              <!--微信(第三方)-->
+              <!-- START BLOCK : deposits_two_third -->
+                <div class="content-1">
+                	<div class="head_bg">
+                        <div class="arrow_left" onclick="javascript:window.history.go(-1);"><i class=" fa fa-angle-left font" aria-hidden="true"></i></div>
+                        <div class="pay_title">{_WEPAY_}</div>
+                  </div>
+                  
+                  <div class="pay_block">
+                  <div id="itgweixin" style="display:block;">
+                  	
+                  <input type="hidden" id="uname" name="uname" value="{username}:{userid}:{payname}:{paychname}:{ptype}">
+                   <div class="pay_block" style="padding: 0px 0px 0px 0px;">
+                   <div style="background-color:#f4f8ff;" class="white_bg_table">
+                        <div class="pay_table ">
+                         
+                            <div class="pay_row">
+                                <div class="pay_cell_title letter_space">{_MONEY_}</div>
+                                <div class="pay_cell_input"><input type="text" class="input_text" id="amount" name="amount"></div>
+                            </div>
+                        </div>
+                         <div class="submit"  onclick="itgweixin()">
+                        <button style="width:100% ! important;">{_NEXT_STEP_}</button>
+                         </div>
+                        
+                   </div>
+                  
+                  </div>
+                  
+                </div>
+              </div>
+                  <div class="notice_bg">
+                  <div class="notice">※&nbsp;{_PRECAUTIONS}&nbsp;※</div>  
+                  <div class="notice_group">
+                  <ul class="notice_ul">
+                                <li class="num_style">
+                                    {_LONG_WORD_116_11}
+                                </li>
+                                <li class="num_style">{_MIN_SAVE_MONEY}</li>
+                                <div class="color_red">P.S.{_LONG_WORD_114}</div>
+                            </ul>
+                          </div>
+                </div>
+                
+
+              <!-- END BLOCK : deposits_two_third -->
+              
+              <!--QQ(第三方)-->
+              <!-- START BLOCK : deposits_three_third -->
+                <div class="content-1">
+                	<div class="head_bg">
+                        <div class="arrow_left" onclick="javascript:window.history.go(-1);"><i class=" fa fa-angle-left font" aria-hidden="true"></i></div>
+                        <div class="pay_title">QQ</div>
+                  </div>
+                  
+                  <div class="pay_block">
+                  
+                  <div id="itgweixin" style="display:block;">
+                  <input type="hidden" id="uname" name="uname" value="{username}:{userid}:{payname}:{paychname}:{ptype}">
+                   <div class="pay_block" style="padding: 0px 0px 0px 0px;">
+                   <div style="background-color:#f4f8ff;" class="white_bg_table">
+                        
+                       <div class="pay_table ">
+                         
+                            <div class="pay_row">
+                                <div class="pay_cell_title letter_space">{_MONEY_}</div>
+                                <div class="pay_cell_input"><input type="text" class="input_text" id="amount" name="amount"></div>
+                            </div>
+                        </div>
+                         <div class="submit"  onclick="itgweixin()">
+                        <button style="width:100% ! important;">{_NEXT_STEP_}</button>
+                         </div>
+                        
+                   </div>
+                  </div>
+                </div>
+                  </div>
+                  <div class="notice_bg">
+                  <div class="notice">※&nbsp;{_PRECAUTIONS}&nbsp;※</div>  
+                  
+                  	<div class="notice_group">
+                  <ul class="notice_ul">
+                                <li class="num_style">
+                                    {_LONG_WORD_116_11}
+                                </li>
+                                <li class="num_style">{_MIN_SAVE_MONEY}</li>
+                                <div class="color_red">P.S.{_LONG_WORD_114}</div>
+                            </ul>
+                          </div>
+                  </div>
+                </div>
+
+              <!-- END BLOCK : deposits_three_third -->
+              
+              <!--空值-->
+              <!-- START BLOCK : deposits_none -->
+                <div class="content-1">
+                	<div class="head_bg">
+                        <div class="arrow_left" onclick="javascript:window.history.go(-1);"><i class=" fa fa-angle-left font" aria-hidden="true" onclick="javascript:history.go(-1);"></i></div>
+                        <div class="pay_title">{title_none}</div>
+                  </div>
+                  
+                  <div id="DSInput" style="display:block;">
+                   <div style="min-height:150px;" class="white_bg_table">
+                        <div style="padding-top:50px;text-align:center;" class="pay_table ">
+                            {payCodeMsg}
+                            <div class="pay_row">
+                            
+                            </div>
+                        </div>
+                        
+                   </div>
+                  </div>
+                </div>
+              <!-- END BLOCK : deposits_none -->
+              
+              <!-- START BLOCK : usercenter_saveup_top -->
+              <div class="content-1">
+              	
+               <div class="head_bg">
+                        <div class="arrow_left" onclick="javascript:window.history.go(-1);"><i class=" fa fa-angle-left font" aria-hidden="true"></i></div>
+                        <div class="pay_title">{_INTERBANK_}</div>
+               </div>
+               
+               <div id="usercenter_saveup_first" style="display:block;">
+               
+               <div class="pay_block">
+                        <div class="pay_please">{_CHOOSE_BANK_FOUR}</div>
+                        <div class="black_line"></div>
+                        <div class="pay_table">
+                            <div class="pay_row">
+                                <div class="pay_cell_title letter_space">{_CHOOSE_BANK}</div>
+                                <div class="pay_cell_input ">
+                                
+                                <select class="selector" onchange="bankinfo_sub(this.value)" name="bankm" id="bankm">
+					                      <option selected="selected" value="">{_CHOOSE_BANK}</option>
+								                <!-- START BLOCK : usercenter_saveup -->
+								                <option value={id}:{faccount}:{fbranch}:{fbank}:{fname}:{url}>{fbank}</option>
+								                <!-- END BLOCK : usercenter_saveup -->
+							                  </select>
+                                  
+                                </div>
+                            </div>
+                            
+                            <!--<div class="pay_row">
+                                <div class="pay_cell_title letter_space">{_BANK_BRANCHES}</div>
+                                <div class="pay_cell_input"><input type="text" class="input_text" name="banksub" id="banksub"></div>
+                            </div>-->
+                            
+                            <div class="pay_row">
+                                <div class="pay_cell_title letter_space">{_SAVE_MONEY}</div>
+                                <div class="pay_cell_input"><input type="text" class="input_text" maxlength="8" name="line_money" id="line_money"></div>
+                            </div>
+                        </div>
+                         <div class="submit" onclick="savemember1('{num}')">
+                        <button>{_NEXT_STEP_}</button>
+                         </div>
+               </div>
+               
+               <div class="notice_bg">
+                        <div class="notice">※&nbsp;{_PRECAUTIONS}&nbsp;※</div>  
+                         <div class="notice_group">
+                        <ul class="notice_ul">
+                            <li class="num_style">{_LONG_WORD_116}</li>
+                            <li class="num_style">{_LONG_WORD_117}</li>
+                            <li class="num_style">{_LONG_WORD_118}</li>
+                        </ul>
+                      </div>
+               </div>
+               </div>
+               
+               <div id="usercenter_saveup_sec" style="display:none;">
+               	
+               	<div class="pay_block">
+               		<div class="pay_please">{_SAVE_UNDER_BANK_}</div>
+                  <div class="black_line"></div>
+                  
+                  <div class="pay_table">
+                  <div class="pay_row">
+		                 <div class="pay_cell_title letter_space">{_BANK}</div>
+		                 <div class="pay_cell_input"><div id="savemember_bank"></div></div>
+		              </div>
+		              <div class="pay_row">   
+		                 <div class="pay_cell_title letter_space">{_NAME_}</div>
+		                 <div class="pay_cell_input"><div id="savemember_bankchild"></div></div>
+		              </div>
+		              <div class="pay_row">   
+		                 <div class="pay_cell_title letter_space">{_BRANCHES}</div>
+		                 <div class="pay_cell_input"><div id="savemember_acount"></div></div>
+		              </div>
+		              <div class="pay_row">   
+		                 <div class="pay_cell_title letter_space">{_ACCOUNT}</div>
+		                 <div class="pay_cell_input"><div id="savemember_num"></div></div>
+		              </div>
+		              <div class="pay_row">   
+		                 <div class="pay_cell_title letter_space">{_SAVE_MONEY}</div>
+		                 <div class="pay_cell_input"><div id="savemember_menoy"></div></div>
+		              </div>
+		              
+		              </div>
+                  
+                  <div style="padding:0px 0px 0px 10px;" class="success" style="width:100%;" onclick="savepickup_finish('{num}')">
+                        <button style="border-radius:5px;width:100%;">{_FINISH_STRICT_SEND}</button>
+                        <input type="hidden" name="bankfid" id="bankfid">
+                 </div>
+                </div>
+                
+                
+                 
+                 <div class="notice_bg">
+                        <div class="notice">※&nbsp;{_PRECAUTIONS}&nbsp;※</div>  
+                         <div class="notice_group">
+                        <ul class="notice_ul">
+                            <li class="num_style">{_LONG_WORD_116_1}</li>
+                            <li class="num_style">{_LONG_WORD_117_1}</li>
+                            <li class="num_style">{_LONG_WORD_118_1}</li>
+                        </ul>
+                      </div>
+               </div> 
+               </div>
+               
+              </div>
+              
+                               
+              </div>
+                
+               </div>
+               
+              </div>
+              <!-- END BLOCK : usercenter_saveup_top --> 
+</section>

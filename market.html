@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{_WA99_}</title>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=414,user-scalable=no">
+    <title>TG_MarketList</title>
+    <link rel="stylesheet" href="./template/www/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./template/www/css/bootstrap-select.min.css">
+    
+    <link rel="stylesheet" href="./template/www/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="./template/www/css/normalize.css">
+    <link rel="stylesheet" href="./template/www/css/tab_style.css">
+    <!--menu bar 套件-->
+    <link rel="stylesheet" href="./template/www/css/demo.css">
+    <link rel="stylesheet" href="./template/www/css/sidy.css">
+    <link rel="stylesheet" href="./template/www/css/Main_Style.css">
+    <link rel="stylesheet" href="./template/www/css/marketlist.css">
+	<link rel="stylesheet" href="./template/www/css/FIFA_marketlist.css">
+    <link rel="stylesheet" href="./css/ex.css">
+    <!--<link rel="stylesheet" href="../../sandy/layout_002/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../sandy/layout_002/css/normalize.css">
+    <link rel="stylesheet" href="../../sandy/layout_002/css/tab_style.css">-->
+    <!--menu bar 套件-->
+    <!--<link rel="stylesheet" href="../../sandy/layout_002/css/demo.css">
+    <link rel="stylesheet" href="../../sandy/layout_002/css/sidy.css">
+    <link rel="stylesheet" href="../../sandy/layout_002/css/Main_Style.css">
+    <link rel="stylesheet" href="../../sandy/layout_002/css/marketlist.css">-->
+	<!--<script type="text/javascript" src="./template/www/js/tgservice.js?1807281956"></script>-->
+<script>
+
+<!-- START BLOCK : mobile_log_check -->
+alert('{log_check}');
+location.href='{_JS_LOCATION}';
+<!-- END BLOCK : mobile_log_check -->
+
+function surecheck()
+{
+	  //$('.tabs').animate({scrollTop: 100}, 1000);
+	//$(".content-4").scrollTo("#anchorName",500,{offset:{top:-100}});
+	//$(".clear-shadow").scrollTo();
+	//$(".tabs").animate({ scrollTop: 0 }, "slow");
+	//$(".tabs").animate({scrollTop:0}, '500', 'swing');
+	//window.location.hash = '#anchorName';
+  //window.parent.location.hash = '#anchorName';
+	var select0 = new Array(); 	
+ 	var c2bet = new Object;
+	//var ss = $('.choose_alliance').find('div').attr('id');
+	$('.choose_alliance > div.click').each(function(e) {
+          select0[e] = $(this).attr('id');
+        });
+        
+       c2bet["select0"] = select0;
+       
+       //console.log(c2bet);
+       if(select0.length == 0)
+       {
+       	return;
+       }
+   
+      
+   jQuery.ajax({		
+		type: 'POST',
+		url: './allleague.php' ,
+		data: c2bet ,
+		
+		error: function(xhr) {
+			//alert('ERROR!163');
+			return false;
+		},
+				
+		beforeSend:function(response)
+		{
+			//jQuery('#Modal_cover4').html("<div class='Loading'></div>");
+			  $('.content-4').html("<div class='Loading'></div>");
+		}, 
+		
+		success: function(response) {
+			$('.content-4').html(response);
+			  window.location.hash = '#anchorName';
+        window.parent.location.hash = '#anchorName';
+		} 
+	
+	 });
+   
+   $(".sidy__content").scrollTop(0);
+}
+
+function cleancheck()
+{
+	var select0 = new Array(); 	
+ 	var c2bet = new Object;
+	var ss = $('#all_check').attr('class');
+	if(ss!='box')
+	{
+		
+  $('#all_check > i').attr("style", "display:none");         
+  $('#all_check').removeClass('checked');
+    
+	}
+	
+	$('.choose_alliance > div').each(function(e) {
+          $(this).removeClass('click');
+        });
+  $('.choose_alliance > div > i').each(function(e) {
+          $(this).attr("style", "display:none");
+        });
+  
+  //$('#un_check > i').attr("style", "display:none");         
+  //$('#un_check').removeClass('checked');
+}
+
+function allcheck()
+{
+	var ss = $('#all_check').attr('class');
+	 if(ss=='box')
+	 {
+	$('.choose_alliance > div').each(function(e) {
+          $(this).addClass('click');
+        });
+  $('.choose_alliance > div > i').each(function(e) {
+          $(this).attr("style", "display:inline");
+        });
+   }
+   else
+   	{
+ $('.choose_alliance > div').each(function(e) {
+          $(this).removeClass('click');
+        });
+  $('.choose_alliance > div > i').each(function(e) {
+          $(this).attr("style", "display:none");
+        });  		
+   	}
+}
+
+function ttt(a)
+{
+//$(".tabs > .content-1").animate({scrollTop: -500}, 1000);
+//return;
+/*
+	if(a=='a')
+	{
+window.location.hash = '';
+window.parent.location.hash = '#anchorName';
+ }
+ else
+ 	{
+ 	window.location.hash = '';
+ window.parent.location.hash = '#bottom';		
+ 	}
+*/
+if(a=='a')
+	{
+//$(".tabs div.content-1").animate({top: 0}, 1000);
+//var window_scrollTop = ($(".tabs div.content-1").offset().top - 125);
+//var ss = $('html,body').height();
+//var tt = $(".tabs div.content-1").height();
+//so = (window_scrollTop) + (ss);
+//if(window_scrollTop == 0) return false;
+//so = (window_scrollTop) + (ss);
+//var ans = (so - 125)
+//$(".tabs div.content-1").animate({top: ans + 'px'}, 1000);
+//$(".tabs div.content-1").scrollTop(offset().top - 125);
+//$(".tabs div.content-1").animate({top: (ans) + 'px'}, 1000);
+//$('.tabs div.content-1').animate({scrollTop: offset().top}, 1000);
+//console.log(ans);
+window.location.hash = '';
+window.parent.location.hash = '#anchorName';
+ }
+ else
+ 	{
+ //var ss = $('html,body').height();
+ //alert(ss);
+     //ss = (ss-300);
+ //var ss = $(".tabs div.content-1").height() - $('html,body').height() + 200;
+ //$(".tabs div.content-1").animate({top: '-' + ss + 'px'}, 1000);
+ //$(".tabs div.content-1").animate({scrollTop: ss}, 1000);
+ var window_scrollTop = $(".tabs div.content-1").offset().top;
+ var ss = $('html,body').height();
+ var tt = $(".tabs div.content-1").height();
+ so = (window_scrollTop) - (ss);
+ //if((so+tt) < 0) return false;
+ tt = tt - '700';
+ $(".tabs div.content-1").animate({top: '-' + tt + 'px'}, 1000);
+ //console.log(so +'::'+ window_scrollTop+'::'+ss);
+ 	}
+
+}
+
+function titleannice()
+{
+	var ss = $('#marqinfo').css("display");
+	
+	if(ss=='none')
+	 {
+	 	$('#marqinfo').attr('style','margin-top:3px;font-size:16px;margin-left:22%;width:80%;display:block');
+	 	$('#markettitle').attr('style','display:none');
+	 }
+	else
+	 {
+	 	$('#marqinfo').attr('style','display:none');
+	 	$('#markettitle').attr('style','display:block;padding-left:150px;width:80%;');
+	 }
+	//$('#markettitle').toggle();
+	
+}
+
+
+</script>
+<style>
+.trade_head{
+    background-color: white;
+    width: 100%;
+    height: 45px;
+    position: fixed;
+    top: 85px;
+    right: 0px;
+    left: 0px;
+    z-index: 1029;
+}
+</style>
+</head>
+<body>
+<div class="sidy">
+<!-- INCLUDE BLOCK : header -->
+
+<div class="sidy__content">
+        
+<!-- INCLUDE BLOCK : titleannounce -->        
+       
+                
+        <div class="icon_bar navbar-fixed-bottom">
+         <!-- INCLUDE BLOCK : footer -->
+        </div>
+        
+       <div class="scroll_top" id="return-to-top">
+           <div class="scroll_top_bg"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+       </div>
+       
+       <!--
+        <div class="scroll_bottom" id="return-to-bottom">
+            <div class="scroll_bottom_bg"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+        </div>
+        -->   
+        <section class="tabs">
+            
+            <!-- INCLUDE BLOCK : marketlist -->
+            
+        </section>
+        
+    
+    </div>
+   
+</div>
+
+
+<script src="./template/www/js/jquery-3.2.1.min.js"></script>
+<script src="./template/www/js/bootstrap.min.js"></script>
+<script src="./template/www/js/bootstrap-select.min.js"></script>
+
+<script src="./template/www/js/modernizr.custom.04022.js"></script>
+<script src="./template/www/js/sidy.js"></script>
+<script src="./template/www/js/login.js"></script>
+<script src="./template/www/js/marketlist.js"></script>
+
+</body>
+</html>

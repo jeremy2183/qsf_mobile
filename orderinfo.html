@@ -1,0 +1,100 @@
+<style>
+.icon_bar_trade{
+    display: block;
+    background: url("./template/www/img/02-1.png") no-repeat ;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 8px;
+    margin: 0px auto;
+}
+.no_content {
+    font-size: 20px;
+    width: 100%;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #0d3675;
+    margin-top: 200px;
+}
+</style>
+   <div class="title_background ">
+   <div class="title">{_TRANSACTION_DETAILS}</div>
+   </div>
+   <!-- START BLOCK : orderinfototal -->
+        
+        <div class="trade_head">
+             <div class="color_border_bottom"></div>
+           <i onclick="javascript:window.history.go(-1);" class=" fa fa-angle-left" aria-hidden="true"></i>
+           <div class="blank"></div>
+            <div class="trade_block">
+                <div class="trade_amount_title">{_TRADE_ACCOUNT}</div>
+                <div class="trade_amount_num">{_TOTAL_FOR}</div>
+            </div>
+            <div class="trade_block">
+                <div class="total_rate_title">{_ESTIMATED_PROFIT}</div>
+                <div class="total_rate_num">{_ESTIM}</div>
+            </div>
+        </div>
+   <!-- END BLOCK : orderinfototal -->
+<div class="content">
+<!-- START BLOCK : orderinfo_empty -->
+ <ul class="no_content">
+                     {NO_DATA}
+ </ul>
+ <!-- END BLOCK : orderinfo_empty -->
+          
+ <!-- START BLOCK : orderinfo -->           
+            <div class="game_list v1">
+                <div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>{_betHisTime}</span></div>
+                    <div class="game_name">{_EVENT}</div>
+                    <div class="number">{_GAME_NUM}</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>{_EVENT_SEC}</span>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="trade_detail">
+  <!-- START BLOCK : orderinfo_detail_info -->             
+              <div class="whole_table_block">
+                <div class="table_padding">
+                <table>
+                    <tr>
+                        <th>{_BETID}<div class="dash"></div></th>
+                        <td colspan="3">{betId}</td>
+                    </tr>
+                    <tr>
+                        <th>{_TRADE_TIME}<div class="dash"></div></th>
+                        <td colspan="3">{_betContent}</td>
+                    </tr>
+                    <tr>
+                        <th>{_MARKET_ORDER}<div class="dash"></div></th>
+                        <td colspan="3">{_MARKET} {selection} ＠<span class="color_red">{_PROFIT_}%</span></td>
+                    </tr>
+                </table>
+                </div>
+                <table>
+                    <tr class="money_total">
+                        <th class="padding_left">{_AMOUNT}</th>
+                        <td class="align_right color_blue">{_DEALMO}<div class="dash"></div></td>
+                        <th class="">{_ESTIMATED_PROFIT}</th>
+                        <td class="align_right color_green padding_right">{_DELMO_P}</td>
+                    </tr>
+                </table>
+              </div>
+  <!-- END BLOCK : orderinfo_detail_info -->           
+            </div>
+ 
+           
+<!-- END BLOCK : orderinfo -->
+</div>
+<script>
+$('.icon_bar_cell > a').removeClass('active');
+  $('.icon_bar_cell > #orderinfo_a').addClass('active');
+</script>

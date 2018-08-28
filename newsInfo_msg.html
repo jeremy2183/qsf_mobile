@@ -1,0 +1,23 @@
+
+			<div class="boardt_navbar navbar-fixed-bottom">
+				<a class="go_leave" href="newsInfo_msgadd.php?news_id={newsid}">发表您的精采言论</a>
+			</div>
+		
+			<section class="indexNews">
+				
+				<div class="message_board">
+					<h5 class="message_title">精采评论({msg_num})</h5>
+					<!-- START BLOCK : MSG -->
+					<div class="comments">
+						<span class="comment_icon"></span>
+						<span class="comment_info">
+							<span class="comment_account">{poster}</span>
+							<span class="comment_time">{time}</span>
+							<span id="msg_like{msg_id}" class="info_like" onclick="msglike({like},{msg_id})">{like}</span>
+						</span>
+						<p class="comment_text">{content}</p>
+					</div>
+					<!--END BLOCK : MSG -->	
+				</div>
+			</section>
+	

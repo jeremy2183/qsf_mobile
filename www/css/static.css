@@ -1,0 +1,314 @@
+dl{
+    margin-bottom: 0px;
+}
+
+.desc {
+    color: #6b6b6b;
+}
+
+.desc a {
+    color: #0092dd;
+}
+
+.dropdown dd, .dropdown dt, .dropdown ul {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+}
+
+.dropdown dd {
+    position: relative;
+}
+
+.dropdown a, .dropdown a:visited {
+    color: black;
+    text-decoration: none;
+    outline: none;
+}
+
+.dropdown a:hover {
+    color: black;
+}
+
+.dropdown dt a:hover {
+    color: black;
+    border: solid 1px rgba(135, 148, 148, 0.5);
+}
+
+.dropdown dt a {
+    background: #ffffff url("../img/arrow.png") no-repeat scroll right 5% center;
+    display: block;
+    border: solid 1px rgba(135, 148, 148, 0.5);
+    width: 100%;
+    height: 48px;
+    border-radius: 5px;
+    color: black;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+
+
+.dropdown dt a span {
+    cursor: pointer;
+    display: block;
+    padding: 12px 5px 5px 10px;
+}
+
+.dropdown dd ul {
+    background: #ffffff none repeat scroll 0 0;
+    border: 1px solid rgba(135, 148, 148, 0.5);
+    border-top: none;
+    color: black;
+    display: none;
+    left: 0px;
+    padding: 5px 0px;
+    position: absolute;
+    width: 100%;
+    min-width: 100%;
+    list-style: none;
+    letter-spacing: 1px;
+    z-index: 2;
+}
+
+
+
+.dropdown span.value {
+    display: none;
+}
+
+.dropdown dd ul li a {
+    padding: 5px 5px 5px 12px;
+    display: block;
+    text-align: center;
+}
+
+.dropdown dd ul li a:hover {
+    background-color: #b9c5d0;
+    color: #686868;
+}
+
+.dropdown img.flag {
+    border: none;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+.game_trade {
+    position: relative;
+    background-color: white;
+    width: 100%;
+    height: 75px;
+    margin-top: 7px;
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.2);
+}
+.time{
+    display: inline-block;
+    position: absolute;
+    margin: 10px 0px 0px 15px;
+}
+
+.time span{
+    margin-right: 10px;
+
+
+}
+.game_name {
+    display: inline-block;
+    margin: 10px 0px 0px 105px;
+    color: #617272;
+}
+.game_team{
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size: 16px;
+    margin-top: 14px;
+    color: #00235b;
+    letter-spacing: 1px;
+}
+.main_mark{
+    color: #03b5b8;
+}
+.vs {
+    font-size: 13px;
+    margin: 1px 6px;
+    color: #617272;
+}
+
+
+
+.arrow{
+    display: inline-block;
+    color: #004f96;
+    position: absolute;
+    top: 22px;
+    right: 5%;
+    font-size: 23px;
+
+
+}
+
+.color_border{
+    display: inline-block;
+    width: 4px;
+    height: 75px;
+    position: absolute;
+    background: #0d3675; /* Old browsers */
+    background: -moz-linear-gradient(top, #0d3675 0%, #00ecd5 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #0d3675 0%,#00ecd5 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #0d3675 0%,#00ecd5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d3675', endColorstr='#00ecd5',GradientType=0 ); /* IE6-9 */
+}
+
+.trade_detail{
+    background-color: white;
+    display: none;
+}
+
+.open .game_trade{
+    background-color:#325a86 ;
+    width: 100%;
+    height: 75px;
+    box-shadow: none;
+
+
+}
+.open .game_name{
+    color: white;
+}
+.open .game_team{
+    color: white;
+}
+.open .time{
+    color: white;
+}
+.open .vs{
+    color: white;
+}
+.open i{
+    color: white;
+    transform:rotate(90deg) ;
+    -ms-transform:rotate(90deg);
+    -moz-transform:rotate(90deg);
+    -webkit-transform:rotate(90deg);
+    -o-transform:rotate(90deg);
+    transition: 300ms linear all;
+}
+
+.trade_table{
+    display: table;
+    width: 100%;
+    font-size: 13px;
+    border-bottom: solid 3px #325a86;
+    border-left: solid 1px rgba(104, 104, 104, 0.5);
+
+}
+.trade_row{
+    display: table-row;
+}
+.trade_cell_title{
+    display: table-cell;
+    width: 18%;
+    text-align: center;
+    padding: 6px 0px;
+
+}
+.trade_cell{
+    display: table-cell;
+    width: 32%;
+    text-align: center;
+    padding: 7px 10px 7px 0px;
+    border-right: solid 1px rgba(104, 104, 104, 0.5);
+
+
+}
+.trade_border_bottom{
+    border-bottom: solid 1px rgba(104, 104, 104, 0.5);
+}
+
+.dash{
+    display: inline-block;
+    background-color: rgba(104, 104, 104, 0.5);
+    height: 13px;
+    width: 2px;
+    margin-left: 5px;
+    vertical-align: middle;
+
+}
+
+.color_red{
+    color: red;
+}
+
+
+.scroll_top {
+    position: fixed;
+    bottom: 150px;
+    right: 25px;
+    z-index: 1031;
+    font-size: 30px;
+    color: rgba(104, 104, 104, 0.5);
+}
+
+.scroll_top_bg {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: solid 1px rgba(104, 104, 104, 0.5);
+    text-align: center;
+    vertical-align: middle;
+}
+
+.scroll_bottom {
+    position: fixed;
+    bottom: 90px;
+    right: 25px;
+    z-index: 1031;
+    font-size: 30px;
+    color: rgba(104, 104, 104, 0.5);
+}
+
+.scroll_bottom_bg {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: solid 1px rgba(104, 104, 104, 0.5);
+    text-align: center;
+    vertical-align: middle;
+}
+.content{
+    margin-top: 95px;
+    margin-bottom: 70px;
+    padding:0px 5px;
+}
+@media screen and (max-width: 330px) {
+    .game_team {
+        font-size: 15px;
+    }
+
+}
+.selector
+{
+    background: #ffffff url(../img/arrow.png) no-repeat scroll right 5% center;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid rgba(135, 148, 148, 0.5);
+    opacity: 1;
+    height: 48px;
+    z-index: 0;
+    padding-left: 5px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    text-align: center;
+}
+.icon_bar_trade {
+    display: block;
+    background: url(../img/02-2.png) no-repeat;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 8px;
+    margin: 0px auto;
+}

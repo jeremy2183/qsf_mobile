@@ -1,0 +1,321 @@
+.sidy__content {
+	position: relative;
+}
+
+.backTOindex {
+    display: inline-block;
+    height: 100%;
+    padding-top: 10px;
+    width: 50px;
+    text-align: center;
+}
+
+.title {
+	font-weight: 700;
+}
+
+/* newsInfo */
+.newsInfo_navbar {
+	background: #fff;
+    width: 100%;
+    height: 57px;
+    box-shadow: 0px -8px 15px rgba(0,0,0,0.3);
+    text-align: center;
+	padding: 12px 0 0 5px;
+}
+.go_leave {
+	display: inline-block;
+	vertical-align: middle;
+	background: #e7e7e7;
+	color: #787878;
+	width: 50%;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	border-radius: 2px;
+	margin: 0 auto;
+	letter-spacing: 1px;
+	cursor: pointer;
+}
+.leave_messages {
+	display: inline-block;
+	vertical-align: middle;
+	width: 20%;
+	margin: 0 auto;
+	cursor: pointer;
+}
+.like_message {
+	display: inline-block;
+	vertical-align: middle;
+	width: 25%;
+	margin: 0 auto;
+	cursor: pointer;
+}
+.messages_num_icon {
+	position: relative;
+	background: url('../img/hotNews/9768_200.png') center no-repeat;
+	background-size: contain;
+	width: 35px;
+	height: 33px;
+    margin: 0 auto;
+    top: 2px;
+}
+.messages_num {
+	color: #00a3dc;
+    font-size: 13px;
+    font-weight: 700;
+    position: absolute;
+    top: -7px;
+    padding: 2px;
+    background: #fff;
+    text-align: center;
+    width: auto;
+}
+.like_message_icon {
+	display: inline-block;
+	background: url('../img/hotNews/like_ico.png') center no-repeat;
+	background-size: contain;
+	vertical-align: middle;
+	width: 35px;
+	height: 32px;
+}
+.like_active_icon {
+	background: url('../img/hotNews/like_ico_click.png') center no-repeat;
+	background-size: contain;
+}
+
+.like_num {
+	display: inline-block;
+    color: #00a3dc;
+    font-size: 17px;
+    height: 30px;
+    background: #fff;
+    vertical-align: middle;
+    font-weight: 900;
+    line-height: 35px;
+}
+
+.backTOindex {
+	display: inline-block;
+	height: 100%;
+	padding-top: 10px;
+    width: 50px;
+    text-align: center;
+}
+.indexNews {
+	background: #fff;
+	margin: 92px auto 65px;
+	padding: 10px 10px 25px;
+	width: 97%;
+	height: auto;
+	min-height: 100%;
+}
+.newsTitle {
+	color: #222;
+	font-size: 22px;
+	font-weight: 900;
+	line-height: 27px;
+	margin: 3px 0 10px;
+}
+.newsTimes {
+	margin: 0px 0 20px;
+}
+.newsTimes span {
+	margin-right: 8px;
+	font-size: 15px;
+	color: #787878;
+}
+span.journalist {
+	color: #002b51;
+}
+.indexNews p {
+	font-size: 16px;
+	color: #222;
+}
+
+.message {
+	width: 100%;
+	border-top: 1px solid #000;
+	position: relative;
+	padding: 20px 0;
+	margin-top: 30px;
+}
+.message::before {
+	content: "文章内容不代表TG观点";
+	background: #fff;
+	padding: 5px 15px;
+	position: absolute;
+	top: -15px;
+	left: 25%;
+    right: 25%;
+	text-align: center;
+	color: #787878;
+}
+.message_title {
+	color: #222;
+	font-size: 20px;
+	letter-spacing: 3px;
+	font-weight: 700;
+	text-align: center;
+	margin: 9px auto 16px;
+}
+
+
+.comments {
+	box-shadow: 0 0.3px 2px 0 rgba(0,0,0,0.5);
+	padding: 10px;
+	margin: 0 auto 5px;
+}
+.comment_icon {
+    display: inline-block;
+    width: 12%;
+    height: 40px;
+    vertical-align: middle;
+    background: url(../img/hotNews/no_user_ico.png) top left no-repeat;
+    background-size: contain;
+}
+.comment_info {
+    display: inline-block;
+    position: relative;
+	vertical-align: middle;
+    color: #787878;
+    width: 87%;
+    text-align: left;
+}
+.comment_account {
+	font-weight: 800;
+    color: #002b51;
+    font-size: 16px;
+}
+.comment_time {
+    display: block;
+    font-size: 12px;
+}
+.comment_info .info_like {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    vertical-align: middle;
+    font-size: 15px;
+	font-weight: 700;
+}
+.info_like::after {
+    content: '';
+    display: inline-block;
+    width: 36px;
+    height: 30px;
+    background: url(../img/hotNews/like_s.png) center right no-repeat;
+    background-size: contain;
+    vertical-align: middle;
+}
+.comment_text {
+	margin: 10px 0;
+	font-size: 14px;
+	letter-spacing: 1px;
+    line-height: 21px;
+}
+.already_like {
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 1px;
+	vertical-align: middle;
+    text-align: center;
+    width: auto;
+    height: auto;
+	margin: 0 auto;
+    position: absolute;
+    top: 25%;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+	display: none;
+}
+.already_like > span {
+	background: rgba(0, 0, 0, 0.8);
+	padding: 5px 10px;
+	border-radius: 2px;
+}
+
+
+
+
+/* message_board */
+.message_board .message_title {
+	text-align: left;
+	vertical-align: middle;
+}
+.message_board .message_title::before {
+	content: "";
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	background: url('../img/hotNews/football_ico.png') center no-repeat;
+	background-size: contain;
+	vertical-align: middle;
+	margin-right: 5px;
+}
+.boardt_navbar {
+	background: #fff;
+    width: 100%;
+    height: 57px;
+    box-shadow: 0px -8px 15px rgba(0,0,0,0.3);
+    text-align: center;
+	padding: 12px 0 0;
+}
+.boardt_navbar .go_leave {
+	width: 93%;
+	padding-left: 30px;
+	text-align: left;
+}
+
+
+/* message_edit */
+.message_edit {
+	width: 100%;
+	background: #fff;
+	margin: 85px auto 0px;
+}
+.edit_btns {
+	background: #f8f8f8;
+	height: 40px;
+    width: 100%;
+    text-align: right;
+    padding: 7px;
+}
+.edit_cancel {
+	display: inline-block;
+	background: #aeaeae;
+	border: 0.5px solid #aeaeae;
+	border-radius: 3px;
+	width: 75px;
+	height: 27px;
+	vertical-align: middle;
+	letter-spacing: 10px;
+	color: #fff;
+    padding-left: 13px;
+	text-align: center;
+}
+.edit_finish {
+	display: inline-block;
+	background: #0087d7;
+	border: 0.5px solid #9dd7f6;
+	border-radius: 3px;
+	width: 75px;
+	height: 27px;
+	vertical-align: middle;
+	margin-left: 3px;
+	text-align: center;
+	letter-spacing: 10px;
+	color: #fff;
+    padding-left: 13px;
+}
+.message_edit_textarea {
+	width: 100%;
+	height: 100vh;
+	background: #fff;
+	border: 0;
+	box-shadow: none;
+	color: #787878;
+	padding: 10px;
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Wa99</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="./template/www/css/bootstrap.min.css">
+  <script src="./template/www/js/jquery-3.2.1.min.js"></script>
+<script src="./template/www/js/bootstrap.min.js"></script>
+  <script src="./js/public.js"></script>
+  <link rel="stylesheet" href="./css/footer.css">
+<script>
+$(document).ready(function () {
+  var trigger = $('.hamburger'),
+      overlay = $('.overlay'),
+     isClosed = false;
+
+    trigger.click(function () {
+      hamburger_cross();      
+    });
+
+    function hamburger_cross() {
+
+      if (isClosed == true) {          
+        overlay.hide();
+        trigger.removeClass('is-open');
+        trigger.addClass('is-closed');
+        isClosed = false;
+      } else {   
+        overlay.show();
+        trigger.removeClass('is-closed');
+        trigger.addClass('is-open');
+        isClosed = true;
+      }
+  }
+  
+  $('[data-toggle="offcanvas"]').click(function () {
+        $('#wrapper').toggleClass('toggled');
+  });  
+});
+<!-- START BLOCK : mobile_log_check -->
+alert('{log_check}');
+location.href='{_JS_LOCATION}';
+<!-- END BLOCK : mobile_log_check -->
+</script>  
+<style>
+	body
+	{
+	height:100%;
+	}
+	#header
+	{
+	/*background:-webkit-linear-gradient(top, #fefefe 0%,#cdcdcd 100%);*/
+	background-color:#EDEDED;
+  box-shadow:0px 0 0 #92b4cf,0px 0 0 #fff;
+	border: 0px solid rgba(9, 9, 9, 0.125);
+	height:50px;
+	}
+	#famousorder
+	{
+	font-weight:bold;
+	font-size:16px;
+	color:#003690;
+	}
+	#famousorder_persent
+	{
+	font-weight:bold;
+	font-size:16px;
+	color:#ff0000;
+	}
+	#indextitle
+	{
+	color:#003690;
+	font-family:微軟正黑體;
+	font-weight:bold;
+	font-size:20px;
+	letter-spacing:2px;
+	text-align:center;
+	text-shadow: rgba(255,255,255,1)  0px 2px 1px ;
+	background:-webkit-linear-gradient(top, #fefefe 0%,#cdcdcd 100%);
+	margin-bottom:0px;
+	}
+	.nav-tabs > .active
+	{
+	color:#003690;
+	letter-spacing:2px;
+	font-weight:bold;
+	border-bottom: 3px solid rgba(0, 156, 255, 0.9);
+	border-bottom-width:thick;
+	}
+	.nav-tabs > li
+	{
+	color:#003690;
+	font-size:12px;
+	}
+	#footer
+	{
+	height:70px;
+	background-color:#92b4cf;
+	position: fixed;
+	width:100%;
+	bottom: 0px;
+	}
+	#warp
+	{
+	 min-height:100%;
+	 height:auto;
+	 margin: 0 auto -60px;
+	 padding: 0 0 60px;
+	}
+	#menu_bg2{
+	background:-webkit-linear-gradient(top, #fefefe 0%,#cdcdcd 100%);
+  box-shadow:1px 0 0 #92b4cf,2px 0 0 #fff;
+	border: 1px solid rgba(9, 9, 9, 0.125);
+	border-radius: 20px 0px 0px 0px;
+	}
+	
+/*Menu Style*/
+#sMenu{
+	top:50px;
+	position:absolute;
+	width:200px;
+	background:-webkit-linear-gradient(top, #fefefe 0%,#cdcdcd 100%);
+  box-shadow:1px 0 0 #92b4cf,2px 0 0 #fff;
+	border: 0px solid rgba(9, 9, 9, 0.125);
+	left:-600px;
+	z-index:9900;
+}
+.Menu{
+	color: #fff;
+	height:200px;
+	margin:1px 0px;
+	border-bottom: 1px solid #fff;
+}
+.MenuIcon{
+	width:150px;
+	height:150px;
+	float:left;
+	margin:25px 25px 0px 90px;
+}
+.MenuTag{
+	float:left;
+	font-weight: 900;
+	font-size: 56px;
+	margin:65px 0px 0px 0px;
+}
+/*Menu Style END*/
+
+</style>
+</head>
+<body>
+<div id="wrapper">
+
+<div id="sMenu">
+	<!-- INCLUDE BLOCK : scmenu --> 
+</div>
+<div id="header">
+<!-- INCLUDE BLOCK : header -->  	
+</div>   
+<div id="indextitle" class="panel panel-default" style="border-top:0px solid #ddd;border-radius:0px;">
+{GOLD_SQUARE}
+</div>
+<div class="container" style="padding-left:0px;padding-right:0px;margin-top:0px;margin-left:0px;margin-right:0px;">
+<div class="view">
+<!-- INCLUDE BLOCK : indexpic --> 		
+</div>  
+<ul style="letter-spacing:2px;margin-top:0px;" class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">{NOW_PAPULAR_TARGET}</a></li>
+    <li class="disabled"><a data-toggle="tab" href="#menu1">{POPULAR_DISC}</a></li>
+    <li class="disabled"><a data-toggle="tab" href="#menu2">{NOW_GAME_RESULT}</a></li>
+</ul>
+
+  <div class="tab-content">
+    <!-- INCLUDE BLOCK : indexcontent -->
+  </div>
+</div>
+
+
+
+<div id="footer">
+  <!-- INCLUDE BLOCK : footer -->  	
+ </div>
+</div>
+</div>
+  
+<script>
+$(document).ready(function(){
+    $("#myBtn").click(function(){
+        $("#myModal").modal();
+    });
+});
+</script>
+</body>
+</html>

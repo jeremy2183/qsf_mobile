@@ -1,0 +1,168 @@
+
+				<div id="Modal_orderInput" class="cover fifa_cover">
+					<div id="order1" class="order_content">
+						<div class="trade_msg">交易信息</div>
+						<div class="against">您正在<span class="blink">反对</span><span class="text_italic" id="MarketInfo_ItemSelect"></span></div>
+						<div class="white_bg">
+							<div class="modal_content_title_table1">
+								<div class="modal_content_title_row1">
+									<div class="modal_content_title_cell date"><span id="sGameTime"></span> [世足] <span id="gameGuaranteed"></span></div>
+									<div class="modal_content_title_cell football" id="MarketInfo_Item"></div>
+								</div>
+								<div class="modal_content_title_row1">
+									<div class="modal_content_title_cell team_name"><span id="sGameName"></span></div>
+									<div class="modal_content_title_cell score" id="MarketInfo_Select"></div>
+								</div>
+							</div>
+							<div class="modal_content_title_table2">
+								<div class="modal_content_title_row2">
+									<div class="modal_content_title_cell2">交易金额</div>
+									<div class="modal_content_title_cell2 rate">获利％</div>
+									<div class="modal_content_title_cell2">預估获利</div>
+								</div>
+							</div>
+							<div class="modal_content_title_table3">
+								<div class="modal_content_title_row2">
+									<div class="modal_content_title_cell3 trade_amount"><input class="input" type="text" name="Bet" id="Bet" maxlength="10" size="12" onkeyup="Calculate()"></div>
+									<div class="modal_content_title_cell3 x">x</div>
+									<div class="modal_content_title_cell3 rate_num" id="sProfit"></div>
+									<div class="modal_content_title_cell3 equal">=</div>
+									<div class="modal_content_title_cell3 total"><span id="orderrisk_st"></span></div>
+								</div>
+							</div>
+							<div class="fee">✳手续费-5%</div>
+							<div class="btn_group" id="fastAmountBar">
+								<!-- START BLOCK : gameAddOrderAmount -->
+								<button class="money_btn" onclick="addOrderAmount('{betsize}')">{betsize}</button>
+								<!-- END BLOCK : gameAddOrderAmount -->
+								<button class="all" onclick="addOrderAmount( 'all' )">全部</button>
+							</div>
+						</div>
+
+						<div class="white_bg2">
+							<div class="setting" onclick="fastAmountPOPUP()"><i class="fa fa-cog" aria-hidden="true"></i></div>
+							<div class="overage">可用余额：<span id="pQuotaView">{quotaView}</span></div>
+						</div>
+						<div class="fifa_cover_btns">
+							<button class="confirm" id="confirm1" onclick="MarketConfirm()">确定交易</button>
+							<button class="cancel" id="cancel1" onclick="cancelStep1()">取消交易</button>
+						</div>
+					</div>
+				</div>
+
+				<div id="Modal_order02" class="cover fifa_cover fifa_cover2_confirm">
+					<div id="order2" class="order_content2">
+						<div class="trade_msg">交易信息</div>
+						<div class="against">您正在<span class="blink">反对</span><span class="text_italic" id="MarketInfo_ItemSelect2"></span></div>
+						<div class="white_bg">
+							<div class="modal_content_title_table1">
+								<div class="modal_content_title_row1">
+									<div class="modal_content_title_cell date"><span id="sGameTime2"></span> [世足] <span id="gameGuaranteed2"></span></div>
+									<div class="modal_content_title_cell football" id="MarketInfo_Item2">波胆</div>
+								</div>
+								<div class="modal_content_title_row1">
+									<div class="modal_content_title_cell team_name"><span id="sGameName2"></span></div>
+									<div class="modal_content_title_cell score" id="MarketInfo_Select2"></div>
+								</div>
+							</div>
+							<div class="modal_content_title_table2">
+								<div class="modal_content_title_row2">
+									<div class="modal_content_title_cell2 window2">交易金额</div>
+									<div class="modal_content_title_cell2 window2 rate ">获利％</div>
+									<div class="modal_content_title_cell2 window2">預估获利</div>
+								</div>
+							</div>
+							<div class="modal_content_title_table3">
+								<div class="modal_content_title_row2">
+									<div class="modal_content_title_cell3 trade_amount" id="Bet2"></div>
+									<div class="modal_content_title_cell3 x">x</div>
+									<div class="modal_content_title_cell3 rate_num" id="sProfit2"></div>
+									<div class="modal_content_title_cell3 equal">=</div>
+									<div class="modal_content_title_cell3 total"><span id="orderrisk"></span></div>
+								</div>
+							</div>
+							<div class="fee">✳手续费-5%</div>
+							<div class="notice">请确认交易明细无误，<span class="confirm_trade">确定交易</span>后将无法修改注单</div>
+						</div>
+
+						<div class="window2_white_bg2">
+
+							<div class="overage2">可用余额：{quotaView}</div>
+						</div>
+						<div class="fifa_cover_btns">
+							<button class="confirm" id="confirm2" onclick="orderSubmit()">确定</button>
+							<button class="cancel" id="cancel2" onclick="cancelStep2()">取消</button>
+						</div>
+					</div>
+				</div>
+
+				<div id="Modal_cover3" class="cover fifa_cover fifa_cover3_over">
+					<div id="order3" class="order_content3">
+					<div class="fifa_cover3_over_header">
+						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+							<circle class="path circle" fill="none" stroke="rgb(140,90,0)" stroke-width="12" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"></circle>
+							<polyline class="path check" fill="none" stroke="rgb(140,90,0)" stroke-width="8" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "></polyline>
+						</svg>
+						<div class="text_success">交易完成</div>
+					</div>
+						<div class="trade_line"></div>
+						<div class="trade_success_table">
+							<div class="trade_success_row">
+								<div class="trade_success_cell th_blue">单　　号</div>
+								<div class="trade_success_cell" id="res_betid"></div>
+							</div>
+							<div class="trade_success_row">
+								<div class="trade_success_cell th_blue">联　　盟</div>
+								<div class="trade_success_cell">世足 <span id="res_competitionname"></span></div>
+							</div>
+							<div class="trade_success_row">
+								<div class="trade_success_cell th_blue">赛　　事</div>
+								<div class="trade_success_cell" id="res_game"></div>
+							</div>
+							<div class="trade_success_row">
+								<div class="trade_success_cell th_blue">选　　項</div>
+								<div class="trade_success_cell" id="res_gameselect"></div>
+							</div>
+							<div class="trade_success_row">
+								<div class="trade_success_cell th_blue">金　　额</div>
+								<div class="trade_success_cell num_font" id="res_dealmoney"></div>
+							</div>
+							<div class="trade_success_row">
+								<div class="trade_success_cell th_blue space">获利％</div>
+								<div class="trade_success_cell cell_red num_font" id="res_profit"></div>
+							</div>
+							<div class="trade_success_row">
+								<div class="trade_success_cell th_blue">預估获利</div>
+								<div class="trade_success_cell cell_green num_font" id="res_conversion"></div>
+							</div>
+						</div>
+						<div class="fifa_cover_btns">
+							<button class="confirm" id="confirm3" onclick="finishClose()">关闭</button>
+							<button class="cancel" onclick="viewOrderRecord()">前往交易明细</button>
+						</div>
+					</div>
+				</div>
+				
+				<div id="Modal_setting" class="cover fifa_cover">
+					<div id="order1" class="order_content">
+						<div class="against">快捷金额设定</div>
+						<div class="white_bg">
+							<div class="modal_content_title_row2">
+								<div class="modal_content_title_cell3 rate_num">第一设定值</div>
+								<div class="modal_content_title_cell3 trade_amount" style="padding: 5px 0px 5px"><input class="input" type="text" name="fastAmount0" id="fastAmount0" maxlength="15" size="12" value="{addAmount0}"></div>
+							</div>
+							<div class="modal_content_title_row2">
+								<div class="modal_content_title_cell3 rate_num">第二设定值</div>
+								<div class="modal_content_title_cell3 trade_amount" style="padding: 5px 0px 5px"><input class="input" type="text" name="fastAmount" id="fastAmount" maxlength="15" size="12" value="{addAmount1}"></div>
+							</div>
+							<div class="modal_content_title_row2">
+								<div class="modal_content_title_cell3 rate_num">第三设定值</div>
+								<div class="modal_content_title_cell3 trade_amount" style="padding: 5px 0px 5px"><input class="input" type="text" name="fastAmount2" id="fastAmount2" maxlength="15" size="12" value="{addAmount2}"></div>
+							</div>
+						</div>
+						<div class="fifa_cover_btns">
+							<button class="confirm" id="confirm1" onclick="upFastAmount()">确定</button>
+							<button class="cancel" id="cancel1" onclick="fastAmountClose()">取消</button>
+						</div>
+					</div>
+				</div>
