@@ -266,7 +266,7 @@ function orderUpdata()
              </marquee>
             	<div style="padding-left:150px;width:80%;display:none;" id="markettitle" name="markettitle">市场列表</div>
             	</div>
-            <div class="mail"><img src="./template/www/img/icon/mail.png" height="18" width="27"/><span onclick="document.location.href='announce.php'" class="message_number"></span></div>
+            <div class="mail"><img src="www/img/icon/mail.png" height="18" width="27"/><span onclick="document.location.href='announce.php'" class="message_number"></span></div>
 
 
 </div>
@@ -553,13 +553,16 @@ $(function () {
 });
 </script>
 <div class="game_detail">
-	<div class="guaranteedNomo">保本</div>
+	<!-- <div class="guaranteedNomo">保本</div> -->
 	<div class="color_border"></div>
 	<div class="time"><span>08-27&nbsp;22:00</span></div>
 	<div class="game_name">英协联</div>
 	<i class=" fa fa-angle-left arrow_left" aria-hidden="true" onclick="javascript:history.go(-1);"></i>
 	<button class="battle_record" id="battle" onclick="pkrecord('艾迪索特+v+瑟顿联','2018-08-27+22:00:00')" style="margin-right:16px">对战</button>
-	<div class="game_team"><span>艾迪索特<span class=main_mark>(主)</span> VS 瑟顿联</span>
+	<div class="game_team">
+		<span>艾迪索特
+			<span class=main_mark>(主)</span> VS 瑟顿联
+		</span>
 	</div>
 </div>
 
@@ -585,10 +588,14 @@ $(function () {
                 <div class="content-1">
                     <div class="table">
                         <div class="volume_group">
-                            <div class="volume">成交量<span>508</span><div onclick="chatShow( 'chat28871308_20180827103114198', 1 ,'英协联','28871308','1.147180924','508')" class="chatShowIcon"></div></div>
+                            <div class="volume">成交量
+                            	<span>508</span>
+                            	<div onclick="chatShow( 'chat28871308_20180827103114198', 1 ,'英协联','28871308','1.147180924','508')" class="chatShowIcon">
+                            	</div>
+                            </div>
                              
                             <!--<div class="update" onclick="countdownreload('28871308','20180827103114198','%E8%89%BE%E8%BF%AA%E7%B4%A2%E7%89%B9+v+%E7%91%9F%E9%A1%BF%E8%81%94','2018-08-27+22%3A00%3A00','英协联','1')"></div>-->
-							<div class="update"></div>
+														<div class="update"></div>
                         </div>
                         <div class="table_head">
                             <div class="table_option">选项</div>
@@ -599,21 +606,24 @@ $(function () {
                             
                             <div class="content_row" onclick="moveorder('0 - 0','2018-08-27 22:00:00','28871308','1','艾迪索特 v 瑟顿联','1.147180924','波胆','0.0719','','13.000','','20180827103114198','1','','0.05','英协联','0')">
                                 <div class="content_cell table_option">
-								0 - 0</div>
+																		0 - 0
+																</div>
                                 <div class="content_cell cell_red table_rate">7.19%</div>
                                 <div class="content_cell table_trade table_trade_align">￥485,278</div>
                             </div>
                             
                             <div class="content_row" onclick="moveorder('0 - 1','2018-08-27 22:00:00','28871308','1','艾迪索特 v 瑟顿联','1.147180924','波胆','0.0857','','11.000','','20180827103114198','4','','0.05','英协联','0')">
                                 <div class="content_cell table_option">
-								0 - 1</div>
+																		0 - 1
+																</div>
                                 <div class="content_cell cell_red table_rate">8.57%</div>
                                 <div class="content_cell table_trade table_trade_align">￥454,547</div>
                             </div>
                             
                             <div class="content_row" onclick="moveorder('0 - 2','2018-08-27 22:00:00','28871308','1','艾迪索特 v 瑟顿联','1.147180924','波胆','0.0488','','18.000','','20180827103114198','9','','0.05','英协联','0')">
                                 <div class="content_cell table_option">
-								0 - 2</div>
+																		0 - 2
+																</div>
                                 <div class="content_cell cell_red table_rate">4.88%</div>
                                 <div class="content_cell table_trade table_trade_align">￥403,456</div>
                             </div>

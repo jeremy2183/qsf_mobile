@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=414, user-scalable=no">
+	<title>TG_MarketList</title>
+	<link rel="stylesheet" href="www/css/bootstrap.min.css">
+	<link rel="stylesheet" href="www/css/bootstrap-select.min.css">
+	<link rel="stylesheet" href="www/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="www/css/normalize.css">
+  <link rel="stylesheet" href="www/css/tab_style.css">
+    
+	<!--menu bar 套件-->
+    <link rel="stylesheet" href="www/css/demo.css">
+	<link rel="stylesheet" href="www/css/sidy.css">
+  <link rel="stylesheet" href="www/css/Main_Style.css">
+  <link rel="stylesheet" href="www/css/trade_detail.css">
+	<link rel="stylesheet" href="www/css/FIFA_marketlist.css">
+	<style>
+		.icon_bar_trade{
+		    display: block;
+		    background: url("www/img/02-1.png") no-repeat ;
+		    background-size: cover;
+		    width: 20px;
+		    height: 20px;
+		    position: relative;
+		    top: 8px;
+		    margin: 0px auto;
+		}
+		.no_content {
+		    font-size: 20px;
+		    width: 100%;
+		    font-weight: bold;
+		    text-align: center;
+		    letter-spacing: 1px;
+		    color: #0d3675;
+		    margin-top: 200px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="sidy">
+<nav data-position="left" data-size="65%" data-fx="slide_overlay" class="sidy__panel" id="panel-1">
+
+
+	<div class="menu_head_bg">
+		<div class="menu_head_title" id="menu_head_title"></div>
+	</div>
+	<div class="menu_list">
+		<ul>
+			<li onclick="location.href='market.php'">
+				<div class="market_list_icon"></div>
+				<div class="menu_text">市场列表</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='orderinfo.php'">
+				<div class="trade_detail_icon"></div>
+				<div class="menu_text">交易明细</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='history.php'">
+				<div class="history_icon"></div>
+				<div class="menu_text">历史帐务</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="window.open('http://bf.spbo1.com', '_blank')">
+				<div class="nowscore_icon_2018"></div>
+				<div class="menu_text">即时比分</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='gameresult.php'">
+				<div class="game_result_icon"></div>
+				<div class="menu_text">赛事结果</div>
+				<div class="menu_arrow"></div>
+			</li>
+		</ul>
+	</div>
+	<div class="menu_block_group">
+		<div class="menu_block">
+			<div class="new_icon">NEW</div>
+			<div onclick="location.href='deposits.php'" class="menu_block_outline01">
+				<div class="menu_wd_icon"></div>
+				<div class="menu_block_text">充值提领</div>
+			</div>
+		</div>
+		<!--
+            <div class="menu_block">
+                <div onclick="window.open('http://bf.spbo1.com', '_blank')" class="menu_block_outline02">
+                <div class="menu_live_icon"></div>
+                <div class="menu_block_text">即时比分</div>
+                </div>
+            </div>
+            -->
+		<div class="menu_block">
+			<div id="modify111" name="modify111" class="menu_block_outline02">
+				<div class="menu_live_icon"></div>
+				<div class="menu_block_text">会员互转</div>
+			</div>
+		</div>
+
+		<div class="menu_block">
+			<div onclick="location.href='service.php'" class="menu_block_outline03">
+				<div class="menu_service_icon"></div>
+				<div class="menu_block_text">联络客服</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="menu_list">
+		<ul>
+			<li onclick="location.href='statistics.php'">
+				<div class="menu_history_stat_icon"></div>
+				<div class="menu_text">历史统计</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='./products/html/rules.html'">
+				<div class="menu_rules_icon"></div>
+				<div class="menu_text">规则说明</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='./products/html/help.html'">
+				<div class="menu_help_icon"></div>
+				<div class="menu_text">帮助中心</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="window.open('http://f.tg333.net/index.php', '_blank')">
+				<div class="menu_discuss_icon"></div>
+				<div class="menu_text">讨论区</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='announce.php'">
+				<div class="menu_announce_icon"></div>
+				<div class="menu_text">公　告</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='memberlogout.php'">
+				<div class="menu_logout_icon"></div>
+				<div class="menu_text">登　出</div>
+				<div class="menu_arrow"></div>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+<script src="www/js/jquery-3.2.1.min.js"></script>
+<script>
+	//会员互转
+	$("#modify111").on('click', function() {
+		$(".sidy").removeClass('sidy--opened');
+
+		$.ajax({
+			type: 'POST',
+			url: './other/userchg_thr.php',
+			//data: 'IncomeUser=' + username + '&amount=' + amount + '&withdrawpassword=' + passwd ,		
+			error: function(xhr) {
+				alert('error');
+				window.location.reload();
+				return false;
+			},
+			beforeSend: function(response) {
+				$("#Modal_coverchgall").html("<div class='Loading'></div>");
+			},
+			success: function(response) {
+				//			alert( response );
+				$("#Modal_coverchgall").on('keyup', function() {
+					var _this = this;
+					//setTimeout(function(){
+					//_this.scrollIntoViewIfNeeded();
+					//},400);
+				});
+				$("#Modal_coverchgall").html(response);
+			}
+		});
+		$("#Modal_coverchgall").css('display', 'block');
+	});
+
+</script>
+
+		<div class="sidy__content">
+			<div class="head_banner nav-bar navbar-fixed-top">
+				<div data-panel="panel-1" class="sidy--to-open menu_btn">
+					<span></span><br>
+					<span></span><br>
+					<span></span><br>
+				</div>
+				
+				<div class="acc"><img class="top_user" src="www/img/top_user.png" width="11" height="11">PZQ422</div>
+				<div class="money"><img class="top_coin" src="www/img/top_coin.png" width="11" height="11"><span id="quotaView">0.00</span></div>
+				<input type="hidden" id="memberQuota" name="memberQuota" value="0">
+			</div>
+			
+			<div class="title_background ">
+  		 	<div class="title">交易明细</div>
+   		</div>
+   		<!-- START BLOCK : orderinfototal -->
+        
+        <div class="trade_head">
+             <div class="color_border_bottom"></div>
+           <i onclick="javascript:window.history.go(-1);" class=" fa fa-angle-left" aria-hidden="true"></i>
+           <div class="blank"></div>
+            <div class="trade_block">
+                <div class="trade_amount_title">交易金額</div>
+                <div class="trade_amount_num">0.00</div>
+            </div>
+            <div class="trade_block">
+                <div class="total_rate_title">預估獲利</div>
+                <div class="total_rate_num">0.00</div>
+            </div>
+        </div>
+				   <!-- END BLOCK : orderinfototal -->
+		<div class="content">
+				<!-- START BLOCK : orderinfo_empty -->
+				 <ul class="no_content">
+				                     暫無資料
+				 </ul>
+				 <!-- END BLOCK : orderinfo_empty -->
+          
+				 <!-- START BLOCK : orderinfo -->           
+        <!-- <div class="game_list v1">
+            <div class="game_trade">
+                <div class="color_border"></div>
+                <div class="time"><span>08-27 22:00</span></div>
+                <div class="game_name">英協聯</div>
+                <div class="number">01</div>
+                <div class="arrow">
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                </div>
+                <div class="game_team"><span>艾迪索特(主) VS 瑟頓聯</span>
+                </div>
+            </div>
+        </div> -->
+           
+        <!-- <div class="trade_detail">
+          <div class="whole_table_block">
+            <div class="table_padding">
+            <table>
+                <tr>
+                    <th>{_BETID}<div class="dash"></div></th>
+                    <td colspan="3">{betId}</td>
+                </tr>
+                <tr>
+                    <th>{_TRADE_TIME}<div class="dash"></div></th>
+                    <td colspan="3">{_betContent}</td>
+                </tr>
+                <tr>
+                    <th>{_MARKET_ORDER}<div class="dash"></div></th>
+                    <td colspan="3">{_MARKET} {selection} ＠<span class="color_red">{_PROFIT_}%</span></td>
+                </tr>
+            </table>
+            </div>
+            <table>
+                <tr class="money_total">
+                    <th class="padding_left">{_AMOUNT}</th>
+                    <td class="align_right color_blue">{_DEALMO}<div class="dash"></div></td>
+                    <th class="">{_ESTIMATED_PROFIT}</th>
+                    <td class="align_right color_green padding_right">{_DELMO_P}</td>
+                </tr>
+            </table>
+          </div>
+        </div> -->
+		</div>
+			
+			<script>
+			$('.icon_bar_cell > a').removeClass('active');
+			  $('.icon_bar_cell > #orderinfo_a').addClass('active');
+			</script>
+			
+			<div class="icon_bar navbar-fixed-bottom">
+				<div class="icon_bar_row">
+					<div class="icon_bar_cell"><a id="market_a" name="market_a" href="market.php"><div class="icon_bar_marketlist"></div><div class="icon_bar_text">市场列表</div></a></div>
+					<div class="icon_bar_cell"><a class="active" id="orderinfo_a" name="orderinfo_a" href="orderinfo.php"><div class="icon_bar_trade"></div><div class="icon_bar_text">交易明细</div></a></div>
+					<div class="icon_bar_cell"><a href="indexCenter.php"><div class="icon_bar_index"></div><div class="icon_bar_text">首　页</div></a></div>
+					<div class="icon_bar_cell"><a name="history_a" id="history_a" href="history.php"><div class="icon_bar_history"></div><div class="icon_bar_text">历史帐务</div></a></div>
+					<div class="icon_bar_cell"><a name="my_a" id="my_a" href="my.php"><div class="icon_bar_my"></div><div class="icon_bar_text">我　的</div></a></div>
+				</div>
+				<div id="Modal_coverchgall" class="cover"></div>
+			</div>
+
+		</div>
+	</div>
+
+	<script src="www/js/jquery-3.2.1.min.js"></script>
+	<script src="www/js/bootstrap.min.js"></script>
+	<script src="www/js/bootstrap-select.min.js"></script>
+	<script src="www/js/trade_detail.js"></script>
+	<script src="www/js/sidy.js"></script>
+	<script src="www/js/modernizr.custom.04022.js"></script>
+	<script src="www/js/login.js"></script>
+	<!-- <script src="www/js/account_history_month.js"></script> -->
+	<script src="www/js/jquery.cookies.2.2.0.js"></script>
+</body>
+</html>

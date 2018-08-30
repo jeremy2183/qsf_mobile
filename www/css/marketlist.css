@@ -116,7 +116,6 @@ li .arrow {
     margin-top: -4px;
     right: 5%;
     font-size: 23px;
-
 }
 
 li .color_border {
@@ -232,6 +231,7 @@ div.click {
     z-index: 1030;
 }
 .check_content{
+    border: 1px solid red;
     text-align: center;
     padding: 10px;
 }
