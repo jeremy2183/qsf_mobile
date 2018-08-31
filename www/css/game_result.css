@@ -241,6 +241,7 @@ dl{
 
 
 .scroll_top {
+    display: none;
     position: fixed;
     bottom: 150px;
     right: 25px;

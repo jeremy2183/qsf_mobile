@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=414, user-scalable=no">
+	<title>TG_MarketList</title>
+	 <link rel="stylesheet" href="www/css/bootstrap.min.css">
+    <link rel="stylesheet" href="www/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="www/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="www/css/normalize.css">
+    <link rel="stylesheet" href="www/css/tab_style.css">
+    <!--menu bar 套件-->
+    <link rel="stylesheet" href="www/css/demo.css">
+    <link rel="stylesheet" href="www/css/sidy.css">
+    <link rel="stylesheet" href="www/css/Main_Style.css">
+    <link rel="stylesheet" href="www/css/trade_detail.css">
+    <link rel="stylesheet" href="www/css/FIFA_marketlist.css">
+    <link rel="stylesheet" href="www/css/game_result.css">
+</head>
+
+<body>
+	<div class="sidy">
+<nav data-position="left" data-size="65%" data-fx="slide_overlay" class="sidy__panel" id="panel-1">
+
+
+	<div class="menu_head_bg">
+		<div class="menu_head_title" id="menu_head_title"></div>
+	</div>
+	<div class="menu_list">
+		<ul>
+			<li onclick="location.href='market-review.html'">
+				<div class="market_list_icon"></div>
+				<div class="menu_text">市场列表</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='orderinfo-review.html'">
+				<div class="trade_detail_icon"></div>
+				<div class="menu_text">交易明细</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='history-review.html'">
+				<div class="history_icon"></div>
+				<div class="menu_text">历史帐务</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="window.open('http://bf.spbo1.com', '_blank')">
+				<div class="nowscore_icon_2018"></div>
+				<div class="menu_text">即时比分</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href="#"">
+				<div class="game_result_icon"></div>
+				<div class="menu_text">赛事结果</div>
+				<div class="menu_arrow"></div>
+			</li>
+		</ul>
+	</div>
+	<div class="menu_block_group">
+		<div class="menu_block">
+			<div class="new_icon">NEW</div>
+			<div onclick="location.href='deposits.php'" class="menu_block_outline01">
+				<div class="menu_wd_icon"></div>
+				<div class="menu_block_text">充值提领</div>
+			</div>
+		</div>
+		<!--
+            <div class="menu_block">
+                <div onclick="window.open('http://bf.spbo1.com', '_blank')" class="menu_block_outline02">
+                <div class="menu_live_icon"></div>
+                <div class="menu_block_text">即时比分</div>
+                </div>
+            </div>
+            -->
+		<div class="menu_block">
+			<div id="modify111" name="modify111" class="menu_block_outline02">
+				<div class="menu_live_icon"></div>
+				<div class="menu_block_text">会员互转</div>
+			</div>
+		</div>
+
+		<div class="menu_block">
+			<div onclick="location.href='service.php'" class="menu_block_outline03">
+				<div class="menu_service_icon"></div>
+				<div class="menu_block_text">联络客服</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="menu_list">
+		<ul>
+			<li onclick="location.href='statistics.php'">
+				<div class="menu_history_stat_icon"></div>
+				<div class="menu_text">历史统计</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='./products/html/rules.html'">
+				<div class="menu_rules_icon"></div>
+				<div class="menu_text">规则说明</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='./products/html/help.html'">
+				<div class="menu_help_icon"></div>
+				<div class="menu_text">帮助中心</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="window.open('http://f.tg333.net/index.php', '_blank')">
+				<div class="menu_discuss_icon"></div>
+				<div class="menu_text">讨论区</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='announce.php'">
+				<div class="menu_announce_icon"></div>
+				<div class="menu_text">公　告</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='memberlogout.php'">
+				<div class="menu_logout_icon"></div>
+				<div class="menu_text">登　出</div>
+				<div class="menu_arrow"></div>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+<script src="www/js/jquery-3.2.1.min.js"></script>
+<script>
+	//会员互转
+	$("#modify111").on('click', function() {
+		$(".sidy").removeClass('sidy--opened');
+
+		$.ajax({
+			type: 'POST',
+			url: './other/userchg_thr.php',
+			//data: 'IncomeUser=' + username + '&amount=' + amount + '&withdrawpassword=' + passwd ,		
+			error: function(xhr) {
+				alert('error');
+				window.location.reload();
+				return false;
+			},
+			beforeSend: function(response) {
+				$("#Modal_coverchgall").html("<div class='Loading'></div>");
+			},
+			success: function(response) {
+				//			alert( response );
+				$("#Modal_coverchgall").on('keyup', function() {
+					var _this = this;
+					//setTimeout(function(){
+					//_this.scrollIntoViewIfNeeded();
+					//},400);
+				});
+				$("#Modal_coverchgall").html(response);
+			}
+		});
+		$("#Modal_coverchgall").css('display', 'block');
+	});
+
+</script>
+
+		<div class="sidy__content">
+			<div class="head_banner nav-bar navbar-fixed-top">
+				<div data-panel="panel-1" class="sidy--to-open menu_btn">
+					<span></span><br>
+					<span></span><br>
+					<span></span><br>
+				</div>
+				
+				<div class="acc"><img class="top_user" src="www/img/top_user.png" width="11" height="11">PZQ422</div>
+				<div class="money"><img class="top_coin" src="www/img/top_coin.png" width="11" height="11"><span id="quotaView">0.00</span></div>
+				<input type="hidden" id="memberQuota" name="memberQuota" value="0">
+			</div>
+			<div class="title_background ">
+				<button class="announcement_btn" onclick="titleannice()">公告<i class="fa fa-caret-right arrow_2" aria-hidden="true"></i></button>
+				<div class="title_market" style="">
+					<marquee id="marqinfo" style="margin-top:3px;font-size:16px;margin-left:22%;width:80%;display:block;" direction="left">
+						  TG平台提醒广大会员，近期出现许多黑网打著反波胆名义，进行资金盘吸金，或利用保证获利口号行欺诈等不法行为，TG平台在此除了严厉斥责不肖黑网，也恳请会员慎选平台，以免资金遭受损失。
+						  7-12 / 08:30	 [ 美甲      ]  OKC能量 v 拉斯维加斯光  因国际资料传递错误该赛事 07-12 / 08:10后所有注单无效
+						  07-11 / 23:59	 [ 友谊赛      ]  洛里昂 v 布雷斯特  因比赛时间不足法定九十分钟，所有注单取消。
+						  
+						  07-10 / 21:00 [ 友谊赛 ] 希姆基 v 斯特罗吉诺  因国际资料传递错误该赛事 0710 / 19:00后所有注单无效。
+						  尊敬的会员，您好：为提供更优质的服务环境，24小时在线客服已全面更新，原在线客服已停止服务，请清除暂存重新登入平台，感谢您对平台的支持
+						  因逢世足赛网站流量暴增，为提升网速品质，故新增线路手机网域m5.tg7777.net,桌机网域w5.tg7777.net,烦请各位尊贵会员善加利用！
+						  尊贵的会员您好，因逢世界杯流量过大，将于世足期间，每日下午九点至隔日凌晨二点，关闭会员互转功能，功能将于隔日凌晨二点后开放，不便之处请见谅！
+						  近日发现有心人士假冒平台客服，主动提供账户要求会员进行充值，再次贴心提醒，平台客服绝不主动提供账户供会员充值，开放充值之账户依照平台显示为准，请会员当心留意，勿轻易相信。
+						  为因应近期爆增的会员人数，也感谢广大会员的支持，TG平台为提供更优质的服务环境，今日全新资料库升级已完成，造成您的不便，敬请见谅！！
+						  
+						  『淘金网翻本大红包』于2018年2月21日中午12：00正式开跑，最高回馈金8888！！详情请洽线上客服中心，感谢您对淘金网的支持！！
+						  
+						  
+						  
+						  
+						  
+						  
+						  
+						  
+						  敬请会员注意：请于每次充值前，先登入查看网页指定的专属帐号后进行充值，请勿自行转至旧有的帐号，如入款至已过期的帐号，本公司将无法查收，恕不负责，感谢您对淘金网的支持！！
+						  
+						  
+						  
+						  
+						  
+						  
+						  
+						  
+				 </marquee>
+					<div style="padding-left:150px;width:80%;display:none;" id="markettitle" name="markettitle">市场列表</div>
+					</div>
+				<div class="mail"><img src="www/img/icon/mail.png" height="18" width="27"/><span onclick="document.location.href='announce.php'" class="message_number"></span></div>
+			</div>
+
+		  <div class="title_background ">
+				<div class="title">賽事結果</div>
+			</div>
+			
+			<div class="scroll_top" id="return-to-top">
+				<div class="scroll_top_bg"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+			</div>
+
+			
+			<div class="content">
+					  <select class="selector" style="font-size:16px;padding-left:35%;" name=checkdata class=checkdata onchange=javascript:gameresult_front(this.value)>
+							  <option>请选择</option>
+							  <option value="2018-09-01">9月01日星期六</option>
+							  <option value="2018-08-31" selected>8月31日星期五</option>
+							  <option value="2018-08-30">8月30日星期四</option>
+							  <option value="2018-08-29">8月29日星期三</option>
+							  <option value="2018-08-28">8月28日星期二</option>
+							  <option value="2018-08-27">8月27日星期一</option>
+							  <option value="2018-08-26">8月26日星期日</option>
+							  <option value="2018-08-25">8月25日星期六</option>
+							  <option value="2018-08-24">8月24日星期五</option>
+							  <option value="2018-08-23">8月23日星期四</option>
+							  <option value="2018-08-22">8月22日星期三</option>
+							  <option value="2018-08-21">8月21日星期二</option>
+							  <option value="2018-08-20">8月20日星期一</option>
+							  <option value="2018-08-19">8月19日星期日</option>
+					  <select>
+
+          
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 00:15</span></div>
+                    <div class="game_name">以甲</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>拿撒勒伊里特夏普尔(主)vs 阿什凯泽夏普尔</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">0-0</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">0-0</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">0</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 00:15</span></div>
+                    <div class="game_name">以甲</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>比达耶特拉维夫拉姆拉(主)vs 哈萨隆</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">2-2</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">0-1</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">4</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 00:15</span></div>
+                    <div class="game_name">以甲</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>阿卡夏普尔(主)vs 柏纳洛德夏普尔</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">2-0</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">1-0</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">2</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 00:20</span></div>
+                    <div class="game_name">沙地超</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>瓦赫达麦加(主)vs 哈森姆</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">0-0</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">0-0</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">0</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 00:30</span></div>
+                    <div class="game_name">约旦超</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>沙巴阿罗登(主)vs 连姆沙</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">3-1</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">0-1</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">4</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 00:30</span></div>
+                    <div class="game_name">欧霸杯</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>RB莱比锡(主)vs 卢甘斯克索尔亚</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">3-2</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">1-1</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">5</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 00:30</span></div>
+                    <div class="game_name">欧霸杯</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>哥本哈根(主)vs 亚特兰大</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">0-0</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">0-0</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">0</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 01:00</span></div>
+                    <div class="game_name">瑞乙VG</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>哈米亚(主)vs 洛森格德</span>
+                    </div>
+              </div>               
+               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">1-2</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">0-2</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">3</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 01:00</span></div>
+                    <div class="game_name">欧霸杯</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span><span>卢多格瑞特拉兹格勒(主)vs 古泰斯拖比度</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">4-0</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">2-0</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">4</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 01:00</span></div>
+                    <div class="game_name">欧霸杯</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>卡拉巴克(主)vs 舒列夫</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">3-0</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">2-0</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">3</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 01:00</span></div>
+                    <div class="game_name">欧霸杯</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>克卢日(主)vs 杜迪兰治</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">2-3</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">0-0</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">5</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 01:00</span></div>
+                    <div class="game_name">欧霸杯</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>莫迪(主)vs 圣彼德斯堡泽尼特</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">2-1</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">0-1</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">3</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 01:00</span></div>
+                    <div class="game_name">欧霸杯</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>阿波罗利马索尔(主)vs 巴塞尔</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">1-0</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">0-0</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">1</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 01:00</span></div>
+                    <div class="game_name">欧霸杯</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>特拉维夫马卡比(主)vs 萨普斯堡08</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">2-1</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">0-0</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">3</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 01:15</span></div>
+                    <div class="game_name">欧霸杯</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>中日德兰(主)vs 马尔默</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">0-2</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">0-1</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">2</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 02:00</span></div>
+                    <div class="game_name">冰甲</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>IR雷克雅未克(主)vs 弗拉姆</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">2-3</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">1-1</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">5</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 02:00</span></div>
+                    <div class="game_name">冰甲</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>塞尔福斯(主)vs 雷克尼尔</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">1-2</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">0-1</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">3</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 02:00</span></div>
+                    <div class="game_name">欧霸杯</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>贝西克塔斯(主)vs 贝尔格莱德游击队</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">3-0</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">2-0</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">3</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 02:15</span></div>
+                    <div class="game_name">欧霸杯</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>斯肯迪加(主)vs 罗森博格</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">0-2</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">0-0</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">2</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 02:30</span></div>
+                    <div class="game_name">欧霸杯</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>泰拿华斯巴达(主)vs 奥林比查</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">1-1</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">1-1</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">2</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 02:30</span></div>
+                    <div class="game_name">欧霸杯</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>布隆德比(主)vs 亨克</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">2-4</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">1-2</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">6</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 02:30</span></div>
+                    <div class="game_name">欧霸杯</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>布格勒斯特星队(主)vs 维也纳快速</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">2-1</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">2-0</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">3</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 02:35</span></div>
+                    <div class="game_name">外围赛</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>苏格兰女足(主)vs 瑞士女足</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">2-1</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">2-1</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">3</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 02:45</span></div>
+                    <div class="game_name">欧霸杯</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>波恩利(主)vs 奥林匹亚科斯</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">1-1</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">0-0</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">2</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 02:45</span></div>
+                    <div class="game_name">欧霸杯</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>波尔多(主)vs 根特</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">2-0</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">1-0</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">2</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 03:00</span></div>
+                    <div class="game_name">欧霸杯</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>凯尔特人(主)vs 苏杜瓦</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">3-0</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">1-0</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">3</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 03:45</span></div>
+                    <div class="game_name">欧霸杯</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>塞维利亚(主)vs 奥洛穆茨西格玛</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">3-0</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">2-0</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">3</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 04:00</span></div>
+                    <div class="game_name">巴青锦</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>法林明高RJU20(主)vs 华斯高U20</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">3-2</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">1-1</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">5</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 08:00</span></div>
+                    <div class="game_name">哥伦杯</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>奎迪奥(主)vs 小巴兰哈拉</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">1-3</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">1-0</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">4</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 08:00</span></div>
+                    <div class="game_name">中北美联</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>法拉蒂游艇(主)vs 陶罗</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">0-4</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">0-2</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">4</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+
+               </div>
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 08:30</span></div>
+                    <div class="game_name">哥伦杯</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>布卡拉曼加体育会(主)vs 贾奎斯科尔多巴</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">1-0</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">1-0</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">1</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+
+               </div>
+                
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 08:30</span></div>
+                    <div class="game_name">哥伦杯</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>卡尔打斯(主)vs 曼特宁独立</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">2-1</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">0-1</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">3</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+
+               </div>
+                
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 08:45</span></div>
+                    <div class="game_name">自由杯</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>帕尔梅拉斯(主)vs 波特诺</span>
+                    </div>
+              </div>               
+               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">0-1</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">0-0</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">1</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+
+               </div>
+                
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 09:00</span></div>
+                    <div class="game_name">危地联</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>皮塔帕(主)vs 安提瓜</span>
+                    </div>
+              </div>               
+               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">0-1</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">0-1</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">1</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+
+               </div>
+                
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 09:00</span></div>
+                    <div class="game_name">萨尔甲</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>艾息多梅塔帕(主)vs 帕萨奎纳</span>
+                    </div>
+              </div>               
+               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">3-1</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">2-1</div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">4</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+
+               </div>
+                
+              </div>
+            </div>
+ 
+           
+            <div class="game_list v1">
+            	<div class="game_trade">
+                    <div class="color_border"></div>
+                    <div class="time"><span>08-31 11:00</span></div>
+                    <div class="game_name">WAsiaB</div>
+                    <div class="arrow">
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    </div>
+                    <div class="game_team"><span>印度尼西亚女篮(主)vs 蒙古女篮</span>
+                    </div>
+              </div>               
+            </div>
+           
+            <div class="trade_detail">
+              <div class="whole_table_block">
+              	<div class="trade_table">
+                   <div class="trade_row">
+                       <div class="trade_cell_title trade_border_bottom">波　胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red">34-16</div>
+                       <div class="trade_cell_title trade_border_bottom">半场波胆<div class="dash"></div></div>
+                       <div class="trade_cell trade_border_bottom color_red"></div>
+                   </div>
+                   <div class="trade_row">
+                       <div class="trade_cell_title">总得分<div class="dash"></div></div>
+                       <div class="trade_cell">50</div>
+                       <div class="trade_cell_title">首 入 球 <div class="dash"></div></div>
+                       <div class="trade_cell">/</div>
+                   </div>
+               </div>
+              </div>
+            </div>
+         </div>
+
+
+
+			<div class="icon_bar navbar-fixed-bottom">
+				<div class="icon_bar_row">
+					<div class="icon_bar_cell"><a id="market_a" name="market_a" href="market-review.html"><div class="icon_bar_marketlist"></div><div class="icon_bar_text">市场列表</div></a></div>
+					<div class="icon_bar_cell"><a id="orderinfo_a" name="orderinfo_a" href="orderinfo-review.html"><div class="icon_bar_trade"></div><div class="icon_bar_text">交易明细</div></a></div>
+					<div class="icon_bar_cell"><a id="gold_a" href="indexCenterTpl-review.html"><div class="icon_bar_index"></div><div class="icon_bar_text">首　页</div></a></div>
+					<!--<div class="icon_bar_cell iconBar_fifa_bg"><a href="fifa.php"><div class="icon_bar_fifa"></div><div class="icon_bar_text">世足专区</div></a></div>-->
+					<div class="icon_bar_cell"><a name="history_a" id="history_a" href="history-review.html"><div class="icon_bar_history"></div><div class="icon_bar_text">历史帐务</div></a></div>
+					<div class="icon_bar_cell"><a name="my_a" id="my_a" href="my.php"><div class="icon_bar_my"></div><div class="icon_bar_text">我　的</div></a></div>
+				</div>
+				<div id="Modal_coverchgall" class="cover"></div>
+			</div>
+			
+
+		</div>
+	</div>
+
+
+	<script>
+
+	function gettoday(a)
+	 {
+	 	document.location.href='history.php?week=day&f_date1='+a+'';
+	 }
+	
+  function checkmenu(a,b)
+   {
+   	document.location.href='history.php?week='+b+'';
+   	//jQuery('.tab-pane').css("display","none");
+   	//jQuery('#'+a+'').css("display","none");
+   	//jQuery('#'+a+'').addClass('active');
+   }
+
+	// jQuery(function() {
+	// 	var b = getUrlParameter('week');
+	//       if(b=='4')
+	//       {
+	//      jQuery('#menu4').addClass('active');
+	//       }
+	//       if(b=='3')
+	//       {
+	//      jQuery('#menu3').addClass('active');
+	//       }
+	//       if(b=='2')
+	//       {
+	//      jQuery('#menu2').addClass('active');
+	//       }
+	//       if(b=='1')
+	//       {
+	//      jQuery('#menu1').addClass('active');
+	//       }
+	      
+	// 	});
+
+	function gameresult_front(a)
+	{
+		location.href='gameresult.php?checkdata='+a+'';
+	}
+	</script>
+
+
+<script src="www/js/jquery-3.2.1.min.js"></script>
+<script src="www/js/bootstrap.min.js"></script>
+<script src="www/js/bootstrap-select.min.js"></script>
+<script src="www/js/modernizr.custom.04022.js"></script>
+<script src="www/js/sidy.js"></script>
+<script src="www/js/login.js"></script>
+<script src="www/js/trade_detail.js"></script>
+<script src="www/js/jquery.cookies.2.2.0.js"></script>
+<script src="www/js/game_result.js"></script>
+</body>
+</html>

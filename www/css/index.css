@@ -17,8 +17,8 @@
   margin: 65px auto 55px;
   width: 100%;
 	font-family: "Helvetica","Microsoft JhengHei";
-	overflow-y: hidden;
-	overflow-x: hidden;
+	overflow: hidden;
+	/*overflow-x: hidden;*/
 }
 .indexTabsNcarousel .carousel-caption {
 	text-align: left;
