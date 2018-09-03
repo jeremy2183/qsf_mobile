@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=414, user-scalable=no">
+	<title>TG_MarketList</title>
+	<link rel="stylesheet" href="www/css/bootstrap.min.css">
+	<link rel="stylesheet" href="www/css/bootstrap-select.min.css">
+	<link rel="stylesheet" href="www/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="www/css/normalize.css">
+  <link rel="stylesheet" href="www/css/tab_style.css">
+    
+	<!--menu bar 套件-->
+  <link rel="stylesheet" href="www/css/demo.css">
+	<link rel="stylesheet" href="www/css/sidy.css">
+  <link rel="stylesheet" href="www/css/Main_Style.css">
+  <link rel="stylesheet" href="www/css/withdrewal_deposits.css">
+  <link rel="stylesheet" href="www/css/ex.css">
+  <link rel="stylesheet" href="www/css/FIFA_marketlist.css">
+  <style>
+		.no_content {
+		    font-size: 20px;
+		    width: 100%;
+		    font-weight: bold;
+		    text-align: center;
+		    letter-spacing: 1px;
+		    color: #0d3675;
+		    margin-top: 200px;
+		}
+  </style>
+</head>
+
+<body>
+	<div class="sidy">
+<nav data-position="left" data-size="65%" data-fx="slide_overlay" class="sidy__panel" id="panel-1">
+	<div class="menu_head_bg">
+		<div class="menu_head_title" id="menu_head_title"></div>
+	</div>
+	<div class="menu_list">
+		<ul>
+			<li onclick="location.href='market-review.html'">
+				<div class="market_list_icon"></div>
+				<div class="menu_text">市场列表</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='orderinfo-review.html'">
+				<div class="trade_detail_icon"></div>
+				<div class="menu_text">交易明细</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='history-review.html'">
+				<div class="history_icon"></div>
+				<div class="menu_text">历史帐务</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="window.open('http://bf.spbo1.com', '_blank')">
+				<div class="nowscore_icon_2018"></div>
+				<div class="menu_text">即时比分</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='gameresult-review.html'">
+				<div class="game_result_icon"></div>
+				<div class="menu_text">赛事结果</div>
+				<div class="menu_arrow"></div>
+			</li>
+		</ul>
+	</div>
+	<div class="menu_block_group">
+		<div class="menu_block">
+			<div class="new_icon">NEW</div>
+			<div onclick="location.href='deposits-review.html'" class="menu_block_outline01">
+				<div class="menu_wd_icon"></div>
+				<div class="menu_block_text">充值提领</div>
+			</div>
+		</div>
+		<!--
+            <div class="menu_block">
+                <div onclick="window.open('http://bf.spbo1.com', '_blank')" class="menu_block_outline02">
+                <div class="menu_live_icon"></div>
+                <div class="menu_block_text">即时比分</div>
+                </div>
+            </div>
+            -->
+		<div class="menu_block">
+			<div id="modify111" name="modify111" class="menu_block_outline02">
+				<div class="menu_live_icon"></div>
+				<div class="menu_block_text">会员互转</div>
+			</div>
+		</div>
+
+		<div class="menu_block">
+			<div onclick="location.href='service.php'" class="menu_block_outline03">
+				<div class="menu_service_icon"></div>
+				<div class="menu_block_text">联络客服</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="menu_list">
+		<ul>
+			<li onclick="location.href='statistics.php'">
+				<div class="menu_history_stat_icon"></div>
+				<div class="menu_text">历史统计</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='./products/html/rules.html'">
+				<div class="menu_rules_icon"></div>
+				<div class="menu_text">规则说明</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='./products/html/help.html'">
+				<div class="menu_help_icon"></div>
+				<div class="menu_text">帮助中心</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="window.open('http://f.tg333.net/index.php', '_blank')">
+				<div class="menu_discuss_icon"></div>
+				<div class="menu_text">讨论区</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='announce.php'">
+				<div class="menu_announce_icon"></div>
+				<div class="menu_text">公　告</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='memberlogout.php'">
+				<div class="menu_logout_icon"></div>
+				<div class="menu_text">登　出</div>
+				<div class="menu_arrow"></div>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+<script src="www/js/jquery-3.2.1.min.js"></script>
+<script>
+	//会员互转
+	$("#modify111").on('click', function() {
+		$(".sidy").removeClass('sidy--opened');
+
+		$.ajax({
+			type: 'POST',
+			url: './other/userchg_thr.php',
+			//data: 'IncomeUser=' + username + '&amount=' + amount + '&withdrawpassword=' + passwd ,		
+			error: function(xhr) {
+				alert('error');
+				window.location.reload();
+				return false;
+			},
+			beforeSend: function(response) {
+				$("#Modal_coverchgall").html("<div class='Loading'></div>");
+			},
+			success: function(response) {
+				//			alert( response );
+				$("#Modal_coverchgall").on('keyup', function() {
+					var _this = this;
+					//setTimeout(function(){
+					//_this.scrollIntoViewIfNeeded();
+					//},400);
+				});
+				$("#Modal_coverchgall").html(response);
+			}
+		});
+		$("#Modal_coverchgall").css('display', 'block');
+	});
+
+</script>
+
+		<div class="sidy__content">
+			<div class="head_banner nav-bar navbar-fixed-top">
+				<div data-panel="panel-1" class="sidy--to-open menu_btn">
+					<span></span><br>
+					<span></span><br>
+					<span></span><br>
+				</div>
+				
+				<div class="acc"><img class="top_user" src="www/img/top_user.png" width="11" height="11">PZQ422</div>
+				<div class="money"><img class="top_coin" src="www/img/top_coin.png" width="11" height="11"><span id="quotaView">0.00</span></div>
+				<input type="hidden" id="memberQuota" name="memberQuota" value="0">
+			</div>
+			
+			<div class="title_background ">
+				<div class="title">充值与提领</div>
+			</div>
+
+			<section class="tabs">
+            <input onclick="location.href='deposits-review.html'" style="outline:none;" style="width:33%;" type="radio" id="tabss-1" name="radio-set" class="tab-selector-1"/>
+            <label style="width:33%;" for="tab-1" class="tabss-label-1">充值</label>
+
+            <input onclick="location.href='receive-review.html'" style="outline:none;" style="width:33%;left:33%;" type="radio" id="tabss-2" name="radio-set" class="tab-selector-2"/>
+            <label style="left:33%;width:33%;" for="tab-2" class="tabss-label-2">提领</label>
+
+            <input onclick="location.href='#'" style="outline:none;" style="width:34%;left:66%;" type="radio" id="tabss-3" name="radio-set" class="tab-selector-3"/>
+            <label style="left:66%;width:34%;" for="tab-3" class="tabss-label-3">交易记录</label>
+            <div class="clear-shadow"></div>
+
+            <div class="content" style="margin-top:0px;padding: 0px 0px 0px 0px;">
+              <div class="content-1"></div>  
+              <div class="content-2"></div>  
+              <div class="content-3">
+              	<select style="margin-bottom:5px;" class="selector" name=checkdata class=checkdata onchange=javascript:gameresult_front(this.value)>
+	                <option value="">全部交易记录</option>
+	                <option value="1" >　　充值</option>
+	                <option value="2" >　　提领</option>
+              	</select>
+                    
+                    <!--<div class="btn_group">
+                        <button>本周</button>
+                        <button>上周</button>
+                        <button>本月</button>
+                        <button>全部</button>
+                    </div>-->
+                    <div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-08-29</div>
+                                <div class="line_block time">21:18:56</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path">支付宝</div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;111.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-06-30</div>
+                                <div class="line_block time">11:46:21</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path">网络银行</div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;615.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-05-14</div>
+                                <div class="line_block time">21:50:57</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path">支付宝</div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;5,000.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-04-18</div>
+                                <div class="line_block time">11:05:26</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path">支付宝</div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;500.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-04-06</div>
+                                <div class="line_block time">21:49:01</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path">支付宝</div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;10,000.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-03-25</div>
+                                <div class="line_block time">16:33:30</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path">网络银行</div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;1,000.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-02-28</div>
+                                <div class="line_block time">16:49:53</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path">支付宝</div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;666.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-30</div>
+                                <div class="line_block time">14:08:18</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;200.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-29</div>
+                                <div class="line_block time">23:54:19</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;200.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-29</div>
+                                <div class="line_block time">21:28:26</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;100.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-29</div>
+                                <div class="line_block time">20:56:08</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;200.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-29</div>
+                                <div class="line_block time">07:22:13</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;100.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-28</div>
+                                <div class="line_block time">21:44:29</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;100.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-28</div>
+                                <div class="line_block time">21:43:52</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;100.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-28</div>
+                                <div class="line_block time">14:26:43</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;500.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-28</div>
+                                <div class="line_block time">01:13:22</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;100.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-27</div>
+                                <div class="line_block time">23:20:57</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;100.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-27</div>
+                                <div class="line_block time">21:03:28</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;300.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-27</div>
+                                <div class="line_block time">20:18:04</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;200.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-27</div>
+                                <div class="line_block time">20:13:31</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;200.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-27</div>
+                                <div class="line_block time">20:11:35</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;200.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-27</div>
+                                <div class="line_block time">20:10:42</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;200.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-27</div>
+                                <div class="line_block time">20:10:17</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;200.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-27</div>
+                                <div class="line_block time">20:07:05</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path">支付宝</div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;5,000.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-27</div>
+                                <div class="line_block time">18:10:28</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;500.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-27</div>
+                                <div class="line_block time">17:47:54</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;100.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-27</div>
+                                <div class="line_block time">15:56:35</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;1,999.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-27</div>
+                                <div class="line_block time">15:51:55</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;1,800.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-27</div>
+                                <div class="line_block time">11:34:51</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path">支付宝</div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;5,000.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-27</div>
+                                <div class="line_block time">02:23:56</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;300.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-26</div>
+                                <div class="line_block time">18:25:37</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;200.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-26</div>
+                                <div class="line_block time">16:47:02</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;2,400.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-26</div>
+                                <div class="line_block time">14:19:58</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;100.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-25</div>
+                                <div class="line_block time">20:59:49</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path">网络银行</div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;10,000.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-25</div>
+                                <div class="line_block time">20:03:37</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;100.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-25</div>
+                                <div class="line_block time">17:33:51</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;500.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-25</div>
+                                <div class="line_block time">16:44:07</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;200.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-25</div>
+                                <div class="line_block time">06:38:41</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;100.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-24</div>
+                                <div class="line_block time">09:24:42</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path">网络银行</div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;2,000.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-24</div>
+                                <div class="line_block time">00:18:29</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;100.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-23</div>
+                                <div class="line_block time">16:14:23</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;2,998.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-23</div>
+                                <div class="line_block time">15:34:48</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;100.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-23</div>
+                                <div class="line_block time">15:15:24</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;100.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-22</div>
+                                <div class="line_block time">22:07:11</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;1,000.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-22</div>
+                                <div class="line_block time">16:02:21</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;200.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-22</div>
+                                <div class="line_block time">00:15:32</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;500.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-21</div>
+                                <div class="line_block time">20:27:04</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;100.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-21</div>
+                                <div class="line_block time">17:07:46</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;100.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-21</div>
+                                <div class="line_block time">16:43:44</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path"></div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;100.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-17</div>
+                                <div class="line_block time">16:33:41</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path">支付宝</div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;200.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-16</div>
+                                <div class="line_block time">15:28:46</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path">支付宝</div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;300.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-13</div>
+                                <div class="line_block time">02:43:44</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path">支付宝</div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;2,000.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-12</div>
+                                <div class="line_block time">14:00:04</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path">支付宝</div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;4,500.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-12</div>
+                                <div class="line_block time">00:48:28</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path">网络银行</div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;500.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-10</div>
+                                <div class="line_block time">18:31:07</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path">支付宝</div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;300.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-09</div>
+                                <div class="line_block time">23:56:57</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path">网络银行</div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;300.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-07</div>
+                                <div class="line_block time">19:57:44</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path">网络银行</div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;11,200.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-06</div>
+                                <div class="line_block time">19:23:24</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path">支付宝</div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;100.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-06</div>
+                                <div class="line_block time">15:21:13</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path">支付宝</div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;500.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-05</div>
+                                <div class="line_block time">18:48:17</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path">支付宝</div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;4,000.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-05</div>
+                                <div class="line_block time">00:22:09</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path">网络银行</div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;2,000.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2018-01-04</div>
+                                <div class="line_block time">16:47:48</div>
+                                <div class="line_block state">已取消</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path">支付宝</div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;100.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                        <div class="record_bg">
+                            <div class="record_line1">
+                                <div class="line_block date">2016-12-31</div>
+                                <div class="line_block time">00:00:00</div>
+                                <div class="line_block state">已完成</div>
+                            </div>
+                            <div class="record_line2">
+                                <div class="line_block path">合并</div>
+                                <div class="line_block how_much color_red"><span style="color:#447b04">存&nbsp;300,000,000.00</span></div>
+                            </div>
+                            <div class="record_overage">0.00</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+			
+			
+
+			<div class="icon_bar navbar-fixed-bottom">
+				<div class="icon_bar_row">
+					<div class="icon_bar_cell"><a id="market_a" name="market_a" href="market-review.html"><div class="icon_bar_marketlist"></div><div class="icon_bar_text">市场列表</div></a></div>
+					<div class="icon_bar_cell"><a id="orderinfo_a" name="orderinfo_a" href="orderinfo-review.html"><div class="icon_bar_trade"></div><div class="icon_bar_text">交易明细</div></a></div>
+					<div class="icon_bar_cell"><a href="indexCenterTpl-review.html"><div class="icon_bar_index"></div><div class="icon_bar_text">首　页</div></a></div>
+					<div class="icon_bar_cell"><a name="history_a" id="history_a" href="history-review.html"><div class="icon_bar_history"></div><div class="icon_bar_text">历史帐务</div></a></div>
+					<div class="icon_bar_cell"><a name="my_a" id="my_a" href="my-review.html"><div class="icon_bar_my"></div><div class="icon_bar_text">我　的</div></a></div>
+				</div>
+				<div id="Modal_coverchgall" class="cover"></div>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="Modal_cover_fees" class="cover" style="display:none;">
+			<div id="order1" class="order_content">
+				<div class="submit_title">交易提醒</div>
+				<div class="submit_bg">
+					<div class="submit_text">提醒您，截至目前为止</div>
+					<div class="submit_text"><span>免手续费</span>优惠</div>
+
+					<div class="soon" id="my-soon-counter"
+					data-due="in 5 seconds"
+					data-layout="group overlap label-lowercase label-hidden"
+					data-format="s"
+					data-face="slot doctor glow"
+					data-visual="ring glow-progress width-thin offset-65 length-80">
+					</div>
+					<div class="submit_text font_s">如继续交易将收取<span>5%</span>行政处理费用<span id="getmoneyfee"></span>点</div>
+					<div class="submit_text font_s">于您申请的<span>提领金额里扣除。</span></div>
+					<div class="submit_text blue_bg">每周（一）00：00重新计算</div>
+					<div class="submit_btn_group">
+					<button onclick="javascript:closefeealert()" class="cancel_btn">取消</button>
+					<button class="submit_confirm " id="next">确定</button>
+					</div>
+				</div>
+			</div>
+	</div>
+
+	<div id="Modal_cover_fees_sec" class="cover" style="display:none;">
+			<div id="order1" class="order_content">
+				<div class="submit_title">交易提醒</div>
+				<div class="submit_bg">
+						<div class="submit_text">提醒您，截至目前为止</div>
+						<div class="submit_text"><span>免手续费</span>优惠</div>
+					
+						<div class="soon" id="my-soon-counter"
+						data-due="in 5 seconds"
+						data-layout="group overlap label-lowercase label-hidden"
+						data-format="s"
+						data-face="slot doctor glow"
+						data-visual="ring glow-progress width-thin offset-65 length-80">
+						</div>
+						<!--<div class="submit_text font_s">如继续交易将收取<span>5%</span>行政处理费用<span id="getmoneyfee"></span>点</div>
+						<div class="submit_text font_s">于您申请的<span>提领金额里扣除。</span></div>-->
+						<div class="submit_text blue_bg">每周（一）00：00重新计算</div>
+						<div class="submit_btn_group">
+						<button id="next2" class="submit_confirm2" >确定</button>
+						</div>
+				</div>
+			</div>
+	</div>
+
+
+	<script>
+		jQuery(function() { 
+		   jQuery('#tabss-3').attr('checked',true)
+		   jQuery('#tabss-2').on('click', function () {
+		   	    jQuery('.content-2').html('<div class="Loading"></div>');
+		      });
+		   jQuery('#tabss-1').on('click', function () {
+		   	    jQuery('.content-1').html('<div class="Loading"></div>');
+		      });
+			});
+
+		function gameresult_front(a)
+		{
+			document.location.href='monrecord.php?kind='+a+'';
+		}
+	</script>
+
+	<script src="www/js/jquery-3.2.1.min.js"></script>
+	<script src="www/js/bootstrap.min.js"></script>
+	<script src="www/js/bootstrap-select.min.js"></script>
+	<script src="www/js/sidy.js"></script>
+	<script src="www/js/modernizr.custom.04022.js"></script>
+	<script src="www/js/login.js"></script>
+	<script src="www/js/withdrewel_deposits.js"></script>
+</body>
+</html>

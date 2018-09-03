@@ -6,17 +6,17 @@
 	<meta name="viewport" content="width=414, user-scalable=no">
 	<title>TG_MarketList</title>
 	<link rel="stylesheet" href="www/css/bootstrap.min.css">
-	<link rel="stylesheet" href="www/css/bootstrap-select.min.css">
-	<link rel="stylesheet" href="www/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="www/css/bootstrap-select.min.css">
+  <link rel="stylesheet" href="www/css/fontawesome-all.min.css">
   <link rel="stylesheet" href="www/css/normalize.css">
   <link rel="stylesheet" href="www/css/tab_style.css">
-    
-	<!--menu bar 套件-->
-<!--    <link rel="stylesheet" href="./template/www/css/demo.css">-->
-	<link rel="stylesheet" href="www/css/sidy.css">
+  <!--menu bar 套件-->
+  <link rel="stylesheet" href="www/css/demo.css">
+  <link rel="stylesheet" href="www/css/sidy.css">
   <link rel="stylesheet" href="www/css/Main_Style.css">
-	<link rel="stylesheet" href="www/css/index.css">
-	<link rel="stylesheet" href="www/css/side.css">
+  <link rel="stylesheet" href="www/css/trade_detail.css">
+  <link rel="stylesheet" href="www/css/FIFA_marketlist.css">
+  <link rel="stylesheet" href="www/css/my.css">
 </head>
 
 <body>
@@ -59,7 +59,7 @@
 	<div class="menu_block_group">
 		<div class="menu_block">
 			<div class="new_icon">NEW</div>
-			<div onclick="location.href='deposits.php'" class="menu_block_outline01">
+			<div onclick="location.href='deposits-review.html'" class="menu_block_outline01">
 				<div class="menu_wd_icon"></div>
 				<div class="menu_block_text">充值提领</div>
 			</div>
@@ -208,6 +208,74 @@
 				<div class="mail"><img src="www/img/icon/mail.png" height="18" width="27"/><span onclick="document.location.href='announce.php'" class="message_number"></span></div>
 			</div>
 
+
+			<div class="title_background ">
+				<div class="title">我　的</div>
+			</div>
+
+			<div class="content" style="margin-top:0px;padding: 0px 0px 0px 0px;">
+		        <div class="head_bg">
+		        	<div class="my_profile">
+		            <div class="arrow_left" onclick="javascript:window.history.go(-1);"><i class=" fa fa-angle-left" aria-hidden="true"></i></div>
+		            <div class="head"><img src="www/img/icon/user.png" height="67" width="67"/></div>
+		            <div class="acc_name">pzq422</div>
+		            <button class="logout" onclick="location.href='memberlogout.php'">登　出</button>
+		            <div class="color_border_bottom"></div>
+		        	</div>
+		        </div>
+		        <div class="my_detail">
+		            <div class="line"></div>
+		            <div class="line2"></div>
+		            <div class="detail_bg">
+		              <!-- <div class=""></div> -->
+			            <div class="block">
+			                <div class="block_title">未结算金额</div>
+			                <div class="block_num">0.00</div>
+			            </div>
+			            <div class="block">
+			                <div class="block_title">可用余额</div>
+			                <div class="block_num">0.00</div>
+			            </div>
+			            <div class="block">
+			                <div class="block_title">正在交易笔数</div>
+			                <div class="block_num">0</div>
+			            </div>
+		            </div>
+		        </div>
+		        <div class="service_padding">
+          		<div class="service_title">淘金服务</div>
+	            <div class="service_block" onclick="location.href='deposits-review.html'">
+	                <div><img src="www/img/icon/wallet.png" height="22" width="22"/></div>
+	                <div class="service_text">充值与提领</div>
+	            </div>
+	            <div class="service_block" onclick="location.href='monrecord-review.html'">
+	                <div><img src="www/img/icon/account-1.png" height="22" width="22"/></div>
+	                <div class="service_text">交易记录</div>
+	            </div>
+	            <div class="service_block" onclick="location.href='personal.php'">
+	                <div><img src="www/img/icon/menu-icon.png" height="22" width="22"/></div>
+	                <div class="service_text">个人资料</div>
+	            </div>
+	            
+         			<div class="service_title">合作服务</div>
+              <div class="service_block" onclick="location.href='./products/html/contact/index.php'">
+                  <div><img src="www/img/icon/coo.png" height="25" width="25"/></div>
+                  <div class="service_text">与我们合作</div>
+              </div>
+              <div class="service_block" onclick="location.href='companyinfo.php'">
+                  <div><img src="www/img/icon/about.png" height="25" width="25"/></div>
+                  <div class="service_text">关于淘金网</div>
+              </div>
+				<!--<div class="service_block" onclick="window.open('https://v88.live800.com/live800/chatClient/chatbox.jsp?companyID=698946&configID=1586&jid=5625358570&s=1')">-->
+				<!--<div class="service_block" onclick="_MICHAT.floatClick();return false;">-->
+							<div class="service_block" onclick="window.open('https://mdt.me0001.com/Web/im.aspx?_=t&accountid=101584&cp=35.197.87.247', '_blank')">
+                  <div><img src="www/img/icon/24h.png" height="25" width="25"/></div>
+                  <div class="service_text">24H线上客服</div>
+              </div>
+		        </div>
+		 </div>
+
+
 			
 			
 			<div class="scroll_top" id="return-to-top">
@@ -220,19 +288,28 @@
 				<div class="icon_bar_row">
 					<div class="icon_bar_cell"><a id="market_a" name="market_a" href="market-review.html"><div class="icon_bar_marketlist"></div><div class="icon_bar_text">市场列表</div></a></div>
 					<div class="icon_bar_cell"><a id="orderinfo_a" name="orderinfo_a" href="orderinfo-review.html"><div class="icon_bar_trade"></div><div class="icon_bar_text">交易明细</div></a></div>
-					<div class="icon_bar_cell"><a class="active" href="indexCenterTpl-review.html"><div class="icon_bar_index"></div><div class="icon_bar_text">首　页</div></a></div>
+					<div class="icon_bar_cell"><a href="indexCenterTpl-review.html"><div class="icon_bar_index"></div><div class="icon_bar_text">首　页</div></a></div>
 					<div class="icon_bar_cell"><a name="history_a" id="history_a" href="history-review.html"><div class="icon_bar_history"></div><div class="icon_bar_text">历史帐务</div></a></div>
-					<div class="icon_bar_cell"><a name="my_a" id="my_a" href="my-review.html"><div class="icon_bar_my"></div><div class="icon_bar_text">我　的</div></a></div>
+					<div class="icon_bar_cell"><a name="my_a" id="my_a" href="#"><div class="icon_bar_my"></div><div class="icon_bar_text">我　的</div></a></div>
 				</div>
 				<div id="Modal_coverchgall" class="cover"></div>
 			</div>
 
 		</div>
 	</div>
+<script>
+$('.icon_bar_cell > a').removeClass('active');
+  $('.icon_bar_cell > #my_a').addClass('active');
+</script>
 
-<!--	<script src="./template/www/js/jquery-3.2.1.min.js"></script>-->
-	<script src="www/js/bootstrap.min.js"></script>
-	<script src="www/js/side.js"></script>
-	<script src="www/js/sidy.js"></script>
+<script src="www/js/jquery-3.2.1.min.js"></script>
+<script src="www/js/bootstrap.min.js"></script>
+<script src="www/js/bootstrap-select.min.js"></script>
+
+<script src="www/js/modernizr.custom.04022.js"></script>
+<script src="www/js/sidy.js"></script>
+<script src="www/js/login.js"></script>
+<script src="www/js/trade_detail.js"></script>
+<script src="www/js/jquery.cookies.2.2.0.js"></script>
 </body>
 </html>

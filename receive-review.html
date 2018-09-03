@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=414, user-scalable=no">
+	<title>TG_MarketList</title>
+	<link rel="stylesheet" href="www/css/bootstrap.min.css">
+	<link rel="stylesheet" href="www/css/bootstrap-select.min.css">
+	<link rel="stylesheet" href="www/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="www/css/normalize.css">
+  <link rel="stylesheet" href="www/css/tab_style.css">
+    
+	<!--menu bar 套件-->
+  <link rel="stylesheet" href="www/css/demo.css">
+	<link rel="stylesheet" href="www/css/sidy.css">
+  <link rel="stylesheet" href="www/css/Main_Style.css">
+  <link rel="stylesheet" href="www/css/withdrewal_deposits.css">
+  <link rel="stylesheet" href="www/css/ex.css">
+  <link rel="stylesheet" href="www/css/FIFA_marketlist.css">
+  <link rel="stylesheet" href="www/css/login.css">
+  <link rel="stylesheet" href="app/soon.min.css">
+	<link rel="stylesheet" href="app/countdown.css">
+  <style>
+ 		.soon-slot-animate{
+			width:60px ! important;
+			height:60px ! important;
+			margin-top:50px ! important;
+		}
+		.soon-slot-new{
+			font-size:38px ! important;
+		}
+		.soon-slot-old{
+			font-size:38px ! important;
+		}
+  </style>
+</head>
+
+<body>
+	<div class="sidy">
+<nav data-position="left" data-size="65%" data-fx="slide_overlay" class="sidy__panel" id="panel-1">
+
+
+	<div class="menu_head_bg">
+		<div class="menu_head_title" id="menu_head_title"></div>
+	</div>
+	<div class="menu_list">
+		<ul>
+			<li onclick="location.href='market-review.html'">
+				<div class="market_list_icon"></div>
+				<div class="menu_text">市场列表</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='orderinfo-review.html'">
+				<div class="trade_detail_icon"></div>
+				<div class="menu_text">交易明细</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='history-review.html'">
+				<div class="history_icon"></div>
+				<div class="menu_text">历史帐务</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="window.open('http://bf.spbo1.com', '_blank')">
+				<div class="nowscore_icon_2018"></div>
+				<div class="menu_text">即时比分</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='gameresult-review.html'">
+				<div class="game_result_icon"></div>
+				<div class="menu_text">赛事结果</div>
+				<div class="menu_arrow"></div>
+			</li>
+		</ul>
+	</div>
+	<div class="menu_block_group">
+		<div class="menu_block">
+			<div class="new_icon">NEW</div>
+			<div onclick="location.href='deposits-review.html'" class="menu_block_outline01">
+				<div class="menu_wd_icon"></div>
+				<div class="menu_block_text">充值提领</div>
+			</div>
+		</div>
+		<!--
+            <div class="menu_block">
+                <div onclick="window.open('http://bf.spbo1.com', '_blank')" class="menu_block_outline02">
+                <div class="menu_live_icon"></div>
+                <div class="menu_block_text">即时比分</div>
+                </div>
+            </div>
+            -->
+		<div class="menu_block">
+			<div id="modify111" name="modify111" class="menu_block_outline02">
+				<div class="menu_live_icon"></div>
+				<div class="menu_block_text">会员互转</div>
+			</div>
+		</div>
+
+		<div class="menu_block">
+			<div onclick="location.href='service.php'" class="menu_block_outline03">
+				<div class="menu_service_icon"></div>
+				<div class="menu_block_text">联络客服</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="menu_list">
+		<ul>
+			<li onclick="location.href='statistics.php'">
+				<div class="menu_history_stat_icon"></div>
+				<div class="menu_text">历史统计</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='./products/html/rules.html'">
+				<div class="menu_rules_icon"></div>
+				<div class="menu_text">规则说明</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='./products/html/help.html'">
+				<div class="menu_help_icon"></div>
+				<div class="menu_text">帮助中心</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="window.open('http://f.tg333.net/index.php', '_blank')">
+				<div class="menu_discuss_icon"></div>
+				<div class="menu_text">讨论区</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='announce.php'">
+				<div class="menu_announce_icon"></div>
+				<div class="menu_text">公　告</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='memberlogout.php'">
+				<div class="menu_logout_icon"></div>
+				<div class="menu_text">登　出</div>
+				<div class="menu_arrow"></div>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+<script src="www/js/jquery-3.2.1.min.js"></script>
+<script>
+	//会员互转
+	$("#modify111").on('click', function() {
+		$(".sidy").removeClass('sidy--opened');
+
+		$.ajax({
+			type: 'POST',
+			url: './other/userchg_thr.php',
+			//data: 'IncomeUser=' + username + '&amount=' + amount + '&withdrawpassword=' + passwd ,		
+			error: function(xhr) {
+				alert('error');
+				window.location.reload();
+				return false;
+			},
+			beforeSend: function(response) {
+				$("#Modal_coverchgall").html("<div class='Loading'></div>");
+			},
+			success: function(response) {
+				//			alert( response );
+				$("#Modal_coverchgall").on('keyup', function() {
+					var _this = this;
+					//setTimeout(function(){
+					//_this.scrollIntoViewIfNeeded();
+					//},400);
+				});
+				$("#Modal_coverchgall").html(response);
+			}
+		});
+		$("#Modal_coverchgall").css('display', 'block');
+	});
+
+</script>
+
+		<div class="sidy__content">
+			<div class="head_banner nav-bar navbar-fixed-top">
+				<div data-panel="panel-1" class="sidy--to-open menu_btn">
+					<span></span><br>
+					<span></span><br>
+					<span></span><br>
+				</div>
+				
+				<div class="acc"><img class="top_user" src="www/img/top_user.png" width="11" height="11">PZQ422</div>
+				<div class="money"><img class="top_coin" src="www/img/top_coin.png" width="11" height="11"><span id="quotaView">0.00</span></div>
+				<input type="hidden" id="memberQuota" name="memberQuota" value="0">
+			</div>
+
+<script>
+var _JS_INFO = '填写相关资讯';
+var _JS_PICKUP_NO_EMPTY = '提领点数请勿有空格';
+var _JS_WITHDRAWALS_GREATER_16_19 = '提款银行帐号请于16至19码';
+var _JS_BANK_EMPTY = '银行名称請勿有空格';
+var JS_CHINESE = '提款户名请输入中文或英文';
+var _JS_PASSWD_EMPTY = '密码请勿有空格';
+var _JS_PICKUP_INT = '提领点数请输入整数';
+var _JS_WITHDRAWALS_GREATER_100 = '提领点数必须大于或等于100点';
+var _JS_WITHDRAWALS_GREATER_QUOTA = '提领点数大于可用余额！';
+var _JS_LOGOUTED = '帐号已登出';
+var _ACCOUNT_OTHER_ONLINE = '你的帐号已在别处连线,因此被迫登出,请重新登入!';
+var _JS_APPLICATION_SUCCESS = '申请成功!系统将自动审核请耐心等候,谢谢!';
+var _JS_APPLICATION_ERROR = '申请失败请洽系统人员!';
+var _PICKUP_THEN_QUOTA = '';
+var _FEETIMES = '1';
+var _FEETPERCENT = '0';
+var _JS_PICKUPNAME_EMPTY = '提款户名请勿有空格';
+var _JS_THIRD_EMPTY = '请勿有空格或特别符号!';
+$( document ).ready(function() {
+   jQuery('#tabss-2').attr('checked',true)
+   //$("#myModafee").css('display', 'block');
+	   //$('#myModafee').modal('show');
+	 //$("#confirm1").on('click', function () {
+            //$("#myModa2fee").modal('hide');
+        //});
+   //new Chartss_t("pie1","次").ratePie(1,2,3);
+   //$("#Modal_cover_fees").css('display','block');
+	 //getscript();
+	 jQuery('#tabss-1').on('click', function () {
+   	    jQuery('.content-1').html('<div class="Loading"></div>');
+      });
+   jQuery('#tabss-3').on('click', function () {
+   	    jQuery('.content-3').html('<div class="Loading"></div>');
+      });      
+	 
+
+	});
+
+function getscript()
+{
+	$.getScript("app/soon_test.js")
+   .done(function( script, textStatus ) {
+    //console.log( textStatus );
+  })
+   .fail(function( jqxhr, settings, exception ) {
+   	//console.log( "Triggered ajaxError handler." );
+   
+   });
+}
+</script>
+
+			<input type="hidden" name="arthur" id="arthur" value="1">
+			<input type="hidden" name="pickfee" id="pickfee" value="1">
+
+			<div class="title_background ">
+				<div class="title">充值与提领</div>
+			</div>
+			
+			<section class="tabs">
+            <input onclick="location.href='deposits-review.html'" style="outline:none;" style="width:33%;" type="radio" id="tabss-1" name="radio-set" class="tab-selector-1"/>
+            <label style="width:33%;" for="tab-1" class="tabss-label-1">充值</label>
+
+            <input onclick="location.href='receive.php'" style="outline:none;" style="width:33%;left:33%;" type="radio" id="tabss-2" name="radio-set" class="tab-selector-2"/>
+            <label style="left:33%;width:33%;" for="tab-2" class="tabss-label-2">提领</label>
+
+            <input onclick="location.href='monrecord-review.html'" style="outline:none;" style="width:34%;left:66%;" type="radio" id="tabss-3" name="radio-set" class="tab-selector-3"/>
+            <label style="left:66%;width:34%;" for="tab-3" class="tabss-label-3">交易记录</label>
+            
+            <div class="clear-shadow"></div>
+             
+                          
+            <div class="content" style="margin-top:0px;padding: 0px 0px 0px 0px;">
+                <div class="content-1"></div>  
+                <div class="content-3"></div> 
+                <div class="content-2">
+                    	<input type="hidden" name="balance_money_chk_pick" id="balance_money_chk_pick" value="">
+                        <div class="color_border"></div>
+                        <div style="background-color:#f4f8ff;" class="take_bg">
+                            <div class="take_please">请填入提款密码与提款金额</div>
+                            <div class="black_line"></div>
+                            <div class="take_table">
+                                <div class="take_row">
+                                    <div class="take_cell take_title">银行名称<span class="color_red">*</span></div>
+                                    <div class="take_cell take_input">
+                                        <dl id="sample" class="dropdown">  
+                                            <select class="selector" name="bankaccountword" id="bankaccountword" >
+			                                      <option value=1:1:1>中国工商银行</option><option value=2:2:2>中国建设银行</option><option value=3:3:3>中国招商银行</option><option value=4:4:4>中国交通银行</option><option value=5:5:5>中国农业银行</option><option value=6:6:6>中国邮政储蓄</option><option value=7:7:7>中国银行</option><option value=8:8:8>中国民生银行</option><option value=9:9:9>上海浦东银行</option><option value=10:10:10>上海银行</option><option value=11:11:11>中信银行</option><option value=12:12:12>兴业银行</option><option value=13:13:13>北京银行</option><option value=14:14:14>华夏银行</option><option value=15:15:15>深圳发展银行</option><option value=25:25:25>中国光大银行</option><option value=26:26:26>上海浦东发展银行</option><option value=39:39:39>平安银行</option><option value=49:49:49>成都银行</option><option value=53:53:53>广发银行</option><option value=169:169:169>厦门银行</option>
+			                                      </select>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="firstpick" id="firstpick" value="1">
+                                <div class="take_row">
+                                    <div class="take_cell take_title">银行帐号<span class="color_red">*</span></div>
+                                    <div class="take_cell take_input"><input type="text" class="input_text" name="bankaccount_self" id="bankaccount_self" ></div>
+                                </div>
+                                <div class="take_row">
+                                    <div class="take_cell take_title">提款户名<span class="color_red">*</span></div>
+                                    <div class="take_cell take_input"><input type="text" class="input_text" name="bankaccountname" id="bankaccountname" readonly="" value=>
+                                    </div>
+                                </div>
+                                <div class="take_row">
+                                    <div class="take_cell take_title">提款金额<span class="color_red">*</span></div>
+                                    <div class="take_cell take_input"><input type="text" class="input_text" id="getmoney" name="getmoney"></div>
+                                </div>
+                                <div class="take_row">
+                                    <div class="take_cell take_title">提款密码<span class="color_red">*</span></div>
+                                    <div class="take_cell take_input"><input type="password" class="input_text" name="sellpassword" id="sellpassword"></div>
+                                </div>
+                            </div>
+                            <div id="fee_pickup" class="submit2">                            	  
+                                <button onclick="pickupmoney()">送出</button>
+                            </div>
+                        </div>
+		                    <div class="notice_bg">
+		                       <div class="notice">※&nbsp;注意事项&nbsp;※</div>
+		                        <div class="notice_group">
+			                        <ul class="notice_ul">
+			                            <li class="num_style">
+			                                最低申请点数为100点以上。
+			                            </li>
+			                            <li class="num_style">每周可享提领5次免手续费,如您欲再提领,本公司将收取提领金额之5%做为行政处理费。</li>
+			                            <li class="num_style">第一次提交申请送出后即会绑定该帐户，请务必将您的银行帐户填写正确，若提供之帐号有误导致损失，本公司恕不负责。</li>
+			                            <div class="color_red">P.S.如利用本平台进行任何洗钱诈骗行为,本公司将保留权力终止会员服务及冻结其帐户。</div>
+			                        </ul>
+		                      	</div>
+		                    </div>
+                </div>
+            </div>
+      </section>
+
+			<div class="icon_bar navbar-fixed-bottom">
+				<div class="icon_bar_row">
+					<div class="icon_bar_cell"><a id="market_a" name="market_a" href="market-review.html"><div class="icon_bar_marketlist"></div><div class="icon_bar_text">市场列表</div></a></div>
+					<div class="icon_bar_cell"><a id="orderinfo_a" name="orderinfo_a" href="orderinfo-review.html"><div class="icon_bar_trade"></div><div class="icon_bar_text">交易明细</div></a></div>
+					<div class="icon_bar_cell"><a href="indexCenterTpl-review.html"><div class="icon_bar_index"></div><div class="icon_bar_text">首　页</div></a></div>
+					<div class="icon_bar_cell"><a name="history_a" id="history_a" href="history-review.html"><div class="icon_bar_history"></div><div class="icon_bar_text">历史帐务</div></a></div>
+					<div class="icon_bar_cell"><a name="my_a" id="my_a" href="my-review.html"><div class="icon_bar_my"></div><div class="icon_bar_text">我　的</div></a></div>
+				</div>
+				<div id="Modal_coverchgall" class="cover"></div>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="Modal_cover_fees" class="cover" style="display:none;">
+			<div id="order1" class="order_content">
+				<div class="submit_title">交易提醒</div>
+				<div class="submit_bg">
+					<div class="submit_text">提醒您，截至目前为止</div>
+					<div class="submit_text"><span>免手续费</span>优惠</div>
+
+					<div class="soon" id="my-soon-counter"
+					data-due="in 5 seconds"
+					data-layout="group overlap label-lowercase label-hidden"
+					data-format="s"
+					data-face="slot doctor glow"
+					data-visual="ring glow-progress width-thin offset-65 length-80">
+					</div>
+					<div class="submit_text font_s">如继续交易将收取<span>5%</span>行政处理费用<span id="getmoneyfee"></span>点</div>
+					<div class="submit_text font_s">于您申请的<span>提领金额里扣除。</span></div>
+					<div class="submit_text blue_bg">每周（一）00：00重新计算</div>
+					<div class="submit_btn_group">
+					<button onclick="javascript:closefeealert()" class="cancel_btn">取消</button>
+					<button class="submit_confirm " id="next">确定</button>
+					</div>
+				</div>
+			</div>
+	</div>
+
+	<div id="Modal_cover_fees_sec" class="cover" style="display:none;">
+			<div id="order1" class="order_content">
+				<div class="submit_title">交易提醒</div>
+				<div class="submit_bg">
+						<div class="submit_text">提醒您，截至目前为止</div>
+						<div class="submit_text"><span>免手续费</span>优惠</div>
+					
+						<div class="soon" id="my-soon-counter"
+						data-due="in 5 seconds"
+						data-layout="group overlap label-lowercase label-hidden"
+						data-format="s"
+						data-face="slot doctor glow"
+						data-visual="ring glow-progress width-thin offset-65 length-80">
+						</div>
+						<!--<div class="submit_text font_s">如继续交易将收取<span>5%</span>行政处理费用<span id="getmoneyfee"></span>点</div>
+						<div class="submit_text font_s">于您申请的<span>提领金额里扣除。</span></div>-->
+						<div class="submit_text blue_bg">每周（一）00：00重新计算</div>
+						<div class="submit_btn_group">
+						<button id="next2" class="submit_confirm2" >确定</button>
+						</div>
+				</div>
+			</div>
+	</div>
+
+	<script src="www/js/jquery-3.2.1.min.js"></script>
+	<script src="www/js/bootstrap.min.js"></script>
+	<script src="www/js/bootstrap-select.min.js"></script>
+	<script src="www/js/sidy.js"></script>
+	<script src="www/js/modernizr.custom.04022.js"></script>
+	<script src="www/js/login.js"></script>
+	<script src="www/js/withdrewel_deposits.js"></script>
+	<script src="www/js/receive.js"></script>
+	<script src="app/countdown.js"></script>
+</body>
+</html>

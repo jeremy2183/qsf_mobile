@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=414, user-scalable=no">
+	<title>TG_MarketList</title>
+	<link rel="stylesheet" href="www/css/bootstrap.min.css">
+	<link rel="stylesheet" href="www/css/bootstrap-select.min.css">
+	<link rel="stylesheet" href="www/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="www/css/normalize.css">
+  <link rel="stylesheet" href="www/css/tab_style.css">
+    
+	<!--menu bar 套件-->
+  <link rel="stylesheet" href="www/css/demo.css">
+	<link rel="stylesheet" href="www/css/sidy.css">
+  <link rel="stylesheet" href="www/css/Main_Style.css">
+  <link rel="stylesheet" href="www/css/withdrewal_deposits.css">
+  <link rel="stylesheet" href="www/css/ex.css">
+  <link rel="stylesheet" href="www/css/FIFA_marketlist.css">
+  <style>
+		#itgweixin img
+		{
+		  width:300px ! important;
+		  height:300px ! important;
+		}
+		#itgweixin button
+		{
+		 width:100% ! important;
+		 height:50px ! important;
+		 text-align:center ! important;
+		}
+  </style>
+</head>
+
+<body>
+	<div class="sidy">
+<nav data-position="left" data-size="65%" data-fx="slide_overlay" class="sidy__panel" id="panel-1">
+
+
+	<div class="menu_head_bg">
+		<div class="menu_head_title" id="menu_head_title"></div>
+	</div>
+	<div class="menu_list">
+		<ul>
+			<li onclick="location.href='market-review.html'">
+				<div class="market_list_icon"></div>
+				<div class="menu_text">市场列表</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='orderinfo-review.html'">
+				<div class="trade_detail_icon"></div>
+				<div class="menu_text">交易明细</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='history-review.html'">
+				<div class="history_icon"></div>
+				<div class="menu_text">历史帐务</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="window.open('http://bf.spbo1.com', '_blank')">
+				<div class="nowscore_icon_2018"></div>
+				<div class="menu_text">即时比分</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='gameresult-review.html'">
+				<div class="game_result_icon"></div>
+				<div class="menu_text">赛事结果</div>
+				<div class="menu_arrow"></div>
+			</li>
+		</ul>
+	</div>
+	<div class="menu_block_group">
+		<div class="menu_block">
+			<div class="new_icon">NEW</div>
+			<div onclick="location.href='deposits.php'" class="menu_block_outline01">
+				<div class="menu_wd_icon"></div>
+				<div class="menu_block_text">充值提领</div>
+			</div>
+		</div>
+		<!--
+            <div class="menu_block">
+                <div onclick="window.open('http://bf.spbo1.com', '_blank')" class="menu_block_outline02">
+                <div class="menu_live_icon"></div>
+                <div class="menu_block_text">即时比分</div>
+                </div>
+            </div>
+            -->
+		<div class="menu_block">
+			<div id="modify111" name="modify111" class="menu_block_outline02">
+				<div class="menu_live_icon"></div>
+				<div class="menu_block_text">会员互转</div>
+			</div>
+		</div>
+
+		<div class="menu_block">
+			<div onclick="location.href='service.php'" class="menu_block_outline03">
+				<div class="menu_service_icon"></div>
+				<div class="menu_block_text">联络客服</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="menu_list">
+		<ul>
+			<li onclick="location.href='statistics.php'">
+				<div class="menu_history_stat_icon"></div>
+				<div class="menu_text">历史统计</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='./products/html/rules.html'">
+				<div class="menu_rules_icon"></div>
+				<div class="menu_text">规则说明</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='./products/html/help.html'">
+				<div class="menu_help_icon"></div>
+				<div class="menu_text">帮助中心</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="window.open('http://f.tg333.net/index.php', '_blank')">
+				<div class="menu_discuss_icon"></div>
+				<div class="menu_text">讨论区</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='announce.php'">
+				<div class="menu_announce_icon"></div>
+				<div class="menu_text">公　告</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='memberlogout.php'">
+				<div class="menu_logout_icon"></div>
+				<div class="menu_text">登　出</div>
+				<div class="menu_arrow"></div>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+<script src="www/js/jquery-3.2.1.min.js"></script>
+<script>
+	//会员互转
+	$("#modify111").on('click', function() {
+		$(".sidy").removeClass('sidy--opened');
+
+		$.ajax({
+			type: 'POST',
+			url: './other/userchg_thr.php',
+			//data: 'IncomeUser=' + username + '&amount=' + amount + '&withdrawpassword=' + passwd ,		
+			error: function(xhr) {
+				alert('error');
+				window.location.reload();
+				return false;
+			},
+			beforeSend: function(response) {
+				$("#Modal_coverchgall").html("<div class='Loading'></div>");
+			},
+			success: function(response) {
+				//			alert( response );
+				$("#Modal_coverchgall").on('keyup', function() {
+					var _this = this;
+					//setTimeout(function(){
+					//_this.scrollIntoViewIfNeeded();
+					//},400);
+				});
+				$("#Modal_coverchgall").html(response);
+			}
+		});
+		$("#Modal_coverchgall").css('display', 'block');
+	});
+
+</script>
+
+		<div class="sidy__content">
+			<div class="head_banner nav-bar navbar-fixed-top">
+				<div data-panel="panel-1" class="sidy--to-open menu_btn">
+					<span></span><br>
+					<span></span><br>
+					<span></span><br>
+				</div>
+				
+				<div class="acc"><img class="top_user" src="www/img/top_user.png" width="11" height="11">PZQ422</div>
+				<div class="money"><img class="top_coin" src="www/img/top_coin.png" width="11" height="11"><span id="quotaView">0.00</span></div>
+				<input type="hidden" id="memberQuota" name="memberQuota" value="0">
+			</div>
+
+
+<script>
+function Chooseself(a)
+{
+	var aa = a.split(':');
+  //alert(aa[0]);
+  jQuery(":input[id=bankaccount_self]").val();
+	jQuery(':input[id=bankaccount_self]').val(aa[0])
+	//jQuery( "#bankaccount_self" ).val(aa[0]);
+	jQuery( "#bankaccountname" ).val(aa[1]);
+	//jQuery( "#bankaccountid" ).val(aa[2]);
+	jQuery( ":input[id=bankaccount_self]" ).attr('disabled',true);
+}
+
+/*提領送出*/ 
+ function pickupmoney()
+		{
+      
+			var simple_ar = Array();
+  	  var c2bet_st = new Object;
+  	  var orderinfo_st = new Object;
+  	  var re = /^[0-9]+(\.)?$/;
+	    var re2 = /(?!^[0-9]{6,}$)(?!^[a-zA-Z]{6,}$)^[0-9a-zA-Z]{6,}$/;
+	   //var sre = /^[0-9]+(\.[0-9]{0,0})?$/;
+	   //var sre = /^[0-9]+(\.[0-9]{1,2})?$/;//小數點2位
+	    var sre = /^[0-9]*$/;
+	    var ans = '';
+	    
+			/*银行帐号*/
+	      var bankaccount = jQuery("#bankaccount_self").val();
+	    /*提款户名*/
+	      var bankaccountname = jQuery("#bankaccountname").val();
+	    /*银行名称*/
+	      var bankaccountword = jQuery("#bankaccountword").val();
+	      var bankaccountword_sp = bankaccountword.split(':');
+	    /*提領金額*/  
+	      var getmoney = jQuery("#getmoney").val();
+	    /*提領密碼*/  
+	      var sellpassword = jQuery("#sellpassword").val();
+        var balance_money_chk_pick = jQuery("#balance_money_chk_pick").val();
+        
+        if(bankaccount=='' || bankaccountname=='' || bankaccountword=='' || getmoney=='' || sellpassword=='')
+	           {
+	           	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_INFO}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});
+	           	alert('{_JS_INFO}');
+	           	return;
+	           }
+	    
+	    else if(jQuery.trim(getmoney.replace(/\s+/g,""))!==getmoney)
+	    {
+	    	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_PICKUP_NO_EMPTY}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});
+	    	alert('{_JS_PICKUP_NO_EMPTY}');
+	    	return;
+	    }
+	    else if(bankaccount.length > 19 || bankaccount.length < 16)
+	    	{
+	    		//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_WITHDRAWALS_GREATER_16_19}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});	    	
+	    	  alert('{_JS_WITHDRAWALS_GREATER_16_19}');
+	    	  return;
+	    	}
+	    else if(jQuery.trim(bankaccountword_sp[2].replace(/\s+/g,""))!==bankaccountword_sp[2])
+	    {
+	    	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_BANK_EMPTY}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});	    	
+	    	alert('{_JS_BANK_EMPTY}');
+	    	return;
+	    }
+	    else if(jQuery.trim(bankaccountname.replace(/\s+/g,""))!==bankaccountname)
+	    {
+	    	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_PICKUPNAME_EMPTY}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});	    	
+	    	alert('{_JS_PICKUPNAME_EMPTY}');
+	    	return;
+	    }
+	    else if(bankaccountname.replace(/[^\u4E00-\u9FA5]/g,"")!==bankaccountname)
+	    	{
+	    		//swal({title: '{_ERRER_MESSAGE}', text: '{JS_CHINESE}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});    	
+	    	  alert('{JS_CHINESE}');
+	    	  return;
+	    	}
+	    else if(jQuery.trim(sellpassword.replace(/\s+/g,""))!==sellpassword)
+	    {
+	    	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_PASSWD_EMPTY}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});	    	
+	    	alert('{_JS_PASSWD_EMPTY}');
+	    	return;
+	    }
+	    else if(!sre.test(getmoney))
+	    {
+	    	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_PICKUP_INT}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});	    	
+	      alert('{_JS_PICKUP_INT}');
+	    	return;
+	    }
+	    else if(getmoney < 100)
+	    {
+	    	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_WITHDRAWALS_GREATER_100}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});
+	      alert('{_JS_WITHDRAWALS_GREATER_100}');
+	    	return;
+	    }
+	    
+	    else if(parseFloat(getmoney) > parseFloat(balance_money_chk_pick))
+	    {
+	    	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_WITHDRAWALS_GREATER_QUOTA}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});         	
+	    	alert('{_JS_WITHDRAWALS_GREATER_QUOTA}');
+	    	return;
+	    }
+	    
+	    else
+	    {
+	    	//alert('Y');
+	    	//return;
+	    }
+        var jimDatass = {num:'7', types:'2', getmoney:getmoney, sellpassword:sellpassword, bankaccount: bankaccount, bankaccountname: bankaccountname, bankaccountword: bankaccountword_sp[2]}	  		
+	    	simple_ar.push(jimDatass);
+  	    orderinfo_st = simple_ar;
+  	    c2bet_st["c2betorder"]=orderinfo_st;
+  	    
+  	    console.log(jimDatass);
+  	    //return;
+  	    jQuery.ajax({
+					type: 'POST',
+					url: './other/savepickupmod.php',
+					data: c2bet_st ,		
+					error: function(xhr) {
+						//jQuery('#order').html('<font color=#FF0000>网路忙线中，请稍后再试!错误代码:992</font>');
+						//alert('網路忙線中，請稍後再試!錯誤代碼:simp137');
+						return false;
+					},					
+					beforeSend:function(response)
+					{
+				  },
+					success: function(response) {
+ 
+					    var ss = jQuery.trim(response);
+              //alert(ss);
+			        if(ss=='empty')
+							    {
+							   alert('{_JS_LOGOUTED}');
+							   document.location.href='./memberlogout.php';
+										  	   	return;
+							    }
+							   else if(ss=='NO_LOGIN')
+							    {
+							    
+								alert('{_ACCOUNT_OTHER_ONLINE}');
+								document.location.href='./memberlogout.php';
+									return;
+							    }
+						  	 else if(ss)
+						  	   {
+						  	   	alert('{_JS_APPLICATION_SUCCESS}');
+						  	   	document.location.href='./usercenter.php?uc=Details';
+						  	   	return;
+						  	   }
+							   else
+							     {
+                    alert('{_JS_APPLICATION_ERROR}');
+							     document.location.href='./memberlogout.php';
+							     return;
+							     }
+					}
+				 });
+		}
+
+
+function DSQRCodeNext()
+	{
+		$('#DSInput').css( 'display', 'block' );
+		$('#DSQRCode').css( 'display', 'none' );
+	}
+
+/*支付寶*/
+  function savemember_alipay()
+		{
+			 
+			  //var sre = /^[0-9]+(\.[0-9]{0,0})?$/;
+			  var sre = /^[0-9]+(\.[0-9]{1,2})?$/;//小數點2位
+			  var reg = /^[0-9]*$/;
+			  
+			  var simple_ar = Array();
+		  	var c2bet_st = new Object;
+		  	var orderinfo_st = new Object;
+		  	
+			  var paipayaccount = jQuery("#paipayaccount").val();
+			  var paipayname = jQuery("#paipayname").val();
+			  var paipaymoney = jQuery("#paipaymoney").val();
+			  var checkphone2 = jQuery("#checkphone2").val();
+			  
+			  var alipay = jQuery("#bankm").val();
+			  var zz = alipay.split(':');
+			  var strang = /[*!?#\$%\^&\*+]+/g;
+			  var strang_big = /[＊！？＃\$％\^＆\*＋]+/g;
+			  //if(paipayaccount=='' || paipayname=='' || paipaymoney=='')
+			  if(paipayaccount=='' || paipaymoney=='')
+			  {
+			  	return false;
+			  }
+			
+			else if(jQuery.trim(paipayaccount.replace(/\s+/g,""))!==paipayaccount)
+	    {
+	    	 alert('{_JS_THIRD_EMPTY}');
+             return false;
+	    }
+			else if(strang.test(paipayaccount))
+          {
+            alert('{_JS_THIRD_EMPTY}');
+             return false;
+      
+          }
+      else if(strang_big.test(paipayaccount))
+          {
+            alert('{_JS_THIRD_EMPTY}');
+             return false;
+      
+          }
+      /*
+			else if(jQuery.trim(paipayaccount.replace(/[^A-z0-9]/g,""))!==paipayaccount)
+	    {
+	    	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_PICKUP_NO_EMPTY}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});
+	    	alert('{_JS_THIRD_EMPTY}');
+	    	return;
+	    }
+	    */
+			   else if(paipaymoney < 100)
+			   {
+			   	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_SAVE_LESS_100}'+'{_JS_SAVE_OVER_5000}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});
+			   	alert('{_JS_SAVE_LESS_100}');
+			   	return;
+			   }
+			   else if(paipaymoney > 50000)
+			   {
+			   	//swal({title: '{_ERRER_MESSAGE}', text: '{_JS_SAVE_LESS_100}'+'{_JS_SAVE_OVER_5000}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});
+			   	alert('{_JS_SAVE_OVER_50000}');
+			   	return;
+			   }
+		    else if(!reg.test(paipaymoney))
+			    {
+			    //swal({title: '{_ERRER_MESSAGE}', text: '{_JS_SAVE_INT}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'}); 
+			    alert('{_JS_SAVE_INT}');
+			  return;
+			    }
+			  //else if(paipayaccount.length > 16)
+			    //{
+			  //swal({title: '{_ERRER_MESSAGE}', text: '{_JS_PAY_OVER_16}', confirmButtonText: '{_JS_SURE}',customClass: 'twitter'});
+			  
+			  //return;
+			    //} 
+			  
+			  else
+			  	{
+			  	}
+			
+			//var jimDatass = {types: '1', num:'5', a4:paipayaccount, line_money:paipaymoney, info:zz[0]}
+			var jimDatass = {types: '1', num:'5', a4:paipayaccount, line_money:paipaymoney, info:zz[0], a3:zz[2]}
+			simple_ar.push(jimDatass);
+		  c2bet_st["c2betorder"]=simple_ar;
+		   //console.log(jimDatass);
+		   //return;
+		   jQuery.ajax({
+				    type: 'POST',
+				    url: './other/savepickupmod.php',
+				    data: c2bet_st ,		
+				    error: function(xhr)
+				      {
+					   //jQuery('#order').html('<font color=#FF0000>网路忙线中，请稍后再试!错误代码:681</font>');
+					    //alert('網路忙線中，請稍後再試!錯誤代碼:save255');
+					    //return false;
+				      },
+					   beforeSend:function(response)
+							{
+			        alert('{JS_WAIT_}');
+							}, 
+			      success:function(response)
+			        {
+			        	//alert(response);
+		           var ss = jQuery.trim(response);
+			           if(ss)
+			           {
+			          //jQuery('#alimoney').html(paipaymoney);
+			          //jQuery('#savemember1_up').hide();
+			          //jQuery('#savemember1_up_alipay').show();
+			          alert('{_JS_APPLICATION_SUCCESS}');
+			          location.href='./monrecord.php';
+			          //alert('Y');
+			           }
+			           else
+			           {
+			          alert('{_JS_APPLICATION_ERROR}'); 
+			           }
+			           
+				      }
+		    
+			      });
+		 
+		}
+
+
+function itgweixin()
+	{
+		
+		var amount = jQuery('#amount').val();
+    var uname = jQuery('#uname').val();    
+    var sre = /^[0-9]*$/;		
+		var sst = uname.split(":");
+		
+		if(sst[4]=='16' || sst[4]=='15' || sst[4]=='17')
+		{
+			   if( amount > 3000 )
+					{
+						alert('{_HEIGHTST_AMOUNT}'+3000);
+	    	return;
+					}
+		}
+		
+		if(sst[4]=='10' || sst[4]=='11' || sst[4]=='12')
+		{
+			   if( amount > 5000 )
+					{
+						alert('{_HEIGHTST_AMOUNT}'+5000);
+	    	return;
+					}
+		}
+		
+		if(sst[4]=='7' || sst[4]=='8')
+		{
+			   if( amount > 5000 )
+					{
+						alert('{_HEIGHTST_AMOUNT}'+5000);
+	    	return;
+					}
+		}
+		
+		if(sst[4]=='25')
+		{
+			   if( amount > 10000 )
+					{
+						alert('{_HEIGHTST_AMOUNT}'+10000);
+	    	return;
+					}
+		}
+		
+		if(sst[4]=='37')
+		{
+			   if( amount > 300 )
+					{
+						alert('{_HEIGHTST_AMOUNT}'+300);
+	    	return;
+					}
+		}
+		
+		if(!sre.test($('#amount').val()))
+		{
+			alert('{_INPUT_ACCOUNT_INT}');
+			return false;
+		}
+		
+		if( isNaN( amount ) )
+		{
+			alert('{_INPUT_ACCOUNT}');
+			$('#amount').val( '' );
+			$('#amount').focus();
+			return false;
+		}
+    
+		if( amount < 100 )
+		{
+			alert('{_LOWEST_AMOUNT}'+100);
+			$('#amount').focus();
+			return false;
+		}
+		
+    jQuery.ajax({
+			type: 'POST',
+			//url: 'http://weixin.saorun.top/paysys/intelligent_scan/scan_pay.php',
+			url: './intelli.php',
+			data: 'order_amount='+amount+'&service_type='+uname+'&c=m',
+			error: function(xhr)
+			{
+				alert('{_CONNECTION_FAIL_}');
+				document.location.href='deposits.php';
+			},
+			beforeSend:function(response)
+			{
+				jQuery('#itgweixin').html('<div style="margin-top:10px;text-align:center;color:#000000;">'+'{JS_WAIT_}'+'</div>');
+			},
+			success: function(response)
+			{
+				//alert(response);
+		    jQuery('#itgweixin').html(response);
+		    jQuery('#linkthird').attr('href','./monrecord.php');
+		    jQuery('#itgweixin a').attr("href", "./monrecord.php");
+		    jQuery('#itgweixin button').css({'background':'#234d87'});
+		  
+			}
+		});
+		
+		
+	}
+	
+
+
+/*存款選擇*/
+  function savemember1()
+		{
+			
+			  var reg = /^[0-9]*$/;
+			  var sre = /^[0-9]+(\.[0-9]{1,2})?$/;//小數點2位
+			  
+			  var bankaccountword = jQuery("#bankm").val();
+			  var zz = bankaccountword.split(':');
+			  var line_money = jQuery("#line_money").val();
+			  
+			  			  
+			  if(bankaccountword=='' || line_money=='')
+			  {		  	
+			  	return;
+			  }
+			  
+			   else if(line_money < 100)
+			   {
+			   	//swal({title: "{_ERRER_MESSAGE}", text: "{_JS_SAVE_LESS_100}", confirmButtonText: "{_JS_SURE}",customClass: 'twitter'}); 
+			   	alert("{_JS_SAVE_LESS_100}");
+			   	return;
+			   }
+		    
+		    else if(!reg.test(line_money))
+			    {
+			  //swal({title: "{_ERRER_MESSAGE}", text: "{_JS_SAVE_INT}", confirmButtonText: "{_JS_SURE}", customClass: 'twitter'}); 
+			  alert("{_JS_SAVE_INT}");
+			  return;
+			    }
+			  
+			  else
+			  	{
+			  		
+			  	}
+			
+		  jQuery('#savemember_bank').html(zz[3]);
+		  jQuery('#savemember_bankchild').html(zz[4]);
+		  jQuery('#savemember_acount').html(zz[2]);
+		  jQuery('#savemember_num').html(zz[1]);
+		  jQuery('#savemember_urlss').html(zz[5]+':'+zz[6]);
+		  jQuery('#bankfid').html(zz[0]);
+		  jQuery('#savemember_menoy').html(line_money);
+		  jQuery('#usercenter_saveup_first').hide();
+		  jQuery('#usercenter_saveup_sec').show();
+		  
+		}
+
+/*銀行轉帳*/
+  
+  function savepickup_finish(a)
+   {
+   	var simple_ar = Array();
+  	var c2bet_st = new Object;
+  	var orderinfo_st = new Object;
+  	
+   	var savemember_bank = jQuery("#savemember_bank").text();
+    var savemember_acount = jQuery("#savemember_acount").text();
+    var savemember_bankchild = jQuery("#savemember_bankchild").text();
+    var savemember_num = jQuery("#savemember_num").text();
+    var line_money = jQuery("#savemember_menoy").text();
+    var bankfid = jQuery('#bankfid').text();
+    
+    
+    var jimDatass = {types:'1', chbank:savemember_bank, num:a, line_money:line_money, a1:savemember_bank, a2:savemember_acount, a3:savemember_bankchild, a4:bankfid}  
+        
+        simple_ar.push(jimDatass);
+  	    orderinfo_st = simple_ar;
+  	    c2bet_st["c2betorder"]=orderinfo_st;
+  	  //console.log(c2bet_st);
+  	  //return;
+			jQuery.ajax({
+				type: 'POST',
+				url: './other/savepickupmod.php',
+				data: c2bet_st ,		
+				    error: function(xhr)
+				      {
+					   //jQuery('#order').html('<font color=#FF0000>网路忙线中，请稍后再试!错误代码:681</font>');
+					    //alert('網路忙線中，請稍後再試!錯誤代碼:save255');
+					    return false;
+				      },
+					   beforeSend:function(response)
+							{
+					  //swal({title: "讯息", text: "....请稍后...", showConfirmButton: false, customClass: 'twitter'});		   
+							//alert('{JS_WAIT_}');
+							}, 
+			      success:function(response)
+			        {
+		          
+		          
+			       var ss = jQuery.trim(response);
+		          
+		          //alert(response);
+		              if(response=='greater')
+						  	 	 {
+						    alert("{_JS_SAVE_LESS_100}");
+						    document.location.href='./deposits.php';
+						    return;	 	 	
+						  	 	 }
+		              if(response)
+						  	   {
+						  	   alert('{_JS_APPLICATION_SUCCESS}');
+						  	   document.location.href='./monrecord.php';
+						  	   	return;
+						  	   }
+							    else
+							     {						     	
+							     alert('{_JS_APPLICATION_ERROR}');
+							     document.location.href='./memberlogout.php';
+							     return;
+							     } 
+
+                        
+	                     
+	
+				      }
+		    
+			 });
+      
+   
+   }
+   
+ /*銀行選擇*/
+   function bankinfo_sub(a)
+    {
+    	var na = a.split(":");
+    	jQuery('#banksub').val(na[2]);
+    }
+     
+$( document ).ready(function() { 
+   jQuery('#tabss-1').attr('checked',true)
+   
+   jQuery('#tabss-2').on('click', function () {
+   	    jQuery('.content-2').html('<div class="Loading"></div>');
+      });
+   jQuery('#tabss-3').on('click', function () {
+   	    jQuery('.content-3').html('<div class="Loading"></div>');
+      }); 
+   
+	});
+</script>
+			
+			<div class="title_background ">
+				<div class="title">充值与提领</div>
+			</div>
+			
+			
+			<section class="tabs">
+            <input onclick="location.href='#'" style="outline:none;" style="width:33%;" type="radio" id="tabss-1" name="radio-set" class="tab-selector-1"/>
+            <label style="width:33%;" for="tab-1" class="tabss-label-1">充值</label>
+
+            <input onclick="location.href='receive-review.html'" style="outline:none;" style="width:33%;left:33%;" type="radio" id="tabss-2" name="radio-set" class="tab-selector-2"/>
+            <label style="left:33%;width:33%;" for="tab-2" class="tab-label-2">提领</label>
+
+            <input onclick="location.href='monrecord-review.html'" style="outline:none;" style="width:34%;left:66%;" type="radio" id="tabss-3" name="radio-set" class="tab-selector-3"/>
+            <label style="left:66%;width:34%;" for="tab-3" class="tab-label-3">交易记录</label>
+            
+            <div class="clear-shadow"></div>
+            <div class="content" style="margin-top:0px;padding: 0px 0px 0px 0px;">
+            	
+            	<div class="content-2"></div>  
+              <div class="content-3"></div> 
+            	
+                <div class="content-1">
+                    <div class="page_padding">
+                        <div class="deposits_title">充值方式</div>
+                        <div class="block_group">
+                            <div class="block" onclick="location.href='deposits.php?kind=1'">
+                                <div class="p01"><img src="www/img/1.png" height="45" width="45"/></div>
+                                <div>支付宝</div>
+                            </div>
+                            <div class="block" onclick="location.href='deposits.php?kind=4'">
+                                <div class="p02"><img src="www/img/2.png" height="37" width="57"/></div>
+                                <div>网络银行</div>
+                            </div>
+                            <div class="block" onclick="location.href='deposits.php?kind=4&temporary=1'">
+                                <div class="p03"><img src="www/img/3.png" height="40" width="45"/></div>
+                                <div>临柜汇款</div>
+                            </div>
+
+                            <div class="block" onclick="location.href='deposits.php?kind=2'">
+                                <div class="p04"><img src="www/img/4.png" height="40" width="45"/></div>
+                                <div class="">微信</div>
+                            </div>
+                            <div class="block" onclick="location.href='deposits.php?kind=3'">
+                                <div class="p05"><img src="www/img/5.png" height="45" width="45"/></div>
+                                <div class="">QQ</div>
+                            </div>
+                            <div class="block">
+                            </div>
+                        </div>
+                        <div>
+                       		<div class="notice">※&nbsp;注意事项&nbsp;※</div>
+                        	<div class="notice_group">
+                            <ul class="notice_ul">
+                                <li class="num_style">
+                                    每次进行存款前，请先登入查看网页所指定的专属银行帐号进行存款，请勿自行转到旧有的银行帐号，如入款至已过期帐号，本公司将无法查收，恕不负责。
+                                </li>
+                                <li class="num_style">如您使用跨行转帐，请务必选择实时到帐，以利系统加快您的充值速度。</li>
+                                <div class="color_red">P.S.如利用本平台进行任何洗钱诈骗行为，本公司将保留权力终止会员服务及冻结其帐户。</div>
+                            </ul>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+              
+              <!--支付寶(公司)-->
+               
+               <!--微信(公司)-->
+              
+              <!--支付寶(第三方)-->
+              
+              <!--微信(第三方)-->
+              
+              <!--QQ(第三方)-->
+              
+              <!--空值-->
+              
+			</section>
+
+			<div class="icon_bar navbar-fixed-bottom">
+				<div class="icon_bar_row">
+					<div class="icon_bar_cell"><a id="market_a" name="market_a" href="market-review.html"><div class="icon_bar_marketlist"></div><div class="icon_bar_text">市场列表</div></a></div>
+					<div class="icon_bar_cell"><a id="orderinfo_a" name="orderinfo_a" href="orderinfo-review.html"><div class="icon_bar_trade"></div><div class="icon_bar_text">交易明细</div></a></div>
+					<div class="icon_bar_cell"><a href="indexCenterTpl-review.html"><div class="icon_bar_index"></div><div class="icon_bar_text">首　页</div></a></div>
+					<div class="icon_bar_cell"><a name="history_a" id="history_a" href="history-review.html"><div class="icon_bar_history"></div><div class="icon_bar_text">历史帐务</div></a></div>
+					<div class="icon_bar_cell"><a name="my_a" id="my_a" href="my-review.html"><div class="icon_bar_my"></div><div class="icon_bar_text">我　的</div></a></div>
+				</div>
+				<div id="Modal_coverchgall" class="cover"></div>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="Modal_cover_fees" class="cover" style="display:none;">
+			<div id="order1" class="order_content">
+				<div class="submit_title">交易提醒</div>
+				<div class="submit_bg">
+					<div class="submit_text">提醒您，截至目前为止</div>
+					<div class="submit_text"><span>免手续费</span>优惠</div>
+
+					<div class="soon" id="my-soon-counter"
+					data-due="in 5 seconds"
+					data-layout="group overlap label-lowercase label-hidden"
+					data-format="s"
+					data-face="slot doctor glow"
+					data-visual="ring glow-progress width-thin offset-65 length-80">
+					</div>
+					<div class="submit_text font_s">如继续交易将收取<span>5%</span>行政处理费用<span id="getmoneyfee"></span>点</div>
+					<div class="submit_text font_s">于您申请的<span>提领金额里扣除。</span></div>
+					<div class="submit_text blue_bg">每周（一）00：00重新计算</div>
+					<div class="submit_btn_group">
+					<button onclick="javascript:closefeealert()" class="cancel_btn">取消</button>
+					<button class="submit_confirm " id="next">确定</button>
+					</div>
+				</div>
+			</div>
+	</div>
+
+	<div id="Modal_cover_fees_sec" class="cover" style="display:none;">
+			<div id="order1" class="order_content">
+				<div class="submit_title">交易提醒</div>
+				<div class="submit_bg">
+						<div class="submit_text">提醒您，截至目前为止</div>
+						<div class="submit_text"><span>免手续费</span>优惠</div>
+					
+						<div class="soon" id="my-soon-counter"
+						data-due="in 5 seconds"
+						data-layout="group overlap label-lowercase label-hidden"
+						data-format="s"
+						data-face="slot doctor glow"
+						data-visual="ring glow-progress width-thin offset-65 length-80">
+						</div>
+						<!--<div class="submit_text font_s">如继续交易将收取<span>5%</span>行政处理费用<span id="getmoneyfee"></span>点</div>
+						<div class="submit_text font_s">于您申请的<span>提领金额里扣除。</span></div>-->
+						<div class="submit_text blue_bg">每周（一）00：00重新计算</div>
+						<div class="submit_btn_group">
+						<button id="next2" class="submit_confirm2" >确定</button>
+						</div>
+				</div>
+			</div>
+	</div>
+
+	<script src="www/js/jquery-3.2.1.min.js"></script>
+	<script src="www/js/bootstrap.min.js"></script>
+	<script src="www/js/bootstrap-select.min.js"></script>
+	<script src="www/js/sidy.js"></script>
+	<script src="www/js/modernizr.custom.04022.js"></script>
+	<script src="www/js/login.js"></script>
+	<script src="www/js/withdrewel_deposits.js"></script>
+</body>
+</html>
