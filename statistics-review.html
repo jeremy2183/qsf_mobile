@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=414, user-scalable=no">
+	<title>TG_MarketList</title>
+	<link rel="stylesheet" href="www/css/bootstrap.min.css">
+	<link rel="stylesheet" href="www/css/bootstrap-select.min.css">
+	<link rel="stylesheet" href="www/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="www/css/normalize.css">
+  <link rel="stylesheet" href="www/css/tab_style.css">
+    
+	<!--menu bar 套件-->
+  <link rel="stylesheet" href="www/css/demo.css">
+	<link rel="stylesheet" href="www/css/sidy.css">
+  <link rel="stylesheet" href="www/css/Main_Style.css">
+  <link rel="stylesheet" href="www/css/trade_detail.css">
+  <link rel="stylesheet" href="www/css/FIFA_marketlist.css">
+  <link rel="stylesheet" href="www/css/history_stat.css">
+  
+	
+</head>
+
+<body>
+	<div class="sidy">
+<nav data-position="left" data-size="65%" data-fx="slide_overlay" class="sidy__panel" id="panel-1">
+
+
+	<div class="menu_head_bg">
+		<div class="menu_head_title" id="menu_head_title"></div>
+	</div>
+	<div class="menu_list">
+		<ul>
+			<li onclick="location.href='market-review.html'">
+				<div class="market_list_icon"></div>
+				<div class="menu_text">市场列表</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='orderinfo-review.html'">
+				<div class="trade_detail_icon"></div>
+				<div class="menu_text">交易明细</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='history-review.html'">
+				<div class="history_icon"></div>
+				<div class="menu_text">历史帐务</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="window.open('http://bf.spbo1.com', '_blank')">
+				<div class="nowscore_icon_2018"></div>
+				<div class="menu_text">即时比分</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='gameresult-review.html'">
+				<div class="game_result_icon"></div>
+				<div class="menu_text">赛事结果</div>
+				<div class="menu_arrow"></div>
+			</li>
+		</ul>
+	</div>
+	<div class="menu_block_group">
+		<div class="menu_block">
+			<div class="new_icon">NEW</div>
+			<div onclick="location.href='deposits-review.html'" class="menu_block_outline01">
+				<div class="menu_wd_icon"></div>
+				<div class="menu_block_text">充值提领</div>
+			</div>
+		</div>
+		<!--
+            <div class="menu_block">
+                <div onclick="window.open('http://bf.spbo1.com', '_blank')" class="menu_block_outline02">
+                <div class="menu_live_icon"></div>
+                <div class="menu_block_text">即时比分</div>
+                </div>
+            </div>
+            -->
+		<div class="menu_block">
+			<div id="modify111" name="modify111" class="menu_block_outline02">
+				<div class="menu_live_icon"></div>
+				<div class="menu_block_text">会员互转</div>
+			</div>
+		</div>
+
+		<div class="menu_block">
+			<div onclick="location.href='Service-review.html'" class="menu_block_outline03">
+				<div class="menu_service_icon"></div>
+				<div class="menu_block_text">联络客服</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="menu_list">
+		<ul>
+			<li onclick="location.href='#'">
+				<div class="menu_history_stat_icon"></div>
+				<div class="menu_text">历史统计</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='rules-review.html'">
+				<div class="menu_rules_icon"></div>
+				<div class="menu_text">规则说明</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='./products/html/help.html'">
+				<div class="menu_help_icon"></div>
+				<div class="menu_text">帮助中心</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="window.open('http://f.tg333.net/index.php', '_blank')">
+				<div class="menu_discuss_icon"></div>
+				<div class="menu_text">讨论区</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='announce.php'">
+				<div class="menu_announce_icon"></div>
+				<div class="menu_text">公　告</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='memberlogout.php'">
+				<div class="menu_logout_icon"></div>
+				<div class="menu_text">登　出</div>
+				<div class="menu_arrow"></div>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+<script src="www/js/jquery-3.2.1.min.js"></script>
+<script>
+	//会员互转
+	$("#modify111").on('click', function() {
+		$(".sidy").removeClass('sidy--opened');
+
+		$.ajax({
+			type: 'POST',
+			url: './other/userchg_thr.php',
+			//data: 'IncomeUser=' + username + '&amount=' + amount + '&withdrawpassword=' + passwd ,		
+			error: function(xhr) {
+				alert('error');
+				window.location.reload();
+				return false;
+			},
+			beforeSend: function(response) {
+				$("#Modal_coverchgall").html("<div class='Loading'></div>");
+			},
+			success: function(response) {
+				//			alert( response );
+				$("#Modal_coverchgall").on('keyup', function() {
+					var _this = this;
+					//setTimeout(function(){
+					//_this.scrollIntoViewIfNeeded();
+					//},400);
+				});
+				$("#Modal_coverchgall").html(response);
+			}
+		});
+		$("#Modal_coverchgall").css('display', 'block');
+	});
+
+</script>
+
+		<div class="sidy__content">
+			<div class="head_banner nav-bar navbar-fixed-top">
+				<div data-panel="panel-1" class="sidy--to-open menu_btn">
+					<span></span><br>
+					<span></span><br>
+					<span></span><br>
+				</div>
+				
+				<div class="acc"><img class="top_user" src="www/img/top_user.png" width="11" height="11">PZQ422</div>
+				<div class="money"><img class="top_coin" src="www/img/top_coin.png" width="11" height="11"><span id="quotaView">0.00</span></div>
+				<input type="hidden" id="memberQuota" name="memberQuota" value="0">
+			</div>
+
+			<div class="title_background ">
+   			<div class="title">歷史統計</div>
+			</div>			
+
+			<div class="history_content">
+					<dl id="sample" class="dropdown">
+			      <dt><a href="#"><span>选择分组</span></a></dt>
+			        <dd>
+			            <ul>
+			             <li><a href="statistics.php?cp=0"><img style="height:32px;width:32px;" class="flag" src="../img/img0.png" alt="" />西甲<span class="value"></span></a></li>
+			             <li><a href="statistics.php?cp=1"><img style="height:32px;width:32px;" class="flag" src="../img/img1.png" alt="" />德甲<span class="value"></span></a></li>
+			             <li><a href="statistics.php?cp=2"><img style="height:32px;width:32px;" class="flag" src="../img/img2.png" alt="" />意甲<span class="value"></span></a></li>
+			             <li><a href="statistics.php?cp=3"><img style="height:32px;width:32px;" class="flag" src="../img/img3.png" alt="" />法甲<span class="value"></span></a></li>
+			             <li><a href="statistics.php?cp=4"><img style="height:32px;width:32px;" class="flag" src="../img/img4.png" alt="" />阿根廷<span class="value"></span></a></li>
+			             <li><a href="statistics.php?cp=5"><img style="height:32px;width:32px;" class="flag" src="../img/img5.png" alt="" />英超<span class="value"></span></a></li>
+			             <li><a href="statistics.php?cp=6"><img style="height:32px;width:32px;" class="flag" src="../img/img6.png" alt="" />丹超<span class="value"></span></a></li>
+			             <li><a href="statistics.php?cp=7"><img style="height:32px;width:32px;" class="flag" src="../img/img7.png" alt="" />巴西甲<span class="value"></span></a></li>
+			             <li><a href="statistics.php?cp=8"><img style="height:32px;width:32px;" class="flag" src="../img/img8.png" alt="" />日职联<span class="value"></span></a></li>
+			             <li><a href="statistics.php?cp=9"><img style="height:32px;width:32px;" class="flag" src="../img/img9.png" alt="" />美职<span class="value"></span></a></li>
+			             <li><a href="statistics.php?cp=10"><img style="height:32px;width:32px;" class="flag" src="../img/img10.png" alt="" />挪威甲<span class="value"></span></a></li>
+			             <li><a href="statistics.php?cp=11"><img style="height:32px;width:32px;" class="flag" src="../img/img11.png" alt="" />荷兰甲<span class="value"></span></a></li>
+			             <li><a href="statistics.php?cp=12"><img style="height:32px;width:32px;" class="flag" src="../img/img12.png" alt="" />瑞典超<span class="value"></span></a></li>
+			             <li><a href="statistics.php?cp=13"><img style="height:32px;width:32px;" class="flag" src="../img/img13.png" alt="" />瑞士超<span class="value"></span></a></li>
+			             <li><a href="statistics.php?cp=14"><img style="height:32px;width:32px;" class="flag" src="../img/img14.png" alt="" />葡超<span class="value"></span></a></li>
+			             <li><a href="statistics.php?cp=15"><img style="height:32px;width:32px;" class="flag" src="../img/img15.png" alt="" />澳A联<span class="value"></span></a></li>
+			             <li><a href="statistics.php?cp=16"><img style="height:32px;width:32px;" class="flag" src="../img/img16.png" alt="" />捷甲<span class="value"></span></a></li>
+			             <li><a href="statistics.php?cp=17"><img style="height:32px;width:32px;" class="flag" src="../img/img17.png" alt="" />苏超<span class="value"></span></a></li>
+			             <li><a href="statistics.php?cp=18"><img style="height:32px;width:32px;" class="flag" src="../img/img18.png" alt="" />土超<span class="value"></span></a></li>
+			             <li><a href="statistics.php?cp=19"><img style="height:32px;width:32px;" class="flag" src="../img/img19.png" alt="" />希超<span class="value"></span></a></li>
+			             <li><a href="statistics.php?cp=20"><img style="height:32px;width:32px;" class="flag" src="../img/img20.png" alt="" /> 亚冠<span class="value"></span></a></li>
+			             <li><a href="statistics.php?cp=21"><img style="height:32px;width:32px;" class="flag" src="../img/img21.png" alt="" /> 亚协<span class="value"></span></a></li>
+			             <li><a href="statistics.php?cp=22"><img style="height:32px;width:32px;" class="flag" src="../img/img22.png" alt="" />約旦超<span class="value"></span></a></li>
+			            </ul>
+			        </dd>
+			  	</dl>
+					<div class="table_content">
+                <div class="table_title">2014-2015 西甲 (正确比分统计) 380场 </div>
+                <table>
+                    <tr class="table_head">
+                        <td class="td01 head">排名</td>
+                        <td class="td01 head">赛果</td>
+                        <td class="td01 head">次数</td>
+                        <td class="td01 head">百分比</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">1</td>
+                        <td class="td02">其他</td>
+                        <td class="td03">50</td>
+                        <td class="td04">13.16%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">2</td>
+                        <td class="td02">1:1</td>
+                        <td class="td03">43</td>
+                        <td class="td04">11.32%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">3</td>
+                        <td class="td02">0:1</td>
+                        <td class="td03">35</td>
+                        <td class="td04">9.21%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">4</td>
+                        <td class="td02">1:0</td>
+                        <td class="td03">35</td>
+                        <td class="td04">9.21%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">5</td>
+                        <td class="td02">2:0</td>
+                        <td class="td03">33</td>
+                        <td class="td04">8.68%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">6</td>
+                        <td class="td02">0:0</td>
+                        <td class="td03">30</td>
+                        <td class="td04">7.89%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">7</td>
+                        <td class="td02">1:2</td>
+                        <td class="td03">29</td>
+                        <td class="td04">7.63%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">8</td>
+                        <td class="td02">2:1</td>
+                        <td class="td03">27</td>
+                        <td class="td04">7.11%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">9</td>
+                        <td class="td02">3:0</td>
+                        <td class="td03">23</td>
+                        <td class="td04">6.05%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">10</td>
+                        <td class="td02">0:2</td>
+                        <td class="td03">20</td>
+                        <td class="td04">5.26%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">11</td>
+                        <td class="td02">2:2</td>
+                        <td class="td03">17</td>
+                        <td class="td04">4.47%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">12</td>
+                        <td class="td02">3:1</td>
+                        <td class="td03">15</td>
+                        <td class="td04">3.95%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">13</td>
+                        <td class="td02">1:3</td>
+                        <td class="td03">7</td>
+                        <td class="td04">1.84%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">14</td>
+                        <td class="td02">2:3</td>
+                        <td class="td03">6</td>
+                        <td class="td04">1.58%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">15</td>
+                        <td class="td02">3:2</td>
+                        <td class="td03">5</td>
+                        <td class="td04">1.32%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">16</td>
+                        <td class="td02">0:3</td>
+                        <td class="td03">4</td>
+                        <td class="td04">1.05%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">17</td>
+                        <td class="td02">3:3</td>
+                        <td class="td03">1</td>
+                        <td class="td04">0.26%</td>
+                    </tr>
+                </table>
+					</div>
+					<div class="table_content">
+                <div class="table_title">2015-2016 西甲 (正确比分统计) 380场</div>
+                <table>
+                    <tr class="table_head">
+                        <td class="td01 head">排名</td>
+                        <td class="td01 head">赛果</td>
+                        <td class="td01 head">次数</td>
+                        <td class="td01 head">百分比</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">1</td>
+                        <td class="td02">1:1</td>
+                        <td class="td03">49</td>
+                        <td class="td04">12.89%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">2</td>
+                        <td class="td02">其他</td>
+                        <td class="td03">45</td>
+                        <td class="td04">11.84%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">3</td>
+                        <td class="td02">1:0</td>
+                        <td class="td03">39</td>
+                        <td class="td04">10.26%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">4</td>
+                        <td class="td02">0:0</td>
+                        <td class="td03">35</td>
+                        <td class="td04">9.21%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">5</td>
+                        <td class="td02">0:1</td>
+                        <td class="td03">30</td>
+                        <td class="td04">7.89%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">6</td>
+                        <td class="td02">2:2</td>
+                        <td class="td03">25</td>
+                        <td class="td04">6.58%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">7</td>
+                        <td class="td02">1:2</td>
+                        <td class="td03">25</td>
+                        <td class="td04">6.58%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">8</td>
+                        <td class="td02">2:0</td>
+                        <td class="td03">25</td>
+                        <td class="td04">6.58%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">9</td>
+                        <td class="td02">2:1</td>
+                        <td class="td03">20</td>
+                        <td class="td04">5.26%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">10</td>
+                        <td class="td02">3:0</td>
+                        <td class="td03">19</td>
+                        <td class="td04">5.00%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">11</td>
+                        <td class="td02">3:1</td>
+                        <td class="td03">18</td>
+                        <td class="td04">4.74%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">12</td>
+                        <td class="td02">0:3</td>
+                        <td class="td03">17</td>
+                        <td class="td04">4.47%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">13</td>
+                        <td class="td02">1:3</td>
+                        <td class="td03">11</td>
+                        <td class="td04">2.89%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">14</td>
+                        <td class="td02">3:2</td>
+                        <td class="td03">8</td>
+                        <td class="td04">2.11%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">15</td>
+                        <td class="td02">0:2</td>
+                        <td class="td03">7</td>
+                        <td class="td04">1.84%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">16</td>
+                        <td class="td02">2:3</td>
+                        <td class="td03">4</td>
+                        <td class="td04">1.05%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">17</td>
+                        <td class="td02">3:3</td>
+                        <td class="td03">3</td>
+                        <td class="td04">0.79%</td>
+                    </tr>
+                </table>
+					</div>
+					<div class="table_content">
+                <div class="table_title">2016-2017 西甲 (正确比分统计) 380场</div>
+                <table>
+                    <tr class="table_head">
+                        <td class="td01 head">排名</td>
+                        <td class="td01 head">赛果</td>
+                        <td class="td01 head">次数</td>
+                        <td class="td01 head">百分比</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">1</td>
+                        <td class="td02">其他</td>
+                        <td class="td03">61</td>
+                        <td class="td04">16.05%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">2</td>
+                        <td class="td02">1:1</td>
+                        <td class="td03">43</td>
+                        <td class="td04">11.32%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">3</td>
+                        <td class="td02">2:1</td>
+                        <td class="td03">43</td>
+                        <td class="td04">11.32%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">4</td>
+                        <td class="td02">1:0</td>
+                        <td class="td03">31</td>
+                        <td class="td04">8.16%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">5</td>
+                        <td class="td02">0:0</td>
+                        <td class="td03">27</td>
+                        <td class="td04">7.11%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">6</td>
+                        <td class="td02">0:1</td>
+                        <td class="td03">26</td>
+                        <td class="td04">6.84%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">7</td>
+                        <td class="td02">3:1</td>
+                        <td class="td03">23</td>
+                        <td class="td04">6.05%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">8</td>
+                        <td class="td02">2:0</td>
+                        <td class="td03">21</td>
+                        <td class="td04">5.53%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">9</td>
+                        <td class="td02">0:2</td>
+                        <td class="td03">18</td>
+                        <td class="td04">4.74%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">10</td>
+                        <td class="td02">1:2</td>
+                        <td class="td03">18</td>
+                        <td class="td04">4.74%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">11</td>
+                        <td class="td02">3:0</td>
+                        <td class="td03">17</td>
+                        <td class="td04">4.47%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">12</td>
+                        <td class="td02">2:2</td>
+                        <td class="td03">14</td>
+                        <td class="td04">3.68%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">13</td>
+                        <td class="td02">2:3</td>
+                        <td class="td03">12</td>
+                        <td class="td04">3.16%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">14</td>
+                        <td class="td02">0:3</td>
+                        <td class="td03">8</td>
+                        <td class="td04">2.11%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">15</td>
+                        <td class="td02">3:2</td>
+                        <td class="td03">8</td>
+                        <td class="td04">2.11%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">16</td>
+                        <td class="td02">1:3</td>
+                        <td class="td03">5</td>
+                        <td class="td04">1.32%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">17</td>
+                        <td class="td02">3:3</td>
+                        <td class="td03">5</td>
+                        <td class="td04">1.32%</td>
+                    </tr>
+                </table>
+					</div>
+					<div class="table_content">
+         		<div class="table_title">近三年正确比分统计 1140场</div>
+                <table>
+                    <tr class="table_head">
+                        <td class="td01 head">排名</td>
+                        <td class="td01 head">赛果</td>
+                        <td class="td01 head">次数</td>
+                        <td class="td01 head">百分比</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">1</td>
+                        <td class="td02">其他</td>
+                        <td class="td03">156</td>
+                        <td class="td04">13.68%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">2</td>
+                        <td class="td02">1:1</td>
+                        <td class="td03">135</td>
+                        <td class="td04">11.84%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">3</td>
+                        <td class="td02">1:0</td>
+                        <td class="td03">105</td>
+                        <td class="td04">9.21%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">4</td>
+                        <td class="td02">0:0</td>
+                        <td class="td03">92</td>
+                        <td class="td04">8.07%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">5</td>
+                        <td class="td02">0:1</td>
+                        <td class="td03">91</td>
+                        <td class="td04">7.98%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">6</td>
+                        <td class="td02">2:1</td>
+                        <td class="td03">90</td>
+                        <td class="td04">7.89%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">7</td>
+                        <td class="td02">2:0</td>
+                        <td class="td03">79</td>
+                        <td class="td04">6.93%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">8</td>
+                        <td class="td02">1:2</td>
+                        <td class="td03">72</td>
+                        <td class="td04">6.32%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">9</td>
+                        <td class="td02">3:0</td>
+                        <td class="td03">59</td>
+                        <td class="td04">5.18%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">10</td>
+                        <td class="td02">2:2</td>
+                        <td class="td03">56</td>
+                        <td class="td04">4.91%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">11</td>
+                        <td class="td02">3:1</td>
+                        <td class="td03">56</td>
+                        <td class="td04">4.91%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">12</td>
+                        <td class="td02">0:2</td>
+                        <td class="td03">45</td>
+                        <td class="td04">3.95%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">13</td>
+                        <td class="td02">0:3</td>
+                        <td class="td03">29</td>
+                        <td class="td04">2.54%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">14</td>
+                        <td class="td02">1:3</td>
+                        <td class="td03">23</td>
+                        <td class="td04">2.02%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">15</td>
+                        <td class="td02">2:3</td>
+                        <td class="td03">22</td>
+                        <td class="td04">1.93%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">16</td>
+                        <td class="td02">3:2</td>
+                        <td class="td03">21</td>
+                        <td class="td04">1.84%</td>
+                    </tr>
+                    <tr>
+                        <td class="td01">17</td>
+                        <td class="td02">3:3</td>
+                        <td class="td03">9</td>
+                        <td class="td04">0.79%</td>
+                    </tr>
+                </table>
+						</div>
+			</div>
+
+			<div class="scroll_top" id="return-to-top">
+				<div class="scroll_top_bg"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+			</div>
+
+
+			<div class="icon_bar navbar-fixed-bottom">
+				<div class="icon_bar_row">
+					<div class="icon_bar_cell"><a id="market_a" name="market_a" href="market-review.html"><div class="icon_bar_marketlist"></div><div class="icon_bar_text">市场列表</div></a></div>
+					<div class="icon_bar_cell"><a id="orderinfo_a" name="orderinfo_a" href="orderinfo-review.html"><div class="icon_bar_trade"></div><div class="icon_bar_text">交易明细</div></a></div>
+					<div class="icon_bar_cell"><a href="indexCenterTpl-review.html"><div class="icon_bar_index"></div><div class="icon_bar_text">首　页</div></a></div>
+					<div class="icon_bar_cell"><a name="history_a" id="history_a" href="history-review.html"><div class="icon_bar_history"></div><div class="icon_bar_text">历史帐务</div></a></div>
+					<div class="icon_bar_cell"><a name="my_a" id="my_a" href="my-review.html"><div class="icon_bar_my"></div><div class="icon_bar_text">我　的</div></a></div>
+				</div>
+				<div id="Modal_coverchgall" class="cover"></div>
+			</div>
+
+		</div>
+	</div>
+
+	<script src="www/js/jquery-3.2.1.min.js"></script>
+	<script src="www/js/bootstrap.min.js"></script>
+	<script src="www/js/bootstrap-select.min.js"></script>
+	<script src="www/js/modernizr.custom.04022.js"></script>
+	<script src="www/js/sidy.js"></script>
+	<script src="www/js/login.js"></script>
+	<script src="www/js/trade_detail.js"></script>
+	<script src="www/js/account_history_momth.js"></script>
+	<script src="www/js/jquery.cookies.2.2.0.js"></script>
+	<script src="www/js/scrollTop.js"></script>
+</body>
+</html>

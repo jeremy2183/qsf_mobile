@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="www/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet"
+href="www/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="www/css/font-awesome.min.css">
+<link rel="stylesheet" href="www/css/normalize.css">
+<link rel="stylesheet" href="www/css/tab_style.css">
+<!--menu bar 套件-->
+<link rel="stylesheet" href="www/css/demo.css">
+<link rel="stylesheet" href="www/css/Main_Style.css">
+<link rel="stylesheet" href="www/css/my_info_chg.css">
+<link rel="stylesheet" href="www/css/userchg.css">
+<link rel="stylesheet" href="www/css/ex.css">
+<style>
+.order_content {
+    position: relative;
+    background-color: #f1f1f0;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #c3c3c3;
+    width: 95%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    /*-webkit-animation-name: animatetop;*/
+    /*-webkit-animation-duration: 0.4s;*/
+    /*animation-name: animatetop;*/
+    /*animation-duration: 0.4s;*/
+    height: 310px;
+    animation: animatezoom 0.4s;
+    border-radius: 5px;
+}
+	.message_row{
+    display:flex;
+     padding:10px 0 10px 20px;
+    
+    
+}
+.message_row > select {
+    flex:1;
+    height:40px;
+    align-self:center;
+       
+}
+.message_row > div {
+    flex:4;
+    padding-left:10px;
+    align-self:center;
+    
+}
+
+.fa-times:before {
+    position: absolute;
+    top: 8px;
+    right: 4%;
+    font-size: 22px;
+    color:#ffffff;
+}
+
+
+.message_row{
+    display:flex;
+    align-item:center;
+    padding-left:10px;
+
+}
+.message_row .my_info_cell_titles
+{
+width:30px;
+}
+.message_row > select {
+    flex:1;
+}
+.message_row > div {
+    flex:3
+}
+</style>
+
+</head>
+<body>
+<div id="Modal_coverchgload" class="cover" style="display:none;">
+</div>
+	
+	<div id="Modal_coverchg" class="cover" style="padding-top:5%;display:block;">
+		<div id="order1" class="order_content_memeber" style="height:420px;">
+			<div class="modal_title">会员互转</div>
+			<i class="fa fa-times x" aria-hidden="true"></i>
+			<div class="my_info_table" style="padding-left:40px;margin-top:100px;">
+				<div class="my_info_row"><H3>此功能21:00~02:00暫停服務</h2></div>
+			</div>
+		</div>
+	</div>
+	
+	
+
+<div id="Modal_coverchg" class="cover" style="padding-top:5%;display:block;">
+		<div id="order1" class="order_content_memeber" style="height:430px;">
+		      <div class="modal_title">会员互转</div>
+						<i class="fa fa-times x" aria-hidden="true"></i>
+						<!--<div class="black_line"></div>-->
+						<div class="my_info_table">
+								<div class="my_info_row">
+									<div class="my_info_cell_title">转出帐号<span></span></div>
+									<div class="my_info_cell"><input id="account_out" type="text" readonly value="<?php echo $val['MemID']; ?>"></div>
+								</div>
+								<div class="my_info_row">
+									<div class="my_info_cell_title">转入帐号<span></span></div>
+									<div class="my_info_cell"><input type="text" id="username" name="ori_pwd"></div>
+								</div>
+								<div class="my_info_row">
+									<div style="color:#35659f;" class="my_info_cell_title">转入金额<span></span></div>
+									<div class="my_info_cell"><input type="text" id="amount" name="new_pwd"> </div>
+								</div>
+						
+								<div class="my_info_row">
+									<div style="color:#35659f;" class="my_info_cell_title">交易密码<span></span></div>
+									<div class="my_info_cell"><input type="password" id="pickuppasswd" name="new_pwd_confirm"></div>
+								</div>
+						
+								<div class="my_info_row">
+										<div class="my_info_cell_title">手机号码<span></span></div>
+										<div class="message_row">
+												<select style="width: 100px;" class="selector" name="nationcode" id="nationcode">
+																<option value="86">中国</option>
+																<option value="886">台湾</option>
+																<option value="852">香港</option>
+																<option value="853">澳门</option>
+																<option value="81">日本</option>
+																<option value="60">马来西亚</option>
+																<option value="84">越南</option>
+																<option value="62">印尼</option>
+																<option value="66">泰国</option>
+																<option value="61">澳洲</option>
+																<option value="65">新加坡</option>
+																<option value="63">菲律宾</option>
+																<option value="971">阿拉伯联合大公国</option>
+																<option value="855">柬埔寨</option>
+												</select>
+												
+												<div class="moblie_row_1">
+											   <div>
+											   	<input style="margin-top:5px;padding-left:10px;height:40px;width:145px;" type="text" id="phonenum" readonly value="<?php echo mkStr($userinfo[0]['mobile'], '*', 3, 1 );?>">
+											   </div>
+												</div>
+										</div>
+								</div>
+									<!--
+									<div class="message_row">
+									<div class="my_info_cell_titles" style="width:100%;padding-left:20px;">交易密码<span></span></div>		
+												<select class="selector" name="nationcode" id="nationcode">
+													<option value="86">中国</option>
+													<option value="886">台湾</option>
+													<option value="852">香港</option>
+													<option value="853">澳门</option>
+													<option value="81">日本</option>
+													<option value="60">马来西亚</option>
+													<option value="84">越南</option>
+													<option value="62">印尼</option>
+													<option value="66">泰国</option>
+													<option value="61">澳洲</option>
+													<option value="65">新加坡</option>
+													<option value="63">菲律宾</option>
+													<option value="971">阿拉伯联合大公国</option>
+													<option value="855">柬埔寨</option>
+											  </select>
+											 <div><?php echo mkStr($userinfo[0]['mobile'], '*', 3, 1 );?></div>			
+					            </div>
+					         -->
+			         <div class="moblie_row_2">
+	                <label for="phoneprf">手机验证</label>
+	                <div style="padding-left:20px;width:140px;"><input type="text" id="MCode" placeholder="请输入验证码"></div>
+	                <button style="width:140px;margin-top:10px;margin-bottom:10px;" onclick="mobilecode()" id="send_code" class="send_code">传送验证码</button>
+	                <input type="hidden" id="ReMCode">
+	            </div>
+
+
+		        </div>
+		        <div class="btn_group_member" style="padding-top:0px;">
+		            <button style="width:95%;color:#000000;" onclick="userchg_first()" id="confirm1">下一步!</button>
+		        </div>
+		</div>
+</div>
+
+	<div id="Modal_coverchg_sec" class="cover" style="display:none;">
+    <div id="order1" class="order_content_memeber" style="height:430px;">
+        <div class="modal_title">确认-会员互转</div>
+        <i class="fa fa-times x" aria-hidden="true"></i>
+        
+        
+            <div class="member_change_content">
+            	  <div style="margin-bottom:10px;" class="content_row">
+                <label>交易时间</label>
+                <div class="check_info_text"><?php echo date('Y-m-d h:i');?></div>
+                </div>
+            	  
+            	  <div style="margin-bottom:15px;" class="content_row">
+                <label style="color:#000000;">转出帐号</label>
+                <div id="PayUsers" class="check_info_text"></div>
+               </div>
+               
+               <div class="content_row">
+                <label for="account_in_check">转入帐号</label>
+                <div><input style="background-color:#eeeeee;color:#000000;" type="text" id="IncomeUsers" name="account_in_check" readonly></div>
+              </div>
+              
+	            <div class="content_row">
+	                <label for="money_in">转入金额</label>
+	                <div><input style="background-color:#eeeeee;color:#000000;" type="text" id="amounts" name="money_in" readonly></div>
+	                <input type="hidden" id="IncomeUid">
+	            </div>                
+                
+            </div>
+            <div class="notice_wrap">
+	            <div style="padding-top:5px;height:30px;font-size:14px;" class="modal_title">※　注意事项　※</div>
+	            <!--<div class="notice_head">※　注意事项　※</div>-->
+	            <ul class="notice_list">
+	                <li><div></div>请严格确认接收会员帐号，<span>一旦转出公司恕不负责。</span></li>
+	                <li><div></div>转出金额，将即时生效，于您的帐户扣除。</li>
+	                <li><div></div>接收会员将于<span>２４小时后</span>，方可进行提领动作。</li>
+	            </ul>
+        		</div>
+
+        <div class="btn_group_member">
+            <button onclick="finishuserchg()" id="confirm2">确定</button>
+            <button id="cancel2">取消</button>
+        </div>
+    </div>
+        <!--
+        <div class="content_wrap">
+            
+            <div class="member_info_wrap">
+            <div class="member_info">
+                <div class="my_info_cell_title">轉出帳號<span></span></div>
+                <div class="my_info_cell"><div id="PayUsers"></div></div>
+            </div>
+            <div class="member_info">
+                <div class="my_info_cell_title">轉入帳號<span></span></div>
+                <div class="my_info_cell"><div id="IncomeUsers"></div></div>
+            </div>
+            <div class="member_info">
+                <div class="my_info_cell_title">轉出金額<span></span></div>
+                <div class="my_info_cell"><div id="amounts"></div></div>
+                <input type="hidden" id="incomeUid">
+            </div>
+           </div>
+           <div >
+                <p class="notice">注意事項</p>
+                <p>＊轉出金額，將即刻生效，於您的帳戶扣除。</p>
+                <p>＊接收會員將於２４小時後，方可近行提領動作。</p>
+            </div>
+        </div>
+        -->
+       
+	</div>
+
+<!-- </div> -->
+
+<div id="Modal_coverchg_thr" class="cover" style="display:none;">
+    <div id="order3" class="order_content" style="height:410px;">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+            <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10"
+                    cx="65.1" cy="65.1" r="62.1"></circle>
+            <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round"
+                      stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "></polyline>
+        </svg>
+        <div class="text_success">交易成功</div>
+        <div class="blue_line_formember"></div>
+        
+        <div class="member_info_wrap">
+                <div class="member_info">
+                    <div class="info_title">交易单号</div>
+                    <div class="info_line">|</div>
+                    <div id="OrderId_fi" class="info_content"></div>
+                </div>
+                <div class="member_info">
+                    <div class="info_title">交易时间 </div>
+                    <div class="info_line">|</div>
+                    <div id="times_fi" class="info_content"></div>
+                </div>
+                <div class="member_info">
+                    <div class="info_title">转出帐号</div>
+                    <div class="info_line">|</div>
+                    <div id="PayUsers_fi" class="info_content"><?php echo $val['MemID'];?></div>
+                </div>
+                <div class="member_info">
+                    <div class="info_title">转入帐号</div>
+                    <div class="info_line">|</div>
+                    <div id="IncomeUsers_fi" class="info_content"></div>
+                </div>
+                <div class="member_info">
+                    <div class="info_title">转入金额</div>
+                    <div class="info_line">|</div>
+                    <div id="amounts_fi" class="info_content"></div>
+                </div>
+            </div>
+            
+        <div class="btn_group_member" style="padding-top:10px;">
+            <button id="confirm3">关闭</button>
+            <button id="cancel3" onclick="document.location.href='./monrecord.php'">前往交易纪录</button>
+        </div>
+
+     </div>
+</div>
+
+<script src="www/js/jquery-3.2.1.min.js"></script>
+<script src="www/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script src="www/js/userchg.js"></script>
+<script>
+$("#cancel1").on('click', function () {
+            $("#Modal_coverchg").css('display', 'none');
+
+        })
+
+$(".x").on('click', function () {
+	          $("#Modal_coverchgall").css('display', 'none');
+            $("#Modal_coverchg").css('display', 'none');
+            //$("#Modal_coverchg_sec").css('display', 'none');
+
+        })
+$("#cancel3").on('click', function () {
+            $("#Modal_coverchg_thr").css('display', 'none');
+        });
+
+$("#cancel2").on('click', function () {
+            $("#Modal_coverchgall").css('display', 'none');
+            $("#Modal_coverchg_sec").css('display', 'none');
+
+        });
+$("#confirm3").on('click', function () {
+            $("#Modal_coverchgall").css('display', 'none');
+            $("#Modal_coverchg_thr").css('display', 'none');
+
+        });
+
+
+$('#username').on('focus',function(){
+	var _this = this;
+	setTimeout(function(){
+		_this.scrollIntoViewIfNeeded();
+		//_this.scrollIntoView(true);
+	},400);
+  });
+
+$('#amount').on('focus',function(){
+	var _this = this;
+	setTimeout(function(){
+		_this.scrollIntoViewIfNeeded();
+	},400);
+  });
+
+$('#pickuppasswd').on('focus',function(){
+	var _this = this;
+	setTimeout(function(){
+		_this.scrollIntoViewIfNeeded();
+	},400);
+  });
+
+$('#MCode').on('focus',function(){
+	var _this = this;
+	setTimeout(function(){
+		_this.scrollIntoViewIfNeeded();
+	},400);
+  });
+ 
+$("#send_code").on('click',function () {
+            $(".send_code").addClass("resend_code");
+            $(".send_code").text("重新發送(60)")
+
+        }) 
+</script>
+	
+</body>
+</html>

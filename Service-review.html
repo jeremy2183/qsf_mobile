@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=414, user-scalable=no">
@@ -12,32 +11,14 @@
   <link rel="stylesheet" href="www/css/tab_style.css">
     
 	<!--menu bar 套件-->
-    <link rel="stylesheet" href="www/css/demo.css">
+  <link rel="stylesheet" href="www/css/demo.css">
 	<link rel="stylesheet" href="www/css/sidy.css">
   <link rel="stylesheet" href="www/css/Main_Style.css">
   <link rel="stylesheet" href="www/css/trade_detail.css">
-	<link rel="stylesheet" href="www/css/FIFA_marketlist.css">
-	<style>
-		.icon_bar_trade{
-		    /*display: block;
-		    background: url("www/img/02-1.png") no-repeat ;
-		    background-size: cover;
-		    width: 20px;
-		    height: 20px;
-		    position: relative;
-		    top: 8px;
-		    margin: 0px auto;*/
-		}
-		.no_content {
-		    font-size: 20px;
-		    width: 100%;
-		    font-weight: bold;
-		    text-align: center;
-		    letter-spacing: 1px;
-		    color: #0d3675;
-		    margin-top: 200px;
-		}
-	</style>
+  <link rel="stylesheet" href="www/css/FIFA_marketlist.css">
+  <link rel="stylesheet" href="www/css/service.css">
+  <link rel="stylesheet" href="www/css/login.css">
+	
 </head>
 
 <body>
@@ -101,7 +82,7 @@
 		</div>
 
 		<div class="menu_block">
-			<div onclick="location.href='Service-review.html'" class="menu_block_outline03">
+			<div onclick="location.href='#'" class="menu_block_outline03">
 				<div class="menu_service_icon"></div>
 				<div class="menu_block_text">联络客服</div>
 			</div>
@@ -190,87 +171,109 @@
 				<div class="money"><img class="top_coin" src="www/img/top_coin.png" width="11" height="11"><span id="quotaView">0.00</span></div>
 				<input type="hidden" id="memberQuota" name="memberQuota" value="0">
 			</div>
-			
 			<div class="title_background ">
-  		 	<div class="title">交易明细</div>
-   		</div>
-   		<!-- START BLOCK : orderinfototal -->
-        
-        <div class="trade_head">
-             <div class="color_border_bottom"></div>
-           <i onclick="javascript:window.history.go(-1);" class=" fa fa-angle-left" aria-hidden="true"></i>
-           <div class="blank"></div>
-            <div class="trade_block">
-                <div class="trade_amount_title">交易金額</div>
-                <div class="trade_amount_num">0.00</div>
-            </div>
-            <div class="trade_block">
-                <div class="total_rate_title">預估獲利</div>
-                <div class="total_rate_num">0.00</div>
-            </div>
-        </div>
-				   <!-- END BLOCK : orderinfototal -->
-		<div class="content">
-				<!-- START BLOCK : orderinfo_empty -->
-				 <ul class="no_content">
-				                     暫無資料
-				 </ul>
-				 <!-- END BLOCK : orderinfo_empty -->
-          
-				 <!-- START BLOCK : orderinfo -->           
-        <!-- <div class="game_list v1">
-            <div class="game_trade">
-                <div class="color_border"></div>
-                <div class="time"><span>08-27 22:00</span></div>
-                <div class="game_name">英協聯</div>
-                <div class="number">01</div>
-                <div class="arrow">
-                    <i class="fa fa-caret-right" aria-hidden="true"></i>
-                </div>
-                <div class="game_team"><span>艾迪索特(主) VS 瑟頓聯</span>
-                </div>
-            </div>
-        </div> -->
-           
-        <!-- <div class="trade_detail">
-          <div class="whole_table_block">
-            <div class="table_padding">
-            <table>
-                <tr>
-                    <th>{_BETID}<div class="dash"></div></th>
-                    <td colspan="3">{betId}</td>
-                </tr>
-                <tr>
-                    <th>{_TRADE_TIME}<div class="dash"></div></th>
-                    <td colspan="3">{_betContent}</td>
-                </tr>
-                <tr>
-                    <th>{_MARKET_ORDER}<div class="dash"></div></th>
-                    <td colspan="3">{_MARKET} {selection} ＠<span class="color_red">{_PROFIT_}%</span></td>
-                </tr>
-            </table>
-            </div>
-            <table>
-                <tr class="money_total">
-                    <th class="padding_left">{_AMOUNT}</th>
-                    <td class="align_right color_blue">{_DEALMO}<div class="dash"></div></td>
-                    <th class="">{_ESTIMATED_PROFIT}</th>
-                    <td class="align_right color_green padding_right">{_DELMO_P}</td>
-                </tr>
-            </table>
-          </div>
-        </div> -->
-		</div>
-			
-			<script>
-			$('.icon_bar_cell > a').removeClass('active');
-			  $('.icon_bar_cell > #orderinfo_a').addClass('active');
-			</script>
+				<button class="announcement_btn" onclick="titleannice()">公告<i class="fa fa-caret-right arrow_2" aria-hidden="true"></i></button>
+				<div class="title_market" style="">
+					<marquee id="marqinfo" style="margin-top:3px;font-size:16px;margin-left:22%;width:80%;display:block;" direction="left">
+						  TG平台提醒广大会员，近期出现许多黑网打著反波胆名义，进行资金盘吸金，或利用保证获利口号行欺诈等不法行为，TG平台在此除了严厉斥责不肖黑网，也恳请会员慎选平台，以免资金遭受损失。
+						  7-12 / 08:30	 [ 美甲      ]  OKC能量 v 拉斯维加斯光  因国际资料传递错误该赛事 07-12 / 08:10后所有注单无效
+						  07-11 / 23:59	 [ 友谊赛      ]  洛里昂 v 布雷斯特  因比赛时间不足法定九十分钟，所有注单取消。
+						  
+						  07-10 / 21:00 [ 友谊赛 ] 希姆基 v 斯特罗吉诺  因国际资料传递错误该赛事 0710 / 19:00后所有注单无效。
+						  尊敬的会员，您好：为提供更优质的服务环境，24小时在线客服已全面更新，原在线客服已停止服务，请清除暂存重新登入平台，感谢您对平台的支持
+						  因逢世足赛网站流量暴增，为提升网速品质，故新增线路手机网域m5.tg7777.net,桌机网域w5.tg7777.net,烦请各位尊贵会员善加利用！
+						  尊贵的会员您好，因逢世界杯流量过大，将于世足期间，每日下午九点至隔日凌晨二点，关闭会员互转功能，功能将于隔日凌晨二点后开放，不便之处请见谅！
+						  近日发现有心人士假冒平台客服，主动提供账户要求会员进行充值，再次贴心提醒，平台客服绝不主动提供账户供会员充值，开放充值之账户依照平台显示为准，请会员当心留意，勿轻易相信。
+						  为因应近期爆增的会员人数，也感谢广大会员的支持，TG平台为提供更优质的服务环境，今日全新资料库升级已完成，造成您的不便，敬请见谅！！
+						  
+						  『淘金网翻本大红包』于2018年2月21日中午12：00正式开跑，最高回馈金8888！！详情请洽线上客服中心，感谢您对淘金网的支持！！
+						  
+						  
+						  
+						  
+						  
+						  
+						  
+						  
+						  敬请会员注意：请于每次充值前，先登入查看网页指定的专属帐号后进行充值，请勿自行转至旧有的帐号，如入款至已过期的帐号，本公司将无法查收，恕不负责，感谢您对淘金网的支持！！
+						  
+						  
+						  
+						  
+						  
+						  
+						  
+						  
+				 </marquee>
+					<div style="padding-left:150px;width:80%;display:none;" id="markettitle" name="markettitle">市场列表</div>
+					</div>
+				<div class="mail"><img src="www/img/icon/mail.png" height="18" width="27"/><span onclick="document.location.href='announce.php'" class="message_number"></span></div>
+			</div>
+
+			<div class="title_background ">
+   			<div class="title">联络客服</div>
+			</div>			
+
+			<div class="clear-shadow"></div>
+			<div class="content" style="margin-top:100px;">
+				<div class="btn_group" style="padding: 0px 3px">
+					<!--<a href="#" onclick="window.open('https://v88.live800.com/live800/chatClient/chatbox.jsp?companyID=698946&configID=1586&jid=5625358570&s=1')">-->
+					<!--<a href="#" onclick="_MICHAT.floatClick();return false;">-->
+					<a href="https://mdt.me0001.com/Web/im.aspx?_=t&accountid=101584&cp=35.197.87.247" target="_blank">
+						<div class="btn">
+							<div class="online"></div>
+							<div class="block">
+								<button class="blue" type="button">联络客服<p>点击直接对话</p></button>
+							</div>
+						</div>
+					</a>
+					<a id="qq" href="#">
+						<div class="btn">
+							<div class="qq"></div>
+							<div class="block">
+								<button class="yellow" type="button">QQ客服<p>QQ号/1099097563</p></button>
+							</div>
+						</div>
+					</a>
+					<a id="weixin" href="#">
+						<div class="btn">
+							<div class="weixin"></div>
+							<div class="block">
+								<button class="green" type="button">微信客服<p>微信号/msd05111</p></button>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<div id="Modal_cover" class="cover">
+			    <div id="order1" class="order_content">
+			        <div class="qq_title">淘金网客服 QQ扫一扫</div>
+			        <div style="top:3px;" class="close_x"><i class="fa fa-times" aria-hidden="true"></i></div>
+			        <div class="blue_line"></div>
+			        <div class="QRcode">
+			        <img src=../serviceQRCode/QQ.1099097563.jpeg width=100% height=100%>	
+			        </div>
+			        <button class="close_btn">关闭</button>
+			    </div>
+			</div>
+
+			<div id="Modal_cover2" class="cover">
+			    <div id="order2" class="order_content2">
+			        <div class="weixin_title">淘金网客服 微信扫一扫</div>
+			        <div style="top:3px;" class="close_x"><i class="fa fa-times" aria-hidden="true"></i></div>
+			        <div class="blue_line"></div>
+			        <div class="QRcode">
+			        <img src=../serviceQRCode/WEI.msd05111.jpg width=100% height=100%>	
+			        </div>
+			        <button class="close_btn">关闭</button>
+			    </div>
+			</div>
 			
 			<div class="icon_bar navbar-fixed-bottom">
 				<div class="icon_bar_row">
 					<div class="icon_bar_cell"><a id="market_a" name="market_a" href="market-review.html"><div class="icon_bar_marketlist"></div><div class="icon_bar_text">市场列表</div></a></div>
-					<div class="icon_bar_cell"><a class="active" id="orderinfo_a" name="orderinfo_a" href="orderinfo-review.html"><div class="icon_bar_trade"></div><div class="icon_bar_text">交易明细</div></a></div>
+					<div class="icon_bar_cell"><a id="orderinfo_a" name="orderinfo_a" href="orderinfo-review.html"><div class="icon_bar_trade"></div><div class="icon_bar_text">交易明细</div></a></div>
 					<div class="icon_bar_cell"><a href="indexCenterTpl-review.html"><div class="icon_bar_index"></div><div class="icon_bar_text">首　页</div></a></div>
 					<div class="icon_bar_cell"><a name="history_a" id="history_a" href="history-review.html"><div class="icon_bar_history"></div><div class="icon_bar_text">历史帐务</div></a></div>
 					<div class="icon_bar_cell"><a name="my_a" id="my_a" href="my-review.html"><div class="icon_bar_my"></div><div class="icon_bar_text">我　的</div></a></div>
@@ -284,11 +287,11 @@
 	<script src="www/js/jquery-3.2.1.min.js"></script>
 	<script src="www/js/bootstrap.min.js"></script>
 	<script src="www/js/bootstrap-select.min.js"></script>
-	<script src="www/js/trade_detail.js"></script>
-	<script src="www/js/sidy.js"></script>
 	<script src="www/js/modernizr.custom.04022.js"></script>
+	<script src="www/js/sidy.js"></script>
 	<script src="www/js/login.js"></script>
-	<!-- <script src="www/js/account_history_month.js"></script> -->
+	<script src="www/js/trade_detail.js"></script>
+	<script src="www/js/account_history_momth.js"></script>
 	<script src="www/js/jquery.cookies.2.2.0.js"></script>
 </body>
 </html>

@@ -20,7 +20,10 @@
     <link rel="stylesheet" href="www/css/Main_Style.css">
     <link rel="stylesheet" href="www/css/marketlist_detail.css">
 		<link rel="stylesheet" href="www/css/FIFA_marketlist.css">
-    <link rel="stylesheet" href="../css/ex.css">
+    <link rel="stylesheet" href="www/css/ex.css">
+    <link rel="stylesheet" href="www/css/my_info_chg.css">
+		<link rel="stylesheet" href="www/css/userchg.css">
+
     
 	<!--<script type="text/javascript" src="./template/www/js/tgservice.js?1808221100"></script>-->
 
@@ -82,7 +85,68 @@ function orderUpdata()
 	time_s_sec = 2;
 }
 </script>
+<style>
+.order_content {
+    position: relative;
+    background-color: #f1f1f0;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #c3c3c3;
+    width: 95%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    /*-webkit-animation-name: animatetop;*/
+    /*-webkit-animation-duration: 0.4s;*/
+    /*animation-name: animatetop;*/
+    /*animation-duration: 0.4s;*/
+    height: 310px;
+    animation: animatezoom 0.4s;
+    border-radius: 5px;
+}
+	.message_row{
+    display:flex;
+     padding:10px 0 10px 20px;
+    
+    
+}
+.message_row > select {
+    flex:1;
+    height:40px;
+    align-self:center;
+       
+}
+.message_row > div {
+    flex:4;
+    padding-left:10px;
+    align-self:center;
+    
+}
 
+.fa-times:before {
+    position: absolute;
+    top: 8px;
+    right: 4%;
+    font-size: 22px;
+    color:#ffffff;
+}
+
+
+.message_row{
+    display:flex;
+    align-items:center;
+    padding-left:10px;
+
+}
+.message_row .my_info_cell_titles
+{
+width:30px;
+}
+.message_row > select {
+    flex:1;
+}
+.message_row > div {
+    flex:3
+}
+</style>
 </head>
 <body>
 <div class="sidy">
@@ -93,31 +157,34 @@ function orderUpdata()
 		$(".sidy__container").removeClass('sidy--opened');
 		$(".sidy__panel").css('transform', 'translate3d(-100%, 0px, 0px)');
 		$(".sidy__panel").css('visibility', 'visible');
-		$("#Modal_coverchgall").css('display', 'block');
+		$("#Modal_coverchg").css('display', 'block');
 
-		$.ajax({
-			type: 'POST',
-			url: './other/userchg_thr.php' ,
-			//data: 'IncomeUser=' + username + '&amount=' + amount + '&withdrawpassword=' + passwd ,		
-			error: function(xhr) {
-				alert('error');
-				window.location.reload();
-				return false;
-			},
-			beforeSend:function(response)
-			{
-				$("#Modal_coverchgall").html("<div class='Loading'></div>");
-			}, 
-			success: function(response) {			
-				$("#Modal_coverchgall").on('keyup',function(){
-					var _this = this;
-					//setTimeout(function(){
-					//_this.scrollIntoViewIfNeeded();
-					//},400);
-				});
-				$("#Modal_coverchgall").html(response);
-			}
-		});
+		// $.ajax({
+		// 	type: 'POST',
+		// 	url: './other/userchg_thr.php' ,
+		// 	//data: 'IncomeUser=' + username + '&amount=' + amount + '&withdrawpassword=' + passwd ,		
+		// 	error: function(xhr) {
+		// 		alert('error');
+		// 		window.location.reload();
+		// 		return false;
+		// 	},
+		// 	beforeSend:function(response)
+		// 	{
+		// 		$("#Modal_coverchgall").html("<div class='Loading'></div>");
+		// 	}, 
+		// 	success: function(response) {			
+		// 		$("#Modal_coverchgall").on('keyup',function(){
+		// 			var _this = this;
+		// 			//setTimeout(function(){
+		// 			//_this.scrollIntoViewIfNeeded();
+		// 			//},400);
+		// 		});
+		// 		$("#Modal_coverchgall").html(response);
+		// 	}
+		// });
+	});
+	$(".fa").on('click', function () {
+		$("#Modal_coverchg").css('display', 'none');
 	});
 </script>
 <div class="menu_head_bg">
@@ -176,7 +243,7 @@ function orderUpdata()
             </div>
             
             <div class="menu_block">
-                <div onclick="location.href='service.php'" class="menu_block_outline03">
+                <div onclick="location.href='Service-review.html'" class="menu_block_outline03">
                     <div class="menu_service_icon"></div>
                     <div class="menu_block_text">联络客服</div>
                 </div>
@@ -185,12 +252,12 @@ function orderUpdata()
 
         <div class="menu_list">
             <ul>
-                <li onclick="location.href='statistics.php'">
+                <li onclick="location.href='statistics-review.html'">
                     <div class="menu_history_stat_icon"></div>
                     <div class="menu_text">历史统计</div>
                     <div class="menu_arrow"></div>
                 </li>
-                <li onclick="location.href='./products/html/rules.html'">
+                <li onclick="location.href='rules-review.html'">
                     <div class="menu_rules_icon"></div>
                     <div class="menu_text">规则说明</div>
                     <div class="menu_arrow"></div>
@@ -293,6 +360,7 @@ function orderUpdata()
 		<div class="icon_bar_cell"><a name="my_a" id="my_a" href="my-review.html"><div class="icon_bar_my"></div><div class="icon_bar_text">我　的</div></a></div>
 	</div>
 	<div id="Modal_coverchgall" class="cover"></div>
+
 </div>
         
        <!-- <div class="scroll_top" id="scroll_top">
@@ -901,6 +969,93 @@ $(function () {
 
 <div id="Modal_cover4" class="cover">
 </div>
+
+<div id="Modal_coverchg" class="cover" style="padding-top:5%;display:none;">
+		<div id="order1" class="order_content_memeber" style="height:420px;">
+		      <div class="modal_title">会员互转</div>
+						<i class="fa fa-times x" aria-hidden="true"></i>
+						<!--<div class="black_line"></div>-->
+						<div class="my_info_table">
+						<div class="my_info_row">
+						<div class="my_info_cell_title">转出帐号<span></span></div>
+						<div class="my_info_cell"><input id="account_out" type="text" readonly value="pzq422"></div>
+						</div>
+						<div class="my_info_row">
+						<div class="my_info_cell_title">转入帐号<span></span></div>
+						<div class="my_info_cell"><input type="text" id="username" name="ori_pwd"></div>
+						</div>
+						<div class="my_info_row">
+						<div style="color:#35659f;" class="my_info_cell_title">转入金额<span></span></div>
+						<div class="my_info_cell"><input type="text" id="amount" name="new_pwd"> </div>
+						</div>
+						
+						<div class="my_info_row">
+						<div style="color:#35659f;" class="my_info_cell_title">交易密码<span></span></div>
+						<div class="my_info_cell"><input type="password" id="pickuppasswd" name="new_pwd_confirm"></div>
+						</div>
+						
+						<div class="my_info_row">
+						<div class="my_info_cell_title">手机号码<span></span></div>
+						<div class="message_row">
+						<select style="width: 100px;" class="selector" name="nationcode" id="nationcode">
+										<option value="86">中国</option>
+										<option value="886">台湾</option>
+										<option value="852">香港</option>
+										<option value="853">澳门</option>
+										<option value="81">日本</option>
+										<option value="60">马来西亚</option>
+										<option value="84">越南</option>
+										<option value="62">印尼</option>
+										<option value="66">泰国</option>
+										<option value="61">澳洲</option>
+										<option value="65">新加坡</option>
+										<option value="63">菲律宾</option>
+										<option value="971">阿拉伯联合大公国</option>
+										<option value="855">柬埔寨</option>
+						</select>
+						
+						<div class="moblie_row_1">
+					   <div>
+					   	<input style="margin-top:5px;padding-left:10px;height:40px;width:145px;" type="text" id="phonenum" readonly value="092****967">
+					   	</div>
+						</div>
+						</div>
+						</div>
+						<!--
+						<div class="message_row">
+						<div class="my_info_cell_titles" style="width:100%;padding-left:20px;">交易密码<span></span></div>		
+									<select class="selector" name="nationcode" id="nationcode">
+										<option value="86">中国</option>
+										<option value="886">台湾</option>
+										<option value="852">香港</option>
+										<option value="853">澳门</option>
+										<option value="81">日本</option>
+										<option value="60">马来西亚</option>
+										<option value="84">越南</option>
+										<option value="62">印尼</option>
+										<option value="66">泰国</option>
+										<option value="61">澳洲</option>
+										<option value="65">新加坡</option>
+										<option value="63">菲律宾</option>
+										<option value="971">阿拉伯联合大公国</option>
+										<option value="855">柬埔寨</option>
+								  </select>
+								 <div>092****967</div>			
+		            </div>
+		         -->
+		         <div class="moblie_row_2">
+                <label for="phoneprf">手机验证</label>
+                <div style="padding-left:20px;width:140px;"><input type="text" id="MCode" placeholder="请输入验证码"></div>
+                <button style="width:140px;margin-top:10px;margin-bottom:10px;" onclick="mobilecode()" id="send_code" class="send_code">传送验证码</button>
+                <input type="hidden" id="ReMCode">
+            </div>
+            
+		        </div>
+		        <div class="btn_group_member" style="padding-top:0px;">
+		            <button style="width:95%;color:#000000;" onclick="userchg_first()" id="confirm1">下一步!</button>
+		        </div>
+		</div>
+</div>
 <script>
 window.clearInterval(chkstop_open);
 checktime5_5('28871308','20180827103114198','%E8%89%BE%E8%BF%AA%E7%B4%A2%E7%89%B9+v+%E7%91%9F%E9%A1%BF%E8%81%94','2018-08-27+22%3A00%3A00','英协联');
@@ -917,5 +1072,7 @@ checktime5_5('28871308','20180827103114198','%E8%89%BE%E8%BF%AA%E7%B4%A2%E7%89%B
 <script src="www/js/login.js"></script>
 <script src="www/js/marketlist_detail.js"></script>
 <script src="www/js/chart.js"></script>
+<script src="www/js/userchg.js"></script>
+<script src="www/js/userchg.js"></script>
 </body>
 </html>
