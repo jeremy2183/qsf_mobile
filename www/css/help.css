@@ -1,0 +1,522 @@
+.title_background{
+    height: 10px;
+}
+
+.help_title{
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 2px;
+    padding-top: 12px;
+}
+
+.help_content{
+    margin-top: 75px;
+    padding: 0px 1.5% 0px 1.5%;
+
+}
+.help_bg{
+    background-color: white;
+    padding: 10px 2% 10px 2%;
+    margin-bottom: 10px;
+
+}
+.blue_border{
+    width: 100%;
+    height: 7px;
+    background: #0d3675; /* Old browsers */
+    background: -moz-linear-gradient(left, #0d3675 0%, #00ecd5 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #0d3675 0%,#00ecd5 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #0d3675 0%,#00ecd5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0d3675', endColorstr='#00ecd5',GradientType=1 ); /* IE6-9 */
+}
+.black_line{
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    margin-bottom: 10px;
+}
+
+.please_c{
+    font-size: 16px;
+    padding-left: 5px;
+}
+
+.help{
+    width: 100%;
+    text-align: center;
+    background-color: #0d3675;
+    color: white;
+    padding: 10px 0px;
+    font-size: 18px;
+    border-bottom: solid 1px white;
+}
+.w_content{
+    display: none;
+    width: 100%;
+    text-align: center;
+}
+.w_content a {
+    display: block;
+    color: black;
+    width: 100%;
+    padding: 10px 0px;
+    text-align: center;
+    font-size: 18px;
+    background-color: white;
+    text-decoration: none;
+    margin-bottom: 1px;
+}
+
+
+
+.w_content  a:active{
+    background-color: #0d3675;
+    color: white;
+    text-decoration: none;
+}
+.w_content a:hover{
+    background-color: #0d3675;
+    color: white;
+    text-decoration: none;
+}
+.w_content a:visited{
+    color: black;
+}
+
+.back_to_marketlist{
+    width: 20%;
+    background: #fdfdfd; /* Old browsers */
+    background: -moz-linear-gradient(top, #fdfdfd 0%, #d4d4d6 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #fdfdfd 0%,#d4d4d6 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #fdfdfd 0%,#d4d4d6 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfdfd', endColorstr='#d4d4d6',GradientType=0 ); /* IE6-9 */
+    padding: 8px 0px;
+    border: none;
+    position: fixed;
+    top:6px;
+    left: 2%;
+    font-size: 16px;
+    color: #7d8a8a;
+    font-weight: bold;
+    z-index: 2000;
+    border-radius: 3px;
+
+}
+.help_register{
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 5px;
+
+}
+
+.fa-arrow-left:before{
+    padding-right: 5px;
+    color: white;
+}
+
+.back_to_menu{
+    position: absolute;
+    top:85px;
+    background-color: #0d3675;
+    color: white;
+    padding:5px 8px;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+a:active .back_to_menu{
+    text-decoration: none;
+    color: white;
+}
+.back_to_menu a:visited, a:hover, a:focus {
+    color: white;
+}
+
+.help_register_content{
+    width: 100%;
+}
+
+.page1{
+    background: url("../img/help-register/1.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page2{
+    background: url("../img/help-register/2.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page3{
+    background: url("../img/help-register/3.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page4{
+    background: url("../img/help-register/4.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page5{
+    background: url("../img/help-register/5.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page6{
+    background: url("../img/help-deposit/1.jpg");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page7{
+    background: url("../img/help-deposit/2.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page8{
+    background: url("../img/help-deposit/3.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page9{
+    background: url("../img/help-deposit/4.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page10 {
+    background: url(../img/help-deposit/a05.gif);
+    background-size: cover;
+    width: 280px;
+    height: 498px;
+    margin: auto;
+}
+.page11{
+    background: url("../img/help_bank/1.jpg");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page12{
+    background: url("../img/help_bank/1-2.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page13{
+    background: url("../img/help_bank/2.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page14{
+    background: url("../img/help_bank/3.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page15{
+    background: url("../img/help_bank/4.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page15{
+    background: url("../img/help_bank/4.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page15{
+    background: url("../img/help_bank/aa4.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page16{
+    background: url("../img/help_pay/1.jpg");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page17{
+    background: url("../img/help_pay/02.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page18{
+    background: url("../img/help_pay/03.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page19{
+    background: url("../img/help_pay/a04.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page20{
+    background: url("../img/help_pay/05.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page21{
+    background: url("../img/help_pay/06.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page22{
+    background: url("../img/help_pay/7.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page23{
+    background: url("../img/help_pay/8.jpg");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page24{
+    background: url("../img/help_weixin/1.jpg");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page25{
+    background: url("../img/help_weixin/2.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page26{
+     background: url("../img/help_weixin/3.gif");
+     background-size: cover;
+     width: 280px;
+     height:498px;
+     margin: auto;
+ }
+.page27{
+    background: url("../img/help_weixin/4.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page28{
+    background: url("../img/help_weixin/5.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+
+.page29{
+    background: url("../img/help_qq/1.jpg");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page30{
+    background: url("../img/help_qq/2.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page31{
+    background: url("../img/help_qq/3.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page32{
+    background: url("../img/help_qq/4.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page33{
+    background: url("../img/help_qq/5.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page34{
+    background: url("../img/help-d/1.jpg");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page35{
+    background: url("../img/help-d/2.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page36{
+    background: url("../img/help-d/3.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page37{
+    background: url("../img/help-d/4.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page38{
+    background: url("../img/help-d/5.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page39{
+    background: url("../img/help-d/06.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page40{
+    background: url("../img/help-d/7.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+
+.page41{
+    background: url("../img/hand_order/01.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page42{
+    background: url("../img/hand_order/02.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page43{
+    background: url("../img/hand_order/3.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page44{
+    background: url("../img/hand_order/4.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page45{
+    background: url("../img/hand_order/05.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+.page46{
+    background: url("../img/hand_order/06.gif");
+    background-size: cover;
+    width: 280px;
+    height:498px;
+    margin: auto;
+}
+
+#prev{
+    display: block;
+    font-size: 30px;
+    position: absolute;
+    top: 380px;
+    left: 5%;
+}
+
+#next{
+    display: block;
+    font-size: 30px;
+    position: absolute;
+    top: 380px;
+    right: 5%;
+}
+
+.carousel-control.right{
+    background-image: none;
+    left: 87%;
+}
+.carousel-control.left{
+    background-image: none;
+    left: -2%;
+}
+
+.glyphicon-chevron-right:before {
+    content: "\e080";
+    color: #000;
+}
+
+.carousel-control:focus, .carousel-control:hover {
+    color: transparent;
+    text-decoration: none;
+    outline: 0;
+    opacity: 1;
+}
+.glyphicon-chevron-left:before {
+    content: "\e079";
+    color: black;
+}
+.carousel-control {
+    opacity: 1;
+}
