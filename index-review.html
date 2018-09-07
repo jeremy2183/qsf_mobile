@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <!-- Basic Page Needs
+        ================================================== -->
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="icon" type="image/png" href="images/favicon.png">
+        <title>TG_MarketList</title>
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="author" content="">
+        <!-- Mobile Specific Metas
+        ================================================== -->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- Template CSS Files
+        ================================================== -->
+        <!-- Twitter Bootstrs CSS -->
+        <link rel="stylesheet" href="www/css/bootstrap.min.css">
+        <!-- Ionicons Fonts Css -->
+        <link rel="stylesheet" href="www/css/ionicons.min.css">
+        <!-- animate css -->
+        <link rel="stylesheet" href="www/css/animate.css">
+        <!-- Hero area slider css-->
+        <link rel="stylesheet" href="www/css/slider.css">
+        <!-- owl craousel css -->
+        <link rel="stylesheet" href="www/css/owl.carousel.css">
+        <link rel="stylesheet" href="www/css/owl.theme.css">
+        <link rel="stylesheet" href="www/css/jquery.fancybox.css">
+        <!-- template main css file -->
+        <link rel="stylesheet" href="www/css/main.css">
+        <!-- responsive css -->
+        <link rel="stylesheet" href="www/css/responsive.css">
+        <link rel="stylesheet" href="www/css/g_cooperation.css">
+        <link rel="stylesheet" href="www/css/login.css">
+        <!-- Template Javascript Files
+        ================================================== -->
+        <!-- modernizr js -->
+        <script src="www/js/vendor/modernizr-2.6.2.min.js"></script>
+        <!-- jquery -->
+        <script src="www/js/jquery.min.js"></script>
+        <!-- owl carouserl js -->
+        <script src="www/js/owl.carousel.min.js"></script>
+        <!-- bootstrap js -->
+
+        <script src="www/js/bootstrap.min.js"></script>
+        <!-- wow js -->
+        <script src="www/js/wow.min.js"></script>
+        <!-- slider js -->
+        <script src="www/js/slider.js"></script>
+        <script src="www/js/jquery.fancybox.js"></script>
+        <!-- template main js -->
+        <script src="www/js/main.js"></script>
+        <script src="www/js/login.js"></script>
+        <title>TG_MarketList</title>
+    </head>
+    <script>
+	function cooperration()
+			 {
+			 	    var names= $('#name').val();
+			 	    var emails= $('#email').val();
+			 	    var subject= $('#subject').val();
+			 	    var messages= $('#message').val();
+			 	    var numcode= $('#numcode').val();
+			 	    
+			 	  if(names=="" || email=="" || subject=="" || message=="" || numcode=="")
+			 	    {
+			 	    	alert('请填写*相关讯息');
+			 	    	return;
+			 	    }
+			    
+			$.ajax({
+			type: 'POST',
+			url: '../mail.php',
+			data: 'name=' + names + '&email=' + emails + '&message=' + messages + '&numcode=' + numcode,	
+			error: function(xhr) {
+				alert('網路忙線中，請稍後再試!r64');
+			},
+			beforeSend:function(response)
+		  {
+		  	$('#wait').html('..等候...');
+		  },
+			success: function(response) {
+				//alert(response);
+			    if(response=='Y')
+			     {
+			     	alert('谢谢你的宝贵意见,我们会尽快处理!');
+			     	$('#name').val('');
+            $('#email').val('');
+            $('#subject').val('');
+            $('#message').val('');
+            
+			     }
+			    else if(response=='error')
+			     {
+			     	alert('验证码错误!');
+			     	return;
+			     }
+			    else
+			     {
+			     window.document.reload();
+			     }
+			 }
+	         });
+			 
+			 }
+
+
+</script>
+    <body>
+  <div id="Modal_cover" class="cover">
+    <div id="order1" class="order_content">
+        <div class="qq_title">淘金网客服 QQ扫一扫</div>
+        <div class="close_x"><i class="fa fa-times" aria-hidden="true"></i></div>
+        <div class="blue_line"></div>
+        <div class="QRcode">
+        <img src="../serviceQRCode/QQ.1099097563.jpeg" width="100%" height="100%">
+        </div>
+        <button class="close_btn">关闭</button>
+    </div>
+</div>
+
+<div id="Modal_cover2" class="cover">
+    <div id="order2" class="order_content2">
+        <div class="weixin_title">淘金网客服 微信扫一扫</div>
+        <div class="close_x"><i class="fa fa-times" aria-hidden="true"></i></div>
+        <div class="blue_line"></div>
+        <div class="QRcode">
+        <img src="../serviceQRCode/payCode.111.PNG" width="100%" height="100%">
+        </div>
+        <button class="close_btn">关闭</button>
+    </div>
+</div>
+        <!--
+        ==================================================
+        Header Section Start
+        ================================================== -->
+                
+        <!--
+        ==================================================
+        Slider Section Start
+        ================================================== -->
+        		<section id="hero-area" >
+            		<div class="container">
+                		<div class="row">
+                    		<div class="col-md-12 text-center col-lg-offset-0 col-lg-12">
+                        		<div class="block wow fadeInUp" data-wow-delay=".3s">
+                            
+                             <!-- Slider -->
+                            		<section class="cd-intro">
+	                                <h1 class="wow fadeInUp animated cd-headline slide" data-wow-delay=".4s" >
+		                                <span style="font-family:微軟正黑體; font-size:45px;">开启与淘金网的<br>跨界合作</span><br>
+		                                <span style="font-family:微軟正黑體;" class="cd-words-wrapper">
+		                                    <b class="is-visible">24H线上技术支援</b>
+		                                    <b>专业的网路攻防</b>
+		                                    <b>成熟的营运模组</b>
+		                                </span>
+	                                </h1>
+                                </section> <!-- cd-intro -->
+                                <!-- /.slider -->
+                               
+                                <a class="btn-lines dark light wow fadeInUp animated smooth-scroll btn btn-default btn-green" data-wow-delay=".9s" href="contact.html" data-section="#works" ><font style="font-family:微軟正黑體; font-size:16px; letter-spacing:2px;">联系我们</font></a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section><!--/#main-slider-->
+            <!--
+            ==================================================
+            Slider Section Start
+            ================================================== -->
+            
+            
+            <!--
+            ==================================================
+            Portfolio Section Start
+            ================================================== -->
+            <section id="works" class="works">
+                <div class="container">
+                    <div class="section-heading">
+                        <h1 class="title wow fadeInDown" data-wow-delay=".3s"><font style="font-family:微軟正黑體">联络淘金网</font></h1>
+                    
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+		                        <div class="block">
+		                            <h2 class="subtitle wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s"><font style="font-family:微軟正黑體">欢迎与我们联系</font></h2>
+		                            <p class="subtitle-des wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".5s"><font style="font-family:微軟正黑體">
+		                                淘金网正在寻找志同道合的业务合作夥伴，各种相关的业务申请合作（游戏厂商佳）<br>请留下您的联系资料，我们由专人尽速与您联系</font>
+		                            </p>
+		                            <div class="contact-form">
+		                                    <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".6s">
+		                                        <input type="text" placeholder="称呼*" class="form-control" name="name" id="name">
+		                                    </div>
+		                                    
+		                                    <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".8s">
+		                                        <input type="email" placeholder="电邮*" class="form-control" name="email" id="email" >
+		                                    </div>
+		                                    
+		                                    <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1s">
+		                                        <input type="text" placeholder="主旨*" class="form-control" name="subject" id="subject">
+		                                    </div>
+		                                    
+		                                    <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1.2s">
+		                                        <textarea rows="6" placeholder="输入讯息*" class="form-control" name="message" id="message"></textarea>    
+		                                    </div>
+		                                    
+		                                    <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1s">
+		                                        <input type="text" placeholder="验证码*" class="form-control" name="numcode" id="numcode">
+		                                    </div>
+		                                    
+		                                    <img style="padding-left:5px;" src='img.php?authnum='>
+		                                    <div style="margin-top:15px;" id="submit" class="wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1.4s">
+		                                        <input type="submit" onclick="cooperration()" id="contact-submit" class="btn btn-default btn-send" value="发送讯息">
+		                                    </div>                      
+		                            </div>
+		                        </div>
+                   			</div>
+                    </div>
+                </div>
+            </section> <!-- #works -->
+            <!--
+       
+            ==================================================
+            Call To Action Section Start
+            ================================================== -->
+            <section id="call-to-action">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="block">
+	                             <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms"><font style="font-family:微軟正黑體">24H线上客服</font></h1>
+	                           
+	                            <a href="https://v88.live800.com/live800/chatClient/chatbox.jsp?companyID=698946&configID=1586&jid=5625358570&s=1" target="_blank"><span style="right:67%;" class="online_icon_in"></span></a>
+				                      <a id="qq" href="#"><span style="right:39%;" class="qq_icon_in"></span></a>
+				                      <a id="weixin" href="#"><span style="right:11%;" class="weixin_icon_in"></span></a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </section>
+            <!--
+            ==================================================
+            Footer Section Start
+            ================================================== -->
+      
+                
+    </body>
+</html>

@@ -1,0 +1,476 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>淘金网</title>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=414,user-scalable=no">
+    <title>TG_MarketList</title>
+    <link rel="stylesheet" href="www/css/bootstrap.min.css">
+    <link rel="stylesheet" href="www/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="www/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="www/css/normalize.css">
+    <link rel="stylesheet" href="www/css/tab_style.css">
+    <!--menu bar 套件-->
+    <link rel="stylesheet" href="www/css/demo.css">
+    <link rel="stylesheet" href="www/css/sidy.css">
+    <link rel="stylesheet" href="www/css/Main_Style.css">
+    <link rel="stylesheet" href="www/css/my_info.css">
+    <link rel="stylesheet" href="www/css/FIFA_marketlist.css">
+<script>
+
+</script>
+
+</head>
+<body>
+<div class="sidy">
+<nav data-position="left" data-size="65%" data-fx="slide_overlay" class="sidy__panel sidy_background" id="panel-1">
+<script>
+	//会员互转
+	$("#modify111").on('click', function () {
+		$(".sidy__container").removeClass('sidy--opened');
+		$(".sidy__panel").css('transform', 'translate3d(-100%, 0px, 0px)');
+		$(".sidy__panel").css('visibility', 'visible');
+		$("#Modal_coverchgall").css('display', 'block');
+
+		$.ajax({
+			type: 'POST',
+			url: './other/userchg_thr.php' ,
+			//data: 'IncomeUser=' + username + '&amount=' + amount + '&withdrawpassword=' + passwd ,		
+			error: function(xhr) {
+				alert('error');
+				window.location.reload();
+				return false;
+			},
+			beforeSend:function(response)
+			{
+				$("#Modal_coverchgall").html("<div class='Loading'></div>");
+			}, 
+			success: function(response) {			
+				$("#Modal_coverchgall").on('keyup',function(){
+					var _this = this;
+					//setTimeout(function(){
+					//_this.scrollIntoViewIfNeeded();
+					//},400);
+				});
+				$("#Modal_coverchgall").html(response);
+			}
+		});
+	});
+</script>
+		<div class="menu_head_bg">
+       <div class="menu_head_title" id="menu_head_title"></div>
+    </div>
+		<div class="menu_list">
+				<ul>
+					<li onclick="location.href='market-review.html'">
+						<div class="market_list_icon"></div>
+						<div class="menu_text">市场列表</div>
+						<div class="menu_arrow"></div>
+					</li>
+					<li onclick="location.href='orderinfo-review.html'">
+						<div class="trade_detail_icon"></div>
+						<div class="menu_text">交易明细</div>
+						<div class="menu_arrow"></div>
+					</li>
+					<li onclick="location.href='history-review.html'">
+						<div class="history_icon"></div>
+						<div class="menu_text">历史帐务</div>
+						<div class="menu_arrow"></div>
+					</li>
+					<li onclick="window.open('http://bf.spbo1.com', '_blank')">
+						<div class="nowscore_icon_2018"></div>
+						<div class="menu_text">即时比分</div>
+						<div class="menu_arrow"></div>
+					</li>
+					<li onclick="location.href='gameresult-review.html'">
+						<div class="game_result_icon"></div>
+						<div class="menu_text">赛事结果</div>
+						<div class="menu_arrow"></div>
+					</li>
+				</ul>
+		</div>
+		<div class="menu_block_group">
+		<div class="menu_block">
+			<div class="new_icon">NEW</div>
+			<div onclick="location.href='deposits-review.html'" class="menu_block_outline01">
+				<div class="menu_wd_icon"></div>
+				<div class="menu_block_text">充值提领</div>
+			</div>
+		</div>
+		<!--
+		        <div class="menu_block">
+		            <div onclick="window.open('http://bf.spbo1.com', '_blank')" class="menu_block_outline02">
+		            <div class="menu_live_icon"></div>
+		            <div class="menu_block_text">即时比分</div>
+		            </div>
+		        </div>
+		        -->
+		<div class="menu_block">
+			<div id="modify111" name="modify111" class="menu_block_outline02">
+				<div class="menu_live_icon"></div>
+				<div class="menu_block_text">会员互转</div>
+			</div>
+		</div>
+
+		<div class="menu_block">
+			<div onclick="location.href='Service-review.html'" class="menu_block_outline03">
+				<div class="menu_service_icon"></div>
+				<div class="menu_block_text">联络客服</div>
+			</div>
+		</div>
+		</div>
+
+		<div class="menu_list">
+		<ul>
+			<li onclick="location.href='statistics-review.html'">
+				<div class="menu_history_stat_icon"></div>
+				<div class="menu_text">历史统计</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='rules-review.html'">
+				<div class="menu_rules_icon"></div>
+				<div class="menu_text">规则说明</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='help-review.html'">
+				<div class="menu_help_icon"></div>
+				<div class="menu_text">帮助中心</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="window.open('http://f.tg333.net/index.php', '_blank')">
+				<div class="menu_discuss_icon"></div>
+				<div class="menu_text">讨论区</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='announce-review.html'">
+				<div class="menu_announce_icon"></div>
+				<div class="menu_text">公　告</div>
+				<div class="menu_arrow"></div>
+			</li>
+			<li onclick="location.href='memberlogout.php'">
+				<div class="menu_logout_icon"></div>
+				<div class="menu_text">登　出</div>
+				<div class="menu_arrow"></div>
+			</li>
+		</ul>
+		</div>       
+</nav>
+		<div class="sidy__content">
+				<div class="head_banner nav-bar navbar-fixed-top">
+				    <div data-panel="panel-1" class="sidy--to-open menu_btn">
+				        <span></span><br>
+				        <span></span><br>
+				        <span></span><br>
+				    </div>
+				    <div class="acc"><img class="top_user" src="./template/www/img/top_user.png" width="11" height="11">pzq422</div>
+				    <div class="money"><img class="top_coin" src="./template/www/img/top_coin.png" width="11" height="11"><span id="quotaView">0.00</span></div>
+				</div>
+ 
+                
+        <div class="icon_bar navbar-fixed-bottom">
+					<div class="icon_bar_row">
+						<div class="icon_bar_cell"><a id="market_a" name="market_a" href="market-review.html"><div class="icon_bar_marketlist"></div><div class="icon_bar_text">市场列表</div></a></div>
+						<div class="icon_bar_cell"><a id="orderinfo_a" name="orderinfo_a" href="orderinfo-review.html"><div class="icon_bar_trade"></div><div class="icon_bar_text">交易明细</div></a></div>
+						<div class="icon_bar_cell"><a id="gold_a" href="indexCenterTpl-review.html"><div class="icon_bar_index"></div><div class="icon_bar_text">首　页</div></a></div>
+						<!--<div class="icon_bar_cell iconBar_fifa_bg"><a href="fifa.php"><div class="icon_bar_fifa"></div><div class="icon_bar_text">世足专区</div></a></div>-->
+						<div class="icon_bar_cell"><a name="history_a" id="history_a" href="history-review.html"><div class="icon_bar_history"></div><div class="icon_bar_text">历史帐务</div></a></div>
+						<div class="icon_bar_cell"><a name="my_a" id="my_a" href="my-review.html"><div class="icon_bar_my"></div><div class="icon_bar_text">我　的</div></a></div>
+					</div>
+
+					<div id="Modal_coverchgall" class="cover"></div>        
+				</div>
+                
+        
+<script>
+/* 密碼修改-執行 */
+	function changePwd(pwdType)
+	{
+		//var pwdType = $('#pType').val();
+		if( pwdType != 'passwd' &&  pwdType != 'pickup' )
+		{
+			alert('不正确操作');
+			document.location.href='logout.php'; 
+			return;
+		}
+		var simple_ar = Array();
+		var c2bet_st = new Object;
+		var orderinfo_st = new Object;
+
+		var re2 = /^([a-zA-Z]+\d+|\d+[a-zA-Z]+)[a-zA-Z0-9]*$/;
+		
+		if(pwdType=='pickup')
+		{
+			var oldaccount = $("#poldaccount").val();
+		  var newaccount = $("#pnewaccount").val();
+		  var renewaccount = $("#prenewaccount").val();
+		}
+   
+    if(pwdType=='passwd')
+		{
+			var oldaccount = $("#oldaccount").val();
+		  var newaccount = $("#newaccount").val();
+		  var renewaccount = $("#renewaccount").val();
+		}
+		
+		if(oldaccount=="" || newaccount=="" || renewaccount=="")
+		{
+			alert('填写相关资讯');
+			return;
+		}
+		else if(newaccount!=renewaccount)
+		{
+			alert('新密码与确认密码不符合！');
+			return;
+		}
+		else if(jQuery.trim(oldaccount.replace(/\s+/g,""))!==oldaccount)
+		{
+			alert('旧密码請勿有空格');
+			return;
+		}
+		else if(jQuery.trim(newaccount.replace(/\s+/g,""))!==newaccount)
+		{
+			alert('新密码請勿有空格');
+			return;
+		}
+		else if(!re2.test(newaccount))
+		{
+			alert('新密码請英數混合'); 　
+			return;
+		}
+		else if(newaccount.length < 6)
+		{
+			alert('新密码請大於6個字'); 　
+			return;
+		}
+		else if(oldaccount.length < 6)
+		{
+			alert('请确认旧密码位数'); 　
+			return;
+		}
+
+		var jimDatass = { chgmun: pwdType, oldaccount: oldaccount, newaccount: newaccount };
+			   
+		simple_ar.push(jimDatass);
+		orderinfo_st = simple_ar;
+		c2bet_st["editPwd"]=orderinfo_st;	
+     //console.log(jimDatass);
+     //return;
+		jQuery.ajax({
+			type: 'POST',
+			url: 'ActionEditPwd.php',
+			data: c2bet_st ,		
+			error: function(xhr)
+			{
+				alert('系统中断，请洽客服中心');
+				return false;
+			},
+			beforeSend:function(response)
+			{
+				//Loading();
+			}, 
+			success: function(response)
+			{        
+				response = jQuery.trim(response);
+        //alert(response);
+				//closeLoading();
+				if(response=='S')
+				{
+					alert('修改成功，请重新登入');
+					document.location.href='memberlogout.php';   
+				}
+				else
+				{
+					alert('修改失败，请重新确认');
+				}    
+			}
+
+		 }); 
+	}
+
+/* 快捷金額設定-執行 */
+	function changeCommon(pwdType)
+	{
+		//var pwdType = $('#pType').val();
+		if( pwdType != 'common' )
+		{
+			alert('不正确操作');
+			return;
+		}
+		var simple_ar = Array();
+		var c2bet_st = new Object;
+		var orderinfo_st = new Object;
+
+		var re = /^[0-9]*$/;
+		var common1 = jQuery("#common1").val();
+		var common2 = jQuery("#common2").val();
+		var common3 = jQuery("#common3").val();
+
+		if( isNaN(common1) || isNaN(common2) || isNaN(common3) )
+		{
+			alert('请输入数字'); 　
+			return;
+		}
+
+		if( common1 ) c2bet_st["common1"] = common1;
+		if( common2 ) c2bet_st["common2"] = common2;
+		if( common3 ) c2bet_st["common3"] = common3;
+
+		jQuery.ajax({
+			type: 'POST',
+			url: 'ActionEditCommon.php',
+			data: c2bet_st,		
+			error: function(xhr)
+			{
+				alert('系统中断，请洽客服中心');
+				return false;
+			},
+			beforeSend:function(response)
+			{
+				//Loading();
+			}, 
+			success: function(response)
+			{
+				
+				response = jQuery.trim(response);
+				location.reload();
+				return;
+			}
+		 }); 
+	}
+	
+$('.icon_bar_cell > a').removeClass('active');
+  $('.icon_bar_cell > #my_a').addClass('active');
+</script>
+			<div class="sidy">
+			    <div class="sidy__content">
+			        <div class="title_background ">
+			            <div class="title">个人资料</div>
+			        </div>       
+			        <div class="account_bg"></div>
+			        <div class="info_table">
+			            <div class="info_row">
+			                <div class="info_cell_title">可用额度</div>
+			                <div class="info_cell"></div>
+			            </div>
+			            <div class="info_row">
+			                <div class="info_cell_title"><span style="letter-spacing:16px;">密码</span><button id="modify1">更新</button></div>
+			                <div class="info_cell"></div>
+			            </div>
+			            <div class="info_row">
+			                <div class="info_cell_title">提款密码<button id="modify2">更新</button></div>
+			                <div class="info_cell"></div>
+			            </div>
+			            <div class="info_row">
+			                <div class="info_cell_title">移动电话</div>
+			                <div class="info_cell">*</div>
+			            </div>
+			            <div class="info_row">
+			                <div class="info_cell_title">QQ帐号</div>
+			                <div class="info_cell"></div>
+			            </div>
+			            <div class="info_row">
+			                <div class="info_cell_title">微信帐号</div>
+			                <div class="info_cell"></div>
+			            </div>
+			            <div class="info_row">
+			                <div class="info_cell_title">快捷金额设定<button id="setting">设定</button></div>
+			                <div class="info_cell"></div>
+			            </div>
+			        </div>
+
+			        <div id="Modal_cover" class="cover">
+			            <div id="order1" class="order_content">
+			                <div class="modal_title">登入密码更新</div>
+			                <i class="fa fa-times x" aria-hidden="true"></i>
+			                
+			                <div class="my_info_table">
+			                    <div class="my_info_row">
+			                        <div class="my_info_cell_title">原始密码<span>*</span></div>
+			                        <div class="my_info_cell"><input type="password" id="oldaccount" name="oldaccount"></div>
+			                    </div>
+			                    <div class="my_info_row">
+			                        <div class="my_info_cell_title">更新密码<span>*</span></div>
+			                        <div class="my_info_cell"><input type="password" id="newaccount" name="newaccount"> </div>
+			                    </div>
+			                    <div class="my_info_row">
+			                        <div class="my_info_cell_title">确认密码<span>*</span></div>
+			                        <div class="my_info_cell"><input type="password" id="renewaccount" name="renewaccount"></div>
+			                    </div>
+			                </div>
+			                <div class="btn_group">
+			                <button id="confirm1" onClick="changePwd('passwd')">确定</button>
+			                <button id="cancel1">取消</button>
+			            </div>
+			            </div>
+			        </div>
+
+			        <div id="Modal_cover2" class="cover">
+			            <div id="order2" class="order_content2">
+			                <div class="modal_title">提领密码更新</div>
+			                <i class="fa fa-times x" aria-hidden="true"></i>
+			                
+			                <div class="my_info_table">
+			                    <div class="my_info_row">
+			                        <div class="my_info_cell_title">原始密码<span>*</span></div>
+			                        <div class="my_info_cell"><input type="password" id="poldaccount" name="poldaccount"></div>
+			                    </div>
+			                    <div class="my_info_row">
+			                        <div class="my_info_cell_title">更新密码<span>*</span></div>
+			                        <div class="my_info_cell"><input type="password" id="pnewaccount" name="pnewaccount"> </div>
+			                    </div>
+			                    <div class="my_info_row">
+			                        <div class="my_info_cell_title">确认密码<span>*</span></div>
+			                        <div class="my_info_cell"><input type="password" id="prenewaccount" name="prenewaccount"></div>
+			                    </div>
+			                </div>
+			                <div class="btn_group">
+			                <button id="confirm2" onClick="changePwd('pickup')">确定</button>
+			                <button id="cancel2">取消</button>
+			            </div>
+			            </div>
+			        </div>
+
+			        <div id="Modal_cover3" class="cover">
+			            <div id="order3" class="order_content3">
+			                <div class="modal_title">快捷金额设定</div>
+			                <i class="fa fa-times x" aria-hidden="true"></i>
+			                
+			                <div class="my_info_table">
+			                    <div class="my_info_row">
+			                        <div class="my_info_cell_title">第一设定值</div>
+			                        <div class="my_info_cell"><input maxlength="7" type="number" id="common1" name="common1" value=""></div>
+			                    </div>
+			                    <div class="my_info_row">
+			                        <div class="my_info_cell_title">第二设定值</div>
+			                        <div class="my_info_cell"><input maxlength="7" type="number" id="common2" name="common2" value=""> </div>
+			                    </div>
+			                    <div class="my_info_row">
+			                        <div class="my_info_cell_title">第三设定值</div>
+			                        <div class="my_info_cell"><input maxlength="7" type="number" id="common3" name="common3" value=""></div>
+			                    </div>
+			                </div>
+			                <div class="btn_group">
+				                <button id="confirm3" onClick="changeCommon('common')">确定</button>
+				                <button id="cancel3">取消</button>
+			                </div>
+			      		  </div>
+				      </div>
+					</div>
+			</div>
+
+    </div>
+
+</div>
+
+
+<script src="www/js/jquery-3.2.1.min.js"></script>
+<script src="www/js/bootstrap.min.js"></script>
+<script src="www/js/bootstrap-select.min.js"></script>
+<script src="www/js/modernizr.custom.04022.js"></script>
+<script src="www/js/sidy.js"></script>
+<script src="www/js/login.js"></script>
+<script src="www/js/jquery.cookies.2.2.0.js"></script>
+<script src="www/js/my_info.js"></script>
+</body>
+</html>
